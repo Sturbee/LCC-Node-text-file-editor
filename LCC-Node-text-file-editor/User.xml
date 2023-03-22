@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<UserPref xmlns="http://tempuri.org/User.xsd">
+	
+	<!-- Process data table -->
+	<Process>
+		<processID>1</processID>
+		<text>Process CDI file to XML</text>
+		<action>true</action>
+	</Process>
+	<Process>
+		<processID>2</processID>
+		<text>Create .xsd file</text>
+		<action>false</action>
+	</Process>
+	<Process>
+		<processID>3</processID>
+		<text>Create .csv file</text>
+		<action>false</action>
+	</Process>
+	
+	<!-- Segment Report data table-->
+	<SegmentReport>
+		<segID>0</segID>
+		<text>Node ID</text>
+		<action>true</action>
+	</SegmentReport>
+	<SegmentReport>
+		<segID>1</segID>
+		<text>Power Monitor</text>
+		<action>true</action>
+	</SegmentReport>
+	<SegmentReport>
+		<segID>2</segID>
+		<text>Port I/O</text>
+		<action>false</action>
+	</SegmentReport>
+	<SegmentReport>
+		<segID>3</segID>
+		<text>Conditional</text>
+		<action>false</action>
+	</SegmentReport>
+	<SegmentReport>
+		<segID>4</segID>
+		<text>Track Circuit Reciver</text>
+		<action>true</action>
+	</SegmentReport>
+	<SegmentReport>
+		<segID>5</segID>
+		<text>Track Circuit Transmitter</text>
+		<action>true</action>
+	</SegmentReport>
+	<SegmentReport>
+		<segID>6</segID>
+		<text>Rule To Aspect</text>
+		<action>true</action>
+	</SegmentReport>
+	<SegmentReport>
+		<segID>7</segID>
+		<text>Direct Lamp Control</text>
+		<action>false</action>
+	</SegmentReport>
+	<SegmentReport>
+		<segID>8</segID>
+		<text>Brightness</text>
+		<action>false</action>
+	</SegmentReport>
+	
+	<!-- Track Speed data table -->	
+	<TrackSpeed>
+		<value>0</value>
+		<text>Stop</text>
+	</TrackSpeed>
+	<TrackSpeed>
+		<value>1</value>
+		<text>Restricting</text>
+	</TrackSpeed>
+	<TrackSpeed>
+		<value>2</value>
+		<text>Slow</text>
+	</TrackSpeed>
+	<TrackSpeed>
+		<value>3</value>
+		<text>Medium</text>
+	</TrackSpeed>
+	<TrackSpeed>
+		<value>4</value>
+		<text>Dark</text>
+	</TrackSpeed>
+	<TrackSpeed>
+		<value>5</value>
+		<text>Approach</text>
+	</TrackSpeed>
+	<TrackSpeed>
+		<value>6</value>
+		<text>Approach-Medium</text>
+	</TrackSpeed>
+	<TrackSpeed>
+		<value>7</value>
+		<text>Clear/Proceed</text>
+	</TrackSpeed>
+	
+</UserPref>
