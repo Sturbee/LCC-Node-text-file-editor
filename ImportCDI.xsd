@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ImportCDI" targetNamespace="http://tempuri.org/ImportCDI.xsd" xmlns:mstns="http://tempuri.org/ImportCDI.xsd" xmlns="http://tempuri.org/ImportCDI.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ImportCDI" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ImportCDI" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ImportCDI">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Attribute" msprop:Generator_RowEvHandlerName="AttributeRowChangeEventHandler" msprop:Generator_RowDeletedName="AttributeRowDeleted" msprop:Generator_RowDeletingName="AttributeRowDeleting" msprop:Generator_RowEvArgName="AttributeRowChangeEvent" msprop:Generator_TablePropName="Attribute" msprop:Generator_RowChangedName="AttributeRowChanged" msprop:Generator_UserTableName="Attribute" msprop:Generator_RowChangingName="AttributeRowChanging" msprop:Generator_RowClassName="AttributeRow" msprop:Generator_TableClassName="AttributeDataTable" msprop:Generator_TableVarName="tableAttribute">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="segID" msprop:Generator_ColumnPropNameInTable="segIDColumn" msprop:Generator_ColumnPropNameInRow="segID" msprop:Generator_UserColumnName="segID" msprop:Generator_ColumnVarNameInTable="columnsegID" type="xs:int" />
+              <xs:element name="sectionID" msprop:Generator_ColumnPropNameInTable="sectionIDColumn" msprop:Generator_ColumnPropNameInRow="sectionID" msprop:Generator_UserColumnName="sectionID" msprop:Generator_ColumnVarNameInTable="columnsectionID" type="xs:int" />
+              <xs:element name="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_UserColumnName="columnID" msprop:Generator_ColumnVarNameInTable="columncolumnID" type="xs:int" />
+              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Title" msprop:Generator_RowEvHandlerName="TitleRowChangeEventHandler" msprop:Generator_RowDeletedName="TitleRowDeleted" msprop:Generator_RowDeletingName="TitleRowDeleting" msprop:Generator_RowEvArgName="TitleRowChangeEvent" msprop:Generator_TablePropName="Title" msprop:Generator_RowChangedName="TitleRowChanged" msprop:Generator_UserTableName="Title" msprop:Generator_RowChangingName="TitleRowChanging" msprop:Generator_RowClassName="TitleRow" msprop:Generator_TableClassName="TitleDataTable" msprop:Generator_TableVarName="tableTitle">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="segID" msprop:Generator_ColumnPropNameInTable="segIDColumn" msprop:Generator_ColumnPropNameInRow="segID" msprop:Generator_UserColumnName="segID" msprop:Generator_ColumnVarNameInTable="columnsegID" type="xs:int" />
+              <xs:element name="sectionID" msprop:Generator_ColumnPropNameInTable="sectionIDColumn" msprop:Generator_ColumnPropNameInRow="sectionID" msprop:Generator_UserColumnName="sectionID" msprop:Generator_ColumnVarNameInTable="columnsectionID" type="xs:int" />
+              <xs:element name="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_UserColumnName="columnID" msprop:Generator_ColumnVarNameInTable="columncolumnID" type="xs:int" />
+              <xs:element name="formatType" msprop:Generator_ColumnPropNameInTable="formatTypeColumn" msprop:Generator_ColumnPropNameInRow="formatType" msprop:Generator_UserColumnName="formatType" msprop:Generator_ColumnVarNameInTable="columnformatType" type="xs:int" minOccurs="0" />
+              <xs:element name="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_UserColumnName="title" msprop:Generator_ColumnVarNameInTable="columntitle" type="xs:string" minOccurs="0" />
+              <xs:element name="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_UserColumnName="comment" msprop:Generator_ColumnVarNameInTable="columncomment" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FormatType" msprop:Generator_RowEvHandlerName="FormatTypeRowChangeEventHandler" msprop:Generator_RowDeletedName="FormatTypeRowDeleted" msprop:Generator_RowDeletingName="FormatTypeRowDeleting" msprop:Generator_RowEvArgName="FormatTypeRowChangeEvent" msprop:Generator_TablePropName="FormatType" msprop:Generator_RowChangedName="FormatTypeRowChanged" msprop:Generator_UserTableName="FormatType" msprop:Generator_RowChangingName="FormatTypeRowChanging" msprop:Generator_RowClassName="FormatTypeRow" msprop:Generator_TableClassName="FormatTypeDataTable" msprop:Generator_TableVarName="tableFormatType">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TrackSpeed" msprop:Generator_RowEvHandlerName="TrackSpeedRowChangeEventHandler" msprop:Generator_RowDeletedName="TrackSpeedRowDeleted" msprop:Generator_RowDeletingName="TrackSpeedRowDeleting" msprop:Generator_RowEvArgName="TrackSpeedRowChangeEvent" msprop:Generator_TablePropName="TrackSpeed" msprop:Generator_RowChangedName="TrackSpeedRowChanged" msprop:Generator_UserTableName="TrackSpeed" msprop:Generator_RowChangingName="TrackSpeedRowChanging" msprop:Generator_RowClassName="TrackSpeedRow" msprop:Generator_TableClassName="TrackSpeedDataTable" msprop:Generator_TableVarName="tableTrackSpeed">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Process" msprop:Generator_RowEvHandlerName="ProcessRowChangeEventHandler" msprop:Generator_RowDeletedName="ProcessRowDeleted" msprop:Generator_RowDeletingName="ProcessRowDeleting" msprop:Generator_RowEvArgName="ProcessRowChangeEvent" msprop:Generator_TablePropName="Process" msprop:Generator_RowChangedName="ProcessRowChanged" msprop:Generator_UserTableName="Process" msprop:Generator_RowChangingName="ProcessRowChanging" msprop:Generator_RowClassName="ProcessRow" msprop:Generator_TableClassName="ProcessDataTable" msprop:Generator_TableVarName="tableProcess">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="processID" msprop:Generator_ColumnPropNameInTable="processIDColumn" msprop:Generator_ColumnPropNameInRow="processID" msprop:Generator_UserColumnName="processID" msprop:Generator_ColumnVarNameInTable="columnprocessID" type="xs:int" />
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+              <xs:element name="action" msprop:Generator_ColumnPropNameInTable="actionColumn" msprop:Generator_ColumnPropNameInRow="action" msprop:Generator_UserColumnName="action" msprop:Generator_ColumnVarNameInTable="columnaction" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SegmentReport" msprop:Generator_RowEvHandlerName="SegmentReportRowChangeEventHandler" msprop:Generator_RowDeletedName="SegmentReportRowDeleted" msprop:Generator_RowDeletingName="SegmentReportRowDeleting" msprop:Generator_RowEvArgName="SegmentReportRowChangeEvent" msprop:Generator_TablePropName="SegmentReport" msprop:Generator_RowChangedName="SegmentReportRowChanged" msprop:Generator_UserTableName="SegmentReport" msprop:Generator_RowChangingName="SegmentReportRowChanging" msprop:Generator_RowClassName="SegmentReportRow" msprop:Generator_TableClassName="SegmentReportDataTable" msprop:Generator_TableVarName="tableSegmentReport">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="segID" msprop:Generator_ColumnPropNameInTable="segIDColumn" msprop:Generator_ColumnPropNameInRow="segID" msprop:Generator_UserColumnName="segID" msprop:Generator_ColumnVarNameInTable="columnsegID" type="xs:int" />
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+              <xs:element name="action" msprop:Generator_ColumnPropNameInTable="actionColumn" msprop:Generator_ColumnPropNameInRow="action" msprop:Generator_UserColumnName="action" msprop:Generator_ColumnVarNameInTable="columnaction" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LogicAction" msprop:Generator_RowEvHandlerName="LogicActionRowChangeEventHandler" msprop:Generator_RowDeletedName="LogicActionRowDeleted" msprop:Generator_RowDeletingName="LogicActionRowDeleting" msprop:Generator_RowEvArgName="LogicActionRowChangeEvent" msprop:Generator_TablePropName="LogicAction" msprop:Generator_RowChangedName="LogicActionRowChanged" msprop:Generator_UserTableName="LogicAction" msprop:Generator_RowChangingName="LogicActionRowChanging" msprop:Generator_RowClassName="LogicActionRow" msprop:Generator_TableClassName="LogicActionDataTable" msprop:Generator_TableVarName="tableLogicAction">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TrackCircuitRec" msprop:Generator_RowEvHandlerName="TrackCircuitRecRowChangeEventHandler" msprop:Generator_RowDeletedName="TrackCircuitRecRowDeleted" msprop:Generator_RowDeletingName="TrackCircuitRecRowDeleting" msprop:Generator_RowEvArgName="TrackCircuitRecRowChangeEvent" msprop:Generator_TablePropName="TrackCircuitRec" msprop:Generator_RowChangedName="TrackCircuitRecRowChanged" msprop:Generator_UserTableName="TrackCircuitRec" msprop:Generator_RowChangingName="TrackCircuitRecRowChanging" msprop:Generator_RowClassName="TrackCircuitRecRow" msprop:Generator_TableClassName="TrackCircuitRecDataTable" msprop:Generator_TableVarName="tableTrackCircuitRec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TrackCircuitTran" msprop:Generator_RowEvHandlerName="TrackCircuitTranRowChangeEventHandler" msprop:Generator_RowDeletedName="TrackCircuitTranRowDeleted" msprop:Generator_RowDeletingName="TrackCircuitTranRowDeleting" msprop:Generator_RowEvArgName="TrackCircuitTranRowChangeEvent" msprop:Generator_TablePropName="TrackCircuitTran" msprop:Generator_RowChangedName="TrackCircuitTranRowChanged" msprop:Generator_UserTableName="TrackCircuitTran" msprop:Generator_RowChangingName="TrackCircuitTranRowChanging" msprop:Generator_RowClassName="TrackCircuitTranRow" msprop:Generator_TableClassName="TrackCircuitTranDataTable" msprop:Generator_TableVarName="tableTrackCircuitTran">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MatchSegment" msprop:Generator_RowEvHandlerName="MatchSegmentRowChangeEventHandler" msprop:Generator_RowDeletedName="MatchSegmentRowDeleted" msprop:Generator_RowDeletingName="MatchSegmentRowDeleting" msprop:Generator_RowEvArgName="MatchSegmentRowChangeEvent" msprop:Generator_TablePropName="MatchSegment" msprop:Generator_RowChangedName="MatchSegmentRowChanged" msprop:Generator_UserTableName="MatchSegment" msprop:Generator_RowChangingName="MatchSegmentRowChanging" msprop:Generator_RowClassName="MatchSegmentRow" msprop:Generator_TableClassName="MatchSegmentDataTable" msprop:Generator_TableVarName="tableMatchSegment">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+              <xs:element name="segID" msprop:Generator_ColumnPropNameInTable="segIDColumn" msprop:Generator_ColumnPropNameInRow="segID" msprop:Generator_UserColumnName="segID" msprop:Generator_ColumnVarNameInTable="columnsegID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MatchSection" msprop:Generator_RowEvHandlerName="MatchSectionRowChangeEventHandler" msprop:Generator_RowDeletedName="MatchSectionRowDeleted" msprop:Generator_RowDeletingName="MatchSectionRowDeleting" msprop:Generator_RowEvArgName="MatchSectionRowChangeEvent" msprop:Generator_TablePropName="MatchSection" msprop:Generator_RowChangedName="MatchSectionRowChanged" msprop:Generator_UserTableName="MatchSection" msprop:Generator_RowChangingName="MatchSectionRowChanging" msprop:Generator_RowClassName="MatchSectionRow" msprop:Generator_TableClassName="MatchSectionDataTable" msprop:Generator_TableVarName="tableMatchSection">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+              <xs:element name="segID" msprop:Generator_ColumnPropNameInTable="segIDColumn" msprop:Generator_ColumnPropNameInRow="segID" msprop:Generator_UserColumnName="segID" msprop:Generator_ColumnVarNameInTable="columnsegID" type="xs:int" minOccurs="0" />
+              <xs:element name="sectionID" msprop:Generator_ColumnPropNameInTable="sectionIDColumn" msprop:Generator_ColumnPropNameInRow="sectionID" msprop:Generator_UserColumnName="sectionID" msprop:Generator_ColumnVarNameInTable="columnsectionID" type="xs:int" minOccurs="0" />
+              <xs:element name="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_UserColumnName="columnID" msprop:Generator_ColumnVarNameInTable="columncolumnID" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MatchItem" msprop:Generator_RowEvHandlerName="MatchItemRowChangeEventHandler" msprop:Generator_RowDeletedName="MatchItemRowDeleted" msprop:Generator_RowDeletingName="MatchItemRowDeleting" msprop:Generator_RowEvArgName="MatchItemRowChangeEvent" msprop:Generator_TablePropName="MatchItem" msprop:Generator_RowChangedName="MatchItemRowChanged" msprop:Generator_UserTableName="MatchItem" msprop:Generator_RowChangingName="MatchItemRowChanging" msprop:Generator_RowClassName="MatchItemRow" msprop:Generator_TableClassName="MatchItemDataTable" msprop:Generator_TableVarName="tableMatchItem">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+              <xs:element name="segID" msprop:Generator_ColumnPropNameInTable="segIDColumn" msprop:Generator_ColumnPropNameInRow="segID" msprop:Generator_UserColumnName="segID" msprop:Generator_ColumnVarNameInTable="columnsegID" type="xs:int" minOccurs="0" />
+              <xs:element name="sectionID" msprop:Generator_ColumnPropNameInTable="sectionIDColumn" msprop:Generator_ColumnPropNameInRow="sectionID" msprop:Generator_UserColumnName="sectionID" msprop:Generator_ColumnVarNameInTable="columnsectionID" type="xs:int" minOccurs="0" />
+              <xs:element name="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_UserColumnName="columnID" msprop:Generator_ColumnVarNameInTable="columncolumnID" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MatchLevel4" msprop:Generator_RowEvHandlerName="MatchLevel4RowChangeEventHandler" msprop:Generator_RowDeletedName="MatchLevel4RowDeleted" msprop:Generator_RowDeletingName="MatchLevel4RowDeleting" msprop:Generator_RowEvArgName="MatchLevel4RowChangeEvent" msprop:Generator_TablePropName="MatchLevel4" msprop:Generator_RowChangedName="MatchLevel4RowChanged" msprop:Generator_UserTableName="MatchLevel4" msprop:Generator_RowChangingName="MatchLevel4RowChanging" msprop:Generator_RowClassName="MatchLevel4Row" msprop:Generator_TableClassName="MatchLevel4DataTable" msprop:Generator_TableVarName="tableMatchLevel4">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+              <xs:element name="segID" msprop:Generator_ColumnPropNameInTable="segIDColumn" msprop:Generator_ColumnPropNameInRow="segID" msprop:Generator_UserColumnName="segID" msprop:Generator_ColumnVarNameInTable="columnsegID" type="xs:int" minOccurs="0" />
+              <xs:element name="sectionID" msprop:Generator_ColumnPropNameInTable="sectionIDColumn" msprop:Generator_ColumnPropNameInRow="sectionID" msprop:Generator_UserColumnName="sectionID" msprop:Generator_ColumnVarNameInTable="columnsectionID" type="xs:int" minOccurs="0" />
+              <xs:element name="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_UserColumnName="columnID" msprop:Generator_ColumnVarNameInTable="columncolumnID" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LampFade" msprop:Generator_RowClassName="LampFadeRow" msprop:Generator_RowEvHandlerName="LampFadeRowChangeEventHandler" msprop:Generator_RowDeletedName="LampFadeRowDeleted" msprop:Generator_RowDeletingName="LampFadeRowDeleting" msprop:Generator_RowEvArgName="LampFadeRowChangeEvent" msprop:Generator_TablePropName="LampFade" msprop:Generator_RowChangedName="LampFadeRowChanged" msprop:Generator_UserTableName="LampFade" msprop:Generator_RowChangingName="LampFadeRowChanging" msprop:Generator_TableClassName="LampFadeDataTable" msprop:Generator_TableVarName="tableLampFade">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
+              <xs:element name="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LampPhase" msprop:Generator_RowClassName="LampPhaseRow" msprop:Generator_RowEvHandlerName="LampPhaseRowChangeEventHandler" msprop:Generator_RowDeletedName="LampPhaseRowDeleted" msprop:Generator_RowDeletingName="LampPhaseRowDeleting" msprop:Generator_RowEvArgName="LampPhaseRowChangeEvent" msprop:Generator_TablePropName="LampPhase" msprop:Generator_RowChangedName="LampPhaseRowChanged" msprop:Generator_UserTableName="LampPhase" msprop:Generator_RowChangingName="LampPhaseRowChanging" msprop:Generator_TableClassName="LampPhaseDataTable" msprop:Generator_TableVarName="tableLampPhase">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
+              <xs:element name="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LampSelection" msprop:Generator_RowClassName="LampSelectionRow" msprop:Generator_RowEvHandlerName="LampSelectionRowChangeEventHandler" msprop:Generator_RowDeletedName="LampSelectionRowDeleted" msprop:Generator_RowDeletingName="LampSelectionRowDeleting" msprop:Generator_RowEvArgName="LampSelectionRowChangeEvent" msprop:Generator_TablePropName="LampSelection" msprop:Generator_RowChangedName="LampSelectionRowChanged" msprop:Generator_UserTableName="LampSelection" msprop:Generator_RowChangingName="LampSelectionRowChanging" msprop:Generator_TableClassName="LampSelectionDataTable" msprop:Generator_TableVarName="tableLampSelection">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
+              <xs:element name="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MastAppearance" msprop:Generator_RowClassName="MastAppearanceRow" msprop:Generator_RowEvHandlerName="MastAppearanceRowChangeEventHandler" msprop:Generator_RowDeletedName="MastAppearanceRowDeleted" msprop:Generator_RowDeletingName="MastAppearanceRowDeleting" msprop:Generator_RowEvArgName="MastAppearanceRowChangeEvent" msprop:Generator_TablePropName="MastAppearance" msprop:Generator_RowChangedName="MastAppearanceRowChanged" msprop:Generator_UserTableName="MastAppearance" msprop:Generator_RowChangingName="MastAppearanceRowChanging" msprop:Generator_TableClassName="MastAppearanceDataTable" msprop:Generator_TableVarName="tableMastAppearance">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
+              <xs:element name="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LogicFunction" msprop:Generator_RowEvHandlerName="LogicFunctionRowChangeEventHandler" msprop:Generator_RowDeletedName="LogicFunctionRowDeleted" msprop:Generator_RowDeletingName="LogicFunctionRowDeleting" msprop:Generator_RowEvArgName="LogicFunctionRowChangeEvent" msprop:Generator_TablePropName="LogicFunction" msprop:Generator_RowChangedName="LogicFunctionRowChanged" msprop:Generator_RowChangingName="LogicFunctionRowChanging" msprop:Generator_TableClassName="LogicFunctionDataTable" msprop:Generator_RowClassName="LogicFunctionRow" msprop:Generator_TableVarName="tableLogicFunction" msprop:Generator_UserTableName="LogicFunction">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="value" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnVarNameInTable="columnvalue" msprop:Generator_UserColumnName="value" type="xs:int" />
+              <xs:element name="text" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnVarNameInTable="columntext" msprop:Generator_UserColumnName="text" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LogicTitle" msprop:Generator_RowEvHandlerName="LogicTitleRowChangeEventHandler" msprop:Generator_RowDeletedName="LogicTitleRowDeleted" msprop:Generator_RowDeletingName="LogicTitleRowDeleting" msprop:Generator_RowEvArgName="LogicTitleRowChangeEvent" msprop:Generator_TablePropName="LogicTitle" msprop:Generator_RowChangedName="LogicTitleRowChanged" msprop:Generator_RowChangingName="LogicTitleRowChanging" msprop:Generator_TableClassName="LogicTitleDataTable" msprop:Generator_RowClassName="LogicTitleRow" msprop:Generator_TableVarName="tableLogicTitle" msprop:Generator_UserTableName="LogicTitle">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="columnID" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnVarNameInTable="columncolumnID" msprop:Generator_UserColumnName="columnID" type="xs:int" />
+              <xs:element name="formatType" msprop:Generator_ColumnPropNameInRow="formatType" msprop:Generator_ColumnPropNameInTable="formatTypeColumn" msprop:Generator_ColumnVarNameInTable="columnformatType" msprop:Generator_UserColumnName="formatType" type="xs:int" minOccurs="0" />
+              <xs:element name="title" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_ColumnVarNameInTable="columntitle" msprop:Generator_UserColumnName="title" type="xs:string" minOccurs="0" />
+              <xs:element name="comment" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_ColumnVarNameInTable="columncomment" msprop:Generator_UserColumnName="comment" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LogicOperationTitle" msprop:Generator_RowEvHandlerName="LogicOperationTitleRowChangeEventHandler" msprop:Generator_RowDeletedName="LogicOperationTitleRowDeleted" msprop:Generator_RowDeletingName="LogicOperationTitleRowDeleting" msprop:Generator_RowEvArgName="LogicOperationTitleRowChangeEvent" msprop:Generator_TablePropName="LogicOperationTitle" msprop:Generator_RowChangedName="LogicOperationTitleRowChanged" msprop:Generator_RowChangingName="LogicOperationTitleRowChanging" msprop:Generator_TableClassName="LogicOperationTitleDataTable" msprop:Generator_RowClassName="LogicOperationTitleRow" msprop:Generator_TableVarName="tableLogicOperationTitle" msprop:Generator_UserTableName="LogicOperationTitle">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="columnID" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnVarNameInTable="columncolumnID" msprop:Generator_UserColumnName="columnID" type="xs:int" />
+              <xs:element name="formatType" msprop:Generator_ColumnPropNameInRow="formatType" msprop:Generator_ColumnPropNameInTable="formatTypeColumn" msprop:Generator_ColumnVarNameInTable="columnformatType" msprop:Generator_UserColumnName="formatType" type="xs:int" minOccurs="0" />
+              <xs:element name="title" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_ColumnVarNameInTable="columntitle" msprop:Generator_UserColumnName="title" type="xs:string" minOccurs="0" />
+              <xs:element name="comment" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_ColumnVarNameInTable="columncomment" msprop:Generator_UserColumnName="comment" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Attribute" />
+      <xs:field xpath="mstns:segID" />
+      <xs:field xpath="mstns:sectionID" />
+      <xs:field xpath="mstns:columnID" />
+      <xs:field xpath="mstns:value" />
+    </xs:unique>
+    <xs:unique name="Title_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Title" />
+      <xs:field xpath="mstns:segID" />
+      <xs:field xpath="mstns:sectionID" />
+      <xs:field xpath="mstns:columnID" />
+    </xs:unique>
+    <xs:unique name="FormatType_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:FormatType" />
+      <xs:field xpath="mstns:value" />
+    </xs:unique>
+    <xs:unique name="TrackSpeed_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TrackSpeed" />
+      <xs:field xpath="mstns:value" />
+    </xs:unique>
+    <xs:unique name="Process_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Process" />
+      <xs:field xpath="mstns:processID" />
+    </xs:unique>
+    <xs:unique name="SegmentReport_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SegmentReport" />
+      <xs:field xpath="mstns:segID" />
+    </xs:unique>
+    <xs:unique name="LogicAction_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LogicAction" />
+      <xs:field xpath="mstns:value" />
+    </xs:unique>
+    <xs:unique name="TrackCircuitRec_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TrackCircuitRec" />
+      <xs:field xpath="mstns:value" />
+    </xs:unique>
+    <xs:unique name="TrackCircuitTran_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TrackCircuitTran" />
+      <xs:field xpath="mstns:value" />
+    </xs:unique>
+    <xs:unique name="LampFade_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LampFade" />
+      <xs:field xpath="mstns:value" />
+    </xs:unique>
+    <xs:unique name="LampPhase_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LampPhase" />
+      <xs:field xpath="mstns:value" />
+    </xs:unique>
+    <xs:unique name="LampSelection_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LampSelection" />
+      <xs:field xpath="mstns:value" />
+    </xs:unique>
+    <xs:unique name="MastAppearance_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MastAppearance" />
+      <xs:field xpath="mstns:value" />
+    </xs:unique>
+    <xs:unique name="LogicFunction_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LogicFunction" />
+      <xs:field xpath="mstns:value" />
+    </xs:unique>
+    <xs:unique name="LogicTitle_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LogicTitle" />
+      <xs:field xpath="mstns:columnID" />
+    </xs:unique>
+    <xs:unique name="LogicOperationTitle_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LogicOperationTitle" />
+      <xs:field xpath="mstns:columnID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
