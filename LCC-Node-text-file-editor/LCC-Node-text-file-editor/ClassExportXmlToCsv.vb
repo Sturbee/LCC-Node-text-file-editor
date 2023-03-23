@@ -125,7 +125,8 @@ Public Class ClassExportXmlToCsv
                     Dim reportTitle As String = String.Empty
                     Dim attributeText As String = String.Empty
 
-                    Dim rowReport As ImportCDI.TitleRow = dsReport.Title.FindBysegIDsectionIDcolumnID(rowTable.segID, rowTable.sectionID, countRow)
+                    Stop
+                    Dim rowReport As ImportCDI.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
                     If rowReport Is Nothing Then
                         formatType = 2
                         reportTitle = columnName
@@ -134,14 +135,15 @@ Public Class ClassExportXmlToCsv
                         reportTitle = rowReport.title
                     End If
 
+                    Stop
                     If IsNumeric(columnValue) Then
                         ' get the attribute values for each value in rowNode
-                        Dim rowAttribute As ImportCDI.AttributeRow = dsReport.Attribute.FindBysegIDsectionIDcolumnIDvalue(rowTable.segID, rowTable.sectionID, countRow, columnValue)
+                        Dim rowAttribute As ImportCDI.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
                         If rowAttribute Is Nothing Then
                             attributeText = "<" + columnValue.ToString + ">"
                             If countRow > 1 Then Stop
                         Else
-                            attributeText = rowAttribute.text
+                            REM attributeText = rowAttribute.text
                         End If
                     End If
 
@@ -189,7 +191,8 @@ Public Class ClassExportXmlToCsv
                     Dim reportTitle As String = String.Empty
                     Dim attributeText As String = String.Empty
 
-                    Dim rowReport As ImportCDI.TitleRow = dsReport.Title.FindBysegIDsectionIDcolumnID(rowTable.segID, rowTable.sectionID, countRow)
+                    Stop
+                    Dim rowReport As ImportCDI.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
                     If rowReport Is Nothing Then
                         formatType = 2
                         reportTitle = columnName
@@ -200,12 +203,13 @@ Public Class ClassExportXmlToCsv
 
                     If IsNumeric(columnValue) Then
                         ' get the attribute values for each value in rowNode
-                        Dim rowAttribute As ImportCDI.AttributeRow = dsReport.Attribute.FindBysegIDsectionIDcolumnIDvalue(rowTable.segID, rowTable.sectionID, countRow, columnValue)
+                        Stop
+                        Dim rowAttribute As ImportCDI.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
                         If rowAttribute Is Nothing Then
                             attributeText = "<" + columnValue.ToString + ">"
                             If countRow > 1 Then Stop
                         Else
-                            attributeText = rowAttribute.text
+                            REM attributeText = rowAttribute.text
                         End If
                     End If
 
@@ -252,7 +256,7 @@ Public Class ClassExportXmlToCsv
                     Dim reportTitle As String = String.Empty
                     Dim attributeText As String = String.Empty
 
-                    Dim rowReport As ImportCDI.TitleRow = dsReport.Title.FindBysegIDsectionIDcolumnID(rowTable.segID, rowTable.sectionID, countRow)
+                    Dim rowReport As ImportCDI.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
                     If rowReport Is Nothing Then
                         formatType = 2
                         reportTitle = columnName
@@ -263,12 +267,13 @@ Public Class ClassExportXmlToCsv
 
                     If IsNumeric(columnValue) Then
                         ' get the attribute values for each value in rowNode
-                        Dim rowAttribute As ImportCDI.AttributeRow = dsReport.Attribute.FindBysegIDsectionIDcolumnIDvalue(rowTable.segID, rowTable.sectionID, countRow, columnValue)
+                        Stop
+                        Dim rowAttribute As ImportCDI.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
                         If rowAttribute Is Nothing Then
                             attributeText = "<" + columnValue.ToString + ">"
                             If countRow > 2 Then Stop
                         Else
-                            attributeText = rowAttribute.text
+                            attributeText = rowAttribute.title
                         End If
                     End If
 
@@ -326,7 +331,7 @@ Public Class ClassExportXmlToCsv
                         Dim reportTitle As String = String.Empty
                         Dim attributeText As String = String.Empty
 
-                        Dim rowReport As ImportCDI.TitleRow = dsReport.Title.FindBysegIDsectionIDcolumnID(rowTable.segID, rowTable.sectionID, countRow)
+                        Dim rowReport As ImportCDI.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
                         If rowReport Is Nothing Then
                             formatType = 2
                             reportTitle = columnName
@@ -337,12 +342,13 @@ Public Class ClassExportXmlToCsv
 
                         If IsNumeric(columnValue) Then
                             ' get the attribute values for each value in rowNode
-                            Dim rowAttribute As ImportCDI.AttributeRow = dsReport.Attribute.FindBysegIDsectionIDcolumnIDvalue(rowTable.segID, rowTable.sectionID, countRow, columnValue)
+                            Stop
+                            Dim rowAttribute As ImportCDI.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
                             If rowAttribute Is Nothing Then
                                 attributeText = "<" + columnValue.ToString + ">"
                                 If countRow > 4 Then Stop
                             Else
-                                attributeText = rowAttribute.text
+                                attributeText = rowAttribute.title
                             End If
                         End If
 
@@ -398,7 +404,7 @@ Public Class ClassExportXmlToCsv
                         Dim reportTitle As String = String.Empty
                         Dim attributeText As String = String.Empty
 
-                        Dim rowReport As ImportCDI.TitleRow = dsReport.Title.FindBysegIDsectionIDcolumnID(rowTable.segID, rowTable.sectionID, countRow)
+                        Dim rowReport As ImportCDI.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
                         If rowReport Is Nothing Then
                             formatType = 2
                             reportTitle = columnName
@@ -409,12 +415,12 @@ Public Class ClassExportXmlToCsv
 
                         If IsNumeric(columnValue) Then
                             ' get the attribute values for each value in rowNode
-                            Dim rowAttribute As ImportCDI.AttributeRow = dsReport.Attribute.FindBysegIDsectionIDcolumnIDvalue(rowTable.segID, rowTable.sectionID, countRow, columnValue)
+                            Dim rowAttribute As ImportCDI.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
                             If rowAttribute Is Nothing Then
                                 attributeText = "<" + columnValue.ToString + ">"
                                 If countRow > 3 Then Stop
                             Else
-                                attributeText = rowAttribute.text
+                                attributeText = rowAttribute.title
                             End If
                         End If
 

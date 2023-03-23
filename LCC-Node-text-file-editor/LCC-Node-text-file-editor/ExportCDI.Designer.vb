@@ -773,9 +773,7 @@ Partial Public Class ExportCDI
     Partial Public Class NodeDataTable
         Inherits Global.System.Data.TypedTableBase(Of NodeRow)
         
-        Private columnsegID As Global.System.Data.DataColumn
-        
-        Private columnsectionID As Global.System.Data.DataColumn
+        Private columnNodeID As Global.System.Data.DataColumn
         
         Private columnName As Global.System.Data.DataColumn
         
@@ -822,17 +820,9 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property segIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property NodeIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsegID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property sectionIDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnsectionID
+                Return Me.columnNodeID
             End Get
         End Property
         
@@ -905,9 +895,9 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddNodeRow(ByVal segID As Integer, ByVal sectionID As Integer, ByVal Name As String, ByVal Description As String, ByVal NodeType As String, ByVal eventBase As String) As NodeRow
+        Public Overloads Function AddNodeRow(ByVal NodeID As Integer, ByVal Name As String, ByVal Description As String, ByVal NodeType As String, ByVal eventBase As String) As NodeRow
             Dim rowNodeRow As NodeRow = CType(Me.NewRow,NodeRow)
-            Dim columnValuesArray() As Object = New Object() {segID, sectionID, Name, Description, NodeType, eventBase}
+            Dim columnValuesArray() As Object = New Object() {NodeID, Name, Description, NodeType, eventBase}
             rowNodeRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowNodeRow)
             Return rowNodeRow
@@ -915,8 +905,8 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindBysegIDsectionID(ByVal segID As Integer, ByVal sectionID As Integer) As NodeRow
-            Return CType(Me.Rows.Find(New Object() {segID, sectionID}),NodeRow)
+        Public Function FindByNodeID(ByVal NodeID As Integer) As NodeRow
+            Return CType(Me.Rows.Find(New Object() {NodeID}),NodeRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -936,8 +926,7 @@ Partial Public Class ExportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnsegID = MyBase.Columns("segID")
-            Me.columnsectionID = MyBase.Columns("sectionID")
+            Me.columnNodeID = MyBase.Columns("NodeID")
             Me.columnName = MyBase.Columns("name")
             Me.columnDescription = MyBase.Columns("description")
             Me.columnNodeType = MyBase.Columns("nodeType")
@@ -947,10 +936,8 @@ Partial Public Class ExportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnsegID = New Global.System.Data.DataColumn("segID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsegID)
-            Me.columnsectionID = New Global.System.Data.DataColumn("sectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsectionID)
+            Me.columnNodeID = New Global.System.Data.DataColumn("NodeID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNodeID)
             Me.columnName = New Global.System.Data.DataColumn("name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             Me.columnName.ExtendedProperties.Add("Generator_ColumnPropNameInRow", "Name")
             Me.columnName.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "NameColumn")
@@ -971,9 +958,9 @@ Partial Public Class ExportCDI
             MyBase.Columns.Add(Me.columnNodeType)
             Me.columneventBase = New Global.System.Data.DataColumn("eventBase", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columneventBase)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnsegID, Me.columnsectionID}, true))
-            Me.columnsegID.AllowDBNull = false
-            Me.columnsectionID.AllowDBNull = false
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnNodeID}, true))
+            Me.columnNodeID.AllowDBNull = false
+            Me.columnNodeID.Unique = true
             Me.columnName.AllowDBNull = false
         End Sub
         
@@ -1112,15 +1099,13 @@ Partial Public Class ExportCDI
     Partial Public Class PowerMonitorDataTable
         Inherits Global.System.Data.TypedTableBase(Of PowerMonitorRow)
         
-        Private columnsegID As Global.System.Data.DataColumn
+        Private columnPowerMonitorID As Global.System.Data.DataColumn
         
-        Private columnsectionID As Global.System.Data.DataColumn
+        Private columnpowerOptionID As Global.System.Data.DataColumn
         
-        Private columnPowerOption As Global.System.Data.DataColumn
+        Private columneventPowerOK As Global.System.Data.DataColumn
         
-        Private columnPowerOK As Global.System.Data.DataColumn
-        
-        Private columnPowerNotOK As Global.System.Data.DataColumn
+        Private columneventPowerNotOK As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -1159,41 +1144,33 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property segIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property PowerMonitorIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsegID
+                Return Me.columnPowerMonitorID
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property sectionIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property powerOptionIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsectionID
+                Return Me.columnpowerOptionID
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property PowerOptionColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property eventPowerOKColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnPowerOption
+                Return Me.columneventPowerOK
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property PowerOKColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property eventPowerNotOKColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnPowerOK
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property PowerNotOKColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPowerNotOK
+                Return Me.columneventPowerNotOK
             End Get
         End Property
         
@@ -1234,9 +1211,9 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddPowerMonitorRow(ByVal segID As Integer, ByVal sectionID As Integer, ByVal PowerOption As Integer, ByVal PowerOK As String, ByVal PowerNotOK As String) As PowerMonitorRow
+        Public Overloads Function AddPowerMonitorRow(ByVal PowerMonitorID As Integer, ByVal powerOptionID As Integer, ByVal eventPowerOK As String, ByVal eventPowerNotOK As String) As PowerMonitorRow
             Dim rowPowerMonitorRow As PowerMonitorRow = CType(Me.NewRow,PowerMonitorRow)
-            Dim columnValuesArray() As Object = New Object() {segID, sectionID, PowerOption, PowerOK, PowerNotOK}
+            Dim columnValuesArray() As Object = New Object() {PowerMonitorID, powerOptionID, eventPowerOK, eventPowerNotOK}
             rowPowerMonitorRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPowerMonitorRow)
             Return rowPowerMonitorRow
@@ -1244,8 +1221,8 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindBysegIDsectionID(ByVal segID As Integer, ByVal sectionID As Integer) As PowerMonitorRow
-            Return CType(Me.Rows.Find(New Object() {segID, sectionID}),PowerMonitorRow)
+        Public Function FindByPowerMonitorID(ByVal PowerMonitorID As Integer) As PowerMonitorRow
+            Return CType(Me.Rows.Find(New Object() {PowerMonitorID}),PowerMonitorRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1265,41 +1242,26 @@ Partial Public Class ExportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnsegID = MyBase.Columns("segID")
-            Me.columnsectionID = MyBase.Columns("sectionID")
-            Me.columnPowerOption = MyBase.Columns("powerOption")
-            Me.columnPowerOK = MyBase.Columns("powerOK")
-            Me.columnPowerNotOK = MyBase.Columns("powerNotOK")
+            Me.columnPowerMonitorID = MyBase.Columns("PowerMonitorID")
+            Me.columnpowerOptionID = MyBase.Columns("powerOptionID")
+            Me.columneventPowerOK = MyBase.Columns("eventPowerOK")
+            Me.columneventPowerNotOK = MyBase.Columns("eventPowerNotOK")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnsegID = New Global.System.Data.DataColumn("segID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsegID)
-            Me.columnsectionID = New Global.System.Data.DataColumn("sectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsectionID)
-            Me.columnPowerOption = New Global.System.Data.DataColumn("powerOption", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            Me.columnPowerOption.ExtendedProperties.Add("Generator_ColumnPropNameInRow", "PowerOption")
-            Me.columnPowerOption.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "PowerOptionColumn")
-            Me.columnPowerOption.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnPowerOption")
-            Me.columnPowerOption.ExtendedProperties.Add("Generator_UserColumnName", "powerOption")
-            MyBase.Columns.Add(Me.columnPowerOption)
-            Me.columnPowerOK = New Global.System.Data.DataColumn("powerOK", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            Me.columnPowerOK.ExtendedProperties.Add("Generator_ColumnPropNameInRow", "PowerOK")
-            Me.columnPowerOK.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "PowerOKColumn")
-            Me.columnPowerOK.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnPowerOK")
-            Me.columnPowerOK.ExtendedProperties.Add("Generator_UserColumnName", "powerOK")
-            MyBase.Columns.Add(Me.columnPowerOK)
-            Me.columnPowerNotOK = New Global.System.Data.DataColumn("powerNotOK", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            Me.columnPowerNotOK.ExtendedProperties.Add("Generator_ColumnPropNameInRow", "PowerNotOK")
-            Me.columnPowerNotOK.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "PowerNotOKColumn")
-            Me.columnPowerNotOK.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnPowerNotOK")
-            Me.columnPowerNotOK.ExtendedProperties.Add("Generator_UserColumnName", "powerNotOK")
-            MyBase.Columns.Add(Me.columnPowerNotOK)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnsegID, Me.columnsectionID}, true))
-            Me.columnsegID.AllowDBNull = false
-            Me.columnsectionID.AllowDBNull = false
+            Me.columnPowerMonitorID = New Global.System.Data.DataColumn("PowerMonitorID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPowerMonitorID)
+            Me.columnpowerOptionID = New Global.System.Data.DataColumn("powerOptionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpowerOptionID)
+            Me.columneventPowerOK = New Global.System.Data.DataColumn("eventPowerOK", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columneventPowerOK)
+            Me.columneventPowerNotOK = New Global.System.Data.DataColumn("eventPowerNotOK", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columneventPowerNotOK)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnPowerMonitorID}, true))
+            Me.columnPowerMonitorID.AllowDBNull = false
+            Me.columnPowerMonitorID.Unique = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1437,19 +1399,15 @@ Partial Public Class ExportCDI
     Partial Public Class PortDataTable
         Inherits Global.System.Data.TypedTableBase(Of PortRow)
         
-        Private columnsegID As Global.System.Data.DataColumn
-        
-        Private columnsectionID As Global.System.Data.DataColumn
-        
-        Private columnlineID As Global.System.Data.DataColumn
+        Private columnLineID As Global.System.Data.DataColumn
         
         Private columnDescription As Global.System.Data.DataColumn
         
-        Private columnOutputFunction As Global.System.Data.DataColumn
+        Private columnoutputFunctionID As Global.System.Data.DataColumn
         
         Private columnOutPutCommand As Global.System.Data.DataColumn
         
-        Private columnInputFunction As Global.System.Data.DataColumn
+        Private columninputFunctionID As Global.System.Data.DataColumn
         
         Private columnInputCommand As Global.System.Data.DataColumn
         
@@ -1490,25 +1448,9 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property segIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property LineIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsegID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property sectionIDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnsectionID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property lineIDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnlineID
+                Return Me.columnLineID
             End Get
         End Property
         
@@ -1522,9 +1464,9 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property OutputFunctionColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property outputFunctionIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnOutputFunction
+                Return Me.columnoutputFunctionID
             End Get
         End Property
         
@@ -1538,9 +1480,9 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property InputFunctionColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property inputFunctionIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnInputFunction
+                Return Me.columninputFunctionID
             End Get
         End Property
         
@@ -1589,9 +1531,9 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddPortRow(ByVal segID As Integer, ByVal sectionID As Integer, ByVal lineID As Integer, ByVal Description As String, ByVal OutputFunction As Integer, ByVal OutPutCommand As Integer, ByVal InputFunction As Integer, ByVal InputCommand As Integer) As PortRow
+        Public Overloads Function AddPortRow(ByVal LineID As Integer, ByVal Description As String, ByVal outputFunctionID As Integer, ByVal OutPutCommand As Integer, ByVal inputFunctionID As Integer, ByVal InputCommand As Integer) As PortRow
             Dim rowPortRow As PortRow = CType(Me.NewRow,PortRow)
-            Dim columnValuesArray() As Object = New Object() {segID, sectionID, lineID, Description, OutputFunction, OutPutCommand, InputFunction, InputCommand}
+            Dim columnValuesArray() As Object = New Object() {LineID, Description, outputFunctionID, OutPutCommand, inputFunctionID, InputCommand}
             rowPortRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPortRow)
             Return rowPortRow
@@ -1599,8 +1541,8 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindBysegIDsectionIDlineID(ByVal segID As Integer, ByVal sectionID As Integer, ByVal lineID As Integer) As PortRow
-            Return CType(Me.Rows.Find(New Object() {segID, sectionID, lineID}),PortRow)
+        Public Function FindByLineID(ByVal LineID As Integer) As PortRow
+            Return CType(Me.Rows.Find(New Object() {LineID}),PortRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1620,59 +1562,44 @@ Partial Public Class ExportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnsegID = MyBase.Columns("segID")
-            Me.columnsectionID = MyBase.Columns("sectionID")
-            Me.columnlineID = MyBase.Columns("lineID")
+            Me.columnLineID = MyBase.Columns("LineID")
             Me.columnDescription = MyBase.Columns("description")
-            Me.columnOutputFunction = MyBase.Columns("outputFunction")
-            Me.columnOutPutCommand = MyBase.Columns("outPutCommand")
-            Me.columnInputFunction = MyBase.Columns("inputFunction")
+            Me.columnoutputFunctionID = MyBase.Columns("outputFunctionID")
+            Me.columnOutPutCommand = MyBase.Columns("outputCommand")
+            Me.columninputFunctionID = MyBase.Columns("inputFunctionID")
             Me.columnInputCommand = MyBase.Columns("inputCommand")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnsegID = New Global.System.Data.DataColumn("segID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsegID)
-            Me.columnsectionID = New Global.System.Data.DataColumn("sectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsectionID)
-            Me.columnlineID = New Global.System.Data.DataColumn("lineID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnlineID)
+            Me.columnLineID = New Global.System.Data.DataColumn("LineID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLineID)
             Me.columnDescription = New Global.System.Data.DataColumn("description", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             Me.columnDescription.ExtendedProperties.Add("Generator_ColumnPropNameInRow", "Description")
             Me.columnDescription.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "DescriptionColumn")
             Me.columnDescription.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnDescription")
             Me.columnDescription.ExtendedProperties.Add("Generator_UserColumnName", "description")
             MyBase.Columns.Add(Me.columnDescription)
-            Me.columnOutputFunction = New Global.System.Data.DataColumn("outputFunction", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            Me.columnOutputFunction.ExtendedProperties.Add("Generator_ColumnPropNameInRow", "OutputFunction")
-            Me.columnOutputFunction.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "OutputFunctionColumn")
-            Me.columnOutputFunction.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnOutputFunction")
-            Me.columnOutputFunction.ExtendedProperties.Add("Generator_UserColumnName", "outputFunction")
-            MyBase.Columns.Add(Me.columnOutputFunction)
-            Me.columnOutPutCommand = New Global.System.Data.DataColumn("outPutCommand", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnoutputFunctionID = New Global.System.Data.DataColumn("outputFunctionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnoutputFunctionID)
+            Me.columnOutPutCommand = New Global.System.Data.DataColumn("outputCommand", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             Me.columnOutPutCommand.ExtendedProperties.Add("Generator_ColumnPropNameInRow", "OutPutCommand")
             Me.columnOutPutCommand.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "OutPutCommandColumn")
             Me.columnOutPutCommand.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnOutPutCommand")
-            Me.columnOutPutCommand.ExtendedProperties.Add("Generator_UserColumnName", "outPutCommand")
+            Me.columnOutPutCommand.ExtendedProperties.Add("Generator_UserColumnName", "outputCommand")
             MyBase.Columns.Add(Me.columnOutPutCommand)
-            Me.columnInputFunction = New Global.System.Data.DataColumn("inputFunction", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            Me.columnInputFunction.ExtendedProperties.Add("Generator_ColumnPropNameInRow", "InputFunction")
-            Me.columnInputFunction.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "InputFunctionColumn")
-            Me.columnInputFunction.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnInputFunction")
-            Me.columnInputFunction.ExtendedProperties.Add("Generator_UserColumnName", "inputFunction")
-            MyBase.Columns.Add(Me.columnInputFunction)
+            Me.columninputFunctionID = New Global.System.Data.DataColumn("inputFunctionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columninputFunctionID)
             Me.columnInputCommand = New Global.System.Data.DataColumn("inputCommand", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             Me.columnInputCommand.ExtendedProperties.Add("Generator_ColumnPropNameInRow", "InputCommand")
             Me.columnInputCommand.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "InputCommandColumn")
             Me.columnInputCommand.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnInputCommand")
             Me.columnInputCommand.ExtendedProperties.Add("Generator_UserColumnName", "inputCommand")
             MyBase.Columns.Add(Me.columnInputCommand)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnsegID, Me.columnsectionID, Me.columnlineID}, true))
-            Me.columnsegID.AllowDBNull = false
-            Me.columnsectionID.AllowDBNull = false
-            Me.columnlineID.AllowDBNull = false
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnLineID}, true))
+            Me.columnLineID.AllowDBNull = false
+            Me.columnLineID.Unique = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1810,19 +1737,15 @@ Partial Public Class ExportCDI
     Partial Public Class PortDelayDataTable
         Inherits Global.System.Data.TypedTableBase(Of PortDelayRow)
         
-        Private columnsegID As Global.System.Data.DataColumn
+        Private columnLineID As Global.System.Data.DataColumn
         
-        Private columnsectionID As Global.System.Data.DataColumn
-        
-        Private columnlineID As Global.System.Data.DataColumn
-        
-        Private columnitemID As Global.System.Data.DataColumn
+        Private columnDelayID As Global.System.Data.DataColumn
         
         Private columntime As Global.System.Data.DataColumn
         
-        Private columntimeUnit As Global.System.Data.DataColumn
+        Private columntimeUnitID As Global.System.Data.DataColumn
         
-        Private columnretrigger As Global.System.Data.DataColumn
+        Private columnretriggerID As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -1861,33 +1784,17 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property segIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property LineIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsegID
+                Return Me.columnLineID
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property sectionIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property DelayIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsectionID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property lineIDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnlineID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property itemIDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnitemID
+                Return Me.columnDelayID
             End Get
         End Property
         
@@ -1901,17 +1808,17 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property timeUnitColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property timeUnitIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columntimeUnit
+                Return Me.columntimeUnitID
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property retriggerColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property retriggerIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnretrigger
+                Return Me.columnretriggerID
             End Get
         End Property
         
@@ -1952,9 +1859,9 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddPortDelayRow(ByVal segID As Integer, ByVal sectionID As Integer, ByVal lineID As Integer, ByVal itemID As Integer, ByVal time As Integer, ByVal timeUnit As Integer, ByVal retrigger As Integer) As PortDelayRow
+        Public Overloads Function AddPortDelayRow(ByVal LineID As Integer, ByVal DelayID As Integer, ByVal time As Integer, ByVal timeUnitID As Integer, ByVal retriggerID As Integer) As PortDelayRow
             Dim rowPortDelayRow As PortDelayRow = CType(Me.NewRow,PortDelayRow)
-            Dim columnValuesArray() As Object = New Object() {segID, sectionID, lineID, itemID, time, timeUnit, retrigger}
+            Dim columnValuesArray() As Object = New Object() {LineID, DelayID, time, timeUnitID, retriggerID}
             rowPortDelayRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPortDelayRow)
             Return rowPortDelayRow
@@ -1962,8 +1869,8 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindBysegIDsectionIDlineIDitemID(ByVal segID As Integer, ByVal sectionID As Integer, ByVal lineID As Integer, ByVal itemID As Integer) As PortDelayRow
-            Return CType(Me.Rows.Find(New Object() {segID, sectionID, lineID, itemID}),PortDelayRow)
+        Public Function FindByLineIDDelayID(ByVal LineID As Integer, ByVal DelayID As Integer) As PortDelayRow
+            Return CType(Me.Rows.Find(New Object() {LineID, DelayID}),PortDelayRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1983,37 +1890,29 @@ Partial Public Class ExportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnsegID = MyBase.Columns("segID")
-            Me.columnsectionID = MyBase.Columns("sectionID")
-            Me.columnlineID = MyBase.Columns("lineID")
-            Me.columnitemID = MyBase.Columns("itemID")
+            Me.columnLineID = MyBase.Columns("LineID")
+            Me.columnDelayID = MyBase.Columns("DelayID")
             Me.columntime = MyBase.Columns("time")
-            Me.columntimeUnit = MyBase.Columns("timeUnit")
-            Me.columnretrigger = MyBase.Columns("retrigger")
+            Me.columntimeUnitID = MyBase.Columns("timeUnitID")
+            Me.columnretriggerID = MyBase.Columns("retriggerID")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnsegID = New Global.System.Data.DataColumn("segID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsegID)
-            Me.columnsectionID = New Global.System.Data.DataColumn("sectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsectionID)
-            Me.columnlineID = New Global.System.Data.DataColumn("lineID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnlineID)
-            Me.columnitemID = New Global.System.Data.DataColumn("itemID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnitemID)
+            Me.columnLineID = New Global.System.Data.DataColumn("LineID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLineID)
+            Me.columnDelayID = New Global.System.Data.DataColumn("DelayID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDelayID)
             Me.columntime = New Global.System.Data.DataColumn("time", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntime)
-            Me.columntimeUnit = New Global.System.Data.DataColumn("timeUnit", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntimeUnit)
-            Me.columnretrigger = New Global.System.Data.DataColumn("retrigger", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnretrigger)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnsegID, Me.columnsectionID, Me.columnlineID, Me.columnitemID}, true))
-            Me.columnsegID.AllowDBNull = false
-            Me.columnsectionID.AllowDBNull = false
-            Me.columnlineID.AllowDBNull = false
-            Me.columnitemID.AllowDBNull = false
+            Me.columntimeUnitID = New Global.System.Data.DataColumn("timeUnitID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntimeUnitID)
+            Me.columnretriggerID = New Global.System.Data.DataColumn("retriggerID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnretriggerID)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnLineID, Me.columnDelayID}, true))
+            Me.columnLineID.AllowDBNull = false
+            Me.columnDelayID.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2151,21 +2050,17 @@ Partial Public Class ExportCDI
     Partial Public Class PortEventDataTable
         Inherits Global.System.Data.TypedTableBase(Of PortEventRow)
         
-        Private columnsegID As Global.System.Data.DataColumn
+        Private columnLineID As Global.System.Data.DataColumn
         
-        Private columnsectionID As Global.System.Data.DataColumn
+        Private columnEventID As Global.System.Data.DataColumn
         
-        Private columnlineID As Global.System.Data.DataColumn
+        Private columneventConsumer As Global.System.Data.DataColumn
         
-        Private columnitemID As Global.System.Data.DataColumn
+        Private columnconsumerActionID As Global.System.Data.DataColumn
         
-        Private columnconsumer As Global.System.Data.DataColumn
+        Private columnproducerActionID As Global.System.Data.DataColumn
         
-        Private columnconsumerAction As Global.System.Data.DataColumn
-        
-        Private columnproducerAction As Global.System.Data.DataColumn
-        
-        Private columnproducer As Global.System.Data.DataColumn
+        Private columneventProducer As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -2204,65 +2099,49 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property segIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property LineIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsegID
+                Return Me.columnLineID
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property sectionIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property EventIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsectionID
+                Return Me.columnEventID
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property lineIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property eventConsumerColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnlineID
+                Return Me.columneventConsumer
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property itemIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property consumerActionIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnitemID
+                Return Me.columnconsumerActionID
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property consumerColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property producerActionIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnconsumer
+                Return Me.columnproducerActionID
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property consumerActionColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property eventProducerColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnconsumerAction
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property producerActionColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnproducerAction
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property producerColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnproducer
+                Return Me.columneventProducer
             End Get
         End Property
         
@@ -2303,9 +2182,9 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddPortEventRow(ByVal segID As Integer, ByVal sectionID As Integer, ByVal lineID As Integer, ByVal itemID As Integer, ByVal consumer As String, ByVal consumerAction As Integer, ByVal producerAction As Integer, ByVal producer As String) As PortEventRow
+        Public Overloads Function AddPortEventRow(ByVal LineID As Integer, ByVal EventID As Integer, ByVal eventConsumer As String, ByVal consumerActionID As Integer, ByVal producerActionID As Integer, ByVal eventProducer As String) As PortEventRow
             Dim rowPortEventRow As PortEventRow = CType(Me.NewRow,PortEventRow)
-            Dim columnValuesArray() As Object = New Object() {segID, sectionID, lineID, itemID, consumer, consumerAction, producerAction, producer}
+            Dim columnValuesArray() As Object = New Object() {LineID, EventID, eventConsumer, consumerActionID, producerActionID, eventProducer}
             rowPortEventRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPortEventRow)
             Return rowPortEventRow
@@ -2313,8 +2192,8 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindBysegIDsectionIDlineIDitemID(ByVal segID As Integer, ByVal sectionID As Integer, ByVal lineID As Integer, ByVal itemID As Integer) As PortEventRow
-            Return CType(Me.Rows.Find(New Object() {segID, sectionID, lineID, itemID}),PortEventRow)
+        Public Function FindByLineIDEventID(ByVal LineID As Integer, ByVal EventID As Integer) As PortEventRow
+            Return CType(Me.Rows.Find(New Object() {LineID, EventID}),PortEventRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2334,40 +2213,32 @@ Partial Public Class ExportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnsegID = MyBase.Columns("segID")
-            Me.columnsectionID = MyBase.Columns("sectionID")
-            Me.columnlineID = MyBase.Columns("lineID")
-            Me.columnitemID = MyBase.Columns("itemID")
-            Me.columnconsumer = MyBase.Columns("consumer")
-            Me.columnconsumerAction = MyBase.Columns("consumerAction")
-            Me.columnproducerAction = MyBase.Columns("producerAction")
-            Me.columnproducer = MyBase.Columns("producer")
+            Me.columnLineID = MyBase.Columns("LineID")
+            Me.columnEventID = MyBase.Columns("EventID")
+            Me.columneventConsumer = MyBase.Columns("eventConsumer")
+            Me.columnconsumerActionID = MyBase.Columns("consumerActionID")
+            Me.columnproducerActionID = MyBase.Columns("producerActionID")
+            Me.columneventProducer = MyBase.Columns("eventProducer")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnsegID = New Global.System.Data.DataColumn("segID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsegID)
-            Me.columnsectionID = New Global.System.Data.DataColumn("sectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsectionID)
-            Me.columnlineID = New Global.System.Data.DataColumn("lineID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnlineID)
-            Me.columnitemID = New Global.System.Data.DataColumn("itemID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnitemID)
-            Me.columnconsumer = New Global.System.Data.DataColumn("consumer", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnconsumer)
-            Me.columnconsumerAction = New Global.System.Data.DataColumn("consumerAction", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnconsumerAction)
-            Me.columnproducerAction = New Global.System.Data.DataColumn("producerAction", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnproducerAction)
-            Me.columnproducer = New Global.System.Data.DataColumn("producer", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnproducer)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnsegID, Me.columnsectionID, Me.columnlineID, Me.columnitemID}, true))
-            Me.columnsegID.AllowDBNull = false
-            Me.columnsectionID.AllowDBNull = false
-            Me.columnlineID.AllowDBNull = false
-            Me.columnitemID.AllowDBNull = false
+            Me.columnLineID = New Global.System.Data.DataColumn("LineID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLineID)
+            Me.columnEventID = New Global.System.Data.DataColumn("EventID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEventID)
+            Me.columneventConsumer = New Global.System.Data.DataColumn("eventConsumer", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columneventConsumer)
+            Me.columnconsumerActionID = New Global.System.Data.DataColumn("consumerActionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnconsumerActionID)
+            Me.columnproducerActionID = New Global.System.Data.DataColumn("producerActionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnproducerActionID)
+            Me.columneventProducer = New Global.System.Data.DataColumn("eventProducer", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columneventProducer)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnLineID, Me.columnEventID}, true))
+            Me.columnLineID.AllowDBNull = false
+            Me.columnEventID.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5791,23 +5662,12 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property segID() As Integer
+        Public Property NodeID() As Integer
             Get
-                Return CType(Me(Me.tableNode.segIDColumn),Integer)
+                Return CType(Me(Me.tableNode.NodeIDColumn),Integer)
             End Get
             Set
-                Me(Me.tableNode.segIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property sectionID() As Integer
-            Get
-                Return CType(Me(Me.tableNode.sectionIDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableNode.sectionIDColumn) = value
+                Me(Me.tableNode.NodeIDColumn) = value
             End Set
         End Property
         
@@ -5921,105 +5781,94 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property segID() As Integer
+        Public Property PowerMonitorID() As Integer
             Get
-                Return CType(Me(Me.tablePowerMonitor.segIDColumn),Integer)
+                Return CType(Me(Me.tablePowerMonitor.PowerMonitorIDColumn),Integer)
             End Get
             Set
-                Me(Me.tablePowerMonitor.segIDColumn) = value
+                Me(Me.tablePowerMonitor.PowerMonitorIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property sectionID() As Integer
-            Get
-                Return CType(Me(Me.tablePowerMonitor.sectionIDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tablePowerMonitor.sectionIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property PowerOption() As Integer
+        Public Property powerOptionID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablePowerMonitor.PowerOptionColumn),Integer)
+                    Return CType(Me(Me.tablePowerMonitor.powerOptionIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'powerOption' in table 'PowerMonitor' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'powerOptionID' in table 'PowerMonitor' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePowerMonitor.PowerOptionColumn) = value
+                Me(Me.tablePowerMonitor.powerOptionIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property PowerOK() As String
+        Public Property eventPowerOK() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablePowerMonitor.PowerOKColumn),String)
+                    Return CType(Me(Me.tablePowerMonitor.eventPowerOKColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'powerOK' in table 'PowerMonitor' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'eventPowerOK' in table 'PowerMonitor' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePowerMonitor.PowerOKColumn) = value
+                Me(Me.tablePowerMonitor.eventPowerOKColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property PowerNotOK() As String
+        Public Property eventPowerNotOK() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablePowerMonitor.PowerNotOKColumn),String)
+                    Return CType(Me(Me.tablePowerMonitor.eventPowerNotOKColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'powerNotOK' in table 'PowerMonitor' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'eventPowerNotOK' in table 'PowerMonitor' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePowerMonitor.PowerNotOKColumn) = value
+                Me(Me.tablePowerMonitor.eventPowerNotOKColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsPowerOptionNull() As Boolean
-            Return Me.IsNull(Me.tablePowerMonitor.PowerOptionColumn)
+        Public Function IspowerOptionIDNull() As Boolean
+            Return Me.IsNull(Me.tablePowerMonitor.powerOptionIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetPowerOptionNull()
-            Me(Me.tablePowerMonitor.PowerOptionColumn) = Global.System.Convert.DBNull
+        Public Sub SetpowerOptionIDNull()
+            Me(Me.tablePowerMonitor.powerOptionIDColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsPowerOKNull() As Boolean
-            Return Me.IsNull(Me.tablePowerMonitor.PowerOKColumn)
+        Public Function IseventPowerOKNull() As Boolean
+            Return Me.IsNull(Me.tablePowerMonitor.eventPowerOKColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetPowerOKNull()
-            Me(Me.tablePowerMonitor.PowerOKColumn) = Global.System.Convert.DBNull
+        Public Sub SeteventPowerOKNull()
+            Me(Me.tablePowerMonitor.eventPowerOKColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsPowerNotOKNull() As Boolean
-            Return Me.IsNull(Me.tablePowerMonitor.PowerNotOKColumn)
+        Public Function IseventPowerNotOKNull() As Boolean
+            Return Me.IsNull(Me.tablePowerMonitor.eventPowerNotOKColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetPowerNotOKNull()
-            Me(Me.tablePowerMonitor.PowerNotOKColumn) = Global.System.Convert.DBNull
+        Public Sub SeteventPowerNotOKNull()
+            Me(Me.tablePowerMonitor.eventPowerNotOKColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -6040,34 +5889,12 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property segID() As Integer
+        Public Property LineID() As Integer
             Get
-                Return CType(Me(Me.tablePort.segIDColumn),Integer)
+                Return CType(Me(Me.tablePort.LineIDColumn),Integer)
             End Get
             Set
-                Me(Me.tablePort.segIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property sectionID() As Integer
-            Get
-                Return CType(Me(Me.tablePort.sectionIDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tablePort.sectionIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property lineID() As Integer
-            Get
-                Return CType(Me(Me.tablePort.lineIDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tablePort.lineIDColumn) = value
+                Me(Me.tablePort.LineIDColumn) = value
             End Set
         End Property
         
@@ -6088,16 +5915,16 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property OutputFunction() As Integer
+        Public Property outputFunctionID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablePort.OutputFunctionColumn),Integer)
+                    Return CType(Me(Me.tablePort.outputFunctionIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'outputFunction' in table 'Port' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'outputFunctionID' in table 'Port' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePort.OutputFunctionColumn) = value
+                Me(Me.tablePort.outputFunctionIDColumn) = value
             End Set
         End Property
         
@@ -6108,7 +5935,7 @@ Partial Public Class ExportCDI
                 Try 
                     Return CType(Me(Me.tablePort.OutPutCommandColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'outPutCommand' in table 'Port' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'outputCommand' in table 'Port' is DBNull.", e)
                 End Try
             End Get
             Set
@@ -6118,16 +5945,16 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property InputFunction() As Integer
+        Public Property inputFunctionID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablePort.InputFunctionColumn),Integer)
+                    Return CType(Me(Me.tablePort.inputFunctionIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'inputFunction' in table 'Port' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'inputFunctionID' in table 'Port' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePort.InputFunctionColumn) = value
+                Me(Me.tablePort.inputFunctionIDColumn) = value
             End Set
         End Property
         
@@ -6160,14 +5987,14 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsOutputFunctionNull() As Boolean
-            Return Me.IsNull(Me.tablePort.OutputFunctionColumn)
+        Public Function IsoutputFunctionIDNull() As Boolean
+            Return Me.IsNull(Me.tablePort.outputFunctionIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetOutputFunctionNull()
-            Me(Me.tablePort.OutputFunctionColumn) = Global.System.Convert.DBNull
+        Public Sub SetoutputFunctionIDNull()
+            Me(Me.tablePort.outputFunctionIDColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6184,14 +6011,14 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsInputFunctionNull() As Boolean
-            Return Me.IsNull(Me.tablePort.InputFunctionColumn)
+        Public Function IsinputFunctionIDNull() As Boolean
+            Return Me.IsNull(Me.tablePort.inputFunctionIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetInputFunctionNull()
-            Me(Me.tablePort.InputFunctionColumn) = Global.System.Convert.DBNull
+        Public Sub SetinputFunctionIDNull()
+            Me(Me.tablePort.inputFunctionIDColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6224,45 +6051,23 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property segID() As Integer
+        Public Property LineID() As Integer
             Get
-                Return CType(Me(Me.tablePortDelay.segIDColumn),Integer)
+                Return CType(Me(Me.tablePortDelay.LineIDColumn),Integer)
             End Get
             Set
-                Me(Me.tablePortDelay.segIDColumn) = value
+                Me(Me.tablePortDelay.LineIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property sectionID() As Integer
+        Public Property DelayID() As Integer
             Get
-                Return CType(Me(Me.tablePortDelay.sectionIDColumn),Integer)
+                Return CType(Me(Me.tablePortDelay.DelayIDColumn),Integer)
             End Get
             Set
-                Me(Me.tablePortDelay.sectionIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property lineID() As Integer
-            Get
-                Return CType(Me(Me.tablePortDelay.lineIDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tablePortDelay.lineIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property itemID() As Integer
-            Get
-                Return CType(Me(Me.tablePortDelay.itemIDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tablePortDelay.itemIDColumn) = value
+                Me(Me.tablePortDelay.DelayIDColumn) = value
             End Set
         End Property
         
@@ -6283,31 +6088,31 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property timeUnit() As Integer
+        Public Property timeUnitID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablePortDelay.timeUnitColumn),Integer)
+                    Return CType(Me(Me.tablePortDelay.timeUnitIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'timeUnit' in table 'PortDelay' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'timeUnitID' in table 'PortDelay' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePortDelay.timeUnitColumn) = value
+                Me(Me.tablePortDelay.timeUnitIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property retrigger() As Integer
+        Public Property retriggerID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablePortDelay.retriggerColumn),Integer)
+                    Return CType(Me(Me.tablePortDelay.retriggerIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'retrigger' in table 'PortDelay' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'retriggerID' in table 'PortDelay' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePortDelay.retriggerColumn) = value
+                Me(Me.tablePortDelay.retriggerIDColumn) = value
             End Set
         End Property
         
@@ -6325,26 +6130,26 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IstimeUnitNull() As Boolean
-            Return Me.IsNull(Me.tablePortDelay.timeUnitColumn)
+        Public Function IstimeUnitIDNull() As Boolean
+            Return Me.IsNull(Me.tablePortDelay.timeUnitIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SettimeUnitNull()
-            Me(Me.tablePortDelay.timeUnitColumn) = Global.System.Convert.DBNull
+        Public Sub SettimeUnitIDNull()
+            Me(Me.tablePortDelay.timeUnitIDColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsretriggerNull() As Boolean
-            Return Me.IsNull(Me.tablePortDelay.retriggerColumn)
+        Public Function IsretriggerIDNull() As Boolean
+            Return Me.IsNull(Me.tablePortDelay.retriggerIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetretriggerNull()
-            Me(Me.tablePortDelay.retriggerColumn) = Global.System.Convert.DBNull
+        Public Sub SetretriggerIDNull()
+            Me(Me.tablePortDelay.retriggerIDColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -6365,154 +6170,132 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property segID() As Integer
+        Public Property LineID() As Integer
             Get
-                Return CType(Me(Me.tablePortEvent.segIDColumn),Integer)
+                Return CType(Me(Me.tablePortEvent.LineIDColumn),Integer)
             End Get
             Set
-                Me(Me.tablePortEvent.segIDColumn) = value
+                Me(Me.tablePortEvent.LineIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property sectionID() As Integer
+        Public Property EventID() As Integer
             Get
-                Return CType(Me(Me.tablePortEvent.sectionIDColumn),Integer)
+                Return CType(Me(Me.tablePortEvent.EventIDColumn),Integer)
             End Get
             Set
-                Me(Me.tablePortEvent.sectionIDColumn) = value
+                Me(Me.tablePortEvent.EventIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property lineID() As Integer
-            Get
-                Return CType(Me(Me.tablePortEvent.lineIDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tablePortEvent.lineIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property itemID() As Integer
-            Get
-                Return CType(Me(Me.tablePortEvent.itemIDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tablePortEvent.itemIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property consumer() As String
+        Public Property eventConsumer() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablePortEvent.consumerColumn),String)
+                    Return CType(Me(Me.tablePortEvent.eventConsumerColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'consumer' in table 'PortEvent' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'eventConsumer' in table 'PortEvent' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePortEvent.consumerColumn) = value
+                Me(Me.tablePortEvent.eventConsumerColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property consumerAction() As Integer
+        Public Property consumerActionID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablePortEvent.consumerActionColumn),Integer)
+                    Return CType(Me(Me.tablePortEvent.consumerActionIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'consumerAction' in table 'PortEvent' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'consumerActionID' in table 'PortEvent' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePortEvent.consumerActionColumn) = value
+                Me(Me.tablePortEvent.consumerActionIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property producerAction() As Integer
+        Public Property producerActionID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablePortEvent.producerActionColumn),Integer)
+                    Return CType(Me(Me.tablePortEvent.producerActionIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'producerAction' in table 'PortEvent' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'producerActionID' in table 'PortEvent' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePortEvent.producerActionColumn) = value
+                Me(Me.tablePortEvent.producerActionIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property producer() As String
+        Public Property eventProducer() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablePortEvent.producerColumn),String)
+                    Return CType(Me(Me.tablePortEvent.eventProducerColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'producer' in table 'PortEvent' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'eventProducer' in table 'PortEvent' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePortEvent.producerColumn) = value
+                Me(Me.tablePortEvent.eventProducerColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsconsumerNull() As Boolean
-            Return Me.IsNull(Me.tablePortEvent.consumerColumn)
+        Public Function IseventConsumerNull() As Boolean
+            Return Me.IsNull(Me.tablePortEvent.eventConsumerColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetconsumerNull()
-            Me(Me.tablePortEvent.consumerColumn) = Global.System.Convert.DBNull
+        Public Sub SeteventConsumerNull()
+            Me(Me.tablePortEvent.eventConsumerColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsconsumerActionNull() As Boolean
-            Return Me.IsNull(Me.tablePortEvent.consumerActionColumn)
+        Public Function IsconsumerActionIDNull() As Boolean
+            Return Me.IsNull(Me.tablePortEvent.consumerActionIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetconsumerActionNull()
-            Me(Me.tablePortEvent.consumerActionColumn) = Global.System.Convert.DBNull
+        Public Sub SetconsumerActionIDNull()
+            Me(Me.tablePortEvent.consumerActionIDColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsproducerActionNull() As Boolean
-            Return Me.IsNull(Me.tablePortEvent.producerActionColumn)
+        Public Function IsproducerActionIDNull() As Boolean
+            Return Me.IsNull(Me.tablePortEvent.producerActionIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetproducerActionNull()
-            Me(Me.tablePortEvent.producerActionColumn) = Global.System.Convert.DBNull
+        Public Sub SetproducerActionIDNull()
+            Me(Me.tablePortEvent.producerActionIDColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsproducerNull() As Boolean
-            Return Me.IsNull(Me.tablePortEvent.producerColumn)
+        Public Function IseventProducerNull() As Boolean
+            Return Me.IsNull(Me.tablePortEvent.eventProducerColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetproducerNull()
-            Me(Me.tablePortEvent.producerColumn) = Global.System.Convert.DBNull
+        Public Sub SeteventProducerNull()
+            Me(Me.tablePortEvent.eventProducerColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

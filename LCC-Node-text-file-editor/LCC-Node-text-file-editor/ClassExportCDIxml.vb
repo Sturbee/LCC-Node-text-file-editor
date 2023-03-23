@@ -136,7 +136,7 @@ Public Class ClassExportCDIxml
             End While ' read the next text line
 
             ' update values after process is done
-            Dim rowNode As ExportCDI.NodeRow = Me.dsExport.Node.FindBysegIDsectionID(0, 0)
+            Dim rowNode As ExportCDI.NodeRow = Me.dsExport.Node.FindByNodeID(0)
             If rowNode Is Nothing Then
                 ' do nothing
             Else
@@ -407,28 +407,28 @@ Public Class ClassExportCDIxml
 
             If Not Me.SegmentReport(segID) Then Exit Sub
 
-            Dim lineID As Integer
+            Dim NodeID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, lineID, resultText)
+            Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, NodeID, resultText)
             If rowSection Is Nothing Then
                 Stop
             End If
 
-            Dim rowNode As ExportCDI.NodeRow = Me.dsExport.Node.FindBysegIDsectionID(segID, rowSection.sectionID)
+            Dim rowNode As ExportCDI.NodeRow = Me.dsExport.Node.FindByNodeID(NodeID)
             Try
                 If rowNode Is Nothing Then
-                    Me.dsExport.Node.AddNodeRow(segID, rowSection.sectionID, String.Empty, String.Empty, String.Empty, String.Empty)
+                    Me.dsExport.Node.AddNodeRow(NodeID, String.Empty, String.Empty, String.Empty, String.Empty)
                     Me.dsExport.AcceptChanges()
-                    rowNode = Me.dsExport.Node.FindBysegIDsectionID(segID, rowSection.sectionID)
+                    rowNode = Me.dsExport.Node.FindByNodeID(NodeID)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Node row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(Me.lineNum.ToString + Space(1) + "Node ID" + " - " + rowSection.text + Space(1) + resultText)
-            rowNode.Item(rowSection.columnID) = resultText
+            Console.WriteLine(Me.lineNum.ToString + Space(1) + "Node ID - " + rowSection.text + Space(1) + resultText)
+            rowNode.Item(rowSection.columnID - 1) = resultText
 
             Me.dsExport.AcceptChanges()
 
@@ -446,27 +446,27 @@ Public Class ClassExportCDIxml
 
             If Not Me.SegmentReport(segID) Then Exit Sub
 
-            Dim lineID As Integer
+            Dim PowerMonitorID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, lineID, resultText)
+            Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, PowerMonitorID, resultText)
             If rowSection Is Nothing Then
                 Stop
             End If
 
-            Dim rowPowerMonitor As ExportCDI.PowerMonitorRow = Me.dsExport.PowerMonitor.FindBysegIDsectionID(segID, rowSection.sectionID)
+            Dim rowPowerMonitor As ExportCDI.PowerMonitorRow = Me.dsExport.PowerMonitor.FindByPowerMonitorID(PowerMonitorID)
             Try
                 If rowPowerMonitor Is Nothing Then
-                    Me.dsExport.PowerMonitor.AddPowerMonitorRow(segID, rowSection.sectionID, 0, String.Empty, String.Empty)
+                    Me.dsExport.PowerMonitor.AddPowerMonitorRow(PowerMonitorID, 0, String.Empty, String.Empty)
                     Me.dsExport.AcceptChanges()
-                    rowPowerMonitor = Me.dsExport.PowerMonitor.FindBysegIDsectionID(segID, rowSection.sectionID)
+                    rowPowerMonitor = Me.dsExport.PowerMonitor.FindByPowerMonitorID(PowerMonitorID)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table PowerMonitor row")
             End Try
 
-            Console.WriteLine(Me.lineNum.ToString + Space(1) + "Node Power Monitor" + " - " + rowSection.text + Space(1) + resultText)
-            rowPowerMonitor.Item(rowSection.columnID) = resultText
+            Console.WriteLine(Me.lineNum.ToString + Space(1) + "Node Power Monitor - " + rowSection.text + Space(1) + resultText)
+            rowPowerMonitor.Item(rowSection.columnID - 1) = resultText
             If rowSection.columnID = 3 Then
                 Me.MyNodeEventBase = Left(resultText, 17)
             End If
@@ -486,7 +486,7 @@ Public Class ClassExportCDIxml
 
             If Not Me.SegmentReport(segID) Then Exit Sub
 
-            Dim lineID As Integer
+            Dim LineID As Integer
             Dim resultText As String = String.Empty
 
             Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, lineID, resultText)
@@ -496,7 +496,7 @@ Public Class ClassExportCDIxml
 
             Select Case rowSection.sectionID
                 Case 0
-                    Call Me.TablePort(rowSection.segID, rowSection.sectionID, lineID, rowSection.columnID, rowSection.text, resultText)
+                    Call Me.TablePort(LineID, rowSection.columnID, rowSection.text, resultText)
 
                 Case 1
                     Call Me.TablePortDelay(rowSection.segID, lineID, resultText)
@@ -520,31 +520,31 @@ Public Class ClassExportCDIxml
     End Sub
 
 
-    Private Sub TablePort(segID As Integer, sectionID As Integer, lineID As Integer, columnID As Integer, matchText As String, resultText As String)
+    Private Sub TablePort(LineID As Integer, columnID As Integer, matchText As String, resultText As String)
 
         Try
 
-            Select Case lineID
+            Select Case LineID
                 Case 8
                     Me.MyNodeType = "Signal-LCC"
                 Case 16
                     Me.MyNodeType = "Tower-LCC"
             End Select
 
-            Dim rowPort As ExportCDI.PortRow = Me.dsExport.Port.FindBysegIDsectionIDlineID(segID, sectionID, lineID)
+            Dim rowPort As ExportCDI.PortRow = Me.dsExport.Port.FindByLineID(LineID)
             Try
                 If rowPort Is Nothing Then
-                    Me.dsExport.Port.AddPortRow(segID, sectionID, lineID, String.Empty, 0, 0, 0, 0)
+                    Me.dsExport.Port.AddPortRow(LineID, String.Empty, 0, 0, 0, 0)
                     Me.dsExport.AcceptChanges()
-                    rowPort = Me.dsExport.Port.FindBysegIDsectionIDlineID(segID, sectionID, lineID)
+                    rowPort = Me.dsExport.Port.FindByLineID(LineID)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Port row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(Me.lineNum.ToString + " Port I/O - " + "Line(" + lineID.ToString + ") - " + matchText + Space(1) + resultText)
-            rowPort.Item(columnID) = resultText
+            Console.WriteLine(Me.lineNum.ToString + " Port I/O - " + "Line(" + LineID.ToString + ") - " + matchText + Space(1) + resultText)
+            rowPort.Item(columnID - 2) = resultText
 
             Me.dsExport.AcceptChanges()
 
@@ -556,32 +556,32 @@ Public Class ClassExportCDIxml
 
     End Sub
 
-    Private Sub TablePortDelay(segID As Integer, lineID As Integer, text As String)
+    Private Sub TablePortDelay(segID As Integer, LineID As Integer, text As String)
 
         Try
 
-            Dim itemID As Integer
+            Dim DelayID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowItem As ImportCDI.MatchItemRow = Me.MatchItem(segID, text, itemID, resultText)
+            Dim rowItem As ImportCDI.MatchItemRow = Me.MatchItem(segID, text, DelayID, resultText)
             If rowItem Is Nothing Then
                 Stop
             End If
 
-            Dim rowPortDelay As ExportCDI.PortDelayRow = Me.dsExport.PortDelay.FindBysegIDsectionIDlineIDitemID(segID, rowItem.sectionID, lineID, itemID)
+            Dim rowPortDelay As ExportCDI.PortDelayRow = Me.dsExport.PortDelay.FindByLineIDDelayID(LineID, DelayID)
             If rowPortDelay Is Nothing Then
                 Try
-                    Me.dsExport.PortDelay.AddPortDelayRow(rowItem.segID, rowItem.sectionID, lineID, itemID, 0, 0, 0)
+                    Me.dsExport.PortDelay.AddPortDelayRow(LineID, DelayID, 0, 0, 0)
                     Me.dsExport.AcceptChanges()
-                    rowPortDelay = Me.dsExport.PortDelay.FindBysegIDsectionIDlineIDitemID(rowItem.segID, rowItem.sectionID, lineID, itemID)
+                    rowPortDelay = Me.dsExport.PortDelay.FindByLineIDDelayID(LineID, DelayID)
                 Catch ex As Exception
                     MsgBox("Failed to create table Port Delay row")
                     Exit Sub
                 End Try
             End If
 
-            Console.WriteLine(Me.lineNum.ToString + " Port I/O - " + "Line(" + lineID.ToString + ") - " + "Delay(" + itemID.ToString + ") - " + rowItem.text + Space(1) + resultText)
-            rowPortDelay.Item(rowItem.columnID) = resultText
+            Console.WriteLine(Me.lineNum.ToString + " Port I/O - " + "Line(" + LineID.ToString + ") - Delay(" + DelayID.ToString + ") - " + rowItem.text + Space(1) + resultText)
+            rowPortDelay.Item(rowItem.columnID - 2) = resultText
 
             Me.dsExport.AcceptChanges()
 
@@ -593,32 +593,32 @@ Public Class ClassExportCDIxml
 
     End Sub
 
-    Private Sub TablePortEvent(segID As Integer, lineID As Integer, text As String)
+    Private Sub TablePortEvent(segID As Integer, LineID As Integer, text As String)
 
         Try
 
-            Dim itemID As Integer
+            Dim EventID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowItem As ImportCDI.MatchItemRow = Me.MatchItem(segID, text, itemID, resultText)
+            Dim rowItem As ImportCDI.MatchItemRow = Me.MatchItem(segID, text, EventID, resultText)
             If rowItem Is Nothing Then
                 Stop
             End If
 
-            Dim rowPortEvent As ExportCDI.PortEventRow = Me.dsExport.PortEvent.FindBysegIDsectionIDlineIDitemID(segID, rowItem.sectionID, lineID, itemID)
+            Dim rowPortEvent As ExportCDI.PortEventRow = Me.dsExport.PortEvent.FindByLineIDEventID(LineID, EventID)
             If rowPortEvent Is Nothing Then
                 Try
-                    Me.dsExport.PortEvent.AddPortEventRow(segID, rowItem.sectionID, lineID, itemID, String.Empty, 0, 0, String.Empty)
+                    Me.dsExport.PortEvent.AddPortEventRow(LineID, EventID, String.Empty, 0, 0, String.Empty)
                     Me.dsExport.AcceptChanges()
-                    rowPortEvent = Me.dsExport.PortEvent.FindBysegIDsectionIDlineIDitemID(segID, rowItem.sectionID, lineID, itemID)
+                    rowPortEvent = Me.dsExport.PortEvent.FindByLineIDEventID(LineID, EventID)
                 Catch ex As Exception
                     MsgBox("Failed to create table Port Event row")
                     Exit Sub
                 End Try
             End If
 
-            Console.WriteLine(Me.lineNum.ToString + " Port I/O - " + "Line(" + lineID.ToString + ") - " + "Event(" + itemID.ToString + ") - " + resultText)
-            rowPortEvent.Item(rowItem.columnID) = resultText
+            Console.WriteLine(Me.lineNum.ToString + " Port I/O - Line(" + LineID.ToString + ") - " + "Event(" + EventID.ToString + ") - " + resultText)
+            rowPortEvent.Item(rowItem.columnID - 2) = resultText
 
             Me.dsExport.AcceptChanges()
 

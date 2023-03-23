@@ -1226,71 +1226,60 @@
 		<comment>powerNotOK</comment>
 	</Title>
 
-<!-- Titles for Port Segment level 0 -->	
-	<Title>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+<!-- Port Titles for level 1 -->
+
+	<PortTitle>
 		<columnID>0</columnID>
 		<formatType>1</formatType>
 		<title>Port I/O:</title>
 		<comment>segID</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+	</PortTitle>
+	<PortTitle>
 		<columnID>1</columnID>
 		<formatType>1</formatType>
 		<title>Line</title>
 		<comment>sectionID</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+	</PortTitle>
+	<PortTitle>
 		<columnID>2</columnID>
 		<formatType>2</formatType>
 		<title>Line #</title>
 		<comment>portID</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+	</PortTitle>
+	<PortTitle>
 		<columnID>3</columnID>
 		<formatType>2</formatType>
 		<title>Description</title>
 		<comment>description</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+	</PortTitle>
+	<PortTitle>
 		<columnID>4</columnID>
 		<formatType>3</formatType>
 		<title>Output Function</title>
 		<comment>outputFunction</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+	</PortTitle>
+	<PortTitle>
 		<columnID>5</columnID>
 		<formatType>3</formatType>
 		<title>Output</title>
 		<comment>outputCommand</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+	</PortTitle>
+	<PortTitle>
 		<columnID>6</columnID>
 		<formatType>3</formatType>
 		<title>Input Function</title>
 		<comment>inputFunction</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+	</PortTitle>
+	<PortTitle>
 		<columnID>7</columnID>
 		<formatType>3</formatType>
 		<title>Input</title>
 		<comment>inputCommand</comment>
-	</Title>
+	</PortTitle>	
+	
+
+	
+
 
 <!-- Titles for Port Delay level 1 -->	
 	<Title>
