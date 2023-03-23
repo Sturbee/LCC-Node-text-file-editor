@@ -23,8 +23,6 @@ Partial Class MyFileExplorer
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.BrowseButton = New System.Windows.Forms.Button()
-        Me.ExamineButton = New System.Windows.Forms.Button()
-        Me.SaveCheckBox = New System.Windows.Forms.CheckBox()
         Me.FilesListBox = New System.Windows.Forms.ListBox()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.ButtonSaveSearch = New System.Windows.Forms.Button()
@@ -41,26 +39,6 @@ Partial Class MyFileExplorer
         Me.BrowseButton.TabIndex = 1
         Me.BrowseButton.Text = "Browse"
         Me.BrowseButton.UseVisualStyleBackColor = True
-        '
-        'ExamineButton
-        '
-        Me.ExamineButton.Location = New System.Drawing.Point(678, 66)
-        Me.ExamineButton.Name = "ExamineButton"
-        Me.ExamineButton.Size = New System.Drawing.Size(75, 23)
-        Me.ExamineButton.TabIndex = 2
-        Me.ExamineButton.Text = "Examine"
-        Me.ExamineButton.UseVisualStyleBackColor = True
-        '
-        'SaveCheckBox
-        '
-        Me.SaveCheckBox.AutoSize = True
-        Me.SaveCheckBox.Location = New System.Drawing.Point(678, 113)
-        Me.SaveCheckBox.Name = "SaveCheckBox"
-        Me.SaveCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.SaveCheckBox.Size = New System.Drawing.Size(109, 20)
-        Me.SaveCheckBox.TabIndex = 3
-        Me.SaveCheckBox.Text = "Save Results"
-        Me.SaveCheckBox.UseVisualStyleBackColor = True
         '
         'FilesListBox
         '
@@ -119,8 +97,6 @@ Partial Class MyFileExplorer
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBoxFileExtension)
         Me.Controls.Add(Me.ButtonSaveSearch)
-        Me.Controls.Add(Me.SaveCheckBox)
-        Me.Controls.Add(Me.ExamineButton)
         Me.Controls.Add(Me.BrowseButton)
         Me.Controls.Add(Me.FilesListBox)
         Me.Name = "MyFileExplorer"
@@ -132,8 +108,6 @@ Partial Class MyFileExplorer
 
     Friend WithEvents FilesListBox As ListBox
     Friend WithEvents BrowseButton As Button
-    Friend WithEvents ExamineButton As Button
-    Friend WithEvents SaveCheckBox As CheckBox
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
     Friend WithEvents ButtonSaveSearch As Button
     Friend WithEvents TextBoxFileExtension As TextBox

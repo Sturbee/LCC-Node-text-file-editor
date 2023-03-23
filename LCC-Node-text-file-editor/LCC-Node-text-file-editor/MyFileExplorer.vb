@@ -1,5 +1,4 @@
 ﻿
-
 Public Class MyFileExplorer
 
     Private Sub MyFileExplorer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -45,86 +44,12 @@ Public Class MyFileExplorer
 
     End Sub
 
-    Private Sub ExamineButton_Click(sender As Object, e As EventArgs) Handles ExamineButton.Click
-
-        If FilesListBox.SelectedItem Is Nothing Then
-            MessageBox.Show("Please select a file.")
-            Exit Sub
-        End If
-
-        ' Obtain the file path from the list box selection.
-        Dim filePath = FilesListBox.SelectedItem.ToString
-
-        ' Verify that the file was not removed since the
-        ' Browse button was clicked.
-        If My.Computer.FileSystem.FileExists(filePath) = False Then
-            MessageBox.Show("File Not Found: " & filePath)
-            Exit Sub
-        End If
-
-        ' Obtain file information in a string.
-        Dim fileInfoText As String = GetTextForOutput(filePath)
-
-        ' Show the file information.
-        MessageBox.Show(fileInfoText)
-
-        If SaveCheckBox.Checked = True Then
-            ' Place the log file in the same folder as the examined file.
-            Dim logFolder As String = My.Computer.FileSystem.GetFileInfo(filePath).DirectoryName
-            Dim logFilePath = My.Computer.FileSystem.CombinePath(logFolder, "log.txt")
-
-            Dim logText As String = "Logged: " & Date.Now.ToString &
-                vbCrLf & fileInfoText & vbCrLf & vbCrLf
-
-            ' Append text to the log file.
-            My.Computer.FileSystem.WriteAllText(logFilePath, logText, append:=True)
-        End If
-
-    End Sub
-
-    Private Function GetTextForOutput(ByVal filePath As String) As String
-
-        ' Verify that the file exists.
-        If My.Computer.FileSystem.FileExists(filePath) = False Then
-            Throw New Exception("File Not Found: " & filePath)
-        End If
-
-        ' Create a new StringBuilder, which is used
-        ' to efficiently build strings.
-        Dim sb As New System.Text.StringBuilder()
-
-        ' Obtain file information.
-        Dim thisFile As System.IO.FileInfo = My.Computer.FileSystem.GetFileInfo(filePath)
-
-        ' Add file attributes.
-        sb.Append("File: " & thisFile.FullName)
-        sb.Append(vbCrLf)
-        sb.Append("Modified: " & thisFile.LastWriteTime.ToString)
-        sb.Append(vbCrLf)
-        sb.Append("Size: " & thisFile.Length.ToString & " bytes")
-        sb.Append(vbCrLf)
-
-        ' Open the text file.
-        Dim sr As System.IO.StreamReader =
-            My.Computer.FileSystem.OpenTextFileReader(filePath)
-
-        ' Add the first line from the file.
-        If sr.Peek() >= 0 Then
-            sb.Append("First Line: " & sr.ReadLine())
-        End If
-        sr.Close()
-
-        Return sb.ToString
-
-    End Function
 
     Private Sub SetEnabled()
 
-        Dim anySelected As Boolean =
-            (FilesListBox.SelectedItem IsNot Nothing)
+        Dim anySelected As Boolean = (FilesListBox.SelectedItem IsNot Nothing)
 
-        ExamineButton.Enabled = anySelected
-        SaveCheckBox.Enabled = anySelected
+        Me.ButtonProcess.Enabled = anySelected
 
     End Sub
 
@@ -182,48 +107,6 @@ Public Class MyFileExplorer
         Me.ListFiles(FolderBrowserDialog1.SelectedPath)
 
         FilesListBox.SelectedItem = filePath
-
-    End Sub
-
-
-    Private Sub AppendLogFile(filePath As String)
-
-        ' Create a new StringBuilder, which is used
-        ' to efficiently build strings.
-        Dim sb As New System.Text.StringBuilder()
-
-        ' Obtain file information.
-        Dim thisFile As System.IO.FileInfo = My.Computer.FileSystem.GetFileInfo(filePath)
-
-        ' Add file attributes.
-        sb.Append("File: " & thisFile.FullName)
-        sb.Append(vbCrLf)
-        sb.Append("Modified: " & thisFile.LastWriteTime.ToString)
-        sb.Append(vbCrLf)
-        sb.Append("Size: " & thisFile.Length.ToString & " bytes")
-        sb.Append(vbCrLf)
-
-        ' Open the text file.
-        Dim sr As System.IO.StreamReader =
-            My.Computer.FileSystem.OpenTextFileReader(filePath)
-
-        ' Add the first line from the file.
-        If sr.Peek() >= 0 Then
-            sb.Append("First Line: " & sr.ReadLine())
-        End If
-        sr.Close()
-
-        ' Show the file information.
-        MessageBox.Show(sb.ToString)
-
-        ' Place the log file in the same folder as the examined file.
-        Dim processFolder As String = My.Computer.FileSystem.GetFileInfo(filePath).DirectoryName
-        Dim processFilePath = My.Computer.FileSystem.CombinePath(processFolder, thisFile.FullName + ".proc.txt")
-
-        Dim processText As String = "Process: " & Date.Now.ToString & vbCrLf & thisFile.FullName & vbCrLf & vbCrLf
-
-        ' Append text to the log file.
-        My.Computer.FileSystem.WriteAllText(processFilePath, processText, append:=True)
 
     End Sub
 

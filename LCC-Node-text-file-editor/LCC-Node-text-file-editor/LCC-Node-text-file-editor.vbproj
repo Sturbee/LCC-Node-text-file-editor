@@ -94,6 +94,11 @@
     <Compile Include="ExportCDI.vb">
       <DependentUpon>ExportCDI.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FormatReport.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormatReport.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ImportCDI.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,7 +123,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="MyFileExplorer.Designer.vb" />
+    <Compile Include="MyFileExplorer.designer.vb">
+      <DependentUpon>MyFileExplorer.vb</DependentUpon>
+    </Compile>
     <Compile Include="MyFileExplorer.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -137,7 +144,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyFileExplorer.resx" />
+    <EmbeddedResource Include="MyFileExplorer.resx">
+      <DependentUpon>MyFileExplorer.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Events.xsc">
@@ -161,6 +170,17 @@
     </None>
     <None Include="ExportCDI.xss">
       <DependentUpon>ExportCDI.xsd</DependentUpon>
+    </None>
+    <None Include="FormatReport.xsc">
+      <DependentUpon>FormatReport.xsd</DependentUpon>
+    </None>
+    <None Include="FormatReport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FormatReport.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="FormatReport.xss">
+      <DependentUpon>FormatReport.xsd</DependentUpon>
     </None>
     <None Include="ImportCDI.xsc">
       <DependentUpon>ImportCDI.xsd</DependentUpon>
@@ -197,6 +217,7 @@
     <Content Include="ImportCDI.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Report.xml" />
     <Content Include="User.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="FormatReport" targetNamespace="http://tempuri.org/FormatReport.xsd" xmlns:mstns="http://tempuri.org/FormatReport.xsd" xmlns="http://tempuri.org/FormatReport.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="FormatReport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="FormatReport" msprop:Generator_DataSetName="FormatReport">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="LogicTitle" msprop:Generator_RowEvHandlerName="LogicTitleRowChangeEventHandler" msprop:Generator_RowDeletedName="LogicTitleRowDeleted" msprop:Generator_RowDeletingName="LogicTitleRowDeleting" msprop:Generator_RowEvArgName="LogicTitleRowChangeEvent" msprop:Generator_TablePropName="LogicTitle" msprop:Generator_RowChangedName="LogicTitleRowChanged" msprop:Generator_RowChangingName="LogicTitleRowChanging" msprop:Generator_TableClassName="LogicTitleDataTable" msprop:Generator_RowClassName="LogicTitleRow" msprop:Generator_TableVarName="tableLogicTitle" msprop:Generator_UserTableName="LogicTitle">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="columnID" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnVarNameInTable="columncolumnID" msprop:Generator_UserColumnName="columnID" type="xs:int" />
+              <xs:element name="formatType" msprop:Generator_ColumnPropNameInRow="formatType" msprop:Generator_ColumnPropNameInTable="formatTypeColumn" msprop:Generator_ColumnVarNameInTable="columnformatType" msprop:Generator_UserColumnName="formatType" type="xs:int" minOccurs="0" />
+              <xs:element name="title" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_ColumnVarNameInTable="columntitle" msprop:Generator_UserColumnName="title" type="xs:string" minOccurs="0" />
+              <xs:element name="comment" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_ColumnVarNameInTable="columncomment" msprop:Generator_UserColumnName="comment" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LogicOperationTitle" msprop:Generator_RowEvHandlerName="LogicOperationTitleRowChangeEventHandler" msprop:Generator_RowDeletedName="LogicOperationTitleRowDeleted" msprop:Generator_RowDeletingName="LogicOperationTitleRowDeleting" msprop:Generator_RowEvArgName="LogicOperationTitleRowChangeEvent" msprop:Generator_TablePropName="LogicOperationTitle" msprop:Generator_RowChangedName="LogicOperationTitleRowChanged" msprop:Generator_RowChangingName="LogicOperationTitleRowChanging" msprop:Generator_TableClassName="LogicOperationTitleDataTable" msprop:Generator_RowClassName="LogicOperationTitleRow" msprop:Generator_TableVarName="tableLogicOperationTitle" msprop:Generator_UserTableName="LogicOperationTitle">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="columnID" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnVarNameInTable="columncolumnID" msprop:Generator_UserColumnName="columnID" type="xs:int" />
+              <xs:element name="formatType" msprop:Generator_ColumnPropNameInRow="formatType" msprop:Generator_ColumnPropNameInTable="formatTypeColumn" msprop:Generator_ColumnVarNameInTable="columnformatType" msprop:Generator_UserColumnName="formatType" type="xs:int" minOccurs="0" />
+              <xs:element name="title" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_ColumnVarNameInTable="columntitle" msprop:Generator_UserColumnName="title" type="xs:string" minOccurs="0" />
+              <xs:element name="comment" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_ColumnVarNameInTable="columncomment" msprop:Generator_UserColumnName="comment" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PortTitle" msprop:Generator_RowEvHandlerName="PortTitleRowChangeEventHandler" msprop:Generator_RowDeletedName="PortTitleRowDeleted" msprop:Generator_RowDeletingName="PortTitleRowDeleting" msprop:Generator_RowEvArgName="PortTitleRowChangeEvent" msprop:Generator_TablePropName="PortTitle" msprop:Generator_RowChangedName="PortTitleRowChanged" msprop:Generator_RowChangingName="PortTitleRowChanging" msprop:Generator_TableClassName="PortTitleDataTable" msprop:Generator_RowClassName="PortTitleRow" msprop:Generator_TableVarName="tablePortTitle" msprop:Generator_UserTableName="PortTitle">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="columnID" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnVarNameInTable="columncolumnID" msprop:Generator_UserColumnName="columnID" type="xs:int" />
+              <xs:element name="formatType" msprop:Generator_ColumnPropNameInRow="formatType" msprop:Generator_ColumnPropNameInTable="formatTypeColumn" msprop:Generator_ColumnVarNameInTable="columnformatType" msprop:Generator_UserColumnName="formatType" type="xs:int" minOccurs="0" />
+              <xs:element name="title" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_ColumnVarNameInTable="columntitle" msprop:Generator_UserColumnName="title" type="xs:string" minOccurs="0" />
+              <xs:element name="comment" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_ColumnVarNameInTable="columncomment" msprop:Generator_UserColumnName="comment" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LogicTitle" />
+      <xs:field xpath="mstns:columnID" />
+    </xs:unique>
+    <xs:unique name="LogicOperationTitle_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LogicOperationTitle" />
+      <xs:field xpath="mstns:columnID" />
+    </xs:unique>
+    <xs:unique name="PortTitle_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PortTitle" />
+      <xs:field xpath="mstns:columnID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
