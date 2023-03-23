@@ -81,6 +81,11 @@
     <Compile Include="ClassExportCDIxml.vb" />
     <Compile Include="ClassExportXmlToCsv.vb" />
     <Compile Include="ClassExportXsd.vb" />
+    <Compile Include="Events1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Events.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ExportCDI.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -92,6 +97,9 @@
     <Compile Include="ImportCDI.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>ImportCDI.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ImportCDI.vb">
       <DependentUpon>ImportCDI.xsd</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -179,6 +187,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Events.xml" />
     <Content Include="ImportCDI.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

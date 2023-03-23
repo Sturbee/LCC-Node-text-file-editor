@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Events xmlns="http://tempuri.org/Events.xsd">
+
+	<Node>
+		<nodeID>0</nodeID>
+		<eventBase>00:00:00:00:00:00</eventBase>
+		<name>M0AA</name>
+		<description>test</description>
+	</Node>
+
+	<Event>
+		<nodeID>0</nodeID>
+		<type>0</type>
+		<eventID>00:00:00:00:00:00:FF:FF</eventID>
+	</Event>
+
+</Events>
+

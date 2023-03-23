@@ -653,7 +653,7 @@ Public Class ClassExportCDIxml
                     Call Me.TableLogicOperation(LogicID, rowSection.columnID, rowSection.text, resultText)
 
                 Case 2 ' Logic Action
-                    Call Me.TableLogicAction(rowSection.segID, rowSection.sectionID, LogicID, rowSection.columnID, rowSection.text, resultText)
+                    Call Me.TableLogicAction(LogicID, rowSection.columnID, rowSection.text, resultText)
 
                 Case 3
                     Call Me.TableLogicProducer(rowSection.segID, LogicID, resultText)
@@ -727,23 +727,23 @@ Public Class ClassExportCDIxml
 
     End Sub
 
-    Private Sub TableLogicAction(segID As Integer, sectionID As Integer, lineID As Integer, columnID As Integer, matchText As String, resultText As String)
+    Private Sub TableLogicAction(LogicID As Integer, columnID As Integer, matchText As String, resultText As String)
 
         Try
 
-            Dim rowLogicAction As ExportCDI.LogicActionRow = Me.dsExport.LogicAction.FindBysegIDsectionIDlineID(segID, sectionID, lineID)
+            Dim rowLogicAction As ExportCDI.LogicActionRow = Me.dsExport.LogicAction.FindByLogicID(LogicID)
             Try
                 If rowLogicAction Is Nothing Then
-                    Me.dsExport.LogicAction.AddLogicActionRow(segID, sectionID, lineID, 0, 0, 0, 0, 0)
+                    Me.dsExport.LogicAction.AddLogicActionRow(LogicID, 0, 0, 0, 0, 0)
                     Me.dsExport.AcceptChanges()
-                    rowLogicAction = Me.dsExport.LogicAction.FindBysegIDsectionIDlineID(segID, sectionID, lineID)
+                    rowLogicAction = Me.dsExport.LogicAction.FindByLogicID(LogicID)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Logic Action row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(Me.lineNum.ToString + " Conditional - " + "Logic(" + lineID.ToString + ") - " + matchText + Space(1) + resultText)
+            Console.WriteLine(Me.lineNum.ToString + " Conditional - " + "Logic(" + LogicID.ToString + ") - " + matchText + Space(1) + resultText)
             rowLogicAction.Item(columnID) = resultText
 
         Catch ex As Exception
