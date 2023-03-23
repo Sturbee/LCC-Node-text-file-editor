@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E51C05E8-7654-4122-9125-0B3427D1EFF1}</ProjectGuid>
+    <ProjectGuid>{89776D8B-0E6D-4149-BE97-EC60B33A78ED}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <StartupObject>LCC_Node_text_file_editor.My.MyApplication</StartupObject>
     <RootNamespace>LCC_Node_text_file_editor</RootNamespace>
@@ -47,6 +47,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -78,11 +81,19 @@
     <Compile Include="ClassExportCDIxml.vb" />
     <Compile Include="ClassExportXmlToCsv.vb" />
     <Compile Include="ClassExportXsd.vb" />
-    <Compile Include="Events.Designer.vb" />
-    <Compile Include="ExportCDI.Designer.vb" />
-    <Compile Include="ExportCDI.vb" />
-    <Compile Include="ImportCDI.Designer.vb" />
-    <Compile Include="ImportCDI.vb" />
+    <Compile Include="ExportCDI.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExportCDI.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ExportCDI.vb">
+      <DependentUpon>ExportCDI.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ImportCDI.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImportCDI.xsd</DependentUpon>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -103,14 +114,6 @@
     <Compile Include="MyFileExplorer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MyReadTxt.Designer.vb" />
-    <Compile Include="MyReadTxt.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MyReadXML.Designer.vb" />
-    <Compile Include="MyReadXML.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="User.Designer.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -121,13 +124,42 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MyFileExplorer.resx" />
-    <EmbeddedResource Include="MyReadTxt.resx" />
-    <EmbeddedResource Include="MyReadXML.resx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Events.xsd" />
-    <None Include="ExportCDI.xsd" />
-    <None Include="ImportCDI.xsd" />
+    <None Include="Events.xsc">
+      <DependentUpon>Events.xsd</DependentUpon>
+    </None>
+    <None Include="Events.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Events1.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Events.xss">
+      <DependentUpon>Events.xsd</DependentUpon>
+    </None>
+    <None Include="ExportCDI.xsc">
+      <DependentUpon>ExportCDI.xsd</DependentUpon>
+    </None>
+    <None Include="ExportCDI.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExportCDI.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ExportCDI.xss">
+      <DependentUpon>ExportCDI.xsd</DependentUpon>
+    </None>
+    <None Include="ImportCDI.xsc">
+      <DependentUpon>ImportCDI.xsd</DependentUpon>
+    </None>
+    <None Include="ImportCDI.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ImportCDI.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ImportCDI.xss">
+      <DependentUpon>ImportCDI.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -141,18 +173,18 @@
     <None Include="User.xsc">
       <DependentUpon>User.xsd</DependentUpon>
     </None>
-    <None Include="User.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>User1.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="User.xsd" />
     <None Include="User.xss">
       <DependentUpon>User.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ImportCDI.xml" />
-    <Content Include="User.xml" />
+    <Content Include="ImportCDI.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="User.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

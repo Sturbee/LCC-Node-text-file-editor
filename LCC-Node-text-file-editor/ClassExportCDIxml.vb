@@ -10,7 +10,7 @@ Public Class ClassExportCDIxml
 
     Private dsImport As ImportCDI
     Private dsExport As ExportCDI
-    Private dsEvent As Events
+    REM Private dsEvent As Events
 
     Private Property MyNodeEventBase As String
     Private Property MyNodeType As String
@@ -20,7 +20,7 @@ Public Class ClassExportCDIxml
 
         Me.dsImport = New ImportCDI
         Me.dsExport = New ExportCDI
-        Me.dsEvent = New Events
+        REM Me.dsEvent = New Events
         Me.MyNodeEventBase = String.Empty
         Me.MyNodeType = "Unknown"
 
@@ -650,7 +650,7 @@ Public Class ClassExportCDIxml
                     Call Me.TableLogic(LogicID, rowSection.columnID, rowSection.text, resultText)
 
                 Case 1 ' Logic Operation section
-                    Call Me.TableLogicOperation(rowSection.segID, rowSection.sectionID, LogicID, rowSection.columnID, rowSection.text, resultText)
+                    Call Me.TableLogicOperation(LogicID, rowSection.columnID, rowSection.text, resultText)
 
                 Case 2 ' Logic Action
                     Call Me.TableLogicAction(rowSection.segID, rowSection.sectionID, LogicID, rowSection.columnID, rowSection.text, resultText)
@@ -700,23 +700,23 @@ Public Class ClassExportCDIxml
 
     End Sub
 
-    Private Sub TableLogicOperation(segID As Integer, sectionID As Integer, lineID As Integer, columnID As Integer, matchText As String, resultText As String)
+    Private Sub TableLogicOperation(LogicID As Integer, columnID As Integer, matchText As String, resultText As String)
 
         Try
 
-            Dim rowLogicOP As ExportCDI.LogicOperationRow = Me.dsExport.LogicOperation.FindBysegIDsectionIDlineID(segID, sectionID, lineID)
+            Dim rowLogicOP As ExportCDI.LogicOperationRow = Me.dsExport.LogicOperation.FindByLogicID(LogicID)
             Try
                 If rowLogicOP Is Nothing Then
-                    Me.dsExport.LogicOperation.AddLogicOperationRow(segID, sectionID, lineID, 0, 0, 0, String.Empty, String.Empty, 0, 0, 0, 0, String.Empty, String.Empty)
+                    Me.dsExport.LogicOperation.AddLogicOperationRow(LogicID, 0, 0, 0, String.Empty, String.Empty, 0, 0, 0, 0, String.Empty, String.Empty)
                     Me.dsExport.AcceptChanges()
-                    rowLogicOP = Me.dsExport.LogicOperation.FindBysegIDsectionIDlineID(segID, sectionID, lineID)
+                    rowLogicOP = Me.dsExport.LogicOperation.FindByLogicID(LogicID)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Logic Operation row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(Me.lineNum.ToString + " Conditional - " + "Logic(" + lineID.ToString + ") - " + matchText + Space(1) + resultText)
+            Console.WriteLine(Me.lineNum.ToString + " Conditional - " + "Logic(" + LogicID.ToString + ") - " + matchText + Space(1) + resultText)
             rowLogicOP.Item(columnID) = resultText
 
         Catch ex As Exception
