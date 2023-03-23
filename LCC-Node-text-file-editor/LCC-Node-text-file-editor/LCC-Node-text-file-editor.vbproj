@@ -94,10 +94,10 @@
     <Compile Include="ExportCDI.vb">
       <DependentUpon>ExportCDI.xsd</DependentUpon>
     </Compile>
-    <Compile Include="FormatReport.Designer.vb">
+    <Compile Include="Report.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FormatReport.xsd</DependentUpon>
+      <DependentUpon>Report.xsd</DependentUpon>
     </Compile>
     <Compile Include="ImportCDI.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -171,16 +171,16 @@
     <None Include="ExportCDI.xss">
       <DependentUpon>ExportCDI.xsd</DependentUpon>
     </None>
-    <None Include="FormatReport.xsc">
-      <DependentUpon>FormatReport.xsd</DependentUpon>
+    <None Include="Report.xsc">
+      <DependentUpon>Report.xsd</DependentUpon>
     </None>
-    <None Include="FormatReport.xsd">
+    <None Include="Report.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>FormatReport.Designer.vb</LastGenOutput>
+      <LastGenOutput>Report.Designer.vb</LastGenOutput>
     </None>
-    <None Include="FormatReport.xss">
-      <DependentUpon>FormatReport.xsd</DependentUpon>
+    <None Include="Report.xss">
+      <DependentUpon>Report.xsd</DependentUpon>
     </None>
     <None Include="ImportCDI.xsc">
       <DependentUpon>ImportCDI.xsd</DependentUpon>

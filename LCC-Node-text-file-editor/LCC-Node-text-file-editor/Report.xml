@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<FormatReport xmlns="http://tempuri.org/FormatReport.xsd">
+<Report xmlns="http://tempuri.org/Report.xsd">
 
 <!-- Port Titles for level 1 -->
 	<PortTitle>
@@ -170,4 +170,4 @@
 		<comment>false2</comment>
 	</LogicOperationTitle>
 
-</FormatReport>
+</Report>
