@@ -2796,13 +2796,9 @@ Partial Public Class ExportCDI
     Partial Public Class LogicProducerDataTable
         Inherits Global.System.Data.TypedTableBase(Of LogicProducerRow)
         
-        Private columnsegID As Global.System.Data.DataColumn
+        Private columnLogicID As Global.System.Data.DataColumn
         
-        Private columnsectionID As Global.System.Data.DataColumn
-        
-        Private columnlineID As Global.System.Data.DataColumn
-        
-        Private columnitemID As Global.System.Data.DataColumn
+        Private columnActionID As Global.System.Data.DataColumn
         
         Private columncondition As Global.System.Data.DataColumn
         
@@ -2849,33 +2845,17 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property segIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property LogicIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsegID
+                Return Me.columnLogicID
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property sectionIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property ActionIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsectionID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property lineIDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnlineID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property itemIDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnitemID
+                Return Me.columnActionID
             End Get
         End Property
         
@@ -2948,9 +2928,9 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddLogicProducerRow(ByVal segID As Integer, ByVal sectionID As Integer, ByVal lineID As Integer, ByVal itemID As Integer, ByVal condition As Integer, ByVal destination As Integer, ByVal trackSpeed As Integer, ByVal action As String) As LogicProducerRow
+        Public Overloads Function AddLogicProducerRow(ByVal LogicID As Integer, ByVal ActionID As Integer, ByVal condition As Integer, ByVal destination As Integer, ByVal trackSpeed As Integer, ByVal action As String) As LogicProducerRow
             Dim rowLogicProducerRow As LogicProducerRow = CType(Me.NewRow,LogicProducerRow)
-            Dim columnValuesArray() As Object = New Object() {segID, sectionID, lineID, itemID, condition, destination, trackSpeed, action}
+            Dim columnValuesArray() As Object = New Object() {LogicID, ActionID, condition, destination, trackSpeed, action}
             rowLogicProducerRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowLogicProducerRow)
             Return rowLogicProducerRow
@@ -2958,8 +2938,8 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindBysegIDsectionIDlineIDitemID(ByVal segID As Integer, ByVal sectionID As Integer, ByVal lineID As Integer, ByVal itemID As Integer) As LogicProducerRow
-            Return CType(Me.Rows.Find(New Object() {segID, sectionID, lineID, itemID}),LogicProducerRow)
+        Public Function FindByLogicIDActionID(ByVal LogicID As Integer, ByVal ActionID As Integer) As LogicProducerRow
+            Return CType(Me.Rows.Find(New Object() {LogicID, ActionID}),LogicProducerRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2979,10 +2959,8 @@ Partial Public Class ExportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnsegID = MyBase.Columns("segID")
-            Me.columnsectionID = MyBase.Columns("sectionID")
-            Me.columnlineID = MyBase.Columns("lineID")
-            Me.columnitemID = MyBase.Columns("itemID")
+            Me.columnLogicID = MyBase.Columns("LogicID")
+            Me.columnActionID = MyBase.Columns("ActionID")
             Me.columncondition = MyBase.Columns("condition")
             Me.columndestination = MyBase.Columns("destination")
             Me.columntrackSpeed = MyBase.Columns("trackSpeed")
@@ -2992,14 +2970,10 @@ Partial Public Class ExportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnsegID = New Global.System.Data.DataColumn("segID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsegID)
-            Me.columnsectionID = New Global.System.Data.DataColumn("sectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsectionID)
-            Me.columnlineID = New Global.System.Data.DataColumn("lineID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnlineID)
-            Me.columnitemID = New Global.System.Data.DataColumn("itemID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnitemID)
+            Me.columnLogicID = New Global.System.Data.DataColumn("LogicID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLogicID)
+            Me.columnActionID = New Global.System.Data.DataColumn("ActionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnActionID)
             Me.columncondition = New Global.System.Data.DataColumn("condition", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncondition)
             Me.columndestination = New Global.System.Data.DataColumn("destination", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
@@ -3008,11 +2982,9 @@ Partial Public Class ExportCDI
             MyBase.Columns.Add(Me.columntrackSpeed)
             Me.columnaction = New Global.System.Data.DataColumn("action", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnaction)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnsegID, Me.columnsectionID, Me.columnlineID, Me.columnitemID}, true))
-            Me.columnsegID.AllowDBNull = false
-            Me.columnsectionID.AllowDBNull = false
-            Me.columnlineID.AllowDBNull = false
-            Me.columnitemID.AllowDBNull = false
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnLogicID, Me.columnActionID}, true))
+            Me.columnLogicID.AllowDBNull = false
+            Me.columnActionID.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6642,45 +6614,23 @@ Partial Public Class ExportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property segID() As Integer
+        Public Property LogicID() As Integer
             Get
-                Return CType(Me(Me.tableLogicProducer.segIDColumn),Integer)
+                Return CType(Me(Me.tableLogicProducer.LogicIDColumn),Integer)
             End Get
             Set
-                Me(Me.tableLogicProducer.segIDColumn) = value
+                Me(Me.tableLogicProducer.LogicIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property sectionID() As Integer
+        Public Property ActionID() As Integer
             Get
-                Return CType(Me(Me.tableLogicProducer.sectionIDColumn),Integer)
+                Return CType(Me(Me.tableLogicProducer.ActionIDColumn),Integer)
             End Get
             Set
-                Me(Me.tableLogicProducer.sectionIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property lineID() As Integer
-            Get
-                Return CType(Me(Me.tableLogicProducer.lineIDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableLogicProducer.lineIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property itemID() As Integer
-            Get
-                Return CType(Me(Me.tableLogicProducer.itemIDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableLogicProducer.itemIDColumn) = value
+                Me(Me.tableLogicProducer.ActionIDColumn) = value
             End Set
         End Property
         

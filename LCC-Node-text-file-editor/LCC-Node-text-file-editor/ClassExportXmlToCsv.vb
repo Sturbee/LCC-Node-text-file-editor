@@ -745,7 +745,7 @@ Public Class ClassExportXmlToCsv
 
                 Dim destFlag As Integer = -1
 
-                If rowTable.lineID = logicID Then ' process
+                If rowTable.LogicID = logicID Then ' process
 
                     Dim lineReport As String = String.Empty
                     Dim lineRow As String = String.Empty
@@ -758,7 +758,7 @@ Public Class ClassExportXmlToCsv
                         Dim reportTitle As String = String.Empty
                         Dim attributeText As String = String.Empty
 
-                        Dim rowReport As ImportCDI.TitleRow = dsReport.Title.FindBysegIDsectionIDcolumnID(rowTable.segID, rowTable.sectionID, countRow)
+                        Dim rowReport As ImportCDI.LogicTitleRow = dsReport.LogicTitle.FindBycolumnID(countRow)
                         If rowReport Is Nothing Then
                             formatType = 2
                             reportTitle = columnName
@@ -769,7 +769,8 @@ Public Class ClassExportXmlToCsv
 
                         If IsNumeric(columnValue) Then
                             ' get the attribute values for each value in rowNode
-                            Dim rowAttribute As ImportCDI.AttributeRow = dsReport.Attribute.FindBysegIDsectionIDcolumnIDvalue(rowTable.segID, rowTable.sectionID, countRow, columnValue)
+                            Stop
+                            Dim rowAttribute As ImportCDI.TrackCircuitRecRow = dsReport.TrackCircuitRec.FindByvalue(columnValue)
                             If rowAttribute Is Nothing Then
                                 attributeText = "<" + columnValue.ToString + ">"
 

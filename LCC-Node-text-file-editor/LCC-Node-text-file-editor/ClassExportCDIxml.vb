@@ -717,7 +717,7 @@ Public Class ClassExportCDIxml
             End Try
 
             Console.WriteLine(Me.lineNum.ToString + " Conditional - " + "Logic(" + LogicID.ToString + ") - " + matchText + Space(1) + resultText)
-            rowLogicOP.Item(columnID) = resultText
+            rowLogicOP.Item(columnID - 2) = resultText
 
         Catch ex As Exception
 
@@ -744,7 +744,7 @@ Public Class ClassExportCDIxml
             End Try
 
             Console.WriteLine(Me.lineNum.ToString + " Conditional - " + "Logic(" + LogicID.ToString + ") - " + matchText + Space(1) + resultText)
-            rowLogicAction.Item(columnID) = resultText
+            rowLogicAction.Item(columnID - 2) = resultText
 
         Catch ex As Exception
 
@@ -754,32 +754,32 @@ Public Class ClassExportCDIxml
 
     End Sub
 
-    Private Sub TableLogicProducer(segID As Integer, lineID As Integer, text As String)
+    Private Sub TableLogicProducer(segID As Integer, LogicID As Integer, text As String)
 
         Try
 
-            Dim itemID As Integer
+            Dim ActionID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowItem As ImportCDI.MatchItemRow = Me.MatchItem(segID, text, itemID, resultText)
+            Dim rowItem As ImportCDI.MatchItemRow = Me.MatchItem(segID, text, ActionID, resultText)
             If rowItem Is Nothing Then
                 Stop
             End If
 
-            Dim rowLogicProducer As ExportCDI.LogicProducerRow = Me.dsExport.LogicProducer.FindBysegIDsectionIDlineIDitemID(rowItem.segID, rowItem.sectionID, lineID, itemID)
+            Dim rowLogicProducer As ExportCDI.LogicProducerRow = Me.dsExport.LogicProducer.FindByLogicIDActionID(LogicID, ActionID)
             If rowLogicProducer Is Nothing Then
                 Try
-                    Me.dsExport.LogicProducer.AddLogicProducerRow(rowItem.segID, rowItem.sectionID, lineID, itemID, 0, 0, 0, String.Empty)
+                    Me.dsExport.LogicProducer.AddLogicProducerRow(LogicID, ActionID, 0, 0, 0, String.Empty)
                     Me.dsExport.AcceptChanges()
-                    rowLogicProducer = Me.dsExport.LogicProducer.FindBysegIDsectionIDlineIDitemID(rowItem.segID, rowItem.sectionID, lineID, itemID)
+                    rowLogicProducer = Me.dsExport.LogicProducer.FindByLogicIDActionID(LogicID, ActionID)
                 Catch ex As Exception
                     MsgBox("Failed to create table Logic Producer row")
                     Exit Sub
                 End Try
             End If
 
-            Console.WriteLine(Me.lineNum.ToString + " Conditional - " + "Logic(" + lineID.ToString + ") - Event - " + "Item(" + itemID.ToString + ") - " + rowItem.text + Space(1) + resultText)
-            rowLogicProducer.Item(rowItem.columnID) = resultText
+            Console.WriteLine(Me.lineNum.ToString + " Conditional - Logic(" + LogicID.ToString + ") - Action(" + ActionID.ToString + ") - " + rowItem.text + Space(1) + resultText)
+            rowLogicProducer.Item(rowItem.columnID - 2) = resultText
 
         Catch ex As Exception
 

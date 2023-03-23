@@ -37,7 +37,7 @@
 	<SegmentReport>
 		<segID>3</segID>
 		<text>Conditional</text>
-		<action>false</action>
+		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
 		<segID>4</segID>
@@ -57,12 +57,12 @@
 	<SegmentReport>
 		<segID>7</segID>
 		<text>Direct Lamp Control</text>
-		<action>false</action>
+		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
 		<segID>8</segID>
 		<text>Brightness</text>
-		<action>false</action>
+		<action>true</action>
 	</SegmentReport>
 	
 	<!-- Track Speed data table -->	
