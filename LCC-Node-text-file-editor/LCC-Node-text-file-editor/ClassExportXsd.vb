@@ -8,10 +8,10 @@ Public Class ClassExportXsd
         Dim clsAppConfig As New ClassAppConfigValues
         clsAppConfig.AppConfigFileRead()
 
-        Dim dsReport As New ImportCDI
+        Dim dsImport As New ImportCDI
 
         Try
-            dsReport.ReadXml(clsAppConfig.SavedImportCDIfile)
+            dsImport.ReadXml(clsAppConfig.SavedImportCDIfile)
         Catch ex As Exception
             MsgBox("Failed to read import file " + clsAppConfig.SavedImportCDIfile)
             Exit Sub
@@ -26,10 +26,10 @@ Public Class ClassExportXsd
             dsUser.ReadXml(clsAppConfig.SavedUserFile)
             dsUser.AcceptChanges()
 
-            dsReport.Process.Merge(dsUser.Process)
-            dsReport.AcceptChanges()
+            dsImport.Process.Merge(dsUser.Process)
+            dsImport.AcceptChanges()
 
-            Dim rowProcess As ImportCDI.ProcessRow = dsReport.Process.FindByprocessID(2)
+            Dim rowProcess As ImportCDI.ProcessRow = dsImport.Process.FindByprocessID(2)
             If rowProcess Is Nothing Then
                 ' do nothing
             ElseIf Not rowProcess.action Then

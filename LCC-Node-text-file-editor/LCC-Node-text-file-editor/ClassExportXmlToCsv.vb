@@ -574,7 +574,7 @@ Public Class ClassExportXmlToCsv
                         If IsNumeric(columnValue) Then
                             ' get the attribute values for each value in rowNode
                             Stop
-                            Dim rowAttribute As ImportCDI.AttributeRow = Nothing
+                            Dim rowAttribute As FormatReport.LogicProducerRow = Nothing
                             If rowAttribute Is Nothing Then
                                 attributeText = "<" + columnValue.ToString + ">"
 

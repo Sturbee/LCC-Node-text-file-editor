@@ -206,6 +206,109 @@
 		<value>8</value>
 		<text>Gated OFF (Non Veto Input)</text>
 	</PortEventProd>
+
+	<!-- Logic Function -->
+	<LogicFunction>
+		<value>0</value>
+		<text>Blocked</text>
+	</LogicFunction>
+	<LogicFunction>
+		<value>1</value>
+		<text>Group</text>
+	</LogicFunction>
+	<LogicFunction>
+		<!-- Signal only -->
+		<value>2</value>
+		<text>Last (Single)</text>
+	</LogicFunction>
+	<LogicFunction>
+		<!-- Tower only-->
+		<value>3</value>
+		<text>Last (Single)</text>
+	</LogicFunction>
+
+	<!-- Logic Operation Function -->
+	<LogicOpFunc>
+		<value>0</value>
+		<text>On Variable Change</text>
+	</LogicOpFunc>
+	<LogicOpFunc>
+		<value>1</value>
+		<text>On Matching Event</text>
+	</LogicOpFunc>
+	<LogicOpFunc>
+		<value>2</value>
+		<text>None</text>
+	</LogicOpFunc>
+	
+	<!-- Logic Operation Trigger-->
+	<LogicOpTrigger>
+		<value>0</value>
+		<text>V1 AND V2</text>
+	</LogicOpTrigger>
+	<LogicOpTrigger>
+		<value>1</value>
+		<text>V1 OR V2</text>
+	</LogicOpTrigger>
+	<LogicOpTrigger>
+		<value>2</value>
+		<text>V1 XOR V2</text>
+	</LogicOpTrigger>
+	<LogicOpTrigger>
+		<value>3</value>
+		<text>V1 AND V2=></text>
+	</LogicOpTrigger>
+	<LogicOpTrigger>
+		<value>4</value>
+		<text>V1 OR V2=></text>
+	</LogicOpTrigger>
+	<LogicOpTrigger>
+		<value>5</value>
+		<text>V1 AND Then V2=></text>
+	</LogicOpTrigger>
+	<LogicOpTrigger>
+		<value>6</value>
+		<text>V1 Only</text>
+	</LogicOpTrigger>
+	<LogicOpTrigger>
+		<value>7</value>
+		<text>V2 Only</text>
+	</LogicOpTrigger>
+	<LogicOpTrigger>
+		<value>8</value>
+		<text>Null=>True</text>
+	</LogicOpTrigger>
+	
+	<!-- Logic Producer -->
+	<LogicProducer>
+		<value>0</value>
+		<text>none</text>
+	</LogicProducer>
+	<LogicProducer>
+		<value>1</value>
+		<text>Immediately</text>
+	</LogicProducer>
+	<LogicProducer>
+		<value>2</value>
+		<text>After delay</text>
+	</LogicProducer>
+	<LogicProducer>
+		<value>3</value>
+		<text>Immediate if True</text>
+	</LogicProducer>
+	<LogicProducer>
+		<value>4</value>
+		<text>Immediate if False</text>
+	</LogicProducer>
+	<LogicProducer>
+		<value>5</value>
+		<text>Delayed if True</text>
+	</LogicProducer>
+	<LogicProducer>
+		<value>6</value>
+		<text>Delayed if False</text>
+	</LogicProducer>
+
 	
 
 	<!-- Port Titles for level 1 -->
@@ -378,25 +481,6 @@
 	</LogicOperationTitle>
 
 
-	<!-- Logic Function for Logic section 0 -->
-	<LogicFunction>
-		<value>0</value>
-		<text>Blocked</text>
-	</LogicFunction>
-	<LogicFunction>
-		<value>1</value>
-		<text>Group</text>
-	</LogicFunction>
-	<LogicFunction>
-		<!-- Signal only -->
-		<value>2</value>
-		<text>Last (Single)</text>
-	</LogicFunction>
-	<LogicFunction>
-		<!-- Tower only-->
-		<value>3</value>
-		<text>Last (Single)</text>
-	</LogicFunction>
 
 	<!-- Logic Operation Action look up table -->
 	<LogicAction>

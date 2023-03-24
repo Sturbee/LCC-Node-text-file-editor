@@ -12,17 +12,6 @@
   <xs:element name="ImportCDI" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ImportCDI" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ImportCDI">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Attribute" msprop:Generator_RowEvHandlerName="AttributeRowChangeEventHandler" msprop:Generator_RowDeletedName="AttributeRowDeleted" msprop:Generator_RowDeletingName="AttributeRowDeleting" msprop:Generator_RowEvArgName="AttributeRowChangeEvent" msprop:Generator_TablePropName="Attribute" msprop:Generator_RowChangedName="AttributeRowChanged" msprop:Generator_UserTableName="Attribute" msprop:Generator_RowChangingName="AttributeRowChanging" msprop:Generator_RowClassName="AttributeRow" msprop:Generator_TableClassName="AttributeDataTable" msprop:Generator_TableVarName="tableAttribute">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="segID" msprop:Generator_ColumnPropNameInTable="segIDColumn" msprop:Generator_ColumnPropNameInRow="segID" msprop:Generator_UserColumnName="segID" msprop:Generator_ColumnVarNameInTable="columnsegID" type="xs:int" />
-              <xs:element name="sectionID" msprop:Generator_ColumnPropNameInTable="sectionIDColumn" msprop:Generator_ColumnPropNameInRow="sectionID" msprop:Generator_UserColumnName="sectionID" msprop:Generator_ColumnVarNameInTable="columnsectionID" type="xs:int" />
-              <xs:element name="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_UserColumnName="columnID" msprop:Generator_ColumnVarNameInTable="columncolumnID" type="xs:int" />
-              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
-              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="Title" msprop:Generator_RowEvHandlerName="TitleRowChangeEventHandler" msprop:Generator_RowDeletedName="TitleRowDeleted" msprop:Generator_RowDeletingName="TitleRowDeleting" msprop:Generator_RowEvArgName="TitleRowChangeEvent" msprop:Generator_TablePropName="Title" msprop:Generator_RowChangedName="TitleRowChanged" msprop:Generator_UserTableName="Title" msprop:Generator_RowChangingName="TitleRowChanging" msprop:Generator_RowClassName="TitleRow" msprop:Generator_TableClassName="TitleDataTable" msprop:Generator_TableVarName="tableTitle">
           <xs:complexType>
             <xs:sequence>
@@ -118,13 +107,6 @@
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Attribute" />
-      <xs:field xpath="mstns:segID" />
-      <xs:field xpath="mstns:sectionID" />
-      <xs:field xpath="mstns:columnID" />
-      <xs:field xpath="mstns:value" />
-    </xs:unique>
-    <xs:unique name="Title_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Title" />
       <xs:field xpath="mstns:segID" />
       <xs:field xpath="mstns:sectionID" />

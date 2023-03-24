@@ -224,7 +224,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Events.xml" />
+    <Content Include="Events.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ImportCDI.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
