@@ -52,7 +52,7 @@
 	</PortTitle>
 
 
-	<!-- Logic Titles for level 1 -->
+<!-- Logic Titles for level 1 -->
 	<LogicTitle>
 		<columnID>0</columnID>
 		<formatType>1</formatType>
@@ -169,5 +169,56 @@
 		<title>V2 Set False</title>
 		<comment>false2</comment>
 	</LogicOperationTitle>
+
+
+<!-- Logic Function for Logic section 0 -->
+	<LogicFunction>
+		<value>0</value>
+		<text>Blocked</text>
+	</LogicFunction>
+	<LogicFunction>
+		<value>1</value>
+		<text>Group</text>
+	</LogicFunction>
+	<LogicFunction>
+		<!-- Signal only -->
+		<value>2</value>
+		<text>Last (Single)</text>
+	</LogicFunction>
+	<LogicFunction>
+		<!-- Tower only-->
+		<value>3</value>
+		<text>Last (Single)</text>
+	</LogicFunction>
+
+<!-- Logic Operation Action look up table -->
+	<LogicAction>
+		<value>0</value>
+		<text>Send then Exit Group</text>
+	</LogicAction>
+	<LogicAction>
+		<value>1</value>
+		<text>Not Defined</text>
+	</LogicAction>
+	<LogicAction>
+		<value>2</value>
+		<text>Send then Evaluate Next</text>
+	</LogicAction>
+	<LogicAction>
+		<value>3</value>
+		<text>Exit Group</text>
+	</LogicAction>
+	<LogicAction>
+		<value>4</value>
+		<text>Evaluate Next</text>
+	</LogicAction>
+	<LogicAction>
+		<value>5</value>
+		<text>AND with Next</text>
+	</LogicAction>
+	<LogicAction>
+		<value>6</value>
+		<text>OR with Next</text>
+	</LogicAction>
 
 </Report>

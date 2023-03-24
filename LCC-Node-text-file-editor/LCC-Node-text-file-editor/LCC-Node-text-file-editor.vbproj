@@ -129,6 +129,9 @@
     <Compile Include="MyFileExplorer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Report.vb">
+      <DependentUpon>Report.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TextFileSlection.Designer.vb">
       <DependentUpon>TextFileSlection.vb</DependentUpon>
     </Compile>

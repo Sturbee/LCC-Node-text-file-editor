@@ -69,14 +69,6 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LogicAction" msprop:Generator_RowEvHandlerName="LogicActionRowChangeEventHandler" msprop:Generator_RowDeletedName="LogicActionRowDeleted" msprop:Generator_RowDeletingName="LogicActionRowDeleting" msprop:Generator_RowEvArgName="LogicActionRowChangeEvent" msprop:Generator_TablePropName="LogicAction" msprop:Generator_RowChangedName="LogicActionRowChanged" msprop:Generator_UserTableName="LogicAction" msprop:Generator_RowChangingName="LogicActionRowChanging" msprop:Generator_RowClassName="LogicActionRow" msprop:Generator_TableClassName="LogicActionDataTable" msprop:Generator_TableVarName="tableLogicAction">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
-              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="TrackCircuitRec" msprop:Generator_RowEvHandlerName="TrackCircuitRecRowChangeEventHandler" msprop:Generator_RowDeletedName="TrackCircuitRecRowDeleted" msprop:Generator_RowDeletingName="TrackCircuitRecRowDeleting" msprop:Generator_RowEvArgName="TrackCircuitRecRowChangeEvent" msprop:Generator_TablePropName="TrackCircuitRec" msprop:Generator_RowChangedName="TrackCircuitRecRowChanged" msprop:Generator_UserTableName="TrackCircuitRec" msprop:Generator_RowChangingName="TrackCircuitRecRowChanging" msprop:Generator_RowClassName="TrackCircuitRecRow" msprop:Generator_TableClassName="TrackCircuitRecDataTable" msprop:Generator_TableVarName="tableTrackCircuitRec">
           <xs:complexType>
             <xs:sequence>
@@ -163,44 +155,6 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LogicFunction" msprop:Generator_RowEvHandlerName="LogicFunctionRowChangeEventHandler" msprop:Generator_RowDeletedName="LogicFunctionRowDeleted" msprop:Generator_RowDeletingName="LogicFunctionRowDeleting" msprop:Generator_RowEvArgName="LogicFunctionRowChangeEvent" msprop:Generator_TablePropName="LogicFunction" msprop:Generator_RowChangedName="LogicFunctionRowChanged" msprop:Generator_UserTableName="LogicFunction" msprop:Generator_RowChangingName="LogicFunctionRowChanging" msprop:Generator_RowClassName="LogicFunctionRow" msprop:Generator_TableClassName="LogicFunctionDataTable" msprop:Generator_TableVarName="tableLogicFunction">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
-              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="LogicTitle" msprop:Generator_RowEvHandlerName="LogicTitleRowChangeEventHandler" msprop:Generator_RowDeletedName="LogicTitleRowDeleted" msprop:Generator_RowDeletingName="LogicTitleRowDeleting" msprop:Generator_RowEvArgName="LogicTitleRowChangeEvent" msprop:Generator_TablePropName="LogicTitle" msprop:Generator_RowChangedName="LogicTitleRowChanged" msprop:Generator_UserTableName="LogicTitle" msprop:Generator_RowChangingName="LogicTitleRowChanging" msprop:Generator_RowClassName="LogicTitleRow" msprop:Generator_TableClassName="LogicTitleDataTable" msprop:Generator_TableVarName="tableLogicTitle">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_UserColumnName="columnID" msprop:Generator_ColumnVarNameInTable="columncolumnID" type="xs:int" />
-              <xs:element name="formatType" msprop:Generator_ColumnPropNameInTable="formatTypeColumn" msprop:Generator_ColumnPropNameInRow="formatType" msprop:Generator_UserColumnName="formatType" msprop:Generator_ColumnVarNameInTable="columnformatType" type="xs:int" minOccurs="0" />
-              <xs:element name="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_UserColumnName="title" msprop:Generator_ColumnVarNameInTable="columntitle" type="xs:string" minOccurs="0" />
-              <xs:element name="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_UserColumnName="comment" msprop:Generator_ColumnVarNameInTable="columncomment" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="LogicOperationTitle" msprop:Generator_RowEvHandlerName="LogicOperationTitleRowChangeEventHandler" msprop:Generator_RowDeletedName="LogicOperationTitleRowDeleted" msprop:Generator_RowDeletingName="LogicOperationTitleRowDeleting" msprop:Generator_RowEvArgName="LogicOperationTitleRowChangeEvent" msprop:Generator_TablePropName="LogicOperationTitle" msprop:Generator_RowChangedName="LogicOperationTitleRowChanged" msprop:Generator_UserTableName="LogicOperationTitle" msprop:Generator_RowChangingName="LogicOperationTitleRowChanging" msprop:Generator_RowClassName="LogicOperationTitleRow" msprop:Generator_TableClassName="LogicOperationTitleDataTable" msprop:Generator_TableVarName="tableLogicOperationTitle">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_UserColumnName="columnID" msprop:Generator_ColumnVarNameInTable="columncolumnID" type="xs:int" />
-              <xs:element name="formatType" msprop:Generator_ColumnPropNameInTable="formatTypeColumn" msprop:Generator_ColumnPropNameInRow="formatType" msprop:Generator_UserColumnName="formatType" msprop:Generator_ColumnVarNameInTable="columnformatType" type="xs:int" minOccurs="0" />
-              <xs:element name="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_UserColumnName="title" msprop:Generator_ColumnVarNameInTable="columntitle" type="xs:string" minOccurs="0" />
-              <xs:element name="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_UserColumnName="comment" msprop:Generator_ColumnVarNameInTable="columncomment" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="PortTitle" msprop:Generator_RowEvHandlerName="PortTitleRowChangeEventHandler" msprop:Generator_RowDeletedName="PortTitleRowDeleted" msprop:Generator_RowDeletingName="PortTitleRowDeleting" msprop:Generator_RowEvArgName="PortTitleRowChangeEvent" msprop:Generator_TablePropName="PortTitle" msprop:Generator_RowChangedName="PortTitleRowChanged" msprop:Generator_UserTableName="PortTitle" msprop:Generator_RowChangingName="PortTitleRowChanging" msprop:Generator_RowClassName="PortTitleRow" msprop:Generator_TableClassName="PortTitleDataTable" msprop:Generator_TableVarName="tablePortTitle">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_UserColumnName="columnID" msprop:Generator_ColumnVarNameInTable="columncolumnID" type="xs:int" />
-              <xs:element name="formatType" msprop:Generator_ColumnPropNameInTable="formatTypeColumn" msprop:Generator_ColumnPropNameInRow="formatType" msprop:Generator_UserColumnName="formatType" msprop:Generator_ColumnVarNameInTable="columnformatType" type="xs:int" minOccurs="0" />
-              <xs:element name="title" msprop:Generator_ColumnPropNameInTable="titleColumn" msprop:Generator_ColumnPropNameInRow="title" msprop:Generator_UserColumnName="title" msprop:Generator_ColumnVarNameInTable="columntitle" type="xs:string" minOccurs="0" />
-              <xs:element name="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_UserColumnName="comment" msprop:Generator_ColumnVarNameInTable="columncomment" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -232,10 +186,6 @@
       <xs:selector xpath=".//mstns:SegmentReport" />
       <xs:field xpath="mstns:level" />
     </xs:unique>
-    <xs:unique name="LogicAction_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:LogicAction" />
-      <xs:field xpath="mstns:value" />
-    </xs:unique>
     <xs:unique name="TrackCircuitRec_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:TrackCircuitRec" />
       <xs:field xpath="mstns:value" />
@@ -259,22 +209,6 @@
     <xs:unique name="MastAppearance_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:MastAppearance" />
       <xs:field xpath="mstns:value" />
-    </xs:unique>
-    <xs:unique name="LogicFunction_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:LogicFunction" />
-      <xs:field xpath="mstns:value" />
-    </xs:unique>
-    <xs:unique name="LogicTitle_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:LogicTitle" />
-      <xs:field xpath="mstns:columnID" />
-    </xs:unique>
-    <xs:unique name="LogicOperationTitle_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:LogicOperationTitle" />
-      <xs:field xpath="mstns:columnID" />
-    </xs:unique>
-    <xs:unique name="PortTitle_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:PortTitle" />
-      <xs:field xpath="mstns:columnID" />
     </xs:unique>
   </xs:element>
 </xs:schema>
