@@ -48,7 +48,7 @@ Public Class ClassExportCDIxml
             ' import user selections
             Try
 
-                Dim dsUser As New UserPref
+                Dim dsUser As New UserPrefs
 
                 dsUser.ReadXml(clsAppConfig.SavedUserFile)
                 dsUser.AcceptChanges()
@@ -97,39 +97,39 @@ Public Class ClassExportCDIxml
 
                 Me.lineNum += 1
 
-                Dim segID As Integer = Me.MatchSegment(myText, resultText)
+                Dim level1 As Integer = Me.MatchLevel1(myText, resultText)
 
-                Select Case segID
+                Select Case level1
 
                     Case -1 ' unknown segment
                         Stop
 
                     Case 0 ' segment node ID
-                        Call Me.AddRowNode(segID, resultText)
+                        Call Me.AddRowNode(level1, resultText)
 
                     Case 1 ' segment power monitor
-                        Call Me.AddRowPowerMonitor(segID, resultText)
+                        Call Me.AddRowPowerMonitor(level1, resultText)
 
                     Case 2 ' segment port
-                        Call Me.AddRowPort(segID, resultText)
+                        Call Me.AddRowPort(level1, resultText)
 
                     Case 3 ' segment conditional
-                        Call Me.AddRowLogic(segID, resultText)
+                        Call Me.AddRowLogic(level1, resultText)
 
                     Case 4 ' segment track circuit receiver
-                        Call Me.AddRowTrackCircuitRec(segID, resultText)
+                        Call Me.AddRowTrackCircuitRec(level1, resultText)
 
                     Case 5 ' segment track circuit transmitter
-                        Call Me.AddRowTrackCircuitTran(segID, resultText)
+                        Call Me.AddRowTrackCircuitTran(level1, resultText)
 
                     Case 6 ' segment rule to aspect
-                        Call Me.AddRowRuleToAspect(segID, resultText)
+                        Call Me.AddRowRuleToAspect(level1, resultText)
 
                     Case 7 ' segment Direct Lamp Control
-                        Call Me.AddRowLampDirectControl(segID, resultText)
+                        Call Me.AddRowLampDirectControl(level1, resultText)
 
                     Case 8 ' 
-                        Call Me.UpDateRowLampDirectControl(segID, resultText)
+                        Call Me.UpDateRowLampDirectControl(level1, resultText)
 
                 End Select
 
@@ -166,19 +166,19 @@ Public Class ClassExportCDIxml
 
     End Sub
 
-    Private Function MatchSegment(text As String, ByRef resultText As String) As Integer
+    Private Function MatchLevel1(text As String, ByRef resultText As String) As Integer
 
         Dim startInt As Integer
         Dim resultInt As Integer
         resultText = String.Empty
-        Dim segID As Integer = -1 ' default value
+        Dim level1 As Integer = -1 ' default value
 
         Try
 
             ' find the match segment record
-            For count = 0 To Me.dsImport.MatchSegment.Count - 1
+            For count = 0 To Me.dsImport.MatchLevel1.Count - 1
 
-                Dim row As ImportCDI.MatchSegmentRow = Me.dsImport.MatchSegment.Rows.Item(count)
+                Dim row As ImportCDI.MatchLevel1Row = Me.dsImport.MatchLevel1.Rows.Item(count)
 
                 ' find match text
                 Dim myMatch = row.text
@@ -187,13 +187,13 @@ Public Class ClassExportCDIxml
                 If startInt > 0 Then
 
                     ' Ok, found a known segment row
-                    ' return resultTxt and segID
+                    ' return resultTxt and level1
                     ' then exit count and read next line
 
                     resultInt = startInt + Len(myMatch)
                     resultText = Mid(text, resultInt)
 
-                    segID = row.segID
+                    level1 = row.level1
 
                     Exit For
 
@@ -201,8 +201,8 @@ Public Class ClassExportCDIxml
 
             Next
 
-            If segID = -1 Then
-                Console.WriteLine(lineNum.ToString + " Segment not found - " + text)
+            If level1 = -1 Then
+                Console.WriteLine(lineNum.ToString + " Level1 not found - " + text)
                 Stop
             End If
 
@@ -212,26 +212,26 @@ Public Class ClassExportCDIxml
 
         End Try
 
-        Return segID
+        Return level1
 
     End Function
 
 
-    Private Function MatchSection(segID As Integer, text As String, ByRef lineID As Integer, ByRef resultText As String) As ImportCDI.MatchSectionRow
+    Private Function MatchLevel2(level1 As Integer, text As String, ByRef level2 As Integer, ByRef resultText As String) As ImportCDI.MatchLevel2Row
 
         Dim startInt As Integer
         Dim resultInt As Integer
         resultText = String.Empty
-        Dim rowSection As ImportCDI.MatchSectionRow = Nothing
+        Dim rowLevel2 As ImportCDI.MatchLevel2Row = Nothing
 
         Try
 
             ' find the match segment record
-            For count = 0 To Me.dsImport.MatchSection.Count - 1
+            For count = 0 To Me.dsImport.MatchLevel2.Count - 1
 
-                Dim row As ImportCDI.MatchSectionRow = Me.dsImport.MatchSection.Rows.Item(count)
+                Dim row As ImportCDI.MatchLevel2Row = Me.dsImport.MatchLevel2.Rows.Item(count)
 
-                If row.segID = segID Then
+                If row.level1 = level1 Then
 
                     ' find match text
                     Dim myMatch = row.text
@@ -240,13 +240,13 @@ Public Class ClassExportCDIxml
                     If startInt > 0 Then
 
                         ' Ok, found a known section row
-                        ' return resultTxt and segID
+                        ' return resultTxt and level1
                         ' then exit count and read next line
 
                         ' need to check for line and return lineID and reformatted resultText
-                        lineID = Me.GetMyIDvalue(text)
+                        level2 = Me.GetMyIDvalue(text)
 
-                        If lineID > 0 Then
+                        If level2 > 0 Then
                             resultInt = InStr(text, ").") + 2
                             resultText = Mid(text, resultInt)
                         End If
@@ -254,7 +254,7 @@ Public Class ClassExportCDIxml
                         resultInt = startInt + Len(myMatch)
                         resultText = Mid(text, resultInt)
 
-                        rowSection = row
+                        rowLevel2 = row
 
                         Exit For
 
@@ -264,7 +264,7 @@ Public Class ClassExportCDIxml
 
             Next
 
-            If IsNothing(rowSection) Then
+            If IsNothing(rowLevel2) Then
                 Console.WriteLine(lineNum.ToString + " Section not found - " + text)
                 Stop
             End If
@@ -275,26 +275,26 @@ Public Class ClassExportCDIxml
 
         End Try
 
-        Return rowSection
+        Return rowLevel2
 
     End Function
 
 
-    Private Function MatchItem(segID As Integer, text As String, ByRef itemID As Integer, ByRef resultText As String) As ImportCDI.MatchItemRow
+    Private Function MatchLevel3(level1 As Integer, text As String, ByRef level3 As Integer, ByRef resultText As String) As ImportCDI.MatchLevel3Row
 
         Dim startInt As Integer
         Dim resultInt As Integer
         resultText = String.Empty
-        Dim rowItem As ImportCDI.MatchItemRow = Nothing
+        Dim rowLevel3 As ImportCDI.MatchLevel3Row = Nothing
 
         Try
 
             ' find the match segment record
-            For count = 0 To Me.dsImport.MatchItem.Count - 1
+            For count = 0 To Me.dsImport.MatchLevel3.Count - 1
 
-                Dim row As ImportCDI.MatchItemRow = Me.dsImport.MatchItem.Rows.Item(count)
+                Dim row As ImportCDI.MatchLevel3Row = Me.dsImport.MatchLevel3.Rows.Item(count)
 
-                If row.segID = segID Then
+                If row.level1 = level1 Then
 
                     ' find match text
                     Dim myMatch = row.text
@@ -303,11 +303,11 @@ Public Class ClassExportCDIxml
                     If startInt > 0 Then
 
                         ' need to check for line and return lineID and reformatted resultText
-                        itemID = Me.GetMyIDvalue(text)
+                        level3 = Me.GetMyIDvalue(text)
 
-                        If itemID = 0 Then Stop
+                        If level3 = 0 Then Stop
 
-                        If itemID > 0 Then
+                        If level3 > 0 Then
                             resultInt = InStr(text, ").") + 2
                             resultText = Mid(text, resultInt)
                         End If
@@ -315,7 +315,7 @@ Public Class ClassExportCDIxml
                         resultInt = startInt + Len(myMatch)
                         resultText = Mid(text, resultInt)
 
-                        rowItem = row
+                        rowLevel3 = row
 
                         Exit For
 
@@ -325,8 +325,8 @@ Public Class ClassExportCDIxml
 
             Next
 
-            If IsNothing(rowItem) Then
-                Console.WriteLine(lineNum.ToString + " Item not found - " + text)
+            If IsNothing(rowLevel3) Then
+                Console.WriteLine(lineNum.ToString + " Level3 not found - " + text)
                 Stop
             End If
 
@@ -336,12 +336,12 @@ Public Class ClassExportCDIxml
 
         End Try
 
-        Return rowItem
+        Return rowLevel3
 
     End Function
 
 
-    Private Function MatchLevel4(segID As Integer, text As String, ByRef level4ID As Integer, ByRef resultText As String) As ImportCDI.MatchLevel4Row
+    Private Function MatchLevel4(level1 As Integer, text As String, ByRef level4 As Integer, ByRef resultText As String) As ImportCDI.MatchLevel4Row
 
         Dim startInt As Integer
         Dim resultInt As Integer
@@ -355,7 +355,7 @@ Public Class ClassExportCDIxml
 
                 Dim row As ImportCDI.MatchLevel4Row = Me.dsImport.MatchLevel4.Rows.Item(count)
 
-                If row.segID = segID Then
+                If row.level1 = level1 Then
 
                     ' find match text
                     Dim myMatch = row.text
@@ -364,11 +364,11 @@ Public Class ClassExportCDIxml
                     If startInt > 0 Then
 
                         ' need to check for line and return lineID and reformatted resultText
-                        level4ID = Me.GetMyIDvalue(text)
+                        level4 = Me.GetMyIDvalue(text)
 
-                        If level4ID = 0 Then Stop
+                        If level4 = 0 Then Stop
 
-                        If level4ID > 0 Then
+                        If level4 > 0 Then
                             resultInt = InStr(text, ").") + 2
                             resultText = Mid(text, resultInt)
                         End If
@@ -401,17 +401,17 @@ Public Class ClassExportCDIxml
 
     End Function
 
-    Private Sub AddRowNode(segID As Integer, text As String)
+    Private Sub AddRowNode(level1 As Integer, text As String)
 
         Try
 
-            If Not Me.SegmentReport(segID) Then Exit Sub
+            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim NodeID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, NodeID, resultText)
-            If rowSection Is Nothing Then
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, NodeID, resultText)
+            If rowLevel2 Is Nothing Then
                 Stop
             End If
 
@@ -427,8 +427,8 @@ Public Class ClassExportCDIxml
                 Exit Sub
             End Try
 
-            Console.WriteLine(Me.lineNum.ToString + Space(1) + "Node ID - " + rowSection.text + Space(1) + resultText)
-            rowNode.Item(rowSection.columnID - 1) = resultText
+            Console.WriteLine(Me.lineNum.ToString + Space(1) + "Node ID - " + rowLevel2.text + Space(1) + resultText)
+            rowNode.Item(rowLevel2.columnID - 1) = resultText
 
             Me.dsExport.AcceptChanges()
 
@@ -440,17 +440,17 @@ Public Class ClassExportCDIxml
 
     End Sub
 
-    Private Sub AddRowPowerMonitor(segID As Integer, text As String)
+    Private Sub AddRowPowerMonitor(level1 As Integer, text As String)
 
         Try
 
-            If Not Me.SegmentReport(segID) Then Exit Sub
+            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim PowerMonitorID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, PowerMonitorID, resultText)
-            If rowSection Is Nothing Then
+            Dim rowlevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, PowerMonitorID, resultText)
+            If rowlevel2 Is Nothing Then
                 Stop
             End If
 
@@ -465,9 +465,9 @@ Public Class ClassExportCDIxml
                 MsgBox("Failed to create table PowerMonitor row")
             End Try
 
-            Console.WriteLine(Me.lineNum.ToString + Space(1) + "Node Power Monitor - " + rowSection.text + Space(1) + resultText)
-            rowPowerMonitor.Item(rowSection.columnID - 1) = resultText
-            If rowSection.columnID = 3 Then
+            Console.WriteLine(Me.lineNum.ToString + Space(1) + "Node Power Monitor - " + rowlevel2.text + Space(1) + resultText)
+            rowPowerMonitor.Item(rowlevel2.columnID - 1) = resultText
+            If rowlevel2.columnID = 3 Then
                 Me.MyNodeEventBase = Left(resultText, 17)
             End If
 
@@ -480,29 +480,29 @@ Public Class ClassExportCDIxml
 
     End Sub
 
-    Private Sub AddRowPort(segID As Integer, text As String)
+    Private Sub AddRowPort(level1 As Integer, text As String)
 
         Try
 
-            If Not Me.SegmentReport(segID) Then Exit Sub
+            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim LineID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, lineID, resultText)
-            If rowSection Is Nothing Then
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, LineID, resultText)
+            If rowLevel2 Is Nothing Then
                 Stop
             End If
 
-            Select Case rowSection.sectionID
+            Select Case rowLevel2.level2
                 Case 0
-                    Call Me.TablePort(LineID, rowSection.columnID, rowSection.text, resultText)
+                    Call Me.TablePort(LineID, rowLevel2.columnID, rowLevel2.text, resultText)
 
                 Case 1
-                    Call Me.TablePortDelay(rowSection.segID, lineID, resultText)
+                    Call Me.TablePortDelay(rowLevel2.level1, LineID, resultText)
 
                 Case 2
-                    Call Me.TablePortEvent(rowSection.segID, lineID, resultText)
+                    Call Me.TablePortEvent(rowLevel2.level1, LineID, resultText)
 
                 Case Else
                     Stop
@@ -556,15 +556,15 @@ Public Class ClassExportCDIxml
 
     End Sub
 
-    Private Sub TablePortDelay(segID As Integer, LineID As Integer, text As String)
+    Private Sub TablePortDelay(level1 As Integer, LineID As Integer, text As String)
 
         Try
 
             Dim DelayID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowItem As ImportCDI.MatchItemRow = Me.MatchItem(segID, text, DelayID, resultText)
-            If rowItem Is Nothing Then
+            Dim rowlevel3 As ImportCDI.MatchLevel3Row = Me.MatchLevel3(level1, text, DelayID, resultText)
+            If rowlevel3 Is Nothing Then
                 Stop
             End If
 
@@ -580,8 +580,8 @@ Public Class ClassExportCDIxml
                 End Try
             End If
 
-            Console.WriteLine(Me.lineNum.ToString + " Port I/O - " + "Line(" + LineID.ToString + ") - Delay(" + DelayID.ToString + ") - " + rowItem.text + Space(1) + resultText)
-            rowPortDelay.Item(rowItem.columnID - 2) = resultText
+            Console.WriteLine(Me.lineNum.ToString + " Port I/O - " + "Line(" + LineID.ToString + ") - Delay(" + DelayID.ToString + ") - " + rowlevel3.text + Space(1) + resultText)
+            rowPortDelay.Item(rowlevel3.columnID - 2) = resultText
 
             Me.dsExport.AcceptChanges()
 
@@ -593,15 +593,15 @@ Public Class ClassExportCDIxml
 
     End Sub
 
-    Private Sub TablePortEvent(segID As Integer, LineID As Integer, text As String)
+    Private Sub TablePortEvent(level1 As Integer, LineID As Integer, text As String)
 
         Try
 
             Dim EventID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowItem As ImportCDI.MatchItemRow = Me.MatchItem(segID, text, EventID, resultText)
-            If rowItem Is Nothing Then
+            Dim rowLevel3 As ImportCDI.MatchLevel3Row = Me.MatchLevel3(level1, text, EventID, resultText)
+            If rowLevel3 Is Nothing Then
                 Stop
             End If
 
@@ -618,7 +618,7 @@ Public Class ClassExportCDIxml
             End If
 
             Console.WriteLine(Me.lineNum.ToString + " Port I/O - Line(" + LineID.ToString + ") - " + "Event(" + EventID.ToString + ") - " + resultText)
-            rowPortEvent.Item(rowItem.columnID - 2) = resultText
+            rowPortEvent.Item(rowLevel3.columnID - 2) = resultText
 
             Me.dsExport.AcceptChanges()
 
@@ -631,35 +631,35 @@ Public Class ClassExportCDIxml
     End Sub
 
 
-    Private Sub AddRowLogic(segID As Integer, text As String)
+    Private Sub AddRowLogic(level1 As Integer, text As String)
 
         Try
 
-            If Not Me.SegmentReport(segID) Then Exit Sub
+            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim LogicID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, LogicID, resultText)
-            If rowSection Is Nothing Then
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, LogicID, resultText)
+            If rowLevel2 Is Nothing Then
                 Stop
             End If
 
-            Select Case rowSection.sectionID
+            Select Case rowLevel2.level2
                 Case 0 ' Logic section
-                    Call Me.TableLogic(LogicID, rowSection.columnID, rowSection.text, resultText)
+                    Call Me.TableLogic(LogicID, rowLevel2.columnID, rowLevel2.text, resultText)
 
                 Case 1 ' Logic Operation section
-                    Call Me.TableLogicOperation(LogicID, rowSection.columnID, rowSection.text, resultText)
+                    Call Me.TableLogicOperation(LogicID, rowLevel2.columnID, rowLevel2.text, resultText)
 
                 Case 2 ' Logic Action
-                    Call Me.TableLogicAction(LogicID, rowSection.columnID, rowSection.text, resultText)
+                    Call Me.TableLogicAction(LogicID, rowLevel2.columnID, rowLevel2.text, resultText)
 
                 Case 3
-                    Call Me.TableLogicProducer(rowSection.segID, LogicID, resultText)
+                    Call Me.TableLogicProducer(rowLevel2.level1, LogicID, resultText)
 
                 Case Else
-                    MsgBox("Logic Section unknown - " + rowSection.sectionID)
+                    MsgBox("Logic Section unknown - " + rowLevel2.level2)
 
             End Select
 
@@ -754,15 +754,15 @@ Public Class ClassExportCDIxml
 
     End Sub
 
-    Private Sub TableLogicProducer(segID As Integer, LogicID As Integer, text As String)
+    Private Sub TableLogicProducer(level1 As Integer, LogicID As Integer, text As String)
 
         Try
 
             Dim ActionID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowItem As ImportCDI.MatchItemRow = Me.MatchItem(segID, text, ActionID, resultText)
-            If rowItem Is Nothing Then
+            Dim rowLevel3 As ImportCDI.MatchLevel3Row = Me.MatchLevel3(level1, text, ActionID, resultText)
+            If rowLevel3 Is Nothing Then
                 Stop
             End If
 
@@ -778,8 +778,8 @@ Public Class ClassExportCDIxml
                 End Try
             End If
 
-            Console.WriteLine(Me.lineNum.ToString + " Conditional - Logic(" + LogicID.ToString + ") - Action(" + ActionID.ToString + ") - " + rowItem.text + Space(1) + resultText)
-            rowLogicProducer.Item(rowItem.columnID - 2) = resultText
+            Console.WriteLine(Me.lineNum.ToString + " Conditional - Logic(" + LogicID.ToString + ") - Action(" + ActionID.ToString + ") - " + rowLevel3.text + Space(1) + resultText)
+            rowLogicProducer.Item(rowLevel3.columnID - 2) = resultText
 
         Catch ex As Exception
 
@@ -790,17 +790,17 @@ Public Class ClassExportCDIxml
     End Sub
 
 
-    Private Sub AddRowTrackCircuitRec(segID As Integer, text As String)
+    Private Sub AddRowTrackCircuitRec(level1 As Integer, text As String)
 
         Try
 
-            If Not Me.SegmentReport(segID) Then Exit Sub
+            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim CircuitID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, CircuitID, resultText)
-            If rowSection Is Nothing Then
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, CircuitID, resultText)
+            If rowLevel2 Is Nothing Then
                 Stop
             End If
 
@@ -816,8 +816,8 @@ Public Class ClassExportCDIxml
                 Exit Sub
             End Try
 
-            Console.WriteLine(Me.lineNum.ToString + " Track Circuit Receiver - Circuit(" + CircuitID.ToString + ") - " + rowSection.text + Space(1) + resultText)
-            rowCircuit.Item(rowSection.columnID) = resultText
+            Console.WriteLine(Me.lineNum.ToString + " Track Circuit Receiver - Circuit(" + CircuitID.ToString + ") - " + rowLevel2.text + Space(1) + resultText)
+            rowCircuit.Item(rowLevel2.columnID) = resultText
 
             Me.dsExport.AcceptChanges()
 
@@ -829,17 +829,17 @@ Public Class ClassExportCDIxml
 
     End Sub
 
-    Private Sub AddRowTrackCircuitTran(segID As Integer, text As String)
+    Private Sub AddRowTrackCircuitTran(level1 As Integer, text As String)
 
         Try
 
-            If Not Me.SegmentReport(segID) Then Exit Sub
+            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim CircuitID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, CircuitID, resultText)
-            If rowSection Is Nothing Then
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, CircuitID, resultText)
+            If rowLevel2 Is Nothing Then
                 Stop
             End If
 
@@ -855,8 +855,8 @@ Public Class ClassExportCDIxml
                 Exit Sub
             End Try
 
-            Console.WriteLine(Me.lineNum.ToString + " Track Circuit Transmitter - Circuit(" + CircuitID.ToString + ") - " + rowSection.text + Space(1) + resultText)
-            rowCircuit.Item(rowSection.columnID) = resultText
+            Console.WriteLine(Me.lineNum.ToString + " Track Circuit Transmitter - Circuit(" + CircuitID.ToString + ") - " + rowLevel2.text + Space(1) + resultText)
+            rowCircuit.Item(rowLevel2.columnID) = resultText
 
             Me.dsExport.AcceptChanges()
 
@@ -869,26 +869,26 @@ Public Class ClassExportCDIxml
     End Sub
 
 
-    Private Sub AddRowRuleToAspect(segID As Integer, text As String)
+    Private Sub AddRowRuleToAspect(level1 As Integer, text As String)
 
         Try
 
-            If Not Me.SegmentReport(segID) Then Exit Sub
+            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim MastID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, MastID, resultText)
-            If rowSection Is Nothing Then
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, MastID, resultText)
+            If rowLevel2 Is Nothing Then
                 Stop
             End If
 
-            Select Case rowSection.sectionID
+            Select Case rowLevel2.level2
                 Case 0
-                    Call Me.TableMast(MastID, rowSection.columnID, rowSection.text, resultText)
+                    Call Me.TableMast(MastID, rowLevel2.columnID, rowLevel2.text, resultText)
 
                 Case 1
-                    Call Me.TableMastRule(rowSection.segID, MastID, resultText)
+                    Call Me.TableMastRule(rowLevel2.level1, MastID, resultText)
 
                 Case Else
                     Stop
@@ -933,20 +933,20 @@ Public Class ClassExportCDIxml
     End Sub
 
 
-    Private Sub TableMastRule(segID As Integer, MastID As Integer, text As String)
+    Private Sub TableMastRule(level1 As Integer, MastID As Integer, text As String)
 
         Try
 
             Dim RuleID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowItem As ImportCDI.MatchItemRow = Me.MatchItem(segID, text, RuleID, resultText)
-            If rowItem Is Nothing Then
+            Dim rowLevel3 As ImportCDI.MatchLevel3Row = Me.MatchLevel3(level1, text, RuleID, resultText)
+            If rowLevel3 Is Nothing Then
                 Stop
             End If
 
 
-            Select Case rowItem.sectionID
+            Select Case rowLevel3.level2
                 Case 1
 
                     Dim rowMastRule As ExportCDI.MastRuleRow = Me.dsExport.MastRule.FindByMastIDRuleID(MastID, RuleID)
@@ -961,12 +961,12 @@ Public Class ClassExportCDIxml
                         End Try
                     End If
 
-                    Console.WriteLine(Me.lineNum.ToString + " Mast - Mast(" + MastID.ToString + ") " + " - Rule(" + RuleID.ToString + ") - " + rowItem.text + Space(1) + resultText)
-                    rowMastRule.Item(rowItem.columnID - 2) = resultText
+                    Console.WriteLine(Me.lineNum.ToString + " Mast - Mast(" + MastID.ToString + ") " + " - Rule(" + RuleID.ToString + ") - " + rowLevel3.text + Space(1) + resultText)
+                    rowMastRule.Item(rowLevel3.columnID - 2) = resultText
 
                 Case 2
 
-                    Call Me.TableMastAppearance(rowItem.segID, MastID, RuleID, resultText)
+                    Call Me.TableMastAppearance(rowLevel3.level1, MastID, RuleID, resultText)
 
                 Case Else
 
@@ -984,14 +984,14 @@ Public Class ClassExportCDIxml
     End Sub
 
 
-    Private Sub TableMastAppearance(segID As Integer, MastID As Integer, RuleID As Integer, text As String)
+    Private Sub TableMastAppearance(level1 As Integer, MastID As Integer, RuleID As Integer, text As String)
 
         Try
 
             Dim AppearanceID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowLevel4 As ImportCDI.MatchLevel4Row = Me.MatchLevel4(segID, text, AppearanceID, resultText)
+            Dim rowLevel4 As ImportCDI.MatchLevel4Row = Me.MatchLevel4(level1, text, AppearanceID, resultText)
             If rowLevel4 Is Nothing Then
                 Stop
             End If
@@ -1020,23 +1020,23 @@ Public Class ClassExportCDIxml
     End Sub
 
 
-    Private Sub AddRowLampDirectControl(segID As Integer, text As String)
+    Private Sub AddRowLampDirectControl(level1 As Integer, text As String)
 
         Try
 
-            If Not Me.SegmentReport(segID) Then Exit Sub
+            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim lineID As Integer
             Dim resultText As String = String.Empty
 
-            Dim rowSection As ImportCDI.MatchSectionRow = Me.MatchSection(segID, text, lineID, resultText)
-            If rowSection Is Nothing Then
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, lineID, resultText)
+            If rowLevel2 Is Nothing Then
                 Stop
             End If
 
-            Select Case rowSection.sectionID
+            Select Case rowLevel2.level2
                 Case 0
-                    Call Me.TableLamp(lineID, rowSection.columnID, rowSection.text, resultText)
+                    Call Me.TableLamp(lineID, rowLevel2.columnID, rowLevel2.text, resultText)
 
                 Case Else
                     Stop
@@ -1082,11 +1082,11 @@ Public Class ClassExportCDIxml
     End Sub
 
 
-    Private Sub UpDateRowLampDirectControl(segID As Integer, text As String)
+    Private Sub UpDateRowLampDirectControl(level1 As Integer, text As String)
 
         Try
 
-            If Not Me.SegmentReport(segID) Then Exit Sub
+            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim LampID As Integer = Val(text)
 
@@ -1145,9 +1145,9 @@ Public Class ClassExportCDIxml
 
     End Function
 
-    Private Function SegmentReport(segID As Integer) As Boolean
+    Private Function SegmentReport(level1 As Integer) As Boolean
 
-        Dim rowSegReport As ImportCDI.SegmentReportRow = Me.dsImport.SegmentReport.FindBysegID(segID)
+        Dim rowSegReport As ImportCDI.SegmentReportRow = Me.dsImport.SegmentReport.FindBylevel(level1)
         If rowSegReport Is Nothing Then
             Return True
         End If

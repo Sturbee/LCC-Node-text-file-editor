@@ -43,11 +43,11 @@ Partial Public Class ImportCDI
     
     Private tableTrackCircuitTran As TrackCircuitTranDataTable
     
-    Private tableMatchSegment As MatchSegmentDataTable
+    Private tableMatchLevel1 As MatchLevel1DataTable
     
-    Private tableMatchSection As MatchSectionDataTable
+    Private tableMatchLevel2 As MatchLevel2DataTable
     
-    Private tableMatchItem As MatchItemDataTable
+    Private tableMatchLevel3 As MatchLevel3DataTable
     
     Private tableMatchLevel4 As MatchLevel4DataTable
     
@@ -123,14 +123,14 @@ Partial Public Class ImportCDI
             If (Not (ds.Tables("TrackCircuitTran")) Is Nothing) Then
                 MyBase.Tables.Add(New TrackCircuitTranDataTable(ds.Tables("TrackCircuitTran")))
             End If
-            If (Not (ds.Tables("MatchSegment")) Is Nothing) Then
-                MyBase.Tables.Add(New MatchSegmentDataTable(ds.Tables("MatchSegment")))
+            If (Not (ds.Tables("MatchLevel1")) Is Nothing) Then
+                MyBase.Tables.Add(New MatchLevel1DataTable(ds.Tables("MatchLevel1")))
             End If
-            If (Not (ds.Tables("MatchSection")) Is Nothing) Then
-                MyBase.Tables.Add(New MatchSectionDataTable(ds.Tables("MatchSection")))
+            If (Not (ds.Tables("MatchLevel2")) Is Nothing) Then
+                MyBase.Tables.Add(New MatchLevel2DataTable(ds.Tables("MatchLevel2")))
             End If
-            If (Not (ds.Tables("MatchItem")) Is Nothing) Then
-                MyBase.Tables.Add(New MatchItemDataTable(ds.Tables("MatchItem")))
+            If (Not (ds.Tables("MatchLevel3")) Is Nothing) Then
+                MyBase.Tables.Add(New MatchLevel3DataTable(ds.Tables("MatchLevel3")))
             End If
             If (Not (ds.Tables("MatchLevel4")) Is Nothing) Then
                 MyBase.Tables.Add(New MatchLevel4DataTable(ds.Tables("MatchLevel4")))
@@ -270,9 +270,9 @@ Partial Public Class ImportCDI
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property MatchSegment() As MatchSegmentDataTable
+    Public ReadOnly Property MatchLevel1() As MatchLevel1DataTable
         Get
-            Return Me.tableMatchSegment
+            Return Me.tableMatchLevel1
         End Get
     End Property
     
@@ -280,9 +280,9 @@ Partial Public Class ImportCDI
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property MatchSection() As MatchSectionDataTable
+    Public ReadOnly Property MatchLevel2() As MatchLevel2DataTable
         Get
-            Return Me.tableMatchSection
+            Return Me.tableMatchLevel2
         End Get
     End Property
     
@@ -290,9 +290,9 @@ Partial Public Class ImportCDI
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property MatchItem() As MatchItemDataTable
+    Public ReadOnly Property MatchLevel3() As MatchLevel3DataTable
         Get
-            Return Me.tableMatchItem
+            Return Me.tableMatchLevel3
         End Get
     End Property
     
@@ -480,14 +480,14 @@ Partial Public Class ImportCDI
             If (Not (ds.Tables("TrackCircuitTran")) Is Nothing) Then
                 MyBase.Tables.Add(New TrackCircuitTranDataTable(ds.Tables("TrackCircuitTran")))
             End If
-            If (Not (ds.Tables("MatchSegment")) Is Nothing) Then
-                MyBase.Tables.Add(New MatchSegmentDataTable(ds.Tables("MatchSegment")))
+            If (Not (ds.Tables("MatchLevel1")) Is Nothing) Then
+                MyBase.Tables.Add(New MatchLevel1DataTable(ds.Tables("MatchLevel1")))
             End If
-            If (Not (ds.Tables("MatchSection")) Is Nothing) Then
-                MyBase.Tables.Add(New MatchSectionDataTable(ds.Tables("MatchSection")))
+            If (Not (ds.Tables("MatchLevel2")) Is Nothing) Then
+                MyBase.Tables.Add(New MatchLevel2DataTable(ds.Tables("MatchLevel2")))
             End If
-            If (Not (ds.Tables("MatchItem")) Is Nothing) Then
-                MyBase.Tables.Add(New MatchItemDataTable(ds.Tables("MatchItem")))
+            If (Not (ds.Tables("MatchLevel3")) Is Nothing) Then
+                MyBase.Tables.Add(New MatchLevel3DataTable(ds.Tables("MatchLevel3")))
             End If
             If (Not (ds.Tables("MatchLevel4")) Is Nothing) Then
                 MyBase.Tables.Add(New MatchLevel4DataTable(ds.Tables("MatchLevel4")))
@@ -602,22 +602,22 @@ Partial Public Class ImportCDI
                 Me.tableTrackCircuitTran.InitVars
             End If
         End If
-        Me.tableMatchSegment = CType(MyBase.Tables("MatchSegment"),MatchSegmentDataTable)
+        Me.tableMatchLevel1 = CType(MyBase.Tables("MatchLevel1"),MatchLevel1DataTable)
         If (initTable = true) Then
-            If (Not (Me.tableMatchSegment) Is Nothing) Then
-                Me.tableMatchSegment.InitVars
+            If (Not (Me.tableMatchLevel1) Is Nothing) Then
+                Me.tableMatchLevel1.InitVars
             End If
         End If
-        Me.tableMatchSection = CType(MyBase.Tables("MatchSection"),MatchSectionDataTable)
+        Me.tableMatchLevel2 = CType(MyBase.Tables("MatchLevel2"),MatchLevel2DataTable)
         If (initTable = true) Then
-            If (Not (Me.tableMatchSection) Is Nothing) Then
-                Me.tableMatchSection.InitVars
+            If (Not (Me.tableMatchLevel2) Is Nothing) Then
+                Me.tableMatchLevel2.InitVars
             End If
         End If
-        Me.tableMatchItem = CType(MyBase.Tables("MatchItem"),MatchItemDataTable)
+        Me.tableMatchLevel3 = CType(MyBase.Tables("MatchLevel3"),MatchLevel3DataTable)
         If (initTable = true) Then
-            If (Not (Me.tableMatchItem) Is Nothing) Then
-                Me.tableMatchItem.InitVars
+            If (Not (Me.tableMatchLevel3) Is Nothing) Then
+                Me.tableMatchLevel3.InitVars
             End If
         End If
         Me.tableMatchLevel4 = CType(MyBase.Tables("MatchLevel4"),MatchLevel4DataTable)
@@ -702,12 +702,12 @@ Partial Public Class ImportCDI
         MyBase.Tables.Add(Me.tableTrackCircuitRec)
         Me.tableTrackCircuitTran = New TrackCircuitTranDataTable()
         MyBase.Tables.Add(Me.tableTrackCircuitTran)
-        Me.tableMatchSegment = New MatchSegmentDataTable()
-        MyBase.Tables.Add(Me.tableMatchSegment)
-        Me.tableMatchSection = New MatchSectionDataTable()
-        MyBase.Tables.Add(Me.tableMatchSection)
-        Me.tableMatchItem = New MatchItemDataTable()
-        MyBase.Tables.Add(Me.tableMatchItem)
+        Me.tableMatchLevel1 = New MatchLevel1DataTable()
+        MyBase.Tables.Add(Me.tableMatchLevel1)
+        Me.tableMatchLevel2 = New MatchLevel2DataTable()
+        MyBase.Tables.Add(Me.tableMatchLevel2)
+        Me.tableMatchLevel3 = New MatchLevel3DataTable()
+        MyBase.Tables.Add(Me.tableMatchLevel3)
         Me.tableMatchLevel4 = New MatchLevel4DataTable()
         MyBase.Tables.Add(Me.tableMatchLevel4)
         Me.tableLampFade = New LampFadeDataTable()
@@ -784,19 +784,19 @@ Partial Public Class ImportCDI
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerializeMatchSegment() As Boolean
+    Private Function ShouldSerializeMatchLevel1() As Boolean
         Return false
     End Function
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerializeMatchSection() As Boolean
+    Private Function ShouldSerializeMatchLevel2() As Boolean
         Return false
     End Function
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerializeMatchItem() As Boolean
+    Private Function ShouldSerializeMatchLevel3() As Boolean
         Return false
     End Function
     
@@ -940,13 +940,13 @@ Partial Public Class ImportCDI
     Public Delegate Sub TrackCircuitTranRowChangeEventHandler(ByVal sender As Object, ByVal e As TrackCircuitTranRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Delegate Sub MatchSegmentRowChangeEventHandler(ByVal sender As Object, ByVal e As MatchSegmentRowChangeEvent)
+    Public Delegate Sub MatchLevel1RowChangeEventHandler(ByVal sender As Object, ByVal e As MatchLevel1RowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Delegate Sub MatchSectionRowChangeEventHandler(ByVal sender As Object, ByVal e As MatchSectionRowChangeEvent)
+    Public Delegate Sub MatchLevel2RowChangeEventHandler(ByVal sender As Object, ByVal e As MatchLevel2RowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Delegate Sub MatchItemRowChangeEventHandler(ByVal sender As Object, ByVal e As MatchItemRowChangeEvent)
+    Public Delegate Sub MatchLevel3RowChangeEventHandler(ByVal sender As Object, ByVal e As MatchLevel3RowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Public Delegate Sub MatchLevel4RowChangeEventHandler(ByVal sender As Object, ByVal e As MatchLevel4RowChangeEvent)
@@ -2460,7 +2460,7 @@ Partial Public Class ImportCDI
     Partial Public Class SegmentReportDataTable
         Inherits Global.System.Data.TypedTableBase(Of SegmentReportRow)
         
-        Private columnsegID As Global.System.Data.DataColumn
+        Private columnlevel As Global.System.Data.DataColumn
         
         Private columntext As Global.System.Data.DataColumn
         
@@ -2503,9 +2503,9 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property segIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property levelColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsegID
+                Return Me.columnlevel
             End Get
         End Property
         
@@ -2562,9 +2562,9 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddSegmentReportRow(ByVal segID As Integer, ByVal text As String, ByVal action As Boolean) As SegmentReportRow
+        Public Overloads Function AddSegmentReportRow(ByVal level As Integer, ByVal text As String, ByVal action As Boolean) As SegmentReportRow
             Dim rowSegmentReportRow As SegmentReportRow = CType(Me.NewRow,SegmentReportRow)
-            Dim columnValuesArray() As Object = New Object() {segID, text, action}
+            Dim columnValuesArray() As Object = New Object() {level, text, action}
             rowSegmentReportRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSegmentReportRow)
             Return rowSegmentReportRow
@@ -2572,8 +2572,8 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindBysegID(ByVal segID As Integer) As SegmentReportRow
-            Return CType(Me.Rows.Find(New Object() {segID}),SegmentReportRow)
+        Public Function FindBylevel(ByVal level As Integer) As SegmentReportRow
+            Return CType(Me.Rows.Find(New Object() {level}),SegmentReportRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2593,7 +2593,7 @@ Partial Public Class ImportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnsegID = MyBase.Columns("segID")
+            Me.columnlevel = MyBase.Columns("level")
             Me.columntext = MyBase.Columns("text")
             Me.columnaction = MyBase.Columns("action")
         End Sub
@@ -2601,15 +2601,15 @@ Partial Public Class ImportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnsegID = New Global.System.Data.DataColumn("segID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsegID)
+            Me.columnlevel = New Global.System.Data.DataColumn("level", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlevel)
             Me.columntext = New Global.System.Data.DataColumn("text", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntext)
             Me.columnaction = New Global.System.Data.DataColumn("action", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnaction)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnsegID}, true))
-            Me.columnsegID.AllowDBNull = false
-            Me.columnsegID.Unique = true
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnlevel}, true))
+            Me.columnlevel.AllowDBNull = false
+            Me.columnlevel.Unique = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3566,18 +3566,18 @@ Partial Public Class ImportCDI
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class MatchSegmentDataTable
-        Inherits Global.System.Data.TypedTableBase(Of MatchSegmentRow)
+    Partial Public Class MatchLevel1DataTable
+        Inherits Global.System.Data.TypedTableBase(Of MatchLevel1Row)
         
         Private columntext As Global.System.Data.DataColumn
         
-        Private columnsegID As Global.System.Data.DataColumn
+        Private columnlevel1 As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "MatchSegment"
+            Me.TableName = "MatchLevel1"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -3618,9 +3618,9 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property segIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property level1Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsegID
+                Return Me.columnlevel1
             End Get
         End Property
         
@@ -3635,44 +3635,44 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As MatchSegmentRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As MatchLevel1Row
             Get
-                Return CType(Me.Rows(index),MatchSegmentRow)
+                Return CType(Me.Rows(index),MatchLevel1Row)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event MatchSegmentRowChanging As MatchSegmentRowChangeEventHandler
+        Public Event MatchLevel1RowChanging As MatchLevel1RowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event MatchSegmentRowChanged As MatchSegmentRowChangeEventHandler
+        Public Event MatchLevel1RowChanged As MatchLevel1RowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event MatchSegmentRowDeleting As MatchSegmentRowChangeEventHandler
+        Public Event MatchLevel1RowDeleting As MatchLevel1RowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event MatchSegmentRowDeleted As MatchSegmentRowChangeEventHandler
+        Public Event MatchLevel1RowDeleted As MatchLevel1RowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Sub AddMatchSegmentRow(ByVal row As MatchSegmentRow)
+        Public Overloads Sub AddMatchLevel1Row(ByVal row As MatchLevel1Row)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddMatchSegmentRow(ByVal text As String, ByVal segID As String) As MatchSegmentRow
-            Dim rowMatchSegmentRow As MatchSegmentRow = CType(Me.NewRow,MatchSegmentRow)
-            Dim columnValuesArray() As Object = New Object() {text, segID}
-            rowMatchSegmentRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowMatchSegmentRow)
-            Return rowMatchSegmentRow
+        Public Overloads Function AddMatchLevel1Row(ByVal text As String, ByVal level1 As Integer) As MatchLevel1Row
+            Dim rowMatchLevel1Row As MatchLevel1Row = CType(Me.NewRow,MatchLevel1Row)
+            Dim columnValuesArray() As Object = New Object() {text, level1}
+            rowMatchLevel1Row.ItemArray = columnValuesArray
+            Me.Rows.Add(rowMatchLevel1Row)
+            Return rowMatchLevel1Row
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As MatchSegmentDataTable = CType(MyBase.Clone,MatchSegmentDataTable)
+            Dim cln As MatchLevel1DataTable = CType(MyBase.Clone,MatchLevel1DataTable)
             cln.InitVars
             Return cln
         End Function
@@ -3680,14 +3680,14 @@ Partial Public Class ImportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New MatchSegmentDataTable()
+            Return New MatchLevel1DataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
             Me.columntext = MyBase.Columns("text")
-            Me.columnsegID = MyBase.Columns("segID")
+            Me.columnlevel1 = MyBase.Columns("level1")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3695,34 +3695,34 @@ Partial Public Class ImportCDI
         Private Sub InitClass()
             Me.columntext = New Global.System.Data.DataColumn("text", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntext)
-            Me.columnsegID = New Global.System.Data.DataColumn("segID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsegID)
+            Me.columnlevel1 = New Global.System.Data.DataColumn("level1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlevel1)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function NewMatchSegmentRow() As MatchSegmentRow
-            Return CType(Me.NewRow,MatchSegmentRow)
+        Public Function NewMatchLevel1Row() As MatchLevel1Row
+            Return CType(Me.NewRow,MatchLevel1Row)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New MatchSegmentRow(builder)
+            Return New MatchLevel1Row(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(MatchSegmentRow)
+            Return GetType(MatchLevel1Row)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.MatchSegmentRowChangedEvent) Is Nothing) Then
-                RaiseEvent MatchSegmentRowChanged(Me, New MatchSegmentRowChangeEvent(CType(e.Row,MatchSegmentRow), e.Action))
+            If (Not (Me.MatchLevel1RowChangedEvent) Is Nothing) Then
+                RaiseEvent MatchLevel1RowChanged(Me, New MatchLevel1RowChangeEvent(CType(e.Row,MatchLevel1Row), e.Action))
             End If
         End Sub
         
@@ -3730,8 +3730,8 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.MatchSegmentRowChangingEvent) Is Nothing) Then
-                RaiseEvent MatchSegmentRowChanging(Me, New MatchSegmentRowChangeEvent(CType(e.Row,MatchSegmentRow), e.Action))
+            If (Not (Me.MatchLevel1RowChangingEvent) Is Nothing) Then
+                RaiseEvent MatchLevel1RowChanging(Me, New MatchLevel1RowChangeEvent(CType(e.Row,MatchLevel1Row), e.Action))
             End If
         End Sub
         
@@ -3739,8 +3739,8 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.MatchSegmentRowDeletedEvent) Is Nothing) Then
-                RaiseEvent MatchSegmentRowDeleted(Me, New MatchSegmentRowChangeEvent(CType(e.Row,MatchSegmentRow), e.Action))
+            If (Not (Me.MatchLevel1RowDeletedEvent) Is Nothing) Then
+                RaiseEvent MatchLevel1RowDeleted(Me, New MatchLevel1RowChangeEvent(CType(e.Row,MatchLevel1Row), e.Action))
             End If
         End Sub
         
@@ -3748,14 +3748,14 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.MatchSegmentRowDeletingEvent) Is Nothing) Then
-                RaiseEvent MatchSegmentRowDeleting(Me, New MatchSegmentRowChangeEvent(CType(e.Row,MatchSegmentRow), e.Action))
+            If (Not (Me.MatchLevel1RowDeletingEvent) Is Nothing) Then
+                RaiseEvent MatchLevel1RowDeleting(Me, New MatchLevel1RowChangeEvent(CType(e.Row,MatchLevel1Row), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub RemoveMatchSegmentRow(ByVal row As MatchSegmentRow)
+        Public Sub RemoveMatchLevel1Row(ByVal row As MatchLevel1Row)
             Me.Rows.Remove(row)
         End Sub
         
@@ -3782,7 +3782,7 @@ Partial Public Class ImportCDI
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "MatchSegmentDataTable"
+            attribute2.FixedValue = "MatchLevel1DataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -3831,14 +3831,14 @@ Partial Public Class ImportCDI
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class MatchSectionDataTable
-        Inherits Global.System.Data.TypedTableBase(Of MatchSectionRow)
+    Partial Public Class MatchLevel2DataTable
+        Inherits Global.System.Data.TypedTableBase(Of MatchLevel2Row)
         
         Private columntext As Global.System.Data.DataColumn
         
-        Private columnsegID As Global.System.Data.DataColumn
+        Private columnlevel1 As Global.System.Data.DataColumn
         
-        Private columnsectionID As Global.System.Data.DataColumn
+        Private columnlevel2 As Global.System.Data.DataColumn
         
         Private columncolumnID As Global.System.Data.DataColumn
         
@@ -3846,7 +3846,7 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "MatchSection"
+            Me.TableName = "MatchLevel2"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -3887,17 +3887,17 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property segIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property level1Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsegID
+                Return Me.columnlevel1
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property sectionIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property level2Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsectionID
+                Return Me.columnlevel2
             End Get
         End Property
         
@@ -3920,44 +3920,44 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As MatchSectionRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As MatchLevel2Row
             Get
-                Return CType(Me.Rows(index),MatchSectionRow)
+                Return CType(Me.Rows(index),MatchLevel2Row)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event MatchSectionRowChanging As MatchSectionRowChangeEventHandler
+        Public Event MatchLevel2RowChanging As MatchLevel2RowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event MatchSectionRowChanged As MatchSectionRowChangeEventHandler
+        Public Event MatchLevel2RowChanged As MatchLevel2RowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event MatchSectionRowDeleting As MatchSectionRowChangeEventHandler
+        Public Event MatchLevel2RowDeleting As MatchLevel2RowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event MatchSectionRowDeleted As MatchSectionRowChangeEventHandler
+        Public Event MatchLevel2RowDeleted As MatchLevel2RowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Sub AddMatchSectionRow(ByVal row As MatchSectionRow)
+        Public Overloads Sub AddMatchLevel2Row(ByVal row As MatchLevel2Row)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddMatchSectionRow(ByVal text As String, ByVal segID As Integer, ByVal sectionID As Integer, ByVal columnID As Integer) As MatchSectionRow
-            Dim rowMatchSectionRow As MatchSectionRow = CType(Me.NewRow,MatchSectionRow)
-            Dim columnValuesArray() As Object = New Object() {text, segID, sectionID, columnID}
-            rowMatchSectionRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowMatchSectionRow)
-            Return rowMatchSectionRow
+        Public Overloads Function AddMatchLevel2Row(ByVal text As String, ByVal level1 As Integer, ByVal level2 As Integer, ByVal columnID As Integer) As MatchLevel2Row
+            Dim rowMatchLevel2Row As MatchLevel2Row = CType(Me.NewRow,MatchLevel2Row)
+            Dim columnValuesArray() As Object = New Object() {text, level1, level2, columnID}
+            rowMatchLevel2Row.ItemArray = columnValuesArray
+            Me.Rows.Add(rowMatchLevel2Row)
+            Return rowMatchLevel2Row
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As MatchSectionDataTable = CType(MyBase.Clone,MatchSectionDataTable)
+            Dim cln As MatchLevel2DataTable = CType(MyBase.Clone,MatchLevel2DataTable)
             cln.InitVars
             Return cln
         End Function
@@ -3965,15 +3965,15 @@ Partial Public Class ImportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New MatchSectionDataTable()
+            Return New MatchLevel2DataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
             Me.columntext = MyBase.Columns("text")
-            Me.columnsegID = MyBase.Columns("segID")
-            Me.columnsectionID = MyBase.Columns("sectionID")
+            Me.columnlevel1 = MyBase.Columns("level1")
+            Me.columnlevel2 = MyBase.Columns("level2")
             Me.columncolumnID = MyBase.Columns("columnID")
         End Sub
         
@@ -3982,38 +3982,38 @@ Partial Public Class ImportCDI
         Private Sub InitClass()
             Me.columntext = New Global.System.Data.DataColumn("text", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntext)
-            Me.columnsegID = New Global.System.Data.DataColumn("segID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsegID)
-            Me.columnsectionID = New Global.System.Data.DataColumn("sectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsectionID)
+            Me.columnlevel1 = New Global.System.Data.DataColumn("level1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlevel1)
+            Me.columnlevel2 = New Global.System.Data.DataColumn("level2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlevel2)
             Me.columncolumnID = New Global.System.Data.DataColumn("columnID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncolumnID)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function NewMatchSectionRow() As MatchSectionRow
-            Return CType(Me.NewRow,MatchSectionRow)
+        Public Function NewMatchLevel2Row() As MatchLevel2Row
+            Return CType(Me.NewRow,MatchLevel2Row)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New MatchSectionRow(builder)
+            Return New MatchLevel2Row(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(MatchSectionRow)
+            Return GetType(MatchLevel2Row)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.MatchSectionRowChangedEvent) Is Nothing) Then
-                RaiseEvent MatchSectionRowChanged(Me, New MatchSectionRowChangeEvent(CType(e.Row,MatchSectionRow), e.Action))
+            If (Not (Me.MatchLevel2RowChangedEvent) Is Nothing) Then
+                RaiseEvent MatchLevel2RowChanged(Me, New MatchLevel2RowChangeEvent(CType(e.Row,MatchLevel2Row), e.Action))
             End If
         End Sub
         
@@ -4021,8 +4021,8 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.MatchSectionRowChangingEvent) Is Nothing) Then
-                RaiseEvent MatchSectionRowChanging(Me, New MatchSectionRowChangeEvent(CType(e.Row,MatchSectionRow), e.Action))
+            If (Not (Me.MatchLevel2RowChangingEvent) Is Nothing) Then
+                RaiseEvent MatchLevel2RowChanging(Me, New MatchLevel2RowChangeEvent(CType(e.Row,MatchLevel2Row), e.Action))
             End If
         End Sub
         
@@ -4030,8 +4030,8 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.MatchSectionRowDeletedEvent) Is Nothing) Then
-                RaiseEvent MatchSectionRowDeleted(Me, New MatchSectionRowChangeEvent(CType(e.Row,MatchSectionRow), e.Action))
+            If (Not (Me.MatchLevel2RowDeletedEvent) Is Nothing) Then
+                RaiseEvent MatchLevel2RowDeleted(Me, New MatchLevel2RowChangeEvent(CType(e.Row,MatchLevel2Row), e.Action))
             End If
         End Sub
         
@@ -4039,14 +4039,14 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.MatchSectionRowDeletingEvent) Is Nothing) Then
-                RaiseEvent MatchSectionRowDeleting(Me, New MatchSectionRowChangeEvent(CType(e.Row,MatchSectionRow), e.Action))
+            If (Not (Me.MatchLevel2RowDeletingEvent) Is Nothing) Then
+                RaiseEvent MatchLevel2RowDeleting(Me, New MatchLevel2RowChangeEvent(CType(e.Row,MatchLevel2Row), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub RemoveMatchSectionRow(ByVal row As MatchSectionRow)
+        Public Sub RemoveMatchLevel2Row(ByVal row As MatchLevel2Row)
             Me.Rows.Remove(row)
         End Sub
         
@@ -4073,7 +4073,7 @@ Partial Public Class ImportCDI
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "MatchSectionDataTable"
+            attribute2.FixedValue = "MatchLevel2DataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -4122,14 +4122,14 @@ Partial Public Class ImportCDI
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class MatchItemDataTable
-        Inherits Global.System.Data.TypedTableBase(Of MatchItemRow)
+    Partial Public Class MatchLevel3DataTable
+        Inherits Global.System.Data.TypedTableBase(Of MatchLevel3Row)
         
         Private columntext As Global.System.Data.DataColumn
         
-        Private columnsegID As Global.System.Data.DataColumn
+        Private columnlevel1 As Global.System.Data.DataColumn
         
-        Private columnsectionID As Global.System.Data.DataColumn
+        Private columnlevel2 As Global.System.Data.DataColumn
         
         Private columncolumnID As Global.System.Data.DataColumn
         
@@ -4137,7 +4137,7 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "MatchItem"
+            Me.TableName = "MatchLevel3"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -4178,17 +4178,17 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property segIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property level1Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsegID
+                Return Me.columnlevel1
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property sectionIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property level2Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsectionID
+                Return Me.columnlevel2
             End Get
         End Property
         
@@ -4211,44 +4211,44 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As MatchItemRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As MatchLevel3Row
             Get
-                Return CType(Me.Rows(index),MatchItemRow)
+                Return CType(Me.Rows(index),MatchLevel3Row)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event MatchItemRowChanging As MatchItemRowChangeEventHandler
+        Public Event MatchLevel3RowChanging As MatchLevel3RowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event MatchItemRowChanged As MatchItemRowChangeEventHandler
+        Public Event MatchLevel3RowChanged As MatchLevel3RowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event MatchItemRowDeleting As MatchItemRowChangeEventHandler
+        Public Event MatchLevel3RowDeleting As MatchLevel3RowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event MatchItemRowDeleted As MatchItemRowChangeEventHandler
+        Public Event MatchLevel3RowDeleted As MatchLevel3RowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Sub AddMatchItemRow(ByVal row As MatchItemRow)
+        Public Overloads Sub AddMatchLevel3Row(ByVal row As MatchLevel3Row)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddMatchItemRow(ByVal text As String, ByVal segID As Integer, ByVal sectionID As Integer, ByVal columnID As Integer) As MatchItemRow
-            Dim rowMatchItemRow As MatchItemRow = CType(Me.NewRow,MatchItemRow)
-            Dim columnValuesArray() As Object = New Object() {text, segID, sectionID, columnID}
-            rowMatchItemRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowMatchItemRow)
-            Return rowMatchItemRow
+        Public Overloads Function AddMatchLevel3Row(ByVal text As String, ByVal level1 As Integer, ByVal level2 As Integer, ByVal columnID As Integer) As MatchLevel3Row
+            Dim rowMatchLevel3Row As MatchLevel3Row = CType(Me.NewRow,MatchLevel3Row)
+            Dim columnValuesArray() As Object = New Object() {text, level1, level2, columnID}
+            rowMatchLevel3Row.ItemArray = columnValuesArray
+            Me.Rows.Add(rowMatchLevel3Row)
+            Return rowMatchLevel3Row
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As MatchItemDataTable = CType(MyBase.Clone,MatchItemDataTable)
+            Dim cln As MatchLevel3DataTable = CType(MyBase.Clone,MatchLevel3DataTable)
             cln.InitVars
             Return cln
         End Function
@@ -4256,15 +4256,15 @@ Partial Public Class ImportCDI
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New MatchItemDataTable()
+            Return New MatchLevel3DataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
             Me.columntext = MyBase.Columns("text")
-            Me.columnsegID = MyBase.Columns("segID")
-            Me.columnsectionID = MyBase.Columns("sectionID")
+            Me.columnlevel1 = MyBase.Columns("level1")
+            Me.columnlevel2 = MyBase.Columns("level2")
             Me.columncolumnID = MyBase.Columns("columnID")
         End Sub
         
@@ -4273,38 +4273,38 @@ Partial Public Class ImportCDI
         Private Sub InitClass()
             Me.columntext = New Global.System.Data.DataColumn("text", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntext)
-            Me.columnsegID = New Global.System.Data.DataColumn("segID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsegID)
-            Me.columnsectionID = New Global.System.Data.DataColumn("sectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsectionID)
+            Me.columnlevel1 = New Global.System.Data.DataColumn("level1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlevel1)
+            Me.columnlevel2 = New Global.System.Data.DataColumn("level2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlevel2)
             Me.columncolumnID = New Global.System.Data.DataColumn("columnID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncolumnID)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function NewMatchItemRow() As MatchItemRow
-            Return CType(Me.NewRow,MatchItemRow)
+        Public Function NewMatchLevel3Row() As MatchLevel3Row
+            Return CType(Me.NewRow,MatchLevel3Row)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New MatchItemRow(builder)
+            Return New MatchLevel3Row(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(MatchItemRow)
+            Return GetType(MatchLevel3Row)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.MatchItemRowChangedEvent) Is Nothing) Then
-                RaiseEvent MatchItemRowChanged(Me, New MatchItemRowChangeEvent(CType(e.Row,MatchItemRow), e.Action))
+            If (Not (Me.MatchLevel3RowChangedEvent) Is Nothing) Then
+                RaiseEvent MatchLevel3RowChanged(Me, New MatchLevel3RowChangeEvent(CType(e.Row,MatchLevel3Row), e.Action))
             End If
         End Sub
         
@@ -4312,8 +4312,8 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.MatchItemRowChangingEvent) Is Nothing) Then
-                RaiseEvent MatchItemRowChanging(Me, New MatchItemRowChangeEvent(CType(e.Row,MatchItemRow), e.Action))
+            If (Not (Me.MatchLevel3RowChangingEvent) Is Nothing) Then
+                RaiseEvent MatchLevel3RowChanging(Me, New MatchLevel3RowChangeEvent(CType(e.Row,MatchLevel3Row), e.Action))
             End If
         End Sub
         
@@ -4321,8 +4321,8 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.MatchItemRowDeletedEvent) Is Nothing) Then
-                RaiseEvent MatchItemRowDeleted(Me, New MatchItemRowChangeEvent(CType(e.Row,MatchItemRow), e.Action))
+            If (Not (Me.MatchLevel3RowDeletedEvent) Is Nothing) Then
+                RaiseEvent MatchLevel3RowDeleted(Me, New MatchLevel3RowChangeEvent(CType(e.Row,MatchLevel3Row), e.Action))
             End If
         End Sub
         
@@ -4330,14 +4330,14 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.MatchItemRowDeletingEvent) Is Nothing) Then
-                RaiseEvent MatchItemRowDeleting(Me, New MatchItemRowChangeEvent(CType(e.Row,MatchItemRow), e.Action))
+            If (Not (Me.MatchLevel3RowDeletingEvent) Is Nothing) Then
+                RaiseEvent MatchLevel3RowDeleting(Me, New MatchLevel3RowChangeEvent(CType(e.Row,MatchLevel3Row), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub RemoveMatchItemRow(ByVal row As MatchItemRow)
+        Public Sub RemoveMatchLevel3Row(ByVal row As MatchLevel3Row)
             Me.Rows.Remove(row)
         End Sub
         
@@ -4364,7 +4364,7 @@ Partial Public Class ImportCDI
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "MatchItemDataTable"
+            attribute2.FixedValue = "MatchLevel3DataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -4418,9 +4418,9 @@ Partial Public Class ImportCDI
         
         Private columntext As Global.System.Data.DataColumn
         
-        Private columnsegID As Global.System.Data.DataColumn
+        Private columnlevel1 As Global.System.Data.DataColumn
         
-        Private columnsectionID As Global.System.Data.DataColumn
+        Private columnlevel2 As Global.System.Data.DataColumn
         
         Private columncolumnID As Global.System.Data.DataColumn
         
@@ -4469,17 +4469,17 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property segIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property level1Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsegID
+                Return Me.columnlevel1
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property sectionIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property level2Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnsectionID
+                Return Me.columnlevel2
             End Get
         End Property
         
@@ -4528,9 +4528,9 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddMatchLevel4Row(ByVal text As String, ByVal segID As Integer, ByVal sectionID As Integer, ByVal columnID As Integer) As MatchLevel4Row
+        Public Overloads Function AddMatchLevel4Row(ByVal text As String, ByVal level1 As Integer, ByVal level2 As Integer, ByVal columnID As Integer) As MatchLevel4Row
             Dim rowMatchLevel4Row As MatchLevel4Row = CType(Me.NewRow,MatchLevel4Row)
-            Dim columnValuesArray() As Object = New Object() {text, segID, sectionID, columnID}
+            Dim columnValuesArray() As Object = New Object() {text, level1, level2, columnID}
             rowMatchLevel4Row.ItemArray = columnValuesArray
             Me.Rows.Add(rowMatchLevel4Row)
             Return rowMatchLevel4Row
@@ -4554,8 +4554,8 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
             Me.columntext = MyBase.Columns("text")
-            Me.columnsegID = MyBase.Columns("segID")
-            Me.columnsectionID = MyBase.Columns("sectionID")
+            Me.columnlevel1 = MyBase.Columns("level1")
+            Me.columnlevel2 = MyBase.Columns("level2")
             Me.columncolumnID = MyBase.Columns("columnID")
         End Sub
         
@@ -4564,10 +4564,10 @@ Partial Public Class ImportCDI
         Private Sub InitClass()
             Me.columntext = New Global.System.Data.DataColumn("text", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntext)
-            Me.columnsegID = New Global.System.Data.DataColumn("segID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsegID)
-            Me.columnsectionID = New Global.System.Data.DataColumn("sectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsectionID)
+            Me.columnlevel1 = New Global.System.Data.DataColumn("level1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlevel1)
+            Me.columnlevel2 = New Global.System.Data.DataColumn("level2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlevel2)
             Me.columncolumnID = New Global.System.Data.DataColumn("columnID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncolumnID)
         End Sub
@@ -7392,12 +7392,12 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property segID() As Integer
+        Public Property level() As Integer
             Get
-                Return CType(Me(Me.tableSegmentReport.segIDColumn),Integer)
+                Return CType(Me(Me.tableSegmentReport.levelColumn),Integer)
             End Get
             Set
-                Me(Me.tableSegmentReport.segIDColumn) = value
+                Me(Me.tableSegmentReport.levelColumn) = value
             End Set
         End Property
         
@@ -7621,16 +7621,16 @@ Partial Public Class ImportCDI
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class MatchSegmentRow
+    Partial Public Class MatchLevel1Row
         Inherits Global.System.Data.DataRow
         
-        Private tableMatchSegment As MatchSegmentDataTable
+        Private tableMatchLevel1 As MatchLevel1DataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableMatchSegment = CType(Me.Table,MatchSegmentDataTable)
+            Me.tableMatchLevel1 = CType(Me.Table,MatchLevel1DataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7638,69 +7638,69 @@ Partial Public Class ImportCDI
         Public Property text() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableMatchSegment.textColumn),String)
+                    Return CType(Me(Me.tableMatchLevel1.textColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'text' in table 'MatchSegment' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'text' in table 'MatchLevel1' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableMatchSegment.textColumn) = value
+                Me(Me.tableMatchLevel1.textColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property segID() As String
+        Public Property level1() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableMatchSegment.segIDColumn),String)
+                    Return CType(Me(Me.tableMatchLevel1.level1Column),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'segID' in table 'MatchSegment' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'level1' in table 'MatchLevel1' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableMatchSegment.segIDColumn) = value
+                Me(Me.tableMatchLevel1.level1Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IstextNull() As Boolean
-            Return Me.IsNull(Me.tableMatchSegment.textColumn)
+            Return Me.IsNull(Me.tableMatchLevel1.textColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SettextNull()
-            Me(Me.tableMatchSegment.textColumn) = Global.System.Convert.DBNull
+            Me(Me.tableMatchLevel1.textColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IssegIDNull() As Boolean
-            Return Me.IsNull(Me.tableMatchSegment.segIDColumn)
+        Public Function Islevel1Null() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel1.level1Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetsegIDNull()
-            Me(Me.tableMatchSegment.segIDColumn) = Global.System.Convert.DBNull
+        Public Sub Setlevel1Null()
+            Me(Me.tableMatchLevel1.level1Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class MatchSectionRow
+    Partial Public Class MatchLevel2Row
         Inherits Global.System.Data.DataRow
         
-        Private tableMatchSection As MatchSectionDataTable
+        Private tableMatchLevel2 As MatchLevel2DataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableMatchSection = CType(Me.Table,MatchSectionDataTable)
+            Me.tableMatchLevel2 = CType(Me.Table,MatchLevel2DataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7708,43 +7708,43 @@ Partial Public Class ImportCDI
         Public Property text() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableMatchSection.textColumn),String)
+                    Return CType(Me(Me.tableMatchLevel2.textColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'text' in table 'MatchSection' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'text' in table 'MatchLevel2' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableMatchSection.textColumn) = value
+                Me(Me.tableMatchLevel2.textColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property segID() As Integer
+        Public Property level1() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableMatchSection.segIDColumn),Integer)
+                    Return CType(Me(Me.tableMatchLevel2.level1Column),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'segID' in table 'MatchSection' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'level1' in table 'MatchLevel2' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableMatchSection.segIDColumn) = value
+                Me(Me.tableMatchLevel2.level1Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property sectionID() As Integer
+        Public Property level2() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableMatchSection.sectionIDColumn),Integer)
+                    Return CType(Me(Me.tableMatchLevel2.level2Column),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'sectionID' in table 'MatchSection' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'level2' in table 'MatchLevel2' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableMatchSection.sectionIDColumn) = value
+                Me(Me.tableMatchLevel2.level2Column) = value
             End Set
         End Property
         
@@ -7753,78 +7753,78 @@ Partial Public Class ImportCDI
         Public Property columnID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableMatchSection.columnIDColumn),Integer)
+                    Return CType(Me(Me.tableMatchLevel2.columnIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'columnID' in table 'MatchSection' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'columnID' in table 'MatchLevel2' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableMatchSection.columnIDColumn) = value
+                Me(Me.tableMatchLevel2.columnIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IstextNull() As Boolean
-            Return Me.IsNull(Me.tableMatchSection.textColumn)
+            Return Me.IsNull(Me.tableMatchLevel2.textColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SettextNull()
-            Me(Me.tableMatchSection.textColumn) = Global.System.Convert.DBNull
+            Me(Me.tableMatchLevel2.textColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IssegIDNull() As Boolean
-            Return Me.IsNull(Me.tableMatchSection.segIDColumn)
+        Public Function Islevel1Null() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel2.level1Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetsegIDNull()
-            Me(Me.tableMatchSection.segIDColumn) = Global.System.Convert.DBNull
+        Public Sub Setlevel1Null()
+            Me(Me.tableMatchLevel2.level1Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IssectionIDNull() As Boolean
-            Return Me.IsNull(Me.tableMatchSection.sectionIDColumn)
+        Public Function Islevel2Null() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel2.level2Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetsectionIDNull()
-            Me(Me.tableMatchSection.sectionIDColumn) = Global.System.Convert.DBNull
+        Public Sub Setlevel2Null()
+            Me(Me.tableMatchLevel2.level2Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IscolumnIDNull() As Boolean
-            Return Me.IsNull(Me.tableMatchSection.columnIDColumn)
+            Return Me.IsNull(Me.tableMatchLevel2.columnIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetcolumnIDNull()
-            Me(Me.tableMatchSection.columnIDColumn) = Global.System.Convert.DBNull
+            Me(Me.tableMatchLevel2.columnIDColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class MatchItemRow
+    Partial Public Class MatchLevel3Row
         Inherits Global.System.Data.DataRow
         
-        Private tableMatchItem As MatchItemDataTable
+        Private tableMatchLevel3 As MatchLevel3DataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableMatchItem = CType(Me.Table,MatchItemDataTable)
+            Me.tableMatchLevel3 = CType(Me.Table,MatchLevel3DataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7832,43 +7832,43 @@ Partial Public Class ImportCDI
         Public Property text() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableMatchItem.textColumn),String)
+                    Return CType(Me(Me.tableMatchLevel3.textColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'text' in table 'MatchItem' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'text' in table 'MatchLevel3' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableMatchItem.textColumn) = value
+                Me(Me.tableMatchLevel3.textColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property segID() As Integer
+        Public Property level1() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableMatchItem.segIDColumn),Integer)
+                    Return CType(Me(Me.tableMatchLevel3.level1Column),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'segID' in table 'MatchItem' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'level1' in table 'MatchLevel3' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableMatchItem.segIDColumn) = value
+                Me(Me.tableMatchLevel3.level1Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property sectionID() As Integer
+        Public Property level2() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableMatchItem.sectionIDColumn),Integer)
+                    Return CType(Me(Me.tableMatchLevel3.level2Column),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'sectionID' in table 'MatchItem' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'level2' in table 'MatchLevel3' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableMatchItem.sectionIDColumn) = value
+                Me(Me.tableMatchLevel3.level2Column) = value
             End Set
         End Property
         
@@ -7877,62 +7877,62 @@ Partial Public Class ImportCDI
         Public Property columnID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableMatchItem.columnIDColumn),Integer)
+                    Return CType(Me(Me.tableMatchLevel3.columnIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'columnID' in table 'MatchItem' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'columnID' in table 'MatchLevel3' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableMatchItem.columnIDColumn) = value
+                Me(Me.tableMatchLevel3.columnIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IstextNull() As Boolean
-            Return Me.IsNull(Me.tableMatchItem.textColumn)
+            Return Me.IsNull(Me.tableMatchLevel3.textColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SettextNull()
-            Me(Me.tableMatchItem.textColumn) = Global.System.Convert.DBNull
+            Me(Me.tableMatchLevel3.textColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IssegIDNull() As Boolean
-            Return Me.IsNull(Me.tableMatchItem.segIDColumn)
+        Public Function Islevel1Null() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel3.level1Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetsegIDNull()
-            Me(Me.tableMatchItem.segIDColumn) = Global.System.Convert.DBNull
+        Public Sub Setlevel1Null()
+            Me(Me.tableMatchLevel3.level1Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IssectionIDNull() As Boolean
-            Return Me.IsNull(Me.tableMatchItem.sectionIDColumn)
+        Public Function Islevel2Null() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel3.level2Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetsectionIDNull()
-            Me(Me.tableMatchItem.sectionIDColumn) = Global.System.Convert.DBNull
+        Public Sub Setlevel2Null()
+            Me(Me.tableMatchLevel3.level2Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IscolumnIDNull() As Boolean
-            Return Me.IsNull(Me.tableMatchItem.columnIDColumn)
+            Return Me.IsNull(Me.tableMatchLevel3.columnIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetcolumnIDNull()
-            Me(Me.tableMatchItem.columnIDColumn) = Global.System.Convert.DBNull
+            Me(Me.tableMatchLevel3.columnIDColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -7968,31 +7968,31 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property segID() As Integer
+        Public Property level1() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableMatchLevel4.segIDColumn),Integer)
+                    Return CType(Me(Me.tableMatchLevel4.level1Column),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'segID' in table 'MatchLevel4' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'level1' in table 'MatchLevel4' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableMatchLevel4.segIDColumn) = value
+                Me(Me.tableMatchLevel4.level1Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property sectionID() As Integer
+        Public Property level2() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableMatchLevel4.sectionIDColumn),Integer)
+                    Return CType(Me(Me.tableMatchLevel4.level2Column),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'sectionID' in table 'MatchLevel4' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'level2' in table 'MatchLevel4' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableMatchLevel4.sectionIDColumn) = value
+                Me(Me.tableMatchLevel4.level2Column) = value
             End Set
         End Property
         
@@ -8025,26 +8025,26 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IssegIDNull() As Boolean
-            Return Me.IsNull(Me.tableMatchLevel4.segIDColumn)
+        Public Function Islevel1Null() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel4.level1Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetsegIDNull()
-            Me(Me.tableMatchLevel4.segIDColumn) = Global.System.Convert.DBNull
+        Public Sub Setlevel1Null()
+            Me(Me.tableMatchLevel4.level1Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IssectionIDNull() As Boolean
-            Return Me.IsNull(Me.tableMatchLevel4.sectionIDColumn)
+        Public Function Islevel2Null() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel4.level2Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetsectionIDNull()
-            Me(Me.tableMatchLevel4.sectionIDColumn) = Global.System.Convert.DBNull
+        Public Sub Setlevel2Null()
+            Me(Me.tableMatchLevel4.level2Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8982,16 +8982,16 @@ Partial Public Class ImportCDI
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Class MatchSegmentRowChangeEvent
+    Public Class MatchLevel1RowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As MatchSegmentRow
+        Private eventRow As MatchLevel1Row
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New(ByVal row As MatchSegmentRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As MatchLevel1Row, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -8999,7 +8999,7 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Row() As MatchSegmentRow
+        Public ReadOnly Property Row() As MatchLevel1Row
             Get
                 Return Me.eventRow
             End Get
@@ -9018,16 +9018,16 @@ Partial Public Class ImportCDI
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Class MatchSectionRowChangeEvent
+    Public Class MatchLevel2RowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As MatchSectionRow
+        Private eventRow As MatchLevel2Row
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New(ByVal row As MatchSectionRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As MatchLevel2Row, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -9035,7 +9035,7 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Row() As MatchSectionRow
+        Public ReadOnly Property Row() As MatchLevel2Row
             Get
                 Return Me.eventRow
             End Get
@@ -9054,16 +9054,16 @@ Partial Public Class ImportCDI
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Class MatchItemRowChangeEvent
+    Public Class MatchLevel3RowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As MatchItemRow
+        Private eventRow As MatchLevel3Row
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New(ByVal row As MatchItemRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As MatchLevel3Row, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -9071,7 +9071,7 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Row() As MatchItemRow
+        Public ReadOnly Property Row() As MatchLevel3Row
             Get
                 Return Me.eventRow
             End Get

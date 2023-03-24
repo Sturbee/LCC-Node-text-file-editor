@@ -1,491 +1,491 @@
 <?xml version="1.0" standalone="yes"?>
 <ImportCDI xmlns="http://tempuri.org/ImportCDI.xsd">
 
-	<MatchSegment>
+	<MatchLevel1>
 		<text>NODE ID.Your name and description for this node.Node </text>
-		<segID>0</segID>
-	</MatchSegment>
-	<MatchSegment>
+		<level1>0</level1>
+	</MatchLevel1>
+	<MatchLevel1>
 		<text>Node ID.Your name and description for this node.Node </text>
-		<segID>0</segID>
-	</MatchSegment>
-	<MatchSegment>
+		<level1>0</level1>
+	</MatchLevel1>
+	<MatchLevel1>
 		<text>Node Power Monitor.</text>
-		<segID>1</segID>
-	</MatchSegment>
-	<MatchSegment>
+		<level1>1</level1>
+	</MatchLevel1>
+	<MatchLevel1>
 		<text>Port I/O.Line(</text>
-		<segID>2</segID>
-	</MatchSegment>
-	<MatchSegment>
+		<level1>2</level1>
+	</MatchLevel1>
+	<MatchLevel1>
 		<text>Port I/O-1.Line(</text>
-		<segID>2</segID>
-	</MatchSegment>
-	<MatchSegment>
+		<level1>2</level1>
+	</MatchLevel1>
+	<MatchLevel1>
 		<text>Conditionals.Logic(</text>
-		<segID>3</segID>
-	</MatchSegment>
-	<MatchSegment>
+		<level1>3</level1>
+	</MatchLevel1>
+	<MatchLevel1>
 		<text>Track Receiver.Circuit(</text>
-		<segID>4</segID>
-	</MatchSegment>
-	<MatchSegment>
+		<level1>4</level1>
+	</MatchLevel1>
+	<MatchLevel1>
 		<text>Track Circuits.Circuit(</text>
-		<segID>4</segID>
-	</MatchSegment>
-	<MatchSegment>
+		<level1>4</level1>
+	</MatchLevel1>
+	<MatchLevel1>
 		<text>Track Transmitter.Circuit(</text>
-		<segID>5</segID>
-	</MatchSegment>
-	<MatchSegment>
+		<level1>5</level1>
+	</MatchLevel1>
+	<MatchLevel1>
 		<text>Rule to Aspect.Mast(</text>
-		<segID>6</segID>
-	</MatchSegment>
-	<MatchSegment>
+		<level1>6</level1>
+	</MatchLevel1>
+	<MatchLevel1>
 		<text>Direct Lamp Control.Lamp(</text>
-		<segID>7</segID>
-	</MatchSegment>
-		<MatchSegment>
+		<level1>7</level1>
+	</MatchLevel1>
+		<MatchLevel1>
 		<text>Brightness.Intensities.#</text>
-		<segID>8</segID>
-	</MatchSegment>
-	<MatchSegment>
+		<level1>8</level1>
+	</MatchLevel1>
+	<MatchLevel1>
 		<text>Rules.Rule </text>
-		<segID>9</segID>
-	</MatchSegment>
+		<level1>9</level1>
+	</MatchLevel1>
 
 
 <!-- Node ID section-->
-	<MatchSection>
+	<MatchLevel2>
 		<text>Name=</text>
-		<segID>0</segID>
-		<sectionID>0</sectionID>
+		<level1>0</level1>
+		<level2>0</level2>
 		<columnID>2</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Description=</text>
-		<segID>0</segID>
-		<sectionID>0</sectionID>
+		<level1>0</level1>
+		<level2>0</level2>
 		<columnID>3</columnID>
-	</MatchSection>
+	</MatchLevel2>
 	
 <!-- Node Power Monitor: segment 1 section 0 -->
-	<MatchSection>
+	<MatchLevel2>
 		<text>Message Options=</text>
-		<segID>1</segID>
-		<sectionID>0</sectionID>
+		<level1>1</level1>
+		<level2>0</level2>
 		<columnID>2</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Power OK=</text>
-		<segID>1</segID>
-		<sectionID>0</sectionID>
+		<level1>1</level1>
+		<level2>0</level2>
 		<columnID>3</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Power Not OK=</text>
-		<segID>1</segID>
-		<sectionID>0</sectionID>
+		<level1>1</level1>
+		<level2>0</level2>
 		<columnID>4</columnID>
-	</MatchSection>
+	</MatchLevel2>
 	
 <!-- Port I/O: segment 2 section 0 -->	
-	<MatchSection>
+	<MatchLevel2>
 		<text>Description=</text>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+		<level1>2</level1>
+		<level2>0</level2>
 		<columnID>3</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Output Function=</text>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+		<level1>2</level1>
+		<level2>0</level2>
 		<columnID>4</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Receiving the configured Command (C) event(s) will drive or pulse the line:=</text>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+		<level1>2</level1>
+		<level2>0</level2>
 		<columnID>5</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Input Function=</text>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+		<level1>2</level1>
+		<level2>0</level2>
 		<columnID>6</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>The configured Indication (P) event(s) will be sent when the line is driven:=</text>
-		<segID>2</segID>
-		<sectionID>0</sectionID>
+		<level1>2</level1>
+		<level2>0</level2>
 		<columnID>7</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Delay(</text>
-		<segID>2</segID>
-		<sectionID>1</sectionID>
+		<level1>2</level1>
+		<level2>1</level2>
 		<columnID>3</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Event(</text>
-		<segID>2</segID>
-		<sectionID>2</sectionID>
+		<level1>2</level1>
+		<level2>2</level2>
 		<columnID>3</columnID>
-	</MatchSection>
+	</MatchLevel2>
 	
 <!-- Conditional: segment 3 section 0 -->	
-	<MatchSection>
+	<MatchLevel2>
 		<text>Description=</text>
-		<segID>3</segID>
-		<sectionID>0</sectionID>
+		<level1>3</level1>
+		<level2>0</level2>
 		<columnID>3</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Function=</text>
-		<segID>3</segID>
-		<sectionID>0</sectionID>
+		<level1>3</level1>
+		<level2>0</level2>
 		<columnID>4</columnID>
-	</MatchSection>
+	</MatchLevel2>
 	
 <!-- Conditional: segment 3 Logic Operation section 1 -->		
-	<MatchSection>
+	<MatchLevel2>
 		<text>Variable #1.Trigger=</text>
-		<segID>3</segID>
-		<sectionID>1</sectionID>
+		<level1>3</level1>
+		<level2>1</level2>
 		<columnID>3</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Variable #1.Source=</text>
-		<segID>3</segID>
-		<sectionID>1</sectionID>
+		<level1>3</level1>
+		<level2>1</level2>
 		<columnID>4</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Variable #1.Track Speed=</text>
-		<segID>3</segID>
-		<sectionID>1</sectionID>
+		<level1>3</level1>
+		<level2>1</level2>
 		<columnID>5</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Variable #1.set true=</text>
-		<segID>3</segID>
-		<sectionID>1</sectionID>
+		<level1>3</level1>
+		<level2>1</level2>
 		<columnID>6</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Variable #1.set false=</text>
-		<segID>3</segID>
-		<sectionID>1</sectionID>
+		<level1>3</level1>
+		<level2>1</level2>
 		<columnID>7</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Logic Operation=</text>
-		<segID>3</segID>
-		<sectionID>1</sectionID>
+		<level1>3</level1>
+		<level2>1</level2>
 		<columnID>8</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Variable #2.Trigger=</text>
-		<segID>3</segID>
-		<sectionID>1</sectionID>
+		<level1>3</level1>
+		<level2>1</level2>
 		<columnID>9</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Variable #2.Source=</text>
-		<segID>3</segID>
-		<sectionID>1</sectionID>
+		<level1>3</level1>
+		<level2>1</level2>
 		<columnID>10</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Variable #2.Track Speed=</text>
-		<segID>3</segID>
-		<sectionID>1</sectionID>
+		<level1>3</level1>
+		<level2>1</level2>
 		<columnID>11</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Variable #2.set true=</text>
-		<segID>3</segID>
-		<sectionID>1</sectionID>
+		<level1>3</level1>
+		<level2>1</level2>
 		<columnID>12</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Variable #2.set false=</text>
-		<segID>3</segID>
-		<sectionID>1</sectionID>
+		<level1>3</level1>
+		<level2>1</level2>
 		<columnID>13</columnID>
-	</MatchSection>
+	</MatchLevel2>
 		
 <!-- Conditional: segment 3 Logic Action section 2 -->		
-	<MatchSection>
+	<MatchLevel2>
 		<text>Action.when true=</text>
-		<segID>3</segID>
-		<sectionID>2</sectionID>
+		<level1>3</level1>
+		<level2>2</level2>
 		<columnID>3</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Action.when false=</text>
-		<segID>3</segID>
-		<sectionID>2</sectionID>
+		<level1>3</level1>
+		<level2>2</level2>
 		<columnID>4</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Time Delay before action.Delay Time (1-60000)=</text>
-		<segID>3</segID>
-		<sectionID>2</sectionID>
+		<level1>3</level1>
+		<level2>2</level2>
 		<columnID>5</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Time Delay before action.Units=</text>
-		<segID>3</segID>
-		<sectionID>2</sectionID>
+		<level1>3</level1>
+		<level2>2</level2>
 		<columnID>6</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Time Delay before action.Retriggerable=</text>
-		<segID>3</segID>
-		<sectionID>2</sectionID>
+		<level1>3</level1>
+		<level2>2</level2>
 		<columnID>7</columnID>
-	</MatchSection>
+	</MatchLevel2>
 	
 <!-- Conditional: segment 3 Logic Producer section 3 -->
-	<MatchSection>
+	<MatchLevel2>
 		<text>Action(</text>
-		<segID>3</segID>
-		<sectionID>3</sectionID>
+		<level1>3</level1>
+		<level2>3</level2>
 		<columnID>3</columnID>
-	</MatchSection>	
+	</MatchLevel2>	
 	
 <!-- Track Circuit Receiver segment 4 section 0 -->	
-	<MatchSection>
+	<MatchLevel2>
 		<text>Remote Mast Description=</text>
-		<segID>4</segID>
-		<sectionID>0</sectionID>
+		<level1>4</level1>
+		<level2>0</level2>
 		<columnID>1</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Link Address=</text>
-		<segID>4</segID>
-		<sectionID>0</sectionID>
+		<level1>4</level1>
+		<level2>0</level2>
 		<columnID>2</columnID>
-	</MatchSection>
+	</MatchLevel2>
 	
 <!-- Track Circuit Transmitter segment 5 section 0 -->		
-	<MatchSection>
+	<MatchLevel2>
 		<text>Remote Mast Description=</text>
-		<segID>5</segID>
-		<sectionID>0</sectionID>
+		<level1>5</level1>
+		<level2>0</level2>
 		<columnID>1</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Link Address=</text>
-		<segID>5</segID>
-		<sectionID>0</sectionID>
+		<level1>5</level1>
+		<level2>0</level2>
 		<columnID>2</columnID>
-	</MatchSection>
+	</MatchLevel2>
 
 <!-- Rule To Aspect segment 6 section 0 -->
-	<MatchSection>
+	<MatchLevel2>
 		<text>Mast Processing=</text>
-		<segID>6</segID>
-		<sectionID>0</sectionID>
+		<level1>6</level1>
+		<level2>0</level2>
 		<columnID>3</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Mast Description=</text>
-		<segID>6</segID>
-		<sectionID>0</sectionID>
+		<level1>6</level1>
+		<level2>0</level2>
 		<columnID>4</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Link Address=</text>
-		<segID>6</segID>
-		<sectionID>0</sectionID>
+		<level1>6</level1>
+		<level2>0</level2>
 		<columnID>5</columnID>
-	</MatchSection>
-		<MatchSection>
+	</MatchLevel2>
+		<MatchLevel2>
 		<text>Lamp Fade=</text>
-		<segID>6</segID>
-		<sectionID>0</sectionID>
+		<level1>6</level1>
+		<level2>0</level2>
 		<columnID>6</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Rule(</text>
-		<segID>6</segID>
-		<sectionID>1</sectionID>
+		<level1>6</level1>
+		<level2>1</level2>
 		<columnID>3</columnID>
-	</MatchSection>
+	</MatchLevel2>
 
 	<!-- Direct Lamp Control segment 7 section 0 -->
-	<MatchSection>
+	<MatchLevel2>
 		<text>Lamp Description=</text>
-		<segID>7</segID>
-		<sectionID>0</sectionID>
+		<level1>7</level1>
+		<level2>0</level2>
 		<columnID>3</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Lamp On=</text>
-		<segID>7</segID>
-		<sectionID>0</sectionID>
+		<level1>7</level1>
+		<level2>0</level2>
 		<columnID>4</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Lamp Off=</text>
-		<segID>7</segID>
-		<sectionID>0</sectionID>
+		<level1>7</level1>
+		<level2>0</level2>
 		<columnID>5</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Lamp Fade=</text>
-		<segID>7</segID>
-		<sectionID>0</sectionID>
+		<level1>7</level1>
+		<level2>0</level2>
 		<columnID>6</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Lamp Selection=</text>
-		<segID>7</segID>
-		<sectionID>0</sectionID>
+		<level1>7</level1>
+		<level2>0</level2>
 		<columnID>7</columnID>
-	</MatchSection>
-	<MatchSection>
+	</MatchLevel2>
+	<MatchLevel2>
 		<text>Lamp Phase (A-B) - Flash Rate=</text>
-		<segID>7</segID>
-		<sectionID>0</sectionID>
+		<level1>7</level1>
+		<level2>0</level2>
 		<columnID>8</columnID>
-	</MatchSection>
+	</MatchLevel2>
 	
-<!-- Port I/O: segement 2 Delay section 1 -->	
-	<MatchItem>
+<!-- Port I/O: segement 2 Delay level 1 -->	
+	<MatchLevel3>
 		<text>Delay Time (1-60000)=</text>
-		<segID>2</segID>
-		<sectionID>1</sectionID>
+		<level1>2</level1>
+		<level2>1</level2>
 		<columnID>4</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>Units=</text>
-		<segID>2</segID>
-		<sectionID>1</sectionID>
+		<level1>2</level1>
+		<level2>1</level2>
 		<columnID>5</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>Retrigger=</text>
-		<segID>2</segID>
-		<sectionID>1</sectionID>
+		<level1>2</level1>
+		<level2>1</level2>
 		<columnID>6</columnID>
-	</MatchItem>
+	</MatchLevel3>
 		
 <!-- Port I/O: segment 2 Event section 2-->		
-	<MatchItem>
+	<MatchLevel3>
 		<text>Command=</text>
-		<segID>2</segID>
-		<sectionID>2</sectionID>
+		<level1>2</level1>
+		<level2>2</level2>
 		<columnID>4</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>Action=</text>
-		<segID>2</segID>
-		<sectionID>2</sectionID>
+		<level1>2</level1>
+		<level2>2</level2>
 		<columnID>5</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>Upon this action=</text>
-		<segID>2</segID>
-		<sectionID>2</sectionID>
+		<level1>2</level1>
+		<level2>2</level2>
 		<columnID>6</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>Indicator=</text>
-		<segID>2</segID>
-		<sectionID>2</sectionID>
+		<level1>2</level1>
+		<level2>2</level2>
 		<columnID>7</columnID>
-	</MatchItem>
-	
+	</MatchLevel3>
 
-	<MatchItem>
+	<!-- Port I/O: segment 2 Event section 3-->
+	<MatchLevel3>
 		<text>Condition=</text>
-		<segID>3</segID>
-		<sectionID>3</sectionID>
+		<level1>3</level1>
+		<level2>3</level2>
 		<columnID>4</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>Destination=</text>
-		<segID>3</segID>
-		<sectionID>3</sectionID>
+		<level1>3</level1>
+		<level2>3</level2>
 		<columnID>5</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>Track Speed=</text>
-		<segID>3</segID>
-		<sectionID>3</sectionID>
+		<level1>3</level1>
+		<level2>3</level2>
 		<columnID>6</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>Action Event=</text>
-		<segID>3</segID>
-		<sectionID>3</sectionID>
+		<level1>3</level1>
+		<level2>3</level2>
 		<columnID>7</columnID>
-	</MatchItem>
+	</MatchLevel3>
 	
 <!-- Rule To Aspect segment 6 section 1 -->
-	<MatchItem>
+	<MatchLevel3>
 		<text>Rule Name=</text>
-		<segID>6</segID>
-		<sectionID>1</sectionID>
+		<level1>6</level1>
+		<level2>1</level2>
 		<columnID>4</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>Track Speed=</text>
-		<segID>6</segID>
-		<sectionID>1</sectionID>
+		<level1>6</level1>
+		<level2>1</level2>
 		<columnID>5</columnID>
-	</MatchItem>
-		<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>set aspect=</text>
-		<segID>6</segID>
-		<sectionID>1</sectionID>
+		<level1>6</level1>
+		<level2>1</level2>
 		<columnID>6</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>aspect is set=</text>
-		<segID>6</segID>
-		<sectionID>1</sectionID>
+		<level1>6</level1>
+		<level2>1</level2>
 		<columnID>7</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>aspect cleared=</text>
-		<segID>6</segID>
-		<sectionID>1</sectionID>
+		<level1>6</level1>
+		<level2>1</level2>
 		<columnID>8</columnID>
-	</MatchItem>
-		<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>Appearance(</text>
-		<segID>6</segID>
-		<sectionID>2</sectionID>
+		<level1>6</level1>
+		<level2>2</level2>
 		<columnID>4</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>Appearance Effects=</text>
-		<segID>6</segID>
-		<sectionID>1</sectionID>
+		<level1>6</level1>
+		<level2>1</level2>
 		<columnID>9</columnID>
-	</MatchItem>
-	<MatchItem>
+	</MatchLevel3>
+	<MatchLevel3>
 		<text>Effects Lamp=</text>
-		<segID>6</segID>
-		<sectionID>1</sectionID>
+		<level1>6</level1>
+		<level2>1</level2>
 		<columnID>10</columnID>
-	</MatchItem>
+	</MatchLevel3>
 
 <!-- Rule To Aspect segment 6 section 1 MatchLevel4 -->
 	<MatchLevel4>
 		<text>Lamp Selection=</text>
-		<segID>6</segID>
-		<sectionID>1</sectionID>
+		<level1>6</level1>
+		<level2>1</level2>
 		<columnID>5</columnID>
 	</MatchLevel4>
 	<MatchLevel4>
 		<text>Lamp Phase (A-B) - Flash Rate=</text>
-		<segID>6</segID>
-		<sectionID>1</sectionID>
+		<level1>6</level1>
+		<level2>1</level2>
 		<columnID>6</columnID>
 	</MatchLevel4>
 	
@@ -1813,47 +1813,47 @@
 	</Process>
 	
 	<SegmentReport>
-		<segID>0</segID>
+		<level>0</level>
 		<text>Node ID</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>1</segID>
+		<level>1</level>
 		<text>Power Monitor</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>2</segID>
+		<level>2</level>
 		<text>Port I/O</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>3</segID>
+		<level>3</level>
 		<text>Conditional</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>4</segID>
+		<level>4</level>
 		<text>Track Circuit Reciver</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>5</segID>
+		<level>5</level>
 		<text>Track Circuit Transmitter</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>6</segID>
+		<level>6</level>
 		<text>Rule To Aspect</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>7</segID>
+		<level>7</level>
 		<text>Direct Lamp Control</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>8</segID>
+		<level>8</level>
 		<text>Brightness</text>
 		<action>true</action>
 	</SegmentReport>

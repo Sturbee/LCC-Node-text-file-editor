@@ -135,7 +135,11 @@
     <Compile Include="TextFileSlection.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User.Designer.vb" />
+    <Compile Include="UserPrefs.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserPrefs.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -204,12 +208,16 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="User.xsc">
-      <DependentUpon>User.xsd</DependentUpon>
+    <None Include="UserPrefs.xsc">
+      <DependentUpon>UserPrefs.xsd</DependentUpon>
     </None>
-    <None Include="User.xsd" />
-    <None Include="User.xss">
-      <DependentUpon>User.xsd</DependentUpon>
+    <None Include="UserPrefs.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UserPrefs.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="UserPrefs.xss">
+      <DependentUpon>UserPrefs.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -218,7 +226,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Report.xml" />
-    <Content Include="User.xml">
+    <Content Include="UserPrefs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

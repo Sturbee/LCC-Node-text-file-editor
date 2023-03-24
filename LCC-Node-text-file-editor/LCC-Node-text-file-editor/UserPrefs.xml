@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" standalone="yes"?>
-<UserPref xmlns="http://tempuri.org/User.xsd">
-	
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UserPrefs xmlns="http://tempuri.org/UserPrefs.xsd">
+
 	<!-- Process data table -->
 	<Process>
 		<processID>1</processID>
@@ -17,55 +17,55 @@
 		<text>Create .csv file</text>
 		<action>false</action>
 	</Process>
-	
+
 	<!-- Segment Report data table-->
 	<SegmentReport>
-		<segID>0</segID>
+		<level>0</level>
 		<text>Node ID</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>1</segID>
+		<level>1</level>
 		<text>Power Monitor</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>2</segID>
+		<level>2</level>
 		<text>Port I/O</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>3</segID>
+		<level>3</level>
 		<text>Conditional</text>
 		<action>false</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>4</segID>
+		<level>4</level>
 		<text>Track Circuit Reciver</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>5</segID>
+		<level>5</level>
 		<text>Track Circuit Transmitter</text>
 		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>6</segID>
+		<level>6</level>
 		<text>Rule To Aspect</text>
 		<action>false</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>7</segID>
+		<level>7</level>
 		<text>Direct Lamp Control</text>
 		<action>false</action>
 	</SegmentReport>
 	<SegmentReport>
-		<segID>8</segID>
+		<level>8</level>
 		<text>Brightness</text>
 		<action>false</action>
 	</SegmentReport>
-	
-	<!-- Track Speed data table -->	
+
+	<!-- Track Speed data table -->
 	<TrackSpeed>
 		<value>0</value>
 		<text>Stop</text>
@@ -98,5 +98,5 @@
 		<value>7</value>
 		<text>Clear/Proceed</text>
 	</TrackSpeed>
-	
-</UserPref>
+
+</UserPrefs>

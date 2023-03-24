@@ -21,7 +21,7 @@ Public Class ClassExportXsd
 
         Try
 
-            Dim dsUser As New UserPref
+            Dim dsUser As New UserPrefs
 
             dsUser.ReadXml(clsAppConfig.SavedUserFile)
             dsUser.AcceptChanges()

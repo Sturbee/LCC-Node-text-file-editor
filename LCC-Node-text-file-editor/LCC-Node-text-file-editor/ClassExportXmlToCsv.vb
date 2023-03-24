@@ -44,7 +44,7 @@ Public Class ClassExportXmlToCsv
 
         Try
 
-            Dim dsUser As New UserPref
+            Dim dsUser As New UserPrefs
 
             dsUser.ReadXml(clsAppConfig.SavedUserFile)
             dsUser.AcceptChanges()
@@ -884,9 +884,9 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Function SegmentReport(segID As Integer, dsReport As ImportCDI) As Boolean
+    Private Function SegmentReport(level1 As Integer, dsReport As ImportCDI) As Boolean
 
-        Dim rowSegReport As ImportCDI.SegmentReportRow = dsReport.SegmentReport.FindBysegID(segID)
+        Dim rowSegReport As ImportCDI.SegmentReportRow = dsReport.SegmentReport.FindBylevel(level1)
         If rowSegReport Is Nothing Then
             Return True
         End If

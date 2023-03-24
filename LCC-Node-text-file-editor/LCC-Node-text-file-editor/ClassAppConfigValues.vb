@@ -13,7 +13,7 @@ Public Class ClassAppConfigValues
         Me.SavedFileFolder = My.Computer.FileSystem.CurrentDirectory
         Me.SavedFileExtension = "*.*"
         Me.SavedImportCDIfile = "ImportCDI.xml"
-        Me.SavedUserFile = "User.xml"
+        Me.SavedUserFile = "UserPrefs.xml"
 
 
         ' Get the application configuration file.
