@@ -93,8 +93,8 @@ Public Class MyFileExplorer
         End If
 
         ' process LCC config file
-        Dim clsXml As New ClassExportCDIxml
-        clsXml.MyReadTextFile(filePath)
+        Dim clsXml As New ClassExportXml
+        clsXml.MyExportToXmlFile(filePath)
 
         ' process xml file to .xsd file
         Dim clsXsd As New ClassExportXsd

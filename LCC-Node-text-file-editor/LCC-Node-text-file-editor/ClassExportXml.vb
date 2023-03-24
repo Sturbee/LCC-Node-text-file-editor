@@ -4,7 +4,7 @@ Imports System.IO
 Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.Devices
 
-Public Class ClassExportCDIxml
+Public Class ClassExportXml
 
     Private lineNum As Integer = 0
 
@@ -16,7 +16,7 @@ Public Class ClassExportCDIxml
     Private Property MyNodeType As String
 
 
-    Public Sub MyReadTextFile(filePath As String)
+    Public Sub MyExportToXmlFile(filePath As String)
 
         Me.dsImport = New ImportCDI
         Me.dsExport = New ExportCDI

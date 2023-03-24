@@ -1,7 +1,214 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Report xmlns="http://tempuri.org/Report.xsd">
 
-<!-- Port Titles for level 1 -->
+	<!-- Format types -->
+	<FormatType>
+		<value>0</value>
+		<text>Do nothing</text>
+	</FormatType>
+	<FormatType>
+		<value>1</value>
+		<text>Report title only</text>
+	</FormatType>
+	<FormatType>
+		<value>2</value>
+		<text>Report title and column value</text>
+	</FormatType>
+	<FormatType>
+		<value>3</value>
+		<text>Report title and attribute text</text>
+	</FormatType>
+	<FormatType>
+		<value>4</value>
+		<text>add blank column</text>
+	</FormatType>
+	<FormatType>
+		<value>5</value>
+		<text>add 2 blank columns</text>
+	</FormatType>
+
+	<!-- Power Monitor Message Option -->
+	<MessageOption>
+		<value>0</value>
+		<text>None</text>
+	</MessageOption>
+	<MessageOption>
+		<value>1</value>
+		<text>Send Power OK only</text>
+	</MessageOption>
+	<MessageOption>
+		<value>2</value>
+		<text>Send both Power OK and Power Not OK</text>
+	</MessageOption>
+
+	<!-- Port Output Function -->
+	<PortOutFunc>
+		<value>0</value>
+		<text>None</text>
+	</PortOutFunc>
+	<PortOutFunc>
+		<value>1</value>
+		<text>Steady</text>
+	</PortOutFunc>
+	<PortOutFunc>
+		<value>2</value>
+		<text>Pulse</text>
+	</PortOutFunc>
+	<PortOutFunc>
+		<value>3</value>
+		<text>Blink A</text>
+	</PortOutFunc>
+	<PortOutFunc>
+		<value>4</value>
+		<text>Blink B</text>
+	</PortOutFunc>
+
+	<!-- Port Output Command -->
+	<PortOutCommd>
+		<value>0</value>
+		<text>Active Low (0V)</text>
+	</PortOutCommd>
+	<PortOutCommd>
+		<value>1</value>
+		<text>Active High (5V)</text>
+	</PortOutCommd>
+
+	<!-- Port Input Function -->
+	<PortInFunc>
+		<value>0</value>
+		<text>None</text>
+	</PortInFunc>
+	<PortInFunc>
+		<value>1</value>
+		<text>Normal</text>
+	</PortInFunc>
+	<PortInFunc>
+		<value>2</value>
+		<text>Alternating</text>
+	</PortInFunc>
+
+	<!-- Port Input Command  -->
+	<PortInCommd>
+		<value>0</value>
+		<text>Active Low (0V)</text>
+	</PortInCommd>
+	<PortInCommd>
+		<value>1</value>
+		<text>Active High (5V)</text>
+	</PortInCommd>
+	
+	<!-- Port Delay Interval -->
+	<DelayInterval>
+		<value>1</value>
+		<text>Active ON delay</text>
+	</DelayInterval>
+	<DelayInterval>
+		<value>2</value>
+		<text>Active OFF delay</text>
+	</DelayInterval>
+
+	<!-- Delay Unit -->
+	<DelayUnit>
+		<value>0</value>
+		<text>milliseconds</text>
+	</DelayUnit>
+	<DelayUnit>
+		<value>1</value>
+		<text>seconds</text>
+	</DelayUnit>
+	<DelayUnit>
+		<value>2</value>
+		<text>minutes</text>
+	</DelayUnit>
+	
+	<!-- Delay Retrigger -->
+	<DelayRetrigger>
+		<value>0</value>
+		<text>No</text>
+	</DelayRetrigger>
+	<DelayRetrigger>
+		<value>1</value>
+		<text>Yes</text>
+	</DelayRetrigger>
+	
+	<!-- Port Event Consumer -->
+	<PortEventCons>
+		<value>0</value>
+		<text>None</text>
+	</PortEventCons>
+	<PortEventCons>
+		<value>1</value>
+		<text>ON (Line Active)</text>
+	</PortEventCons>
+	<PortEventCons>
+		<value>2</value>
+		<text>OFF (Line Inactive)</text>
+	</PortEventCons>
+	<PortEventCons>
+		<value>3</value>
+		<text>Change (Toggle)</text>
+	</PortEventCons>
+	<PortEventCons>
+		<value>4</value>
+		<text>Veto ON (Active)</text>
+	</PortEventCons>
+	<PortEventCons>
+		<value>5</value>
+		<text>Veto OFF (Inactive)</text>
+	</PortEventCons>
+	<PortEventCons>
+		<value>6</value>
+		<text>Gated ON (Non Veto Output)</text>
+	</PortEventCons>
+	<PortEventCons>
+		<value>7</value>
+		<text>Gated OFF (Non Veto Outout)</text>
+	</PortEventCons>
+	<PortEventCons>
+		<value>8</value>
+		<text>Gated Change (Non Veto Toggle)</text>
+	</PortEventCons>
+
+	<!-- Port Event Producer -->
+	<PortEventProd>
+		<value>0</value>
+		<text>None</text>
+	</PortEventProd>
+	<PortEventProd>
+		<value>1</value>
+		<text>Output State ON Command</text>
+	</PortEventProd>
+	<PortEventProd>
+		<value>2</value>
+		<text>Output State OFF Command</text>
+	</PortEventProd>
+	<PortEventProd>
+		<value>3</value>
+		<text>Output ON (Function High)</text>
+	</PortEventProd>
+	<PortEventProd>
+		<value>4</value>
+		<text>Output OFF (Function Low)</text>
+	</PortEventProd>
+	<PortEventProd>
+		<value>5</value>
+		<text>Input ON</text>
+	</PortEventProd>
+	<PortEventProd>
+		<value>6</value>
+		<text>Input OFF</text>
+	</PortEventProd>
+	<PortEventProd>
+		<value>7</value>
+		<text>Gated ON (Non Veto Input)</text>
+	</PortEventProd>
+	<PortEventProd>
+		<value>8</value>
+		<text>Gated OFF (Non Veto Input)</text>
+	</PortEventProd>
+	
+
+	<!-- Port Titles for level 1 -->
 	<PortTitle>
 		<columnID>0</columnID>
 		<formatType>1</formatType>
@@ -52,7 +259,7 @@
 	</PortTitle>
 
 
-<!-- Logic Titles for level 1 -->
+	<!-- Logic Titles for level 1 -->
 	<LogicTitle>
 		<columnID>0</columnID>
 		<formatType>1</formatType>
@@ -84,7 +291,7 @@
 		<comment>functionValue</comment>
 	</LogicTitle>
 
-<!-- Logic Operation Titles for level 1 -->
+	<!-- Logic Operation Titles for level 1 -->
 	<LogicOperationTitle>
 		<columnID>0</columnID>
 		<formatType>0</formatType>
@@ -171,7 +378,7 @@
 	</LogicOperationTitle>
 
 
-<!-- Logic Function for Logic section 0 -->
+	<!-- Logic Function for Logic section 0 -->
 	<LogicFunction>
 		<value>0</value>
 		<text>Blocked</text>
@@ -191,7 +398,7 @@
 		<text>Last (Single)</text>
 	</LogicFunction>
 
-<!-- Logic Operation Action look up table -->
+	<!-- Logic Operation Action look up table -->
 	<LogicAction>
 		<value>0</value>
 		<text>Send then Exit Group</text>
@@ -220,5 +427,139 @@
 		<value>6</value>
 		<text>OR with Next</text>
 	</LogicAction>
+
+
+	<!-- Mast Appearance used by Rules To Aspect-->
+	<MastAppearance>
+		<value>0</value>
+		<text>None</text>
+	</MastAppearance>
+	<MastAppearance>
+		<value>1</value>
+		<text>Transistion down</text>
+	</MastAppearance>
+	<MastAppearance>
+		<value>2</value>
+		<text>H2 Red Flash</text>
+	</MastAppearance>
+	<MastAppearance>
+		<value>3</value>
+		<text>Strobe</text>
+	</MastAppearance>
+
+
+	<!-- Lamp Fade used by Mast and Lamp-->
+	<LampFade>
+		<value>0</value>
+		<text>None</text>
+	</LampFade>
+	<LampFade>
+		<value>1</value>
+		<text>Incandescent</text>
+	</LampFade>
+
+	<!-- Lamp Phase used by Mast and Lamp-->
+	<LampPhase>
+		<value>0</value>
+		<text>Steady</text>
+	</LampPhase>
+	<LampPhase>
+		<value>1</value>
+		<text>A-Slow</text>
+	</LampPhase>
+	<LampPhase>
+		<value>2</value>
+		<text>A-Medium</text>
+	</LampPhase>
+	<LampPhase>
+		<value>3</value>
+		<text>A-Fast</text>
+	</LampPhase>
+	<LampPhase>
+		<value>4</value>
+		<text>None (not used)</text>
+	</LampPhase>
+	<LampPhase>
+		<value>5</value>
+		<text>B-Slow</text>
+	</LampPhase>
+	<LampPhase>
+		<value>6</value>
+		<text>B-Medium</text>
+	</LampPhase>
+	<LampPhase>
+		<value>7</value>
+		<text>B-Fast</text>
+	</LampPhase>
+
+	<!-- Lamp Selection used by Mast and Lamp -->
+	<LampSelection>
+		<value>0</value>
+		<text>Unused</text>
+	</LampSelection>
+	<LampSelection>
+		<value>1</value>
+		<text>#1 H1-G</text>
+	</LampSelection>
+	<LampSelection>
+		<value>2</value>
+		<text>#1 H1-Y</text>
+	</LampSelection>
+	<LampSelection>
+		<value>3</value>
+		<text>#1 H1-R</text>
+	</LampSelection>
+	<LampSelection>
+		<value>4</value>
+		<text>#1 H1-L</text>
+	</LampSelection>
+	<LampSelection>
+		<value>5</value>
+		<text>#1 H2-G</text>
+	</LampSelection>
+	<LampSelection>
+		<value>6</value>
+		<text>#1 H2-Y</text>
+	</LampSelection>
+	<LampSelection>
+		<value>7</value>
+		<text>#1 H2-R</text>
+	</LampSelection>
+	<LampSelection>
+		<value>8</value>
+		<text>#1 H2-L</text>
+	</LampSelection>
+	<LampSelection>
+		<value>9</value>
+		<text>#1 H3-G</text>
+	</LampSelection>
+	<LampSelection>
+		<value>10</value>
+		<text>#1 H3-Y</text>
+	</LampSelection>
+	<LampSelection>
+		<value>11</value>
+		<text>#1 H3-R</text>
+	</LampSelection>
+	<LampSelection>
+		<value>12</value>
+		<text>#1 H3-L</text>
+	</LampSelection>
+	<LampSelection>
+		<value>13</value>
+		<text>#1 H4-G</text>
+	</LampSelection>
+	<LampSelection>
+		<value>14</value>
+		<text>#1 H4-Y</text>
+	</LampSelection>
+	<LampSelection>
+		<value>15</value>
+		<text>#1 H4-R</text>
+	</LampSelection>
+	<LampSelection>
+		<value>16</value>
+		<text>#1 H4-L</text>
+	</LampSelection>
 
 </Report>

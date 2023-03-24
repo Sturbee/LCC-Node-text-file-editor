@@ -35,14 +35,6 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="FormatType" msprop:Generator_RowEvHandlerName="FormatTypeRowChangeEventHandler" msprop:Generator_RowDeletedName="FormatTypeRowDeleted" msprop:Generator_RowDeletingName="FormatTypeRowDeleting" msprop:Generator_RowEvArgName="FormatTypeRowChangeEvent" msprop:Generator_TablePropName="FormatType" msprop:Generator_RowChangedName="FormatTypeRowChanged" msprop:Generator_UserTableName="FormatType" msprop:Generator_RowChangingName="FormatTypeRowChanging" msprop:Generator_RowClassName="FormatTypeRow" msprop:Generator_TableClassName="FormatTypeDataTable" msprop:Generator_TableVarName="tableFormatType">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
-              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="TrackSpeed" msprop:Generator_RowEvHandlerName="TrackSpeedRowChangeEventHandler" msprop:Generator_RowDeletedName="TrackSpeedRowDeleted" msprop:Generator_RowDeletingName="TrackSpeedRowDeleting" msprop:Generator_RowEvArgName="TrackSpeedRowChangeEvent" msprop:Generator_TablePropName="TrackSpeed" msprop:Generator_RowChangedName="TrackSpeedRowChanged" msprop:Generator_UserTableName="TrackSpeed" msprop:Generator_RowChangingName="TrackSpeedRowChanging" msprop:Generator_RowClassName="TrackSpeedRow" msprop:Generator_TableClassName="TrackSpeedDataTable" msprop:Generator_TableVarName="tableTrackSpeed">
           <xs:complexType>
             <xs:sequence>
@@ -123,38 +115,6 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LampFade" msprop:Generator_RowEvHandlerName="LampFadeRowChangeEventHandler" msprop:Generator_RowDeletedName="LampFadeRowDeleted" msprop:Generator_RowDeletingName="LampFadeRowDeleting" msprop:Generator_RowEvArgName="LampFadeRowChangeEvent" msprop:Generator_TablePropName="LampFade" msprop:Generator_RowChangedName="LampFadeRowChanged" msprop:Generator_UserTableName="LampFade" msprop:Generator_RowChangingName="LampFadeRowChanging" msprop:Generator_RowClassName="LampFadeRow" msprop:Generator_TableClassName="LampFadeDataTable" msprop:Generator_TableVarName="tableLampFade">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
-              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="LampPhase" msprop:Generator_RowEvHandlerName="LampPhaseRowChangeEventHandler" msprop:Generator_RowDeletedName="LampPhaseRowDeleted" msprop:Generator_RowDeletingName="LampPhaseRowDeleting" msprop:Generator_RowEvArgName="LampPhaseRowChangeEvent" msprop:Generator_TablePropName="LampPhase" msprop:Generator_RowChangedName="LampPhaseRowChanged" msprop:Generator_UserTableName="LampPhase" msprop:Generator_RowChangingName="LampPhaseRowChanging" msprop:Generator_RowClassName="LampPhaseRow" msprop:Generator_TableClassName="LampPhaseDataTable" msprop:Generator_TableVarName="tableLampPhase">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
-              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="LampSelection" msprop:Generator_RowEvHandlerName="LampSelectionRowChangeEventHandler" msprop:Generator_RowDeletedName="LampSelectionRowDeleted" msprop:Generator_RowDeletingName="LampSelectionRowDeleting" msprop:Generator_RowEvArgName="LampSelectionRowChangeEvent" msprop:Generator_TablePropName="LampSelection" msprop:Generator_RowChangedName="LampSelectionRowChanged" msprop:Generator_UserTableName="LampSelection" msprop:Generator_RowChangingName="LampSelectionRowChanging" msprop:Generator_RowClassName="LampSelectionRow" msprop:Generator_TableClassName="LampSelectionDataTable" msprop:Generator_TableVarName="tableLampSelection">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
-              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="MastAppearance" msprop:Generator_RowEvHandlerName="MastAppearanceRowChangeEventHandler" msprop:Generator_RowDeletedName="MastAppearanceRowDeleted" msprop:Generator_RowDeletingName="MastAppearanceRowDeleting" msprop:Generator_RowEvArgName="MastAppearanceRowChangeEvent" msprop:Generator_TablePropName="MastAppearance" msprop:Generator_RowChangedName="MastAppearanceRowChanged" msprop:Generator_UserTableName="MastAppearance" msprop:Generator_RowChangingName="MastAppearanceRowChanging" msprop:Generator_RowClassName="MastAppearanceRow" msprop:Generator_TableClassName="MastAppearanceDataTable" msprop:Generator_TableVarName="tableMastAppearance">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
-              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -169,10 +129,6 @@
       <xs:field xpath="mstns:segID" />
       <xs:field xpath="mstns:sectionID" />
       <xs:field xpath="mstns:columnID" />
-    </xs:unique>
-    <xs:unique name="FormatType_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:FormatType" />
-      <xs:field xpath="mstns:value" />
     </xs:unique>
     <xs:unique name="TrackSpeed_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:TrackSpeed" />
@@ -192,22 +148,6 @@
     </xs:unique>
     <xs:unique name="TrackCircuitTran_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:TrackCircuitTran" />
-      <xs:field xpath="mstns:value" />
-    </xs:unique>
-    <xs:unique name="LampFade_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:LampFade" />
-      <xs:field xpath="mstns:value" />
-    </xs:unique>
-    <xs:unique name="LampPhase_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:LampPhase" />
-      <xs:field xpath="mstns:value" />
-    </xs:unique>
-    <xs:unique name="LampSelection_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:LampSelection" />
-      <xs:field xpath="mstns:value" />
-    </xs:unique>
-    <xs:unique name="MastAppearance_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:MastAppearance" />
       <xs:field xpath="mstns:value" />
     </xs:unique>
   </xs:element>

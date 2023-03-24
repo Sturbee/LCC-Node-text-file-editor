@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassAppConfigValues.vb" />
-    <Compile Include="ClassExportCDIxml.vb" />
+    <Compile Include="ClassExportXml.vb" />
     <Compile Include="ClassExportXmlToCsv.vb" />
     <Compile Include="ClassExportXsd.vb" />
     <Compile Include="Events1.Designer.vb">
@@ -228,7 +228,9 @@
     <Content Include="ImportCDI.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Report.xml" />
+    <Content Include="Report.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="UserPrefs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
