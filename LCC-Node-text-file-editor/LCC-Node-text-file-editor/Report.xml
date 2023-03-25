@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Report xmlns="http://tempuri.org/Report.xsd">
+<Rpt xmlns="http://tempuri.org/Report.xsd">
 
 	<!-- Format types -->
 	<FormatType>
@@ -646,4 +646,4 @@
 		<text>#1 H4-L</text>
 	</LampSelection>
 
-</Report>
+</Rpt>

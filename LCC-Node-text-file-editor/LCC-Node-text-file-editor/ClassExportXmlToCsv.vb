@@ -31,7 +31,7 @@ Public Class ClassExportXmlToCsv
             Exit Sub
         End If
 
-        Dim dsReport As New FormatReport
+        Dim dsReport As New Rpt
 
         Try
             dsReport.ReadXml(clsAppConfig.SavedReportFile)
@@ -113,7 +113,7 @@ Public Class ClassExportXmlToCsv
 
     End Sub
 
-    Private Sub ReportNodeTable(dsInput As ExportCDI, dsReport As FormatReport, writer As StreamWriter)
+    Private Sub ReportNodeTable(dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
 
         Dim comma As String = ","
 
@@ -136,7 +136,7 @@ Public Class ClassExportXmlToCsv
                     Dim attributeText As String = String.Empty
 
                     Stop
-                    Dim rowReport As FormatReport.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
+                    Dim rowReport As Rpt.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
                     If rowReport Is Nothing Then
                         formatType = 2
                         reportTitle = columnName
@@ -148,7 +148,7 @@ Public Class ClassExportXmlToCsv
                     Stop
                     If IsNumeric(columnValue) Then
                         ' get the attribute values for each value in rowNode
-                        Dim rowAttribute As FormatReport.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
+                        Dim rowAttribute As Rpt.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
                         If rowAttribute Is Nothing Then
                             attributeText = "<" + columnValue.ToString + ">"
                             If countRow > 1 Then Stop
@@ -179,7 +179,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportPowerMonitorTable(dsInput As ExportCDI, dsReport As FormatReport, writer As StreamWriter)
+    Private Sub ReportPowerMonitorTable(dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
 
         Dim comma As String = ","
 
@@ -202,7 +202,7 @@ Public Class ClassExportXmlToCsv
                     Dim attributeText As String = String.Empty
 
                     Stop
-                    Dim rowReport As FormatReport.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
+                    Dim rowReport As Rpt.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
                     If rowReport Is Nothing Then
                         formatType = 2
                         reportTitle = columnName
@@ -214,7 +214,7 @@ Public Class ClassExportXmlToCsv
                     If IsNumeric(columnValue) Then
                         ' get the attribute values for each value in rowNode
                         Stop
-                        Dim rowAttribute As FormatReport.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
+                        Dim rowAttribute As Rpt.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
                         If rowAttribute Is Nothing Then
                             attributeText = "<" + columnValue.ToString + ">"
                             If countRow > 1 Then Stop
@@ -244,7 +244,7 @@ Public Class ClassExportXmlToCsv
 
     End Sub
 
-    Private Sub ReportPortTable(dsInput As ExportCDI, dsReport As FormatReport, writer As StreamWriter)
+    Private Sub ReportPortTable(dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
 
         Dim comma As String = ","
 
@@ -266,7 +266,7 @@ Public Class ClassExportXmlToCsv
                     Dim reportTitle As String = String.Empty
                     Dim attributeText As String = String.Empty
 
-                    Dim rowReport As FormatReport.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
+                    Dim rowReport As Rpt.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
                     If rowReport Is Nothing Then
                         formatType = 2
                         reportTitle = columnName
@@ -278,7 +278,7 @@ Public Class ClassExportXmlToCsv
                     If IsNumeric(columnValue) Then
                         ' get the attribute values for each value in rowNode
                         Stop
-                        Dim rowAttribute As FormatReport.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
+                        Dim rowAttribute As Rpt.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
                         If rowAttribute Is Nothing Then
                             attributeText = "<" + columnValue.ToString + ">"
                             If countRow > 2 Then Stop
@@ -316,7 +316,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportPortDelayTable(portID As Integer, dsInput As ExportCDI, dsReport As FormatReport, writer As StreamWriter)
+    Private Sub ReportPortDelayTable(portID As Integer, dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
 
         Dim header As Boolean = True
 
@@ -341,7 +341,7 @@ Public Class ClassExportXmlToCsv
                         Dim reportTitle As String = String.Empty
                         Dim attributeText As String = String.Empty
 
-                        Dim rowReport As FormatReport.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
+                        Dim rowReport As Rpt.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
                         If rowReport Is Nothing Then
                             formatType = 2
                             reportTitle = columnName
@@ -353,7 +353,7 @@ Public Class ClassExportXmlToCsv
                         If IsNumeric(columnValue) Then
                             ' get the attribute values for each value in rowNode
                             Stop
-                            Dim rowAttribute As FormatReport.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
+                            Dim rowAttribute As Rpt.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
                             If rowAttribute Is Nothing Then
                                 attributeText = "<" + columnValue.ToString + ">"
                                 If countRow > 4 Then Stop
@@ -389,7 +389,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportPortEventTable(portID As Integer, dsInput As ExportCDI, dsReport As FormatReport, writer As StreamWriter)
+    Private Sub ReportPortEventTable(portID As Integer, dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
 
         Dim header As Boolean = True
 
@@ -414,7 +414,7 @@ Public Class ClassExportXmlToCsv
                         Dim reportTitle As String = String.Empty
                         Dim attributeText As String = String.Empty
 
-                        Dim rowReport As FormatReport.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
+                        Dim rowReport As Rpt.PortTitleRow = dsReport.PortTitle.FindBycolumnID(countRow)
                         If rowReport Is Nothing Then
                             formatType = 2
                             reportTitle = columnName
@@ -425,7 +425,7 @@ Public Class ClassExportXmlToCsv
 
                         If IsNumeric(columnValue) Then
                             ' get the attribute values for each value in rowNode
-                            Dim rowAttribute As FormatReport.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
+                            Dim rowAttribute As Rpt.PortTitleRow = dsReport.PortTitle.FindBycolumnID(columnValue)
                             If rowAttribute Is Nothing Then
                                 attributeText = "<" + columnValue.ToString + ">"
                                 If countRow > 3 Then Stop
@@ -461,7 +461,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportLogicTable(dsInput As ExportCDI, dsReport As FormatReport, writer As StreamWriter)
+    Private Sub ReportLogicTable(dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
 
         Dim comma As String = ","
 
@@ -483,7 +483,7 @@ Public Class ClassExportXmlToCsv
                     Dim reportTitle As String = String.Empty
                     Dim attributeText As String = String.Empty
 
-                    Dim rowReport As FormatReport.LogicTitleRow = dsReport.LogicTitle(countRow)
+                    Dim rowReport As Rpt.LogicTitleRow = dsReport.LogicTitle(countRow)
                     If rowReport Is Nothing Then
                         formatType = 2
                         reportTitle = columnName
@@ -494,7 +494,7 @@ Public Class ClassExportXmlToCsv
 
                     If IsNumeric(columnValue) Then
                         ' get the attribute values for each value in rowNode
-                        Dim rowAttribute As FormatReport.LogicFunctionRow = dsReport.LogicFunction.FindByvalue(columnValue)
+                        Dim rowAttribute As Rpt.LogicFunctionRow = dsReport.LogicFunction.FindByvalue(columnValue)
                         If rowAttribute Is Nothing Then
                             attributeText = "<" + columnValue.ToString + ">"
                             If countRow > 2 Then Stop
@@ -534,7 +534,7 @@ Public Class ClassExportXmlToCsv
 
     End Sub
 
-    Private Sub ReportLogicOperationTable(LogicID As Integer, dsInput As ExportCDI, dsReport As FormatReport, writer As StreamWriter)
+    Private Sub ReportLogicOperationTable(LogicID As Integer, dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
 
         Dim header As Boolean = True
 
@@ -562,7 +562,7 @@ Public Class ClassExportXmlToCsv
                         Dim reportTitle As String = String.Empty
                         Dim attributeText As String = String.Empty
 
-                        Dim rowReport As FormatReport.LogicOperationTitleRow = dsReport.LogicOperationTitle.FindBycolumnID(countRow)
+                        Dim rowReport As Rpt.LogicOperationTitleRow = dsReport.LogicOperationTitle.FindBycolumnID(countRow)
                         If rowReport Is Nothing Then
                             formatType = 2
                             reportTitle = columnName
@@ -574,7 +574,7 @@ Public Class ClassExportXmlToCsv
                         If IsNumeric(columnValue) Then
                             ' get the attribute values for each value in rowNode
                             Stop
-                            Dim rowAttribute As FormatReport.LogicProducerRow = Nothing
+                            Dim rowAttribute As Rpt.LogicProducerRow = Nothing
                             If rowAttribute Is Nothing Then
                                 attributeText = "<" + columnValue.ToString + ">"
 
@@ -664,7 +664,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportLogicActionTable(logicID As Integer, dsInput As ExportCDI, dsReport As FormatReport, writer As StreamWriter)
+    Private Sub ReportLogicActionTable(logicID As Integer, dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
 
         Dim header As Boolean = True
 
@@ -689,7 +689,7 @@ Public Class ClassExportXmlToCsv
                         Dim reportTitle As String = String.Empty
                         Dim attributeText As String = String.Empty
 
-                        Dim rowReport As FormatReport.LogicTitleRow = dsReport.LogicTitle.FindBycolumnID(countRow)
+                        Dim rowReport As Rpt.LogicTitleRow = dsReport.LogicTitle.FindBycolumnID(countRow)
                         If rowReport Is Nothing Then
                             formatType = 2
                             reportTitle = columnName
@@ -700,13 +700,13 @@ Public Class ClassExportXmlToCsv
 
                         If IsNumeric(columnValue) Then
                             ' get the attribute values for each value in rowNode
-                            Dim rowAttribute As FormatReport.LogicActionRow = dsReport.LogicAction.FindByvalue(columnValue)
+                            Dim rowAttribute As Rpt.LogicActionRow = dsReport.LogicAction.FindByvalue(columnValue)
                             If rowAttribute Is Nothing Then
                                 attributeText = "<" + columnValue.ToString + ">"
 
                                 Select Case countRow
                                     Case 3, 4 ' actionTrue, actionFalse
-                                        Dim rowAction As FormatReport.LogicActionRow = dsReport.LogicAction.FindByvalue(columnValue)
+                                        Dim rowAction As Rpt.LogicActionRow = dsReport.LogicAction.FindByvalue(columnValue)
                                         If rowAction Is Nothing Then
                                             ' do nothing
                                             Stop
@@ -747,7 +747,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportLogicProducerTable(logicID As Integer, dsInput As ExportCDI, dsReport As FormatReport, writer As StreamWriter)
+    Private Sub ReportLogicProducerTable(logicID As Integer, dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
 
         Dim header As Boolean = True
 
@@ -774,7 +774,7 @@ Public Class ClassExportXmlToCsv
                         Dim reportTitle As String = String.Empty
                         Dim attributeText As String = String.Empty
 
-                        Dim rowReport As FormatReport.LogicTitleRow = dsReport.LogicTitle.FindBycolumnID(countRow)
+                        Dim rowReport As Rpt.LogicTitleRow = dsReport.LogicTitle.FindBycolumnID(countRow)
                         If rowReport Is Nothing Then
                             formatType = 2
                             reportTitle = columnName
