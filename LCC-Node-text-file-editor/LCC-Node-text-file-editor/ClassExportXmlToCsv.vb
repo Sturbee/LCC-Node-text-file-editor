@@ -13,7 +13,7 @@ Public Class ClassExportXmlToCsv
             Exit Sub
         End If
 
-        Dim dsInput As New ExportCDI
+        Dim dsInput As New ExportXml
 
         Try
             dsInput.ReadXml(fileXML)
@@ -113,7 +113,7 @@ Public Class ClassExportXmlToCsv
 
     End Sub
 
-    Private Sub ReportNodeTable(dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
+    Private Sub ReportNodeTable(dsInput As ExportXml, dsReport As Rpt, writer As StreamWriter)
 
         Dim comma As String = ","
 
@@ -123,7 +123,7 @@ Public Class ClassExportXmlToCsv
 
             For countTable = 0 To dsInput.Node.Count - 1
 
-                Dim rowTable As ExportCDI.NodeRow = dsInput.Node.Item(countTable)
+                Dim rowTable As ExportXml.NodeRow = dsInput.Node.Item(countTable)
                 Dim lineReport As String = String.Empty
                 Dim lineRow As String = String.Empty
 
@@ -179,7 +179,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportPowerMonitorTable(dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
+    Private Sub ReportPowerMonitorTable(dsInput As ExportXml, dsReport As Rpt, writer As StreamWriter)
 
         Dim comma As String = ","
 
@@ -189,7 +189,7 @@ Public Class ClassExportXmlToCsv
 
             For countTable = 0 To dsInput.PowerMonitor.Count - 1
 
-                Dim rowTable As ExportCDI.PowerMonitorRow = dsInput.PowerMonitor.Item(countTable)
+                Dim rowTable As ExportXml.PowerMonitorRow = dsInput.PowerMonitor.Item(countTable)
                 Dim lineReport As String = String.Empty
                 Dim lineRow As String = String.Empty
 
@@ -244,7 +244,7 @@ Public Class ClassExportXmlToCsv
 
     End Sub
 
-    Private Sub ReportPortTable(dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
+    Private Sub ReportPortTable(dsInput As ExportXml, dsReport As Rpt, writer As StreamWriter)
 
         Dim comma As String = ","
 
@@ -254,7 +254,7 @@ Public Class ClassExportXmlToCsv
 
             For countTable = 0 To dsInput.Port.Count - 1
 
-                Dim rowTable As ExportCDI.PortRow = dsInput.Port.Item(countTable)
+                Dim rowTable As ExportXml.PortRow = dsInput.Port.Item(countTable)
                 Dim lineReport As String = String.Empty
                 Dim lineRow As String = String.Empty
 
@@ -316,7 +316,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportPortDelayTable(portID As Integer, dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
+    Private Sub ReportPortDelayTable(portID As Integer, dsInput As ExportXml, dsReport As Rpt, writer As StreamWriter)
 
         Dim header As Boolean = True
 
@@ -326,7 +326,7 @@ Public Class ClassExportXmlToCsv
 
             For countTable = 0 To dsInput.PortDelay.Count - 1
 
-                Dim rowTable As ExportCDI.PortDelayRow = dsInput.PortDelay.Item(countTable)
+                Dim rowTable As ExportXml.PortDelayRow = dsInput.PortDelay.Item(countTable)
 
                 If rowTable.LineID = portID Then ' process
 
@@ -389,7 +389,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportPortEventTable(portID As Integer, dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
+    Private Sub ReportPortEventTable(portID As Integer, dsInput As ExportXml, dsReport As Rpt, writer As StreamWriter)
 
         Dim header As Boolean = True
 
@@ -399,7 +399,7 @@ Public Class ClassExportXmlToCsv
 
             For countTable = 0 To dsInput.PortEvent.Count - 1
 
-                Dim rowTable As ExportCDI.PortEventRow = dsInput.PortEvent.Item(countTable)
+                Dim rowTable As ExportXml.PortEventRow = dsInput.PortEvent.Item(countTable)
 
                 If rowTable.LineID = portID Then ' process
 
@@ -461,7 +461,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportLogicTable(dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
+    Private Sub ReportLogicTable(dsInput As ExportXml, dsReport As Rpt, writer As StreamWriter)
 
         Dim comma As String = ","
 
@@ -471,7 +471,7 @@ Public Class ClassExportXmlToCsv
 
             For countTable = 0 To dsInput.Logic.Count - 1
 
-                Dim rowTable As ExportCDI.LogicRow = dsInput.Logic.Item(countTable)
+                Dim rowTable As ExportXml.LogicRow = dsInput.Logic.Item(countTable)
                 Dim lineReport As String = String.Empty
                 Dim lineRow As String = String.Empty
 
@@ -534,7 +534,7 @@ Public Class ClassExportXmlToCsv
 
     End Sub
 
-    Private Sub ReportLogicOperationTable(LogicID As Integer, dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
+    Private Sub ReportLogicOperationTable(LogicID As Integer, dsInput As ExportXml, dsReport As Rpt, writer As StreamWriter)
 
         Dim header As Boolean = True
 
@@ -544,7 +544,7 @@ Public Class ClassExportXmlToCsv
 
             For countTable = 0 To dsInput.LogicOperation.Count - 1
 
-                Dim rowTable As ExportCDI.LogicOperationRow = dsInput.LogicOperation.Item(countTable)
+                Dim rowTable As ExportXml.LogicOperationRow = dsInput.LogicOperation.Item(countTable)
 
                 Dim destFlag1 As Integer = -1
                 Dim destFlag2 As Integer = -1
@@ -580,7 +580,7 @@ Public Class ClassExportXmlToCsv
 
                                 Select Case countRow
                                     Case 4, 10 ' source1, source2
-                                        Dim rowTrackCircuit As ExportCDI.TrackCircuitRecRow = dsInput.TrackCircuitRec.FindByCircuitID(columnValue)
+                                        Dim rowTrackCircuit As ExportXml.TrackCircuitRecRow = dsInput.TrackCircuitRec.FindByCircuitID(columnValue)
                                         If rowTrackCircuit Is Nothing Then
                                             ' do nothing
                                             Stop
@@ -664,7 +664,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportLogicActionTable(logicID As Integer, dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
+    Private Sub ReportLogicActionTable(logicID As Integer, dsInput As ExportXml, dsReport As Rpt, writer As StreamWriter)
 
         Dim header As Boolean = True
 
@@ -674,7 +674,7 @@ Public Class ClassExportXmlToCsv
 
             For countTable = 0 To dsInput.LogicAction.Count - 1
 
-                Dim rowTable As ExportCDI.LogicActionRow = dsInput.LogicAction.Item(countTable)
+                Dim rowTable As ExportXml.LogicActionRow = dsInput.LogicAction.Item(countTable)
 
                 If rowTable.LogicID = logicID Then ' process
 
@@ -747,7 +747,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportLogicProducerTable(logicID As Integer, dsInput As ExportCDI, dsReport As Rpt, writer As StreamWriter)
+    Private Sub ReportLogicProducerTable(logicID As Integer, dsInput As ExportXml, dsReport As Rpt, writer As StreamWriter)
 
         Dim header As Boolean = True
 
@@ -757,7 +757,7 @@ Public Class ClassExportXmlToCsv
 
             For countTable = 0 To dsInput.LogicProducer.Count - 1
 
-                Dim rowTable As ExportCDI.LogicProducerRow = dsInput.LogicProducer.Item(countTable)
+                Dim rowTable As ExportXml.LogicProducerRow = dsInput.LogicProducer.Item(countTable)
 
                 Dim destFlag As Integer = -1
 
@@ -792,7 +792,7 @@ Public Class ClassExportXmlToCsv
 
                                 Select Case countRow
                                     Case 5 ' destination
-                                        Dim rowCircuit As ExportCDI.TrackCircuitTranRow = dsInput.TrackCircuitTran.FindByCircuitID(columnValue)
+                                        Dim rowCircuit As ExportXml.TrackCircuitTranRow = dsInput.TrackCircuitTran.FindByCircuitID(columnValue)
                                         If rowCircuit Is Nothing Then
                                             ' do nothing
                                             Stop

@@ -86,13 +86,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Events.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ExportCDI.Designer.vb">
+    <Compile Include="ExportXml.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ExportCDI.xsd</DependentUpon>
+      <DependentUpon>ExportXml.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ExportCDI.vb">
-      <DependentUpon>ExportCDI.xsd</DependentUpon>
+    <Compile Include="ExportXml.vb">
+      <DependentUpon>ExportXml.xsd</DependentUpon>
     </Compile>
     <Compile Include="ImportCDI.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -164,16 +164,16 @@
     <None Include="Events.xss">
       <DependentUpon>Events.xsd</DependentUpon>
     </None>
-    <None Include="ExportCDI.xsc">
-      <DependentUpon>ExportCDI.xsd</DependentUpon>
+    <None Include="ExportXml.xsc">
+      <DependentUpon>ExportXml.xsd</DependentUpon>
     </None>
-    <None Include="ExportCDI.xsd">
+    <None Include="ExportXml.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ExportCDI.Designer.vb</LastGenOutput>
+      <LastGenOutput>ExportXml.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ExportCDI.xss">
-      <DependentUpon>ExportCDI.xsd</DependentUpon>
+    <None Include="ExportXml.xss">
+      <DependentUpon>ExportXml.xsd</DependentUpon>
     </None>
     <None Include="ImportCDI.xsc">
       <DependentUpon>ImportCDI.xsd</DependentUpon>

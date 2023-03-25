@@ -1,4 +1,4 @@
-﻿Partial Class ExportCDI
+﻿Partial Class ExportXml
     Partial Public Class TrackCircuitRecDataTable
        
 

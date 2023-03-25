@@ -48,7 +48,7 @@ Public Class ClassExportXsd
             Exit Sub
         End If
 
-        Dim ds As New ExportCDI
+        Dim ds As New ExportXml
 
         Try
 

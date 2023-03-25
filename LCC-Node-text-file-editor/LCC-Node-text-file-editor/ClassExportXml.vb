@@ -9,7 +9,7 @@ Public Class ClassExportXml
     Private lineNum As Integer = 0
 
     Private dsImport As ImportCDI
-    Private dsExport As ExportCDI
+    Private dsExport As ExportXml
     REM Private dsEvent As Events
 
     Private Property MyNodeEventBase As String
@@ -20,7 +20,7 @@ Public Class ClassExportXml
 
 
         Me.dsImport = New ImportCDI
-        Me.dsExport = New ExportCDI
+        Me.dsExport = New ExportXml
         REM Me.dsEvent = New Events
         Me.MyNodeEventBase = String.Empty
         Me.MyNodeType = "Unknown"
@@ -137,7 +137,7 @@ Public Class ClassExportXml
             End While ' read the next text line
 
             ' update values after process is done
-            Dim rowNode As ExportCDI.NodeRow = Me.dsExport.Node.FindByNodeID(0)
+            Dim rowNode As ExportXml.NodeRow = Me.dsExport.Node.FindByNodeID(0)
             If rowNode Is Nothing Then
                 ' do nothing
             Else
@@ -416,7 +416,7 @@ Public Class ClassExportXml
                 Stop
             End If
 
-            Dim rowNode As ExportCDI.NodeRow = Me.dsExport.Node.FindByNodeID(NodeID)
+            Dim rowNode As ExportXml.NodeRow = Me.dsExport.Node.FindByNodeID(NodeID)
             Try
                 If rowNode Is Nothing Then
                     Me.dsExport.Node.AddNodeRow(NodeID, String.Empty, String.Empty, String.Empty, String.Empty)
@@ -455,7 +455,7 @@ Public Class ClassExportXml
                 Stop
             End If
 
-            Dim rowPowerMonitor As ExportCDI.PowerMonitorRow = Me.dsExport.PowerMonitor.FindByPowerMonitorID(PowerMonitorID)
+            Dim rowPowerMonitor As ExportXml.PowerMonitorRow = Me.dsExport.PowerMonitor.FindByPowerMonitorID(PowerMonitorID)
             Try
                 If rowPowerMonitor Is Nothing Then
                     Me.dsExport.PowerMonitor.AddPowerMonitorRow(PowerMonitorID, 0, String.Empty, String.Empty)
@@ -532,7 +532,7 @@ Public Class ClassExportXml
                     Me.MyNodeType = "Tower-LCC"
             End Select
 
-            Dim rowPort As ExportCDI.PortRow = Me.dsExport.Port.FindByLineID(LineID)
+            Dim rowPort As ExportXml.PortRow = Me.dsExport.Port.FindByLineID(LineID)
             Try
                 If rowPort Is Nothing Then
                     Me.dsExport.Port.AddPortRow(LineID, String.Empty, 0, 0, 0, 0)
@@ -569,7 +569,7 @@ Public Class ClassExportXml
                 Stop
             End If
 
-            Dim rowPortDelay As ExportCDI.PortDelayRow = Me.dsExport.PortDelay.FindByLineIDDelayID(LineID, DelayID)
+            Dim rowPortDelay As ExportXml.PortDelayRow = Me.dsExport.PortDelay.FindByLineIDDelayID(LineID, DelayID)
             If rowPortDelay Is Nothing Then
                 Try
                     Me.dsExport.PortDelay.AddPortDelayRow(LineID, DelayID, 0, 0, 0)
@@ -606,7 +606,7 @@ Public Class ClassExportXml
                 Stop
             End If
 
-            Dim rowPortEvent As ExportCDI.PortEventRow = Me.dsExport.PortEvent.FindByLineIDEventID(LineID, EventID)
+            Dim rowPortEvent As ExportXml.PortEventRow = Me.dsExport.PortEvent.FindByLineIDEventID(LineID, EventID)
             If rowPortEvent Is Nothing Then
                 Try
                     Me.dsExport.PortEvent.AddPortEventRow(LineID, EventID, String.Empty, 0, 0, String.Empty)
@@ -678,7 +678,7 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLogic As ExportCDI.LogicRow = Me.dsExport.Logic.FindByLogicID(LogicID)
+            Dim rowLogic As ExportXml.LogicRow = Me.dsExport.Logic.FindByLogicID(LogicID)
             Try
                 If rowLogic Is Nothing Then
                     Me.dsExport.Logic.AddLogicRow(LogicID, String.Empty, 0)
@@ -705,7 +705,7 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLogicOP As ExportCDI.LogicOperationRow = Me.dsExport.LogicOperation.FindByLogicID(LogicID)
+            Dim rowLogicOP As ExportXml.LogicOperationRow = Me.dsExport.LogicOperation.FindByLogicID(LogicID)
             Try
                 If rowLogicOP Is Nothing Then
                     Me.dsExport.LogicOperation.AddLogicOperationRow(LogicID, 0, 0, 0, String.Empty, String.Empty, 0, 0, 0, 0, String.Empty, String.Empty)
@@ -732,7 +732,7 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLogicAction As ExportCDI.LogicActionRow = Me.dsExport.LogicAction.FindByLogicID(LogicID)
+            Dim rowLogicAction As ExportXml.LogicActionRow = Me.dsExport.LogicAction.FindByLogicID(LogicID)
             Try
                 If rowLogicAction Is Nothing Then
                     Me.dsExport.LogicAction.AddLogicActionRow(LogicID, 0, 0, 0, 0, 0)
@@ -767,7 +767,7 @@ Public Class ClassExportXml
                 Stop
             End If
 
-            Dim rowLogicProducer As ExportCDI.LogicProducerRow = Me.dsExport.LogicProducer.FindByLogicIDActionID(LogicID, ActionID)
+            Dim rowLogicProducer As ExportXml.LogicProducerRow = Me.dsExport.LogicProducer.FindByLogicIDActionID(LogicID, ActionID)
             If rowLogicProducer Is Nothing Then
                 Try
                     Me.dsExport.LogicProducer.AddLogicProducerRow(LogicID, ActionID, 0, 0, 0, String.Empty)
@@ -805,7 +805,7 @@ Public Class ClassExportXml
                 Stop
             End If
 
-            Dim rowCircuit As ExportCDI.TrackCircuitRecRow = Me.dsExport.TrackCircuitRec.FindByCircuitID(CircuitID)
+            Dim rowCircuit As ExportXml.TrackCircuitRecRow = Me.dsExport.TrackCircuitRec.FindByCircuitID(CircuitID)
             Try
                 If rowCircuit Is Nothing Then
                     Me.dsExport.TrackCircuitRec.AddTrackCircuitRecRow(CircuitID, String.Empty, String.Empty)
@@ -844,7 +844,7 @@ Public Class ClassExportXml
                 Stop
             End If
 
-            Dim rowCircuit As ExportCDI.TrackCircuitTranRow = Me.dsExport.TrackCircuitTran.FindByCircuitID(CircuitID)
+            Dim rowCircuit As ExportXml.TrackCircuitTranRow = Me.dsExport.TrackCircuitTran.FindByCircuitID(CircuitID)
             Try
                 If rowCircuit Is Nothing Then
                     Me.dsExport.TrackCircuitTran.AddTrackCircuitTranRow(CircuitID, String.Empty, String.Empty)
@@ -910,7 +910,7 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLogic As ExportCDI.MastRow = Me.dsExport.Mast.FindByMastID(MastID)
+            Dim rowLogic As ExportXml.MastRow = Me.dsExport.Mast.FindByMastID(MastID)
             Try
                 If rowLogic Is Nothing Then
                     Me.dsExport.Mast.AddMastRow(MastID, 0, String.Empty, String.Empty, 0)
@@ -950,7 +950,7 @@ Public Class ClassExportXml
             Select Case rowLevel3.level2
                 Case 1
 
-                    Dim rowMastRule As ExportCDI.MastRuleRow = Me.dsExport.MastRule.FindByMastIDRuleID(MastID, RuleID)
+                    Dim rowMastRule As ExportXml.MastRuleRow = Me.dsExport.MastRule.FindByMastIDRuleID(MastID, RuleID)
                     If rowMastRule Is Nothing Then
                         Try
                             Me.dsExport.MastRule.AddMastRuleRow(MastID, RuleID, 0, 0, String.Empty, String.Empty, String.Empty, 0, 0)
@@ -997,7 +997,7 @@ Public Class ClassExportXml
                 Stop
             End If
 
-            Dim rowMastRuleAppear As ExportCDI.MastRuleAppearRow = Me.dsExport.MastRuleAppear.FindByMastIDRuleIDAppearanceID(MastID, RuleID, AppearanceID)
+            Dim rowMastRuleAppear As ExportXml.MastRuleAppearRow = Me.dsExport.MastRuleAppear.FindByMastIDRuleIDAppearanceID(MastID, RuleID, AppearanceID)
             If rowMastRuleAppear Is Nothing Then
                 Try
                     Me.dsExport.MastRuleAppear.AddMastRuleAppearRow(MastID, RuleID, AppearanceID, 0, 0)
@@ -1059,7 +1059,7 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLamp As ExportCDI.LampRow = Me.dsExport.Lamp.FindByLampID(LampID)
+            Dim rowLamp As ExportXml.LampRow = Me.dsExport.Lamp.FindByLampID(LampID)
             Try
                 If rowLamp Is Nothing Then
                     Me.dsExport.Lamp.AddLampRow(LampID, String.Empty, String.Empty, String.Empty, 0, 0, 0, 0)
@@ -1102,7 +1102,7 @@ Public Class ClassExportXml
                 resultText = Mid(text, resultInt)
             End If
 
-            Dim rowLamp As ExportCDI.LampRow = Me.dsExport.Lamp.FindByLampID(LampID)
+            Dim rowLamp As ExportXml.LampRow = Me.dsExport.Lamp.FindByLampID(LampID)
             If rowLamp Is Nothing Then
                 MsgBox("Failed to find Lamp row " + LampID.ToString)
             Else
