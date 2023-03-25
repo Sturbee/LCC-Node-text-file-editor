@@ -99,9 +99,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ImportCDI.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ImportCDI.vb">
-      <DependentUpon>ImportCDI.xsd</DependentUpon>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -212,9 +209,9 @@
       <DependentUpon>UserPrefs.xsd</DependentUpon>
     </None>
     <None Include="UserPrefs.xsd">
-      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>UserPrefs.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="UserPrefs.xss">
       <DependentUpon>UserPrefs.xsd</DependentUpon>
