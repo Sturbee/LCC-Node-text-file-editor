@@ -19,6 +19,8 @@ Public Class ClassExportXml
     Public Sub MyExportToXmlFile(filePath As String)
 
 
+
+
         Me.dsImport = New ImportCDI
         Me.dsExport = New ExportXml
         REM Me.dsEvent = New Events

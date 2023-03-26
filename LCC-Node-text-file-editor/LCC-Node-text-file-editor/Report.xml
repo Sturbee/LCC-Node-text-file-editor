@@ -26,6 +26,7 @@
 		<value>5</value>
 		<text>add 2 blank columns</text>
 	</FormatType>
+	
 
 	<!-- Power Monitor Message Option -->
 	<MessageOption>
@@ -40,6 +41,7 @@
 		<value>2</value>
 		<text>Send both Power OK and Power Not OK</text>
 	</MessageOption>
+	
 
 	<!-- Port Output Function -->
 	<PortOutFunc>
@@ -207,6 +209,7 @@
 		<text>Gated OFF (Non Veto Input)</text>
 	</PortEventProd>
 
+	
 	<!-- Logic Function -->
 	<LogicFunction>
 		<value>0</value>
@@ -308,179 +311,6 @@
 		<value>6</value>
 		<text>Delayed if False</text>
 	</LogicProducer>
-
-	
-
-	<!-- Port Titles for level 1 -->
-	<PortTitle>
-		<columnID>0</columnID>
-		<formatType>1</formatType>
-		<title>Port I/O:</title>
-		<comment>segID</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>1</columnID>
-		<formatType>1</formatType>
-		<title>Line</title>
-		<comment>sectionID</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>2</columnID>
-		<formatType>2</formatType>
-		<title>Line #</title>
-		<comment>portID</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>3</columnID>
-		<formatType>2</formatType>
-		<title>Description</title>
-		<comment>description</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>4</columnID>
-		<formatType>3</formatType>
-		<title>Output Function</title>
-		<comment>outputFunction</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>5</columnID>
-		<formatType>3</formatType>
-		<title>Output</title>
-		<comment>outputCommand</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>6</columnID>
-		<formatType>3</formatType>
-		<title>Input Function</title>
-		<comment>inputFunction</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>7</columnID>
-		<formatType>3</formatType>
-		<title>Input</title>
-		<comment>inputCommand</comment>
-	</PortTitle>
-
-
-	<!-- Logic Titles for level 1 -->
-	<LogicTitle>
-		<columnID>0</columnID>
-		<formatType>1</formatType>
-		<title>Conditionals:</title>
-		<comment>segID</comment>
-	</LogicTitle>
-	<LogicTitle>
-		<columnID>1</columnID>
-		<formatType>1</formatType>
-		<title>Logic</title>
-		<comment>sectionID</comment>
-	</LogicTitle>
-	<LogicTitle>
-		<columnID>2</columnID>
-		<formatType>2</formatType>
-		<title>Logic #</title>
-		<comment>logicID</comment>
-	</LogicTitle>
-	<LogicTitle>
-		<columnID>3</columnID>
-		<formatType>2</formatType>
-		<title>Description</title>
-		<comment>description</comment>
-	</LogicTitle>
-	<LogicTitle>
-		<columnID>4</columnID>
-		<formatType>3</formatType>
-		<title>Function</title>
-		<comment>functionValue</comment>
-	</LogicTitle>
-
-	<!-- Logic Operation Titles for level 1 -->
-	<LogicOperationTitle>
-		<columnID>0</columnID>
-		<formatType>0</formatType>
-		<title>Conditionals:</title>
-		<comment>segID</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>1</columnID>
-		<formatType>0</formatType>
-		<title>Logic</title>
-		<comment>sectionID</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>2</columnID>
-		<formatType>2</formatType>
-		<title>Logic #</title>
-		<comment>logicID</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>3</columnID>
-		<formatType>3</formatType>
-		<title>V1 Trigger</title>
-		<comment>trigger1</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>4</columnID>
-		<formatType>3</formatType>
-		<title>V1 Source</title>
-		<comment>source1</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>5</columnID>
-		<formatType>3</formatType>
-		<title>V1 Track Speed</title>
-		<comment>trackSpeed1</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>6</columnID>
-		<formatType>2</formatType>
-		<title>V1 Set True</title>
-		<comment>true1</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>7</columnID>
-		<formatType>2</formatType>
-		<title>V1 Set False</title>
-		<comment>false1</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>8</columnID>
-		<formatType>3</formatType>
-		<title>Logic Operation</title>
-		<comment>operationValue</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>9</columnID>
-		<formatType>3</formatType>
-		<title>V2 Trigger</title>
-		<comment>trigger2</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>10</columnID>
-		<formatType>3</formatType>
-		<title>V2 Source</title>
-		<comment>source2</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>11</columnID>
-		<formatType>3</formatType>
-		<title>V2 Track Speed</title>
-		<comment>trackSpeed2</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>12</columnID>
-		<formatType>2</formatType>
-		<title>V2 Set True</title>
-		<comment>true2</comment>
-	</LogicOperationTitle>
-	<LogicOperationTitle>
-		<columnID>13</columnID>
-		<formatType>2</formatType>
-		<title>V2 Set False</title>
-		<comment>false2</comment>
-	</LogicOperationTitle>
-
-
 
 	<!-- Logic Operation Action look up table -->
 	<LogicAction>

@@ -132,6 +132,11 @@
     <Compile Include="TextFileSlection.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Titles.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Titles.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UserPrefs.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -205,6 +210,17 @@
     <None Include="Report.xss">
       <DependentUpon>Report.xsd</DependentUpon>
     </None>
+    <None Include="Titles.xsc">
+      <DependentUpon>Titles.xsd</DependentUpon>
+    </None>
+    <None Include="Titles.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Titles.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Titles.xss">
+      <DependentUpon>Titles.xsd</DependentUpon>
+    </None>
     <None Include="UserPrefs.xsc">
       <DependentUpon>UserPrefs.xsd</DependentUpon>
     </None>
@@ -227,6 +243,7 @@
     <Content Include="Report.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Titles.xml" />
     <Content Include="UserPrefs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

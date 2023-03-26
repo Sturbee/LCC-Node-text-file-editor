@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Titles xmlns="http://tempuri.org/Titles.xsd">
+	
+	<!-- Titles for Node ID segment level 0 -->
+	<Title>
+		<segID>0</segID>
+		<sectionID>0</sectionID>
+		<columnID>0</columnID>
+		<formatType>1</formatType>
+		<title>Node ID:</title>
+		<comment>segID</comment>
+	</Title>
+	<Title>
+		<segID>0</segID>
+		<sectionID>0</sectionID>
+		<columnID>1</columnID>
+		<formatType>1</formatType>
+		<title>Node</title>
+		<comment>sectionID</comment>
+	</Title>
+	<Title>
+		<segID>0</segID>
+		<sectionID>0</sectionID>
+		<columnID>2</columnID>
+		<formatType>2</formatType>
+		<title>Node Name</title>
+		<comment>Name</comment>
+	</Title>
+	<Title>
+		<segID>0</segID>
+		<sectionID>0</sectionID>
+		<columnID>3</columnID>
+		<formatType>2</formatType>
+		<title>Node Description</title>
+		<comment>Description</comment>
+	</Title>
+	<Title>
+		<segID>0</segID>
+		<sectionID>0</sectionID>
+		<columnID>4</columnID>
+		<formatType>2</formatType>
+		<title>Node Type</title>
+		<comment>NodeType</comment>
+	</Title>
+	<Title>
+		<segID>0</segID>
+		<sectionID>0</sectionID>
+		<columnID>5</columnID>
+		<formatType>2</formatType>
+		<title>Base Address</title>
+		<comment>AddressBase</comment>
+	</Title>
+
+	<!-- Titles for Power Monitor segment level 0 -->
+	<Title>
+		<segID>1</segID>
+		<sectionID>0</sectionID>
+		<columnID>0</columnID>
+		<formatType>1</formatType>
+		<title>Node Power Monitor:</title>
+		<comment>segID</comment>
+	</Title>
+	<Title>
+		<segID>1</segID>
+		<sectionID>0</sectionID>
+		<columnID>1</columnID>
+		<formatType>1</formatType>
+		<title></title>
+		<comment>segmentID</comment>
+	</Title>
+	<Title>
+		<segID>1</segID>
+		<sectionID>0</sectionID>
+		<columnID>2</columnID>
+		<formatType>3</formatType>
+		<title>Message Options</title>
+		<comment>PowerOption</comment>
+	</Title>
+	<Title>
+		<segID>1</segID>
+		<sectionID>0</sectionID>
+		<columnID>3</columnID>
+		<formatType>2</formatType>
+		<title>Power OK EventID</title>
+		<comment>powerOK</comment>
+	</Title>
+	<Title>
+		<segID>1</segID>
+		<sectionID>0</sectionID>
+		<columnID>4</columnID>
+		<formatType>2</formatType>
+		<title>Power Not OK EventID (may be lost)</title>
+		<comment>powerNotOK</comment>
+	</Title>
+
+	<!-- Titles for Port Delay level 1 -->
+	<Title>
+		<segID>2</segID>
+		<sectionID>1</sectionID>
+		<columnID>0</columnID>
+		<formatType>0</formatType>
+		<title>Port I/O:</title>
+		<comment>segID</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>1</sectionID>
+		<columnID>1</columnID>
+		<formatType>1</formatType>
+		<title>Delay</title>
+		<comment>sectionID</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>1</sectionID>
+		<columnID>2</columnID>
+		<formatType>2</formatType>
+		<title>Line #</title>
+		<comment>portID</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>1</sectionID>
+		<columnID>3</columnID>
+		<formatType>3</formatType>
+		<title>Interval #</title>
+		<comment>eventID</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>1</sectionID>
+		<columnID>4</columnID>
+		<formatType>2</formatType>
+		<title>Time</title>
+		<comment>time</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>1</sectionID>
+		<columnID>5</columnID>
+		<formatType>3</formatType>
+		<title>Unit of time</title>
+		<comment>timeUnit</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>1</sectionID>
+		<columnID>6</columnID>
+		<formatType>3</formatType>
+		<title>Retrigger</title>
+		<comment>retrigger</comment>
+	</Title>
+
+	<!-- Titles for Port Event level 2 -->
+	<Title>
+		<segID>2</segID>
+		<sectionID>2</sectionID>
+		<columnID>0</columnID>
+		<formatType>0</formatType>
+		<title>Segment ID</title>
+		<comment>segID</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>2</sectionID>
+		<columnID>1</columnID>
+		<formatType>1</formatType>
+		<title>Consumers/Producers</title>
+		<comment>sectionID</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>2</sectionID>
+		<columnID>2</columnID>
+		<formatType>2</formatType>
+		<title>Line #</title>
+		<comment>portID</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>2</sectionID>
+		<columnID>3</columnID>
+		<formatType>2</formatType>
+		<title>Event #</title>
+		<comment>eventID</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>2</sectionID>
+		<columnID>4</columnID>
+		<formatType>2</formatType>
+		<title>Command</title>
+		<comment>command</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>2</sectionID>
+		<columnID>5</columnID>
+		<formatType>3</formatType>
+		<title>Action</title>
+		<comment>consumerAction</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>2</sectionID>
+		<columnID>6</columnID>
+		<formatType>3</formatType>
+		<title>Upon this Action</title>
+		<comment>producerAction</comment>
+	</Title>
+	<Title>
+		<segID>2</segID>
+		<sectionID>2</sectionID>
+		<columnID>7</columnID>
+		<formatType>2</formatType>
+		<title>Indicator</title>
+		<comment>indicator</comment>
+	</Title>
+
+	<!-- Titles Logic segment 3 Action section 2 -->
+	<Title>
+		<segID>3</segID>
+		<sectionID>2</sectionID>
+		<columnID>0</columnID>
+		<formatType>0</formatType>
+		<title>Conditionals:</title>
+		<comment>segID</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>2</sectionID>
+		<columnID>1</columnID>
+		<formatType>0</formatType>
+		<title>Logic</title>
+		<comment>sectionID</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>2</sectionID>
+		<columnID>2</columnID>
+		<formatType>2</formatType>
+		<title>Logic #</title>
+		<comment>logicID</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>2</sectionID>
+		<columnID>3</columnID>
+		<formatType>3</formatType>
+		<title>Action when True</title>
+		<comment>actionTrue</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>2</sectionID>
+		<columnID>4</columnID>
+		<formatType>3</formatType>
+		<title>Action when False</title>
+		<comment>actionFalse</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>2</sectionID>
+		<columnID>5</columnID>
+		<formatType>2</formatType>
+		<title>Time Delay before Action</title>
+		<comment>time</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>2</sectionID>
+		<columnID>6</columnID>
+		<formatType>3</formatType>
+		<title>Units</title>
+		<comment>timeUnit</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>2</sectionID>
+		<columnID>7</columnID>
+		<formatType>3</formatType>
+		<title>Retriggerable</title>
+		<comment>retrigger</comment>
+	</Title>
+
+	<!-- Titles Logic segment 3 Producer section 3 -->
+	<Title>
+		<segID>3</segID>
+		<sectionID>3</sectionID>
+		<columnID>0</columnID>
+		<formatType>0</formatType>
+		<title>Conditionals:</title>
+		<comment>segID</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>3</sectionID>
+		<columnID>1</columnID>
+		<formatType>0</formatType>
+		<title>Logic</title>
+		<comment>sectionID</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>3</sectionID>
+		<columnID>2</columnID>
+		<formatType>2</formatType>
+		<title>Logic #</title>
+		<comment>logicID</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>3</sectionID>
+		<columnID>3</columnID>
+		<formatType>2</formatType>
+		<title>Action #</title>
+		<comment>eventID</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>3</sectionID>
+		<columnID>4</columnID>
+		<formatType>3</formatType>
+		<title>Condition</title>
+		<comment>condition</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>3</sectionID>
+		<columnID>5</columnID>
+		<formatType>3</formatType>
+		<title>Destination</title>
+		<comment>destination</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>3</sectionID>
+		<columnID>6</columnID>
+		<formatType>3</formatType>
+		<title>Track Speed</title>
+		<comment>trackSpeed</comment>
+	</Title>
+	<Title>
+		<segID>3</segID>
+		<sectionID>3</sectionID>
+		<columnID>7</columnID>
+		<formatType>2</formatType>
+		<title>Action Event</title>
+		<comment>action</comment>
+	</Title>
+
+	<!-- Port Titles for level 1 -->
+	<PortTitle>
+		<columnID>0</columnID>
+		<formatType>1</formatType>
+		<title>Port I/O:</title>
+		<comment>segID</comment>
+	</PortTitle>
+	<PortTitle>
+		<columnID>1</columnID>
+		<formatType>1</formatType>
+		<title>Line</title>
+		<comment>sectionID</comment>
+	</PortTitle>
+	<PortTitle>
+		<columnID>2</columnID>
+		<formatType>2</formatType>
+		<title>Line #</title>
+		<comment>portID</comment>
+	</PortTitle>
+	<PortTitle>
+		<columnID>3</columnID>
+		<formatType>2</formatType>
+		<title>Description</title>
+		<comment>description</comment>
+	</PortTitle>
+	<PortTitle>
+		<columnID>4</columnID>
+		<formatType>3</formatType>
+		<title>Output Function</title>
+		<comment>outputFunction</comment>
+	</PortTitle>
+	<PortTitle>
+		<columnID>5</columnID>
+		<formatType>3</formatType>
+		<title>Output</title>
+		<comment>outputCommand</comment>
+	</PortTitle>
+	<PortTitle>
+		<columnID>6</columnID>
+		<formatType>3</formatType>
+		<title>Input Function</title>
+		<comment>inputFunction</comment>
+	</PortTitle>
+	<PortTitle>
+		<columnID>7</columnID>
+		<formatType>3</formatType>
+		<title>Input</title>
+		<comment>inputCommand</comment>
+	</PortTitle>
+
+	<!-- Logic Titles for level 1 -->
+	<LogicTitle>
+		<columnID>0</columnID>
+		<formatType>1</formatType>
+		<title>Conditionals:</title>
+		<comment>segID</comment>
+	</LogicTitle>
+	<LogicTitle>
+		<columnID>1</columnID>
+		<formatType>1</formatType>
+		<title>Logic</title>
+		<comment>sectionID</comment>
+	</LogicTitle>
+	<LogicTitle>
+		<columnID>2</columnID>
+		<formatType>2</formatType>
+		<title>Logic #</title>
+		<comment>logicID</comment>
+	</LogicTitle>
+	<LogicTitle>
+		<columnID>3</columnID>
+		<formatType>2</formatType>
+		<title>Description</title>
+		<comment>description</comment>
+	</LogicTitle>
+	<LogicTitle>
+		<columnID>4</columnID>
+		<formatType>3</formatType>
+		<title>Function</title>
+		<comment>functionValue</comment>
+	</LogicTitle>
+
+	<!-- Logic Operation Titles for level 1 -->
+	<LogicOperationTitle>
+		<columnID>0</columnID>
+		<formatType>0</formatType>
+		<title>Conditionals:</title>
+		<comment>segID</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>1</columnID>
+		<formatType>0</formatType>
+		<title>Logic</title>
+		<comment>sectionID</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>2</columnID>
+		<formatType>2</formatType>
+		<title>Logic #</title>
+		<comment>logicID</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>3</columnID>
+		<formatType>3</formatType>
+		<title>V1 Trigger</title>
+		<comment>trigger1</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>4</columnID>
+		<formatType>3</formatType>
+		<title>V1 Source</title>
+		<comment>source1</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>5</columnID>
+		<formatType>3</formatType>
+		<title>V1 Track Speed</title>
+		<comment>trackSpeed1</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>6</columnID>
+		<formatType>2</formatType>
+		<title>V1 Set True</title>
+		<comment>true1</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>7</columnID>
+		<formatType>2</formatType>
+		<title>V1 Set False</title>
+		<comment>false1</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>8</columnID>
+		<formatType>3</formatType>
+		<title>Logic Operation</title>
+		<comment>operationValue</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>9</columnID>
+		<formatType>3</formatType>
+		<title>V2 Trigger</title>
+		<comment>trigger2</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>10</columnID>
+		<formatType>3</formatType>
+		<title>V2 Source</title>
+		<comment>source2</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>11</columnID>
+		<formatType>3</formatType>
+		<title>V2 Track Speed</title>
+		<comment>trackSpeed2</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>12</columnID>
+		<formatType>2</formatType>
+		<title>V2 Set True</title>
+		<comment>true2</comment>
+	</LogicOperationTitle>
+	<LogicOperationTitle>
+		<columnID>13</columnID>
+		<formatType>2</formatType>
+		<title>V2 Set False</title>
+		<comment>false2</comment>
+	</LogicOperationTitle>
+
+</Titles>
