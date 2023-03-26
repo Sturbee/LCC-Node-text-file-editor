@@ -8,6 +8,8 @@ Public Class ClassAppConfigValues
     Public Property SavedUserFile As String
     Public Property SavedReportFile As String
 
+    Public Property SavedTitlesFile As String
+
 
     Public Sub AppConfigFileRead()
 
@@ -16,6 +18,7 @@ Public Class ClassAppConfigValues
         Me.SavedImportCDIfile = "ImportCDI.xml"
         Me.SavedUserFile = "UserPrefs.xml"
         Me.SavedReportFile = "Report.xml"
+        Me.SavedTitlesFile = "Titles"
 
 
         ' Get the application configuration file.

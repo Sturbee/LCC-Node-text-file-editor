@@ -81,7 +81,7 @@
     <Compile Include="ClassExportXml.vb" />
     <Compile Include="ClassExportXmlToCsv.vb" />
     <Compile Include="ClassExportXsd.vb" />
-    <Compile Include="Events1.Designer.vb">
+    <Compile Include="Events.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Events.xsd</DependentUpon>
@@ -160,7 +160,7 @@
     </None>
     <None Include="Events.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Events1.Designer.vb</LastGenOutput>
+      <LastGenOutput>Events.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Events.xss">
