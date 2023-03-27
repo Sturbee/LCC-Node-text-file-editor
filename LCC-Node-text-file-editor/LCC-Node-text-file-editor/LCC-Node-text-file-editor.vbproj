@@ -94,6 +94,18 @@
     <Compile Include="ExportXml.vb">
       <DependentUpon>ExportXml.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FrmNode.Designer.vb">
+      <DependentUpon>FrmNode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPowerMonitor.Designer.vb">
+      <DependentUpon>FrmPowerMonitor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPowerMonitor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ImportCDI.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -144,6 +156,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmNode.resx">
+      <DependentUpon>FrmNode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPowerMonitor.resx">
+      <DependentUpon>FrmPowerMonitor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -243,7 +261,13 @@
     <Content Include="Report.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Signal.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Titles.xml" />
+    <Content Include="Tower.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="UserPrefs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

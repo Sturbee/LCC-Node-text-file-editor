@@ -1,0 +1,66 @@
+﻿Public Class FrmNode
+
+    Public Property MyFileName As String
+    Public Property MySaveFile
+
+    Private Property MyImport As New ExportXml
+    Private Property MyNodeRow As ExportXml.NodeRow
+
+    Private Sub FrmNode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        ' get App Config values
+        Dim clsAppConfig As New ClassAppConfigValues
+        Try
+            clsAppConfig.AppConfigFileRead()
+        Catch ex As Exception
+            MsgBox("Failed to get config values")
+            Exit Sub
+        End Try
+
+        ' temporary
+        Me.MyFileName = clsAppConfig.SavedBlankSignalFile
+
+        Me.MyFileName = "EditTest.xml"
+        Me.MySaveFile = "EditTest.xml"
+
+        ' read the file to read and edit
+        REM Dim myImport As New ExportXml
+        Try
+            Me.MyImport.ReadXml(Me.MyFileName)
+        Catch ex As Exception
+            MsgBox("Failed to read file " + Me.MyFileName)
+            Exit Sub
+        End Try
+
+        Me.MyNodeRow = Me.MyImport.Node.Item(0)
+
+        Me.LblFileName.Text = Me.MyFileName
+        Me.LblNodeTYpe.Text = Me.MyNodeRow.NodeType.ToString
+        Me.LblBaseAddress.Text = Me.MyNodeRow.eventBase.ToString
+        Me.TxtNodeName.Text = Me.MyNodeRow.Name.ToString
+        Me.TxtNodeDescription.Text = Me.MyNodeRow.Description.ToString
+
+    End Sub
+
+    Private Sub ButSaveChanges_Click(sender As Object, e As EventArgs) Handles ButSaveChanges.Click
+
+        If Me.MyNodeRow Is Nothing Then
+            MsgBox("Node data missing")
+            Exit Sub
+        End If
+
+        Try
+            Me.MyNodeRow.Name = Me.TxtNodeName.Text
+            Me.MyNodeRow.Description = Me.TxtNodeDescription.Text
+
+            Me.MyImport.WriteXml(Me.MySaveFile)
+
+            MsgBox("Saved changes to file " + Me.MySaveFile)
+
+        Catch ex As Exception
+            MsgBox("Failed to save file " + Me.MySaveFile)
+        End Try
+
+    End Sub
+
+End Class

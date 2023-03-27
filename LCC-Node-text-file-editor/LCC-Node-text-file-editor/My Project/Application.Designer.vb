@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.LCC_Node_text_file_editor.MyFileExplorer
+            Me.MainForm = Global.LCC_Node_text_file_editor.FrmPowerMonitor
         End Sub
     End Class
 End Namespace

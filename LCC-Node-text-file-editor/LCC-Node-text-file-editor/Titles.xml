@@ -517,4 +517,31 @@
 		<comment>false2</comment>
 	</LogicOperationTitle>
 
+	<!-- Format types -->
+	<FormatType>
+		<value>0</value>
+		<text>Do nothing</text>
+	</FormatType>
+	<FormatType>
+		<value>1</value>
+		<text>Report title only</text>
+	</FormatType>
+	<FormatType>
+		<value>2</value>
+		<text>Report title and column value</text>
+	</FormatType>
+	<FormatType>
+		<value>3</value>
+		<text>Report title and attribute text</text>
+	</FormatType>
+	<FormatType>
+		<value>4</value>
+		<text>add blank column</text>
+	</FormatType>
+	<FormatType>
+		<value>5</value>
+		<text>add 2 blank columns</text>
+	</FormatType>
+
+
 </Titles>
