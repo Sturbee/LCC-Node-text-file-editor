@@ -22,9 +22,9 @@ Partial Class FrmPowerMonitor
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.LblOptions = New System.Windows.Forms.Label()
+        Me.LblPowerOK = New System.Windows.Forms.Label()
+        Me.LblPowerNotOK = New System.Windows.Forms.Label()
         Me.LstMessageOption = New System.Windows.Forms.ListBox()
         Me.TxtPowerOK = New System.Windows.Forms.TextBox()
         Me.TxtPowerNotOK = New System.Windows.Forms.TextBox()
@@ -32,32 +32,32 @@ Partial Class FrmPowerMonitor
         Me.Label4 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'Label1
+        'LblOptions
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(157, 66)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(113, 16)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Message Options"
+        Me.LblOptions.AutoSize = True
+        Me.LblOptions.Location = New System.Drawing.Point(157, 66)
+        Me.LblOptions.Name = "LblOptions"
+        Me.LblOptions.Size = New System.Drawing.Size(71, 16)
+        Me.LblOptions.TabIndex = 0
+        Me.LblOptions.Text = "LblOptions"
         '
-        'Label2
+        'LblPowerOK
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(154, 170)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(116, 16)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Power OK EventID"
+        Me.LblPowerOK.AutoSize = True
+        Me.LblPowerOK.Location = New System.Drawing.Point(147, 170)
+        Me.LblPowerOK.Name = "LblPowerOK"
+        Me.LblPowerOK.Size = New System.Drawing.Size(81, 16)
+        Me.LblPowerOK.TabIndex = 1
+        Me.LblPowerOK.Text = "LblPowerOK"
         '
-        'Label3
+        'LblPowerNotOK
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(50, 207)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(220, 16)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Power Not OK EventID (may be lost)"
+        Me.LblPowerNotOK.AutoSize = True
+        Me.LblPowerNotOK.Location = New System.Drawing.Point(35, 207)
+        Me.LblPowerNotOK.Name = "LblPowerNotOK"
+        Me.LblPowerNotOK.Size = New System.Drawing.Size(102, 16)
+        Me.LblPowerNotOK.TabIndex = 2
+        Me.LblPowerNotOK.Text = "LblPowerNotOK"
         '
         'LstMessageOption
         '
@@ -94,7 +94,7 @@ Partial Class FrmPowerMonitor
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(174, 284)
+        Me.Label4.Location = New System.Drawing.Point(171, 284)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(96, 16)
         Me.Label4.TabIndex = 7
@@ -110,19 +110,19 @@ Partial Class FrmPowerMonitor
         Me.Controls.Add(Me.TxtPowerNotOK)
         Me.Controls.Add(Me.TxtPowerOK)
         Me.Controls.Add(Me.LstMessageOption)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.LblPowerNotOK)
+        Me.Controls.Add(Me.LblPowerOK)
+        Me.Controls.Add(Me.LblOptions)
         Me.Name = "FrmPowerMonitor"
-        Me.Text = "Segment: Node Power Monitor"
+        Me.Text = "FrmPowerMonitor"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents LblOptions As Label
+    Friend WithEvents LblPowerOK As Label
+    Friend WithEvents LblPowerNotOK As Label
     Friend WithEvents LstMessageOption As ListBox
     Friend WithEvents TxtPowerOK As TextBox
     Friend WithEvents TxtPowerNotOK As TextBox

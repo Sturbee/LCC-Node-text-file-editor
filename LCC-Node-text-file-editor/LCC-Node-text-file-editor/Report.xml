@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Rpt xmlns="http://tempuri.org/Report.xsd">
+	
+	<!-- Node Type -->
+	<NodeType>
+		<value>0</value>
+		<text>Unknown</text>
+	</NodeType>
+	<NodeType>
+		<value>1</value>
+		<text>Signal-LCC</text>
+	</NodeType>
+	<NodeType>
+		<value>2</value>
+		<text>Tower-LCC</text>
+	</NodeType>
 
 	<!-- Power Monitor Message Option -->
 	<MessageOption>

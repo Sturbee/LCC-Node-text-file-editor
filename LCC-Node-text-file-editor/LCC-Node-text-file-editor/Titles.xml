@@ -1,97 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Titles xmlns="http://tempuri.org/Titles.xsd">
-	
-	<!-- Titles for Node ID segment level 0 -->
-	<Title>
-		<segID>0</segID>
-		<sectionID>0</sectionID>
-		<columnID>0</columnID>
-		<formatType>1</formatType>
-		<title>Node ID:</title>
-		<comment>segID</comment>
-	</Title>
-	<Title>
-		<segID>0</segID>
-		<sectionID>0</sectionID>
-		<columnID>1</columnID>
-		<formatType>1</formatType>
-		<title>Node</title>
-		<comment>sectionID</comment>
-	</Title>
-	<Title>
-		<segID>0</segID>
-		<sectionID>0</sectionID>
-		<columnID>2</columnID>
-		<formatType>2</formatType>
-		<title>Node Name</title>
-		<comment>Name</comment>
-	</Title>
-	<Title>
-		<segID>0</segID>
-		<sectionID>0</sectionID>
-		<columnID>3</columnID>
-		<formatType>2</formatType>
-		<title>Node Description</title>
-		<comment>Description</comment>
-	</Title>
-	<Title>
-		<segID>0</segID>
-		<sectionID>0</sectionID>
-		<columnID>4</columnID>
-		<formatType>2</formatType>
-		<title>Node Type</title>
-		<comment>NodeType</comment>
-	</Title>
-	<Title>
-		<segID>0</segID>
-		<sectionID>0</sectionID>
-		<columnID>5</columnID>
-		<formatType>2</formatType>
-		<title>Base Address</title>
-		<comment>AddressBase</comment>
-	</Title>
 
-	<!-- Titles for Power Monitor segment level 0 -->
-	<Title>
-		<segID>1</segID>
-		<sectionID>0</sectionID>
-		<columnID>0</columnID>
-		<formatType>1</formatType>
-		<title>Node Power Monitor:</title>
-		<comment>segID</comment>
-	</Title>
-	<Title>
-		<segID>1</segID>
-		<sectionID>0</sectionID>
-		<columnID>1</columnID>
-		<formatType>1</formatType>
-		<title></title>
-		<comment>segmentID</comment>
-	</Title>
-	<Title>
-		<segID>1</segID>
-		<sectionID>0</sectionID>
-		<columnID>2</columnID>
-		<formatType>3</formatType>
-		<title>Message Options</title>
-		<comment>PowerOption</comment>
-	</Title>
-	<Title>
-		<segID>1</segID>
-		<sectionID>0</sectionID>
-		<columnID>3</columnID>
-		<formatType>2</formatType>
-		<title>Power OK EventID</title>
-		<comment>powerOK</comment>
-	</Title>
-	<Title>
-		<segID>1</segID>
-		<sectionID>0</sectionID>
-		<columnID>4</columnID>
-		<formatType>2</formatType>
-		<title>Power Not OK EventID (may be lost)</title>
-		<comment>powerNotOK</comment>
-	</Title>
+	<!-- Titles for Node ID segment level 1 -->
+	<NodeTitles>
+		<header>Segment: Node ID</header>
+		<name>Node Name</name>
+		<description>Node Description</description>
+		<nodeType>Node Type</nodeType>
+		<eventBase>Base Address</eventBase>
+	</NodeTitles>
+
+	<!-- Titles for Power Monitor segment level 1 -->
+	<PowerMonitorTitles>
+		<header>Segment: Node Power Monitor</header>
+		<options>Message Options</options>
+		<powerOK>Power OK EventID</powerOK>
+		<powerNotOK>Power Not OK EventID (may be lost)</powerNotOK>
+	</PowerMonitorTitles>
+
+	<!-- Titles for Port segement level 1 -->
+	<PortTitles>
+		<header>Segment: Port I/O</header>
+		<port>Line #</port>
+		<description>Description</description>
+		<outFunction>Output Function</outFunction>
+		<outCommand>Output</outCommand>
+		<inFunction>Input Function</inFunction>
+		<inCommand>Input</inCommand>
+	</PortTitles>
+
 
 	<!-- Titles for Port Delay level 1 -->
 	<Title>
@@ -349,55 +286,6 @@
 		<comment>action</comment>
 	</Title>
 
-	<!-- Port Titles for level 1 -->
-	<PortTitle>
-		<columnID>0</columnID>
-		<formatType>1</formatType>
-		<title>Port I/O:</title>
-		<comment>segID</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>1</columnID>
-		<formatType>1</formatType>
-		<title>Line</title>
-		<comment>sectionID</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>2</columnID>
-		<formatType>2</formatType>
-		<title>Line #</title>
-		<comment>portID</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>3</columnID>
-		<formatType>2</formatType>
-		<title>Description</title>
-		<comment>description</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>4</columnID>
-		<formatType>3</formatType>
-		<title>Output Function</title>
-		<comment>outputFunction</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>5</columnID>
-		<formatType>3</formatType>
-		<title>Output</title>
-		<comment>outputCommand</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>6</columnID>
-		<formatType>3</formatType>
-		<title>Input Function</title>
-		<comment>inputFunction</comment>
-	</PortTitle>
-	<PortTitle>
-		<columnID>7</columnID>
-		<formatType>3</formatType>
-		<title>Input</title>
-		<comment>inputCommand</comment>
-	</PortTitle>
 
 	<!-- Logic Titles for level 1 -->
 	<LogicTitle>

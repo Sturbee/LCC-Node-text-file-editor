@@ -22,55 +22,55 @@ Partial Class FrmNode
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.LblName = New System.Windows.Forms.Label()
+        Me.LblDecription = New System.Windows.Forms.Label()
+        Me.LblNodeType = New System.Windows.Forms.Label()
+        Me.LblEventBase = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TxtNodeName = New System.Windows.Forms.TextBox()
         Me.TxtNodeDescription = New System.Windows.Forms.TextBox()
         Me.LblFileName = New System.Windows.Forms.Label()
-        Me.LblNodeTYpe = New System.Windows.Forms.Label()
+        Me.LblType = New System.Windows.Forms.Label()
         Me.LblBaseAddress = New System.Windows.Forms.Label()
         Me.ButSaveChanges = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'Label1
+        'LblName
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(100, 146)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(81, 16)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Node Name"
+        Me.LblName.AutoSize = True
+        Me.LblName.Location = New System.Drawing.Point(100, 146)
+        Me.LblName.Name = "LblName"
+        Me.LblName.Size = New System.Drawing.Size(62, 16)
+        Me.LblName.TabIndex = 0
+        Me.LblName.Text = "LblName"
         '
-        'Label2
+        'LblDecription
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(69, 188)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(112, 16)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Node Description"
+        Me.LblDecription.AutoSize = True
+        Me.LblDecription.Location = New System.Drawing.Point(69, 188)
+        Me.LblDecription.Name = "LblDecription"
+        Me.LblDecription.Size = New System.Drawing.Size(93, 16)
+        Me.LblDecription.TabIndex = 1
+        Me.LblDecription.Text = "LblDescription"
         '
-        'Label3
+        'LblNodeType
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(105, 68)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(76, 16)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Node Type"
+        Me.LblNodeType.AutoSize = True
+        Me.LblNodeType.Location = New System.Drawing.Point(105, 68)
+        Me.LblNodeType.Name = "LblNodeType"
+        Me.LblNodeType.Size = New System.Drawing.Size(91, 16)
+        Me.LblNodeType.TabIndex = 2
+        Me.LblNodeType.Text = "LblNodeType"
         '
-        'Label4
+        'LblEventBase
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(88, 109)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(93, 16)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Base Address"
+        Me.LblEventBase.AutoSize = True
+        Me.LblEventBase.Location = New System.Drawing.Point(88, 109)
+        Me.LblEventBase.Name = "LblEventBase"
+        Me.LblEventBase.Size = New System.Drawing.Size(91, 16)
+        Me.LblEventBase.TabIndex = 3
+        Me.LblEventBase.Text = "LblEventBase"
         '
         'Label5
         '
@@ -104,14 +104,14 @@ Partial Class FrmNode
         Me.LblFileName.TabIndex = 7
         Me.LblFileName.Text = "LblFileName"
         '
-        'LblNodeTYpe
+        'LblType
         '
-        Me.LblNodeTYpe.AutoSize = True
-        Me.LblNodeTYpe.Location = New System.Drawing.Point(206, 68)
-        Me.LblNodeTYpe.Name = "LblNodeTYpe"
-        Me.LblNodeTYpe.Size = New System.Drawing.Size(91, 16)
-        Me.LblNodeTYpe.TabIndex = 8
-        Me.LblNodeTYpe.Text = "LblNodeType"
+        Me.LblType.AutoSize = True
+        Me.LblType.Location = New System.Drawing.Point(206, 68)
+        Me.LblType.Name = "LblType"
+        Me.LblType.Size = New System.Drawing.Size(57, 16)
+        Me.LblType.TabIndex = 8
+        Me.LblType.Text = "LblType"
         '
         'LblBaseAddress
         '
@@ -148,31 +148,31 @@ Partial Class FrmNode
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ButSaveChanges)
         Me.Controls.Add(Me.LblBaseAddress)
-        Me.Controls.Add(Me.LblNodeTYpe)
+        Me.Controls.Add(Me.LblType)
         Me.Controls.Add(Me.LblFileName)
         Me.Controls.Add(Me.TxtNodeDescription)
         Me.Controls.Add(Me.TxtNodeName)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.LblEventBase)
+        Me.Controls.Add(Me.LblNodeType)
+        Me.Controls.Add(Me.LblDecription)
+        Me.Controls.Add(Me.LblName)
         Me.Name = "FrmNode"
-        Me.Text = "SegmentID: Node ID"
+        Me.Text = "FrmNode"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
+    Friend WithEvents LblName As Label
+    Friend WithEvents LblDecription As Label
+    Friend WithEvents LblNodeType As Label
+    Friend WithEvents LblEventBase As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents TxtNodeName As TextBox
     Friend WithEvents TxtNodeDescription As TextBox
     Friend WithEvents LblFileName As Label
-    Friend WithEvents LblNodeTYpe As Label
+    Friend WithEvents LblType As Label
     Friend WithEvents LblBaseAddress As Label
     Friend WithEvents ButSaveChanges As Button
     Friend WithEvents Label6 As Label

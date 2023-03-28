@@ -13,7 +13,7 @@ Public Class ClassExportXml
     REM Private dsEvent As Events
 
     Private Property MyNodeEventBase As String
-    Private Property MyNodeType As String
+    Private Property MyNodeType As Integer
 
 
     Public Sub MyExportToXmlFile(filePath As String)
@@ -25,7 +25,7 @@ Public Class ClassExportXml
         Me.dsExport = New ExportXml
         REM Me.dsEvent = New Events
         Me.MyNodeEventBase = String.Empty
-        Me.MyNodeType = "Unknown"
+        Me.MyNodeType = 0 ' Unknown
 
         ' get App Config values
         Dim clsAppConfig As New ClassAppConfigValues
@@ -421,7 +421,7 @@ Public Class ClassExportXml
             Dim rowNode As ExportXml.NodeRow = Me.dsExport.Node.FindByNodeID(NodeID)
             Try
                 If rowNode Is Nothing Then
-                    Me.dsExport.Node.AddNodeRow(NodeID, String.Empty, String.Empty, String.Empty, String.Empty)
+                    Me.dsExport.Node.AddNodeRow(NodeID, String.Empty, String.Empty, 0, String.Empty)
                     Me.dsExport.AcceptChanges()
                     rowNode = Me.dsExport.Node.FindByNodeID(NodeID)
                 End If
@@ -529,9 +529,9 @@ Public Class ClassExportXml
 
             Select Case LineID
                 Case 8
-                    Me.MyNodeType = "Signal-LCC"
+                    Me.MyNodeType = 1 ' Signal-LCC
                 Case 16
-                    Me.MyNodeType = "Tower-LCC"
+                    Me.MyNodeType = 2 ' Tower-LCC
             End Select
 
             Dim rowPort As ExportXml.PortRow = Me.dsExport.Port.FindByLineID(LineID)

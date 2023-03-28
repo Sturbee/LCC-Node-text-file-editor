@@ -20,7 +20,7 @@ Public Class ClassAppConfigValues
         Me.SavedImportCDIfile = "ImportCDI.xml"
         Me.SavedUserFile = "UserPrefs.xml"
         Me.SavedReportFile = "Report.xml"
-        Me.SavedTitlesFile = "Titles"
+        Me.SavedTitlesFile = "Titles.xml"
         Me.SavedBlankTowerFile = "Tower.xml"
         Me.SavedBlankSignalFile = "Signal.xml"
 

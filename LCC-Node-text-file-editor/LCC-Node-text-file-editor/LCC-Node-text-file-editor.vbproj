@@ -94,6 +94,12 @@
     <Compile Include="ExportXml.vb">
       <DependentUpon>ExportXml.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FrmLine.Designer.vb">
+      <DependentUpon>FrmLine.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLine.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmNode.Designer.vb">
       <DependentUpon>FrmNode.vb</DependentUpon>
     </Compile>
@@ -156,6 +162,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmLine.resx">
+      <DependentUpon>FrmLine.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmNode.resx">
       <DependentUpon>FrmNode.vb</DependentUpon>
     </EmbeddedResource>
@@ -264,7 +273,9 @@
     <Content Include="Signal.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Titles.xml" />
+    <Content Include="Titles.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Tower.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

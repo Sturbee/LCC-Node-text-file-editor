@@ -895,7 +895,7 @@ Partial Public Class ExportXml
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddNodeRow(ByVal NodeID As Integer, ByVal Name As String, ByVal Description As String, ByVal NodeType As String, ByVal eventBase As String) As NodeRow
+        Public Overloads Function AddNodeRow(ByVal NodeID As Integer, ByVal Name As String, ByVal Description As String, ByVal NodeType As Integer, ByVal eventBase As String) As NodeRow
             Dim rowNodeRow As NodeRow = CType(Me.NewRow,NodeRow)
             Dim columnValuesArray() As Object = New Object() {NodeID, Name, Description, NodeType, eventBase}
             rowNodeRow.ItemArray = columnValuesArray
@@ -950,7 +950,7 @@ Partial Public Class ExportXml
             Me.columnDescription.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnDescription")
             Me.columnDescription.ExtendedProperties.Add("Generator_UserColumnName", "description")
             MyBase.Columns.Add(Me.columnDescription)
-            Me.columnNodeType = New Global.System.Data.DataColumn("nodeType", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnNodeType = New Global.System.Data.DataColumn("nodeType", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             Me.columnNodeType.ExtendedProperties.Add("Generator_ColumnPropNameInRow", "NodeType")
             Me.columnNodeType.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "NodeTypeColumn")
             Me.columnNodeType.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnNodeType")
@@ -5699,10 +5699,10 @@ Partial Public Class ExportXml
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property NodeType() As String
+        Public Property NodeType() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableNode.NodeTypeColumn),String)
+                    Return CType(Me(Me.tableNode.NodeTypeColumn),Integer)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'nodeType' in table 'Node' is DBNull.", e)
                 End Try

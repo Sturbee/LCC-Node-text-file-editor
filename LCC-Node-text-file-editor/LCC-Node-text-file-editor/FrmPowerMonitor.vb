@@ -6,7 +6,6 @@
     Private Property MyPowerMonitorRow As ExportXml.PowerMonitorRow
     Private Property SavePowerOK As String
     Private Property SavePowerNotOK As String
-    Private Property MyRpt As New Rpt
 
 
     Private Sub FrmPowerMonitor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -18,6 +17,43 @@
         Catch ex As Exception
             MsgBox("Failed to get config values")
             Exit Sub
+        End Try
+
+        ' read the titles xml file
+        Dim dsTitles As New Titles
+        Try
+            dsTitles.ReadXml(clsAppConfig.SavedTitlesFile)
+        Catch ex As Exception
+            MsgBox("Failed to import titles")
+            Exit Sub
+        End Try
+
+        Dim rowPower As Titles.PowerMonitorTitlesRow = dsTitles.PowerMonitorTitles.Item(0)
+        Me.Text = rowPower.header
+        Me.LblOptions.Text = rowPower.options
+        Me.LblPowerOK.Text = rowPower.powerOK
+        Me.LblPowerNotOK.Text = rowPower.powerNotOK
+
+
+        ' read the attribute xml file
+        Dim dsRpt As New Rpt
+        Try
+            dsRpt.ReadXml(clsAppConfig.SavedReportFile)
+        Catch ex As Exception
+            MsgBox("Failed to import attributes")
+            Exit Sub
+        End Try
+
+        ' fill list box items
+        Try
+            Me.LstMessageOption.BeginUpdate()
+            For I = 0 To dsRpt.MessageOption.Count - 1
+                Dim rowOption As Rpt.MessageOptionRow = dsRpt.MessageOption.Item(I)
+                Me.LstMessageOption.Items.Add(rowOption.text)
+            Next
+            Me.LstMessageOption.EndUpdate()
+        Catch ex As Exception
+            MsgBox("Failed to add Message Option values")
         End Try
 
         ' temporary
@@ -32,26 +68,6 @@
         Catch ex As Exception
             MsgBox("Failed to read file " + Me.MyFileName)
             Exit Sub
-        End Try
-
-        ' read the attribute xml file
-        Try
-            Me.MyRpt.ReadXml(clsAppConfig.SavedReportFile)
-        Catch ex As Exception
-            MsgBox("Failed to read report file " + clsAppConfig.SavedReportFile)
-        End Try
-
-
-        ' fill list box items
-        Try
-            Me.LstMessageOption.BeginUpdate()
-            For I = 0 To MyRpt.MessageOption.Count - 1
-                Dim rowOption As Rpt.MessageOptionRow = MyRpt.MessageOption.Item(I)
-                Me.LstMessageOption.Items.Add(rowOption.text)
-            Next
-            Me.LstMessageOption.EndUpdate()
-        Catch ex As Exception
-            MsgBox("Failed to add Message Option values")
         End Try
 
 
