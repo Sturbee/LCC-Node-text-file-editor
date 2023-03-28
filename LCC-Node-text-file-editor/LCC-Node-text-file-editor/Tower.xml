@@ -4,7 +4,7 @@
     <NodeID>0</NodeID>
     <name />
     <description />
-    <nodeType>Tower-LCC</nodeType>
+    <nodeType>2</nodeType>
     <eventBase>02.01.57.00.04.C5</eventBase>
   </Node>
   <PowerMonitor>

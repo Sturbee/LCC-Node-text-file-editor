@@ -4,7 +4,7 @@
     <NodeID>0</NodeID>
     <name />
     <description />
-    <nodeType>Signal-LCC</nodeType>
+    <nodeType>1</nodeType>
     <eventBase>02.01.57.10.02.CB</eventBase>
   </Node>
   <PowerMonitor>
