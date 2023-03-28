@@ -8,18 +8,12 @@
     Private Sub FrmNode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' get App Config values
-        Dim clsAppConfig As New ClassAppConfigValues
-        Try
-            clsAppConfig.AppConfigFileRead()
-        Catch ex As Exception
-            MsgBox("Failed to get config values")
-            Exit Sub
-        End Try
+        Dim cls As New ClassAppConfigValues
 
         ' read the titles xml file
         Dim dsTitles As New Titles
         Try
-            dsTitles.ReadXml(clsAppConfig.SavedTitlesFile)
+            dsTitles.ReadXml(cls.SavedTitlesFile)
         Catch ex As Exception
             MsgBox("Failed to import titles")
             Exit Sub
@@ -36,7 +30,7 @@
         ' read the attribute xml file
         Dim dsRpt As New Rpt
         Try
-            dsRpt.ReadXml(clsAppConfig.SavedReportFile)
+            dsRpt.ReadXml(cls.SavedReportFile)
         Catch ex As Exception
             MsgBox("Failed to import attributes")
             Exit Sub
@@ -44,7 +38,7 @@
 
 
         ' temporary
-        Me.MyFileName = clsAppConfig.SavedBlankSignalFile
+        Me.MyFileName = cls.SavedBlankSignalFile
 
         Me.MyFileName = "EditTest.xml"
         Me.MySaveFile = "EditTest.xml"

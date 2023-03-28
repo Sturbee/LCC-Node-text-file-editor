@@ -1,79 +1,56 @@
 ﻿Public Class FrmLine
-
-    Public Property MyFileName As String
-    Public Property MySaveFile
     Private Property MyImport As New ExportXml
-    Private Property MyPortRow As ExportXml.PortRow
-
     Private Sub FrmLine_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' get App Config values
-        Dim clsAppConfig As New ClassAppConfigValues
-        Try
-            clsAppConfig.AppConfigFileRead()
-        Catch ex As Exception
-            MsgBox("Failed to get config values")
-            Exit Sub
-        End Try
+        Dim cls As New ClassAppConfigValues
 
         ' read the titles xml file
         Dim dsTitles As New Titles
         Try
-            dsTitles.ReadXml(clsAppConfig.SavedTitlesFile)
+            dsTitles.ReadXml(cls.SavedTitlesFile)
         Catch ex As Exception
             MsgBox("Failed to import titles")
             Exit Sub
         End Try
 
-        Dim rowPort As Titles.PortTitlesRow = dsTitles.PortTitles.Item(0)
-        Me.Text = rowPort.header
-        REM Me.LblOptions.Text = rowPower.options
-        REM Me.LblPowerOK.Text = rowPower.powerOK
-        REM Me.LblPowerNotOK.Text = rowPower.powerNotOK
-
+        ' set labels
+        Dim rowTitle As Titles.PortTitlesRow = dsTitles.PortTitles.Item(0)
+        Me.Text = rowTitle.header
+        Me.LblLine.Text = rowTitle.port
+        Me.LblDescription.Text = rowTitle.description
 
         ' read the attribute xml file
         Dim dsRpt As New Rpt
         Try
-            dsRpt.ReadXml(clsAppConfig.SavedReportFile)
+            dsRpt.ReadXml(cls.SavedReportFile)
         Catch ex As Exception
             MsgBox("Failed to import attributes")
             Exit Sub
         End Try
 
-        ' temporary
-        Me.MyFileName = clsAppConfig.SavedBlankSignalFile
 
-        Me.MyFileName = "EditTest.xml"
-        Me.MySaveFile = "EditTest.xml"
+        Dim myFileName As String = "EditTest.xml"
 
-        ' read the file to read and edit
+        ' reads the export xml file
         Try
-            Me.MyImport.ReadXml(Me.MyFileName)
+            Me.MyImport.ReadXml(myFileName)
         Catch ex As Exception
-            MsgBox("Failed to read file " + Me.MyFileName)
+            MsgBox("Failed to read file " + myFileName)
             Exit Sub
         End Try
 
-        ' check for node type
-        Dim rowNode As ExportXml.NodeRow = Me.MyImport.Node.Item(0)
-        If rowNode.NodeType = 1 Then
-            Me.MenuStrip2.Visible = False
+        ' line numbers are 1 to 16
+        Dim lineID As Integer = 1
+        Dim rowPort As ExportXml.PortRow = Me.MyImport.Port.FindByLineID(lineID)
+        If rowPort Is Nothing Then
+            MsgBox("Failed to import port row " + lineID.ToString)
+            Exit Sub
         End If
 
-    End Sub
+        Me.LblLineNumber.Text = rowPort.LineID.ToString
+        Me.TxtDescription.Text = rowPort.Description
 
-    Private Sub ToolStripTextBox1_Click(sender As Object, e As EventArgs) Handles ToolStripTextBox1.Click
-
-        MsgBox("Clicked on Line 1")
 
     End Sub
-
-    Private Sub ToolStripTextBox9_Click(sender As Object, e As EventArgs) Handles ToolStripTextBox9.Click
-
-        MsgBox("Clicked on Line 9")
-
-    End Sub
-
-
 End Class

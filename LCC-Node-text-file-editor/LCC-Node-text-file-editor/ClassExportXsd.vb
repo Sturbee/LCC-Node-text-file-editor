@@ -3,17 +3,16 @@ Imports System.IO
 
 Public Class ClassExportXsd
 
-    Public Sub ExportToXsdFile(filePath As String)
+    Inherits ClassAppConfigValues
 
-        Dim clsAppConfig As New ClassAppConfigValues
-        clsAppConfig.AppConfigFileRead()
+    Public Sub ExportToXsdFile(filePath As String)
 
         Dim dsImport As New ImportCDI
 
         Try
-            dsImport.ReadXml(clsAppConfig.SavedImportCDIfile)
+            dsImport.ReadXml(Me.SavedImportCDIfile)
         Catch ex As Exception
-            MsgBox("Failed to read import file " + clsAppConfig.SavedImportCDIfile)
+            MsgBox("Failed to read import file " + Me.SavedImportCDIfile)
             Exit Sub
         End Try
 
@@ -23,7 +22,7 @@ Public Class ClassExportXsd
 
             Dim dsUser As New UserPrefs
 
-            dsUser.ReadXml(clsAppConfig.SavedUserFile)
+            dsUser.ReadXml(Me.SavedUserFile)
             dsUser.AcceptChanges()
 
             dsImport.Process.Merge(dsUser.Process)
@@ -37,7 +36,7 @@ Public Class ClassExportXsd
             End If
 
         Catch ex As Exception
-            MsgBox("Failed to import xml " + clsAppConfig.SavedUserFile)
+            MsgBox("Failed to import xml " + Me.SavedUserFile)
         End Try
 
 

@@ -6,6 +6,8 @@ Imports Microsoft.VisualBasic.Devices
 
 Public Class ClassExportXml
 
+    Inherits ClassAppConfigValues
+
     Private lineNum As Integer = 0
 
     Private dsImport As ImportCDI
@@ -27,11 +29,6 @@ Public Class ClassExportXml
         Me.MyNodeEventBase = String.Empty
         Me.MyNodeType = 0 ' Unknown
 
-        ' get App Config values
-        Dim clsAppConfig As New ClassAppConfigValues
-        clsAppConfig.AppConfigFileRead()
-
-
         Try
 
             If File.Exists(filePath) = False Then
@@ -42,9 +39,9 @@ Public Class ClassExportXml
 
 
             Try
-                Me.dsImport.ReadXml(clsAppConfig.SavedImportCDIfile)
+                Me.dsImport.ReadXml(Me.SavedImportCDIfile)
             Catch ex As Exception
-                MsgBox("Failed to import " + clsAppConfig.SavedImportCDIfile)
+                MsgBox("Failed to import " + Me.SavedImportCDIfile)
                 Exit Sub
             End Try
 
@@ -53,7 +50,7 @@ Public Class ClassExportXml
 
                 Dim dsUser As New UserPrefs
 
-                dsUser.ReadXml(clsAppConfig.SavedUserFile)
+                dsUser.ReadXml(Me.SavedUserFile)
                 dsUser.AcceptChanges()
 
                 dsImport.Process.Merge(dsUser.Process)
@@ -68,7 +65,7 @@ Public Class ClassExportXml
                 End If
 
             Catch ex As Exception
-                MsgBox("Failed to import xml " + clsAppConfig.SavedUserFile)
+                MsgBox("Failed to import xml " + Me.SavedUserFile)
             End Try
 
 

@@ -3,6 +3,8 @@ Imports System.Net.Http.Headers
 
 Public Class ClassExportXmlToCsv
 
+    Inherits ClassAppConfigValues
+
     Public Sub ExportToCvsFile(filePath As String)
 
         ' get the input file data
@@ -24,29 +26,26 @@ Public Class ClassExportXmlToCsv
         End Try
 
         ' get report value's tables
-        Dim clsAppConfig As New ClassAppConfigValues
-        clsAppConfig.AppConfigFileRead()
-
-        If My.Computer.FileSystem.FileExists(clsAppConfig.SavedImportCDIfile) = False Then
-            MessageBox.Show("File Not Found: " & clsAppConfig.SavedImportCDIfile)
+        If My.Computer.FileSystem.FileExists(Me.SavedImportCDIfile) = False Then
+            MessageBox.Show("File Not Found: " & Me.SavedImportCDIfile)
             Exit Sub
         End If
 
         Dim dsReport As New Rpt
 
         Try
-            dsReport.ReadXml(clsAppConfig.SavedReportFile)
+            dsReport.ReadXml(Me.SavedReportFile)
         Catch ex As Exception
-            MsgBox("Failed to read report file " + clsAppConfig.SavedReportFile)
+            MsgBox("Failed to read report file " + Me.SavedReportFile)
             Exit Sub
         End Try
 
         Dim dsTitles As New Titles
 
         Try
-            dsTitles.ReadXml(clsAppConfig.SavedTitlesFile)
+            dsTitles.ReadXml(Me.SavedTitlesFile)
         Catch ex As Exception
-            MsgBox("Failed to read titles file " + clsAppConfig.SavedTitlesFile)
+            MsgBox("Failed to read titles file " + Me.SavedTitlesFile)
         End Try
 
 
@@ -54,9 +53,9 @@ Public Class ClassExportXmlToCsv
         Dim dsImport As New ImportCDI
 
         Try
-            dsImport.ReadXml(clsAppConfig.SavedReportFile)
+            dsImport.ReadXml(Me.SavedReportFile)
         Catch ex As Exception
-            MsgBox("Faied to read import file " + clsAppConfig.SavedImportCDIfile)
+            MsgBox("Faied to read import file " + Me.SavedImportCDIfile)
         End Try
 
 
@@ -65,7 +64,7 @@ Public Class ClassExportXmlToCsv
 
             Dim dsUser As New UserPrefs
 
-            dsUser.ReadXml(clsAppConfig.SavedUserFile)
+            dsUser.ReadXml(Me.SavedUserFile)
             dsUser.AcceptChanges()
 
             dsImport.Process.Merge(dsUser.Process)
@@ -81,7 +80,7 @@ Public Class ClassExportXmlToCsv
             End If
 
         Catch ex As Exception
-            MsgBox("Failed to merge import with user xml " + clsAppConfig.SavedUserFile)
+            MsgBox("Failed to merge import with user xml " + Me.SavedUserFile)
         End Try
 
 

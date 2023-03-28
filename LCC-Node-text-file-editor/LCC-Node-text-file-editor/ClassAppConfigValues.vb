@@ -11,9 +11,13 @@ Public Class ClassAppConfigValues
     Public Property SavedBlankTowerFile
     Public Property SavedBlankSignalFile
 
+    Public Sub New()
 
+        Call Me.AppConfigFileRead()
 
-    Public Sub AppConfigFileRead()
+    End Sub
+
+    Private Sub AppConfigFileRead()
 
         Me.SavedFileFolder = My.Computer.FileSystem.CurrentDirectory
         Me.SavedFileExtension = "*.*"

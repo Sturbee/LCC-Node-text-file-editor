@@ -100,6 +100,12 @@
     <Compile Include="FrmLine.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmLineSelect.Designer.vb">
+      <DependentUpon>FrmLineSelect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLineSelect.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmNode.Designer.vb">
       <DependentUpon>FrmNode.vb</DependentUpon>
     </Compile>
@@ -164,6 +170,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FrmLine.resx">
       <DependentUpon>FrmLine.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLineSelect.resx">
+      <DependentUpon>FrmLineSelect.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNode.resx">
       <DependentUpon>FrmNode.vb</DependentUpon>

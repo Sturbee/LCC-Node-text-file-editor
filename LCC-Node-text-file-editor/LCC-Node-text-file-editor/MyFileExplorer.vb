@@ -7,8 +7,6 @@ Public Class MyFileExplorer
 
         Dim cls As New ClassAppConfigValues
 
-        cls.AppConfigFileRead()
-
         FolderBrowserDialog1.SelectedPath = cls.SavedFileFolder
 
         Me.TextBoxFileExtension.Text = cls.SavedFileExtension
