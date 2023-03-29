@@ -84,16 +84,6 @@
 		<value>1</value>
 		<text>Active High (5V)</text>
 	</PortInCommd>
-	
-	<!-- Port Delay Interval -->
-	<DelayInterval>
-		<value>1</value>
-		<text>Active ON delay</text>
-	</DelayInterval>
-	<DelayInterval>
-		<value>2</value>
-		<text>Active OFF delay</text>
-	</DelayInterval>
 
 	<!-- Delay Unit -->
 	<DelayUnit>

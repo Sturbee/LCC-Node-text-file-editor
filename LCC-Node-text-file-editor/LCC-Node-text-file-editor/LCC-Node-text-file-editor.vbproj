@@ -139,22 +139,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="MyFileExplorer.designer.vb">
-      <DependentUpon>MyFileExplorer.vb</DependentUpon>
+    <Compile Include="FrmExportXml.designer.vb">
+      <DependentUpon>FrmExportXml.vb</DependentUpon>
     </Compile>
-    <Compile Include="MyFileExplorer.vb">
+    <Compile Include="FrmExportXml.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Report.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Report.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="TextFileSlection.Designer.vb">
-      <DependentUpon>TextFileSlection.vb</DependentUpon>
-    </Compile>
-    <Compile Include="TextFileSlection.vb">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Titles.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -186,8 +180,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyFileExplorer.resx">
-      <DependentUpon>MyFileExplorer.vb</DependentUpon>
+    <EmbeddedResource Include="FrmExportXml.resx">
+      <DependentUpon>FrmExportXml.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

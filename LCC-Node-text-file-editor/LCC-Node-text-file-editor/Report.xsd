@@ -116,14 +116,6 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DelayInterval" msprop:Generator_RowEvHandlerName="DelayIntervalRowChangeEventHandler" msprop:Generator_RowDeletedName="DelayIntervalRowDeleted" msprop:Generator_RowDeletingName="DelayIntervalRowDeleting" msprop:Generator_RowEvArgName="DelayIntervalRowChangeEvent" msprop:Generator_TablePropName="DelayInterval" msprop:Generator_RowChangedName="DelayIntervalRowChanged" msprop:Generator_UserTableName="DelayInterval" msprop:Generator_RowChangingName="DelayIntervalRowChanging" msprop:Generator_RowClassName="DelayIntervalRow" msprop:Generator_TableClassName="DelayIntervalDataTable" msprop:Generator_TableVarName="tableDelayInterval">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
-              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="PortEventCons" msprop:Generator_RowEvHandlerName="PortEventConsRowChangeEventHandler" msprop:Generator_RowDeletedName="PortEventConsRowDeleted" msprop:Generator_RowDeletingName="PortEventConsRowDeleting" msprop:Generator_RowEvArgName="PortEventConsRowChangeEvent" msprop:Generator_TablePropName="PortEventCons" msprop:Generator_RowChangedName="PortEventConsRowChanged" msprop:Generator_UserTableName="PortEventCons" msprop:Generator_RowChangingName="PortEventConsRowChanging" msprop:Generator_RowClassName="PortEventConsRow" msprop:Generator_TableClassName="PortEventConsDataTable" msprop:Generator_TableVarName="tablePortEventCons">
           <xs:complexType>
             <xs:sequence>
@@ -164,11 +156,11 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="NodeType" msprop:Generator_RowEvHandlerName="NodeTypeRowChangeEventHandler" msprop:Generator_RowDeletedName="NodeTypeRowDeleted" msprop:Generator_RowDeletingName="NodeTypeRowDeleting" msprop:Generator_RowEvArgName="NodeTypeRowChangeEvent" msprop:Generator_TablePropName="NodeType" msprop:Generator_RowChangedName="NodeTypeRowChanged" msprop:Generator_RowChangingName="NodeTypeRowChanging" msprop:Generator_TableClassName="NodeTypeDataTable" msprop:Generator_RowClassName="NodeTypeRow" msprop:Generator_TableVarName="tableNodeType" msprop:Generator_UserTableName="NodeType">
+        <xs:element name="NodeType" msprop:Generator_RowClassName="NodeTypeRow" msprop:Generator_RowEvHandlerName="NodeTypeRowChangeEventHandler" msprop:Generator_RowDeletedName="NodeTypeRowDeleted" msprop:Generator_RowDeletingName="NodeTypeRowDeleting" msprop:Generator_RowEvArgName="NodeTypeRowChangeEvent" msprop:Generator_TablePropName="NodeType" msprop:Generator_RowChangedName="NodeTypeRowChanged" msprop:Generator_UserTableName="NodeType" msprop:Generator_RowChangingName="NodeTypeRowChanging" msprop:Generator_TableClassName="NodeTypeDataTable" msprop:Generator_TableVarName="tableNodeType">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="value" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnVarNameInTable="columnvalue" msprop:Generator_UserColumnName="value" type="xs:int" />
-              <xs:element name="text" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnVarNameInTable="columntext" msprop:Generator_UserColumnName="text" type="xs:string" minOccurs="0" />
+              <xs:element name="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
+              <xs:element name="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -224,10 +216,6 @@
     </xs:unique>
     <xs:unique name="DelayRetrigger_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:DelayRetrigger" />
-      <xs:field xpath="mstns:value" />
-    </xs:unique>
-    <xs:unique name="DelayInterval_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:DelayInterval" />
       <xs:field xpath="mstns:value" />
     </xs:unique>
     <xs:unique name="PortEventCons_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">

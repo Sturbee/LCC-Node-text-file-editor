@@ -28,65 +28,27 @@
 		<inFunction>Input Function</inFunction>
 		<inCommand>Input</inCommand>
 	</PortTitles>
+	
+	<!-- Port Delay titles level 1 -->
+	<PortDelayTitles>
+		<interval>Active ON delay</interval>
+		<time>Time</time>
+		<unit>Unit of time</unit>
+		<retrigger>Retrigger</retrigger>
+	</PortDelayTitles>
+	<PortDelayTitles>
+		<interval>Active OFF delay</interval>
+		<time>Time</time>
+		<unit>Unit of time</unit>
+		<retrigger>Retrigger</retrigger>
+	</PortDelayTitles>
+
+	
 
 
-	<!-- Titles for Port Delay level 1 -->
-	<Title>
-		<segID>2</segID>
-		<sectionID>1</sectionID>
-		<columnID>0</columnID>
-		<formatType>0</formatType>
-		<title>Port I/O:</title>
-		<comment>segID</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>1</sectionID>
-		<columnID>1</columnID>
-		<formatType>1</formatType>
-		<title>Delay</title>
-		<comment>sectionID</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>1</sectionID>
-		<columnID>2</columnID>
-		<formatType>2</formatType>
-		<title>Line #</title>
-		<comment>portID</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>1</sectionID>
-		<columnID>3</columnID>
-		<formatType>3</formatType>
-		<title>Interval #</title>
-		<comment>eventID</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>1</sectionID>
-		<columnID>4</columnID>
-		<formatType>2</formatType>
-		<title>Time</title>
-		<comment>time</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>1</sectionID>
-		<columnID>5</columnID>
-		<formatType>3</formatType>
-		<title>Unit of time</title>
-		<comment>timeUnit</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>1</sectionID>
-		<columnID>6</columnID>
-		<formatType>3</formatType>
-		<title>Retrigger</title>
-		<comment>retrigger</comment>
-	</Title>
+
+
+
 
 	<!-- Titles for Port Event level 2 -->
 	<Title>

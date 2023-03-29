@@ -1,5 +1,4 @@
-﻿
-Public Class MyFileExplorer
+﻿Public Class FrmExportXml
 
     Private Sub MyFileExplorer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -42,7 +41,6 @@ Public Class MyFileExplorer
 
     End Sub
 
-
     Private Sub SetEnabled()
 
         Dim anySelected As Boolean = (FilesListBox.SelectedItem IsNot Nothing)
@@ -63,6 +61,8 @@ Public Class MyFileExplorer
 
         If cls.AppConfigFileWrite(Me.FolderBrowserDialog1.SelectedPath, Me.TextBoxFileExtension.Text) Then
             ' do nothing
+        Else
+            MsgBox("Failed to save folder and extension values")
         End If
 
     End Sub
@@ -93,14 +93,6 @@ Public Class MyFileExplorer
         ' process LCC config file
         Dim clsXml As New ClassExportXml
         clsXml.MyExportToXmlFile(filePath)
-
-        ' process xml file to .xsd file
-        Dim clsXsd As New ClassExportXsd
-        clsXsd.ExportToXsdFile(filePath)
-
-        ' process xml file to .csv file
-        Dim clsCvs As New ClassExportXmlToCsv
-        clsCvs.ExportToCvsFile(filePath)
 
         Me.ListFiles(FolderBrowserDialog1.SelectedPath)
 

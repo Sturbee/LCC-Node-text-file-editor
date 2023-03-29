@@ -47,6 +47,7 @@
             Me.LstMessageOption.EndUpdate()
         Catch ex As Exception
             MsgBox("Failed to add Message Option values")
+            Exit Sub
         End Try
 
         ' temporary
