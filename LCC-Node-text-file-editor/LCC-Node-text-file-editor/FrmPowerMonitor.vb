@@ -37,18 +37,19 @@
             Exit Sub
         End Try
 
-        ' fill list box items
+        ' fill combobox
         Try
-            Me.LstMessageOption.BeginUpdate()
+            Me.CmbOption.BeginUpdate()
             For I = 0 To dsRpt.MessageOption.Count - 1
                 Dim rowOption As Rpt.MessageOptionRow = dsRpt.MessageOption.Item(I)
-                Me.LstMessageOption.Items.Add(rowOption.text)
+                Me.CmbOption.Items.Add(rowOption.text)
             Next
-            Me.LstMessageOption.EndUpdate()
+            Me.CmbOption.EndUpdate()
         Catch ex As Exception
-            MsgBox("Failed to add Message Option values")
+            MsgBox("Failed to fill Message Option values")
             Exit Sub
         End Try
+
 
         ' temporary
         Me.MyFileName = cls.SavedBlankSignalFile
@@ -67,7 +68,7 @@
 
         Me.MyPowerMonitorRow = Me.MyImport.PowerMonitor.Item(0)
 
-        Me.LstMessageOption.SelectedIndex = Me.MyPowerMonitorRow.powerOptionID
+        Me.CmbOption.SelectedIndex = Me.MyPowerMonitorRow.powerOptionID
 
         Me.SavePowerOK = Me.MyPowerMonitorRow.eventPowerOK
         Me.SavePowerNotOK = Me.MyPowerMonitorRow.eventPowerNotOK
@@ -109,7 +110,7 @@
         End If
 
         Try
-            Me.MyPowerMonitorRow.powerOptionID = Me.LstMessageOption.SelectedIndex
+            Me.MyPowerMonitorRow.powerOptionID = Me.CmbOption.SelectedIndex
 
             Me.MyImport.WriteXml(Me.MySaveFile)
 

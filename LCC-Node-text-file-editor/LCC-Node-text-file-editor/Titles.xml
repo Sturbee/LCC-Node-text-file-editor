@@ -23,10 +23,6 @@
 		<header>Segment: Port I/O</header>
 		<port>Line #</port>
 		<description>Description</description>
-		<outFunction>Output Function</outFunction>
-		<outCommand>Output</outCommand>
-		<inFunction>Input Function</inFunction>
-		<inCommand>Input</inCommand>
 	</PortTitles>
 	
 	<!-- Port Delay titles level 1 -->
@@ -35,35 +31,21 @@
 		<interval2>Active OFF delay</interval2>
 	</PortDelayTitles>
 
+	<!-- Port Event titles level 2 -->
+	<PortEventTitles>
+		<consumer>Consumers</consumer>
+		<outputFunction>Output Function</outputFunction>
+		<outputCommand>Output</outputCommand>
+		<producer>Producers</producer>
+		<inputFunction>Input Function</inputFunction>
+		<inputCommand>Input</inputCommand>
+	</PortEventTitles>
 
 
 
+	
 
-	<!-- Titles for Port Event level 2 -->
-	<Title>
-		<segID>2</segID>
-		<sectionID>2</sectionID>
-		<columnID>0</columnID>
-		<formatType>0</formatType>
-		<title>Segment ID</title>
-		<comment>segID</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>2</sectionID>
-		<columnID>1</columnID>
-		<formatType>1</formatType>
-		<title>Consumers/Producers</title>
-		<comment>sectionID</comment>
-	</Title>
-	<Title>
-		<segID>2</segID>
-		<sectionID>2</sectionID>
-		<columnID>2</columnID>
-		<formatType>2</formatType>
-		<title>Line #</title>
-		<comment>portID</comment>
-	</Title>
+
 	<Title>
 		<segID>2</segID>
 		<sectionID>2</sectionID>

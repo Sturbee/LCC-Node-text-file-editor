@@ -24,6 +24,13 @@
         Me.LblInterval1.Text = rowTitleDelay.interval1
         Me.LblInterval2.Text = rowTitleDelay.interval2
 
+        Dim rowTitleEvent As Titles.PortEventTitlesRow = dsTitles.PortEventTitles.Item(0)
+        Me.GroupBoxConsumer.Text = rowTitleEvent.consumer
+        Me.LblOutFunc.Text = rowTitleEvent.outputFunction
+        Me.LblOutCommd.Text = rowTitleEvent.outputCommand
+        Me.GroupBoxProducer.Text = rowTitleEvent.producer
+        Me.LblInFunc.Text = rowTitleEvent.inputFunction
+        Me.LblInCommd.Text = rowTitleEvent.inputCommand
 
         ' read the attribute xml file
         Dim dsRpt As New Rpt
@@ -34,31 +41,75 @@
             Exit Sub
         End Try
 
-        ' fill list box items
+
+        ' fill combo box items
         Try
 
-            Me.LstUnits1.BeginUpdate()
-            Me.LstUnits2.BeginUpdate()
+            Me.CmbUnits1.BeginUpdate()
+            Me.CmbUnits2.BeginUpdate()
             For I = 0 To dsRpt.DelayUnit.Count - 1
                 Dim row As Rpt.DelayUnitRow = dsRpt.DelayUnit.Item(I)
-                Me.LstUnits1.Items.Add(row.text)
-                Me.LstUnits2.Items.Add(row.text)
+                Me.CmbUnits1.Items.Add(row.text)
+                Me.CmbUnits2.Items.Add(row.text)
             Next
-            Me.LstUnits1.EndUpdate()
-            Me.LstUnits2.EndUpdate()
+            Me.CmbUnits1.EndUpdate()
+            Me.CmbUnits2.EndUpdate()
 
-            Me.LstRetrigger1.BeginUpdate()
-            Me.LstRetrigger2.BeginUpdate()
+            Me.CmbRetrigger1.BeginUpdate()
+            Me.CmbRetrigger2.BeginUpdate()
             For I = 0 To dsRpt.DelayRetrigger.Count - 1
                 Dim row As Rpt.DelayRetriggerRow = dsRpt.DelayRetrigger.Item(I)
-                Me.LstRetrigger1.Items.Add(row.text)
-                Me.LstRetrigger2.Items.Add(row.text)
+                Me.CmbRetrigger1.Items.Add(row.text)
+                Me.CmbRetrigger2.Items.Add(row.text)
             Next
-            Me.LstRetrigger1.EndUpdate()
-            Me.LstRetrigger2.EndUpdate()
+            Me.CmbRetrigger1.EndUpdate()
+            Me.CmbRetrigger2.EndUpdate()
+
+            Me.CmbOutFunc.BeginUpdate()
+            For I = 0 To dsRpt.PortOutFunc.Count - 1
+                Dim row As Rpt.PortOutFuncRow = dsRpt.PortOutFunc.Item(I)
+                Me.CmbOutFunc.Items.Add(row.text)
+            Next
+            Me.CmbOutFunc.EndUpdate()
+
+            Me.CmbOutCommd.BeginUpdate()
+            For I = 0 To dsRpt.PortOutCommd.Count - 1
+                Dim row As Rpt.PortOutCommdRow = dsRpt.PortOutCommd.Item(I)
+                Me.CmbOutCommd.Items.Add(row.text)
+            Next
+            Me.CmbOutCommd.EndUpdate()
+
+            Me.CmbEventOutCommd1.BeginUpdate()
+            For I = 0 To dsRpt.PortEventCons.Count - 1
+                Dim row As Rpt.PortEventConsRow = dsRpt.PortEventCons.Item(I)
+                Me.CmbEventOutCommd1.Items.Add(row.text)
+            Next
+            Me.CmbEventOutCommd1.EndUpdate()
+
+            Me.CmbInFunc.BeginUpdate()
+            For I = 0 To dsRpt.PortInFunc.Count - 1
+                Dim row As Rpt.PortInFuncRow = dsRpt.PortInFunc.Item(I)
+                Me.CmbInFunc.Items.Add(row.text)
+            Next
+            Me.CmbInFunc.EndUpdate()
+
+            Me.CmbInCommd.BeginUpdate()
+            For I = 0 To dsRpt.PortInCommd.Count - 1
+                Dim row As Rpt.PortInCommdRow = dsRpt.PortInCommd.Item(I)
+                Me.CmbInCommd.Items.Add(row.text)
+            Next
+            Me.CmbInCommd.EndUpdate()
+
+            Me.CmbEventInCommd1.BeginUpdate()
+            For I = 0 To dsRpt.PortEventProd.Count - 1
+                Dim row As Rpt.PortEventProdRow = dsRpt.PortEventProd.Item(I)
+                Me.CmbEventInCommd1.Items.Add(row.text)
+            Next
+            Me.CmbEventInCommd1.EndUpdate()
 
         Catch ex As Exception
-            MsgBox("Failed to add Message Option values")
+            MsgBox("Failed to add combo box values")
+            Exit Sub
         End Try
 
 
@@ -83,22 +134,45 @@
         Me.LblLineNumber.Text = rowPort.LineID.ToString
         Me.TxtDescription.Text = rowPort.Description
 
+        ' set consumer/producer combo box selected items
+        Me.CmbOutFunc.SelectedIndex = rowPort.outputFunctionID
+        Me.CmbOutCommd.SelectedIndex = rowPort.OutPutCommand
+        Me.CmbInFunc.SelectedIndex = rowPort.inputFunctionID
+        Me.CmbInCommd.SelectedIndex = rowPort.InputCommand
+
+
         For count = 1 To 2
             Dim row As ExportXml.PortDelayRow = Me.MyImport.PortDelay.FindByLineIDDelayID(lineID, count)
 
             Select Case count
                 Case 1
                     Me.TxtTime1.Text = row.time
-                    Me.LstUnits1.SelectedIndex = row.timeUnitID
-                    Me.LstRetrigger1.SelectedIndex = row.retriggerID
-                    Me.LstUnits1.Refresh()
+                    Me.CmbUnits1.SelectedIndex = row.timeUnitID
+                    Me.CmbRetrigger1.SelectedIndex = row.retriggerID
                 Case 2
                     Me.TxtTime2.Text = row.time
-                    Me.LstUnits2.SelectedIndex = row.timeUnitID
-                    Me.LstRetrigger2.SelectedIndex = row.retriggerID
+                    Me.CmbUnits2.SelectedIndex = row.timeUnitID
+                    Me.CmbRetrigger2.SelectedIndex = row.retriggerID
             End Select
 
         Next
+
+        For count = 1 To 6
+            Dim row As ExportXml.PortEventRow = Me.MyImport.PortEvent.FindByLineIDEventID(lineID, count)
+            Select Case count
+                Case 1
+                    Me.TxtEventOut1.Text = row.eventConsumer
+                    Me.CmbEventOutCommd1.SelectedIndex = row.producerActionID
+                    Me.CmbEventInCommd1.SelectedIndex = row.consumerActionID
+                    Me.TxtEventIn1.Text = row.eventProducer
+            End Select
+
+        Next
+
+
+
+
+
 
     End Sub
 

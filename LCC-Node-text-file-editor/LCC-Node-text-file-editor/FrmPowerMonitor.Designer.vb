@@ -25,11 +25,11 @@ Partial Class FrmPowerMonitor
         Me.LblOptions = New System.Windows.Forms.Label()
         Me.LblPowerOK = New System.Windows.Forms.Label()
         Me.LblPowerNotOK = New System.Windows.Forms.Label()
-        Me.LstMessageOption = New System.Windows.Forms.ListBox()
         Me.TxtPowerOK = New System.Windows.Forms.TextBox()
         Me.TxtPowerNotOK = New System.Windows.Forms.TextBox()
         Me.ButSave = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.CmbOption = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'LblOptions
@@ -44,7 +44,7 @@ Partial Class FrmPowerMonitor
         'LblPowerOK
         '
         Me.LblPowerOK.AutoSize = True
-        Me.LblPowerOK.Location = New System.Drawing.Point(147, 170)
+        Me.LblPowerOK.Location = New System.Drawing.Point(147, 113)
         Me.LblPowerOK.Name = "LblPowerOK"
         Me.LblPowerOK.Size = New System.Drawing.Size(81, 16)
         Me.LblPowerOK.TabIndex = 1
@@ -53,38 +53,29 @@ Partial Class FrmPowerMonitor
         'LblPowerNotOK
         '
         Me.LblPowerNotOK.AutoSize = True
-        Me.LblPowerNotOK.Location = New System.Drawing.Point(35, 207)
+        Me.LblPowerNotOK.Location = New System.Drawing.Point(35, 150)
         Me.LblPowerNotOK.Name = "LblPowerNotOK"
         Me.LblPowerNotOK.Size = New System.Drawing.Size(102, 16)
         Me.LblPowerNotOK.TabIndex = 2
         Me.LblPowerNotOK.Text = "LblPowerNotOK"
         '
-        'LstMessageOption
-        '
-        Me.LstMessageOption.FormattingEnabled = True
-        Me.LstMessageOption.ItemHeight = 16
-        Me.LstMessageOption.Location = New System.Drawing.Point(299, 66)
-        Me.LstMessageOption.Name = "LstMessageOption"
-        Me.LstMessageOption.Size = New System.Drawing.Size(290, 52)
-        Me.LstMessageOption.TabIndex = 3
-        '
         'TxtPowerOK
         '
-        Me.TxtPowerOK.Location = New System.Drawing.Point(290, 164)
+        Me.TxtPowerOK.Location = New System.Drawing.Point(290, 107)
         Me.TxtPowerOK.Name = "TxtPowerOK"
         Me.TxtPowerOK.Size = New System.Drawing.Size(181, 22)
         Me.TxtPowerOK.TabIndex = 4
         '
         'TxtPowerNotOK
         '
-        Me.TxtPowerNotOK.Location = New System.Drawing.Point(290, 207)
+        Me.TxtPowerNotOK.Location = New System.Drawing.Point(290, 150)
         Me.TxtPowerNotOK.Name = "TxtPowerNotOK"
         Me.TxtPowerNotOK.Size = New System.Drawing.Size(181, 22)
         Me.TxtPowerNotOK.TabIndex = 5
         '
         'ButSave
         '
-        Me.ButSave.Location = New System.Drawing.Point(290, 281)
+        Me.ButSave.Location = New System.Drawing.Point(290, 193)
         Me.ButSave.Name = "ButSave"
         Me.ButSave.Size = New System.Drawing.Size(75, 23)
         Me.ButSave.TabIndex = 6
@@ -94,22 +85,30 @@ Partial Class FrmPowerMonitor
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(171, 284)
+        Me.Label4.Location = New System.Drawing.Point(171, 196)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(96, 16)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Save Changes"
         '
+        'CmbOption
+        '
+        Me.CmbOption.FormattingEnabled = True
+        Me.CmbOption.Location = New System.Drawing.Point(290, 63)
+        Me.CmbOption.Name = "CmbOption"
+        Me.CmbOption.Size = New System.Drawing.Size(290, 24)
+        Me.CmbOption.TabIndex = 8
+        '
         'FrmPowerMonitor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(665, 292)
+        Me.Controls.Add(Me.CmbOption)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.ButSave)
         Me.Controls.Add(Me.TxtPowerNotOK)
         Me.Controls.Add(Me.TxtPowerOK)
-        Me.Controls.Add(Me.LstMessageOption)
         Me.Controls.Add(Me.LblPowerNotOK)
         Me.Controls.Add(Me.LblPowerOK)
         Me.Controls.Add(Me.LblOptions)
@@ -123,9 +122,9 @@ Partial Class FrmPowerMonitor
     Friend WithEvents LblOptions As Label
     Friend WithEvents LblPowerOK As Label
     Friend WithEvents LblPowerNotOK As Label
-    Friend WithEvents LstMessageOption As ListBox
     Friend WithEvents TxtPowerOK As TextBox
     Friend WithEvents TxtPowerNotOK As TextBox
     Friend WithEvents ButSave As Button
     Friend WithEvents Label4 As Label
+    Friend WithEvents CmbOption As ComboBox
 End Class
