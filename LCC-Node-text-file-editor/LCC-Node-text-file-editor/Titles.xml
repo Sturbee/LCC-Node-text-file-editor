@@ -31,20 +31,9 @@
 	
 	<!-- Port Delay titles level 1 -->
 	<PortDelayTitles>
-		<interval>Active ON delay</interval>
-		<time>Time</time>
-		<unit>Unit of time</unit>
-		<retrigger>Retrigger</retrigger>
+		<interval1>Active ON delay</interval1>
+		<interval2>Active OFF delay</interval2>
 	</PortDelayTitles>
-	<PortDelayTitles>
-		<interval>Active OFF delay</interval>
-		<time>Time</time>
-		<unit>Unit of time</unit>
-		<retrigger>Retrigger</retrigger>
-	</PortDelayTitles>
-
-	
-
 
 
 

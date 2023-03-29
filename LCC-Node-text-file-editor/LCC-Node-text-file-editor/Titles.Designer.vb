@@ -2654,13 +2654,9 @@ Partial Public Class Titles
     Partial Public Class PortDelayTitlesDataTable
         Inherits Global.System.Data.TypedTableBase(Of PortDelayTitlesRow)
         
-        Private columninterval As Global.System.Data.DataColumn
+        Private columninterval1 As Global.System.Data.DataColumn
         
-        Private columntime As Global.System.Data.DataColumn
-        
-        Private columnunit As Global.System.Data.DataColumn
-        
-        Private columnretrigger As Global.System.Data.DataColumn
+        Private columninterval2 As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -2699,33 +2695,17 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property intervalColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property interval1Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columninterval
+                Return Me.columninterval1
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property timeColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property interval2Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columntime
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property unitColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnunit
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property retriggerColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnretrigger
+                Return Me.columninterval2
             End Get
         End Property
         
@@ -2766,9 +2746,9 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddPortDelayTitlesRow(ByVal interval As String, ByVal time As String, ByVal unit As String, ByVal retrigger As String) As PortDelayTitlesRow
+        Public Overloads Function AddPortDelayTitlesRow(ByVal interval1 As String, ByVal interval2 As String) As PortDelayTitlesRow
             Dim rowPortDelayTitlesRow As PortDelayTitlesRow = CType(Me.NewRow,PortDelayTitlesRow)
-            Dim columnValuesArray() As Object = New Object() {interval, time, unit, retrigger}
+            Dim columnValuesArray() As Object = New Object() {interval1, interval2}
             rowPortDelayTitlesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPortDelayTitlesRow)
             Return rowPortDelayTitlesRow
@@ -2791,23 +2771,17 @@ Partial Public Class Titles
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columninterval = MyBase.Columns("interval")
-            Me.columntime = MyBase.Columns("time")
-            Me.columnunit = MyBase.Columns("unit")
-            Me.columnretrigger = MyBase.Columns("retrigger")
+            Me.columninterval1 = MyBase.Columns("interval1")
+            Me.columninterval2 = MyBase.Columns("interval2")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitClass()
-            Me.columninterval = New Global.System.Data.DataColumn("interval", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columninterval)
-            Me.columntime = New Global.System.Data.DataColumn("time", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntime)
-            Me.columnunit = New Global.System.Data.DataColumn("unit", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnunit)
-            Me.columnretrigger = New Global.System.Data.DataColumn("retrigger", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnretrigger)
+            Me.columninterval1 = New Global.System.Data.DataColumn("interval1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columninterval1)
+            Me.columninterval2 = New Global.System.Data.DataColumn("interval2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columninterval2)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3834,110 +3808,56 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property interval() As String
+        Public Property interval1() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablePortDelayTitles.intervalColumn),String)
+                    Return CType(Me(Me.tablePortDelayTitles.interval1Column),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'interval' in table 'PortDelayTitles' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'interval1' in table 'PortDelayTitles' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePortDelayTitles.intervalColumn) = value
+                Me(Me.tablePortDelayTitles.interval1Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property time() As String
+        Public Property interval2() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablePortDelayTitles.timeColumn),String)
+                    Return CType(Me(Me.tablePortDelayTitles.interval2Column),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'time' in table 'PortDelayTitles' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'interval2' in table 'PortDelayTitles' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePortDelayTitles.timeColumn) = value
+                Me(Me.tablePortDelayTitles.interval2Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property unit() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablePortDelayTitles.unitColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'unit' in table 'PortDelayTitles' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablePortDelayTitles.unitColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property retrigger() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablePortDelayTitles.retriggerColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'retrigger' in table 'PortDelayTitles' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablePortDelayTitles.retriggerColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsintervalNull() As Boolean
-            Return Me.IsNull(Me.tablePortDelayTitles.intervalColumn)
+        Public Function Isinterval1Null() As Boolean
+            Return Me.IsNull(Me.tablePortDelayTitles.interval1Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetintervalNull()
-            Me(Me.tablePortDelayTitles.intervalColumn) = Global.System.Convert.DBNull
+        Public Sub Setinterval1Null()
+            Me(Me.tablePortDelayTitles.interval1Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IstimeNull() As Boolean
-            Return Me.IsNull(Me.tablePortDelayTitles.timeColumn)
+        Public Function Isinterval2Null() As Boolean
+            Return Me.IsNull(Me.tablePortDelayTitles.interval2Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SettimeNull()
-            Me(Me.tablePortDelayTitles.timeColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsunitNull() As Boolean
-            Return Me.IsNull(Me.tablePortDelayTitles.unitColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetunitNull()
-            Me(Me.tablePortDelayTitles.unitColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsretriggerNull() As Boolean
-            Return Me.IsNull(Me.tablePortDelayTitles.retriggerColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetretriggerNull()
-            Me(Me.tablePortDelayTitles.retriggerColumn) = Global.System.Convert.DBNull
+        Public Sub Setinterval2Null()
+            Me(Me.tablePortDelayTitles.interval2Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     

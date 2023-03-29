@@ -20,16 +20,9 @@
         Me.LblLine.Text = rowTitle.port
         Me.LblDescription.Text = rowTitle.description
 
-        Dim rowDelay As Titles.PortDelayTitlesRow = dsTitles.PortDelayTitles.Item(0)
-        Me.LblTime.Text = rowDelay.time
-        Me.LblUnit.Text = rowDelay.unit
-
-        Me.LblRetrigger.Text = rowDelay.retrigger
-
-        Me.LblInterval1.Text = rowDelay.interval
-
-        rowDelay = dsTitles.PortDelayTitles.Item(1)
-        Me.LblInterval2.Text = rowDelay.interval
+        Dim rowTitleDelay As Titles.PortDelayTitlesRow = dsTitles.PortDelayTitles.Item(0)
+        Me.LblInterval1.Text = rowTitleDelay.interval1
+        Me.LblInterval2.Text = rowTitleDelay.interval2
 
 
         ' read the attribute xml file
@@ -69,7 +62,7 @@
         End Try
 
 
-        Dim myFileName As String = "EventTest.xml"
+        Dim myFileName As String = "EditTest.xml"
 
         ' reads the export xml file
         Try
@@ -98,6 +91,7 @@
                     Me.TxtTime1.Text = row.time
                     Me.LstUnits1.SelectedIndex = row.timeUnitID
                     Me.LstRetrigger1.SelectedIndex = row.retriggerID
+                    Me.LstUnits1.Refresh()
                 Case 2
                     Me.TxtTime2.Text = row.time
                     Me.LstUnits2.SelectedIndex = row.timeUnitID
