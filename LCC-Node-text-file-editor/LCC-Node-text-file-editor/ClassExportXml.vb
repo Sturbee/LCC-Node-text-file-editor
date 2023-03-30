@@ -1,8 +1,5 @@
-﻿Imports System.Collections.Specialized.BitVector32
-Imports System.Diagnostics.Eventing.Reader
+﻿
 Imports System.IO
-Imports System.Text.RegularExpressions
-Imports Microsoft.VisualBasic.Devices
 
 Public Class ClassExportXml
 

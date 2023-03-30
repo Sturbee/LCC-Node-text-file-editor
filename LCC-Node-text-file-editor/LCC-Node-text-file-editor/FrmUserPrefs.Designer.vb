@@ -28,7 +28,11 @@ Partial Class FrmUserPrefs
         Me.TxtPath = New System.Windows.Forms.TextBox()
         Me.TxtExtension = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.CmdEdit = New System.Windows.Forms.Button()
+        Me.CmdSave = New System.Windows.Forms.Button()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.FilesListBox = New System.Windows.Forms.ListBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.CmdBrowse = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'CmbPath
@@ -59,7 +63,6 @@ Partial Class FrmUserPrefs
         '
         'TxtPath
         '
-        Me.TxtPath.Enabled = False
         Me.TxtPath.Location = New System.Drawing.Point(121, 72)
         Me.TxtPath.Name = "TxtPath"
         Me.TxtPath.Size = New System.Drawing.Size(847, 22)
@@ -67,7 +70,6 @@ Partial Class FrmUserPrefs
         '
         'TxtExtension
         '
-        Me.TxtExtension.Enabled = False
         Me.TxtExtension.Location = New System.Drawing.Point(121, 112)
         Me.TxtExtension.Name = "TxtExtension"
         Me.TxtExtension.Size = New System.Drawing.Size(100, 22)
@@ -82,21 +84,52 @@ Partial Class FrmUserPrefs
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Extension"
         '
-        'CmdEdit
+        'CmdSave
         '
-        Me.CmdEdit.Location = New System.Drawing.Point(488, 23)
-        Me.CmdEdit.Name = "CmdEdit"
-        Me.CmdEdit.Size = New System.Drawing.Size(75, 23)
-        Me.CmdEdit.TabIndex = 6
-        Me.CmdEdit.Text = "Edit"
-        Me.CmdEdit.UseVisualStyleBackColor = True
+        Me.CmdSave.Location = New System.Drawing.Point(458, 111)
+        Me.CmdSave.Name = "CmdSave"
+        Me.CmdSave.Size = New System.Drawing.Size(75, 23)
+        Me.CmdSave.TabIndex = 6
+        Me.CmdSave.Text = "Save"
+        Me.CmdSave.UseVisualStyleBackColor = True
+        '
+        'FilesListBox
+        '
+        Me.FilesListBox.FormattingEnabled = True
+        Me.FilesListBox.HorizontalScrollbar = True
+        Me.FilesListBox.ItemHeight = 16
+        Me.FilesListBox.Location = New System.Drawing.Point(53, 176)
+        Me.FilesListBox.Name = "FilesListBox"
+        Me.FilesListBox.Size = New System.Drawing.Size(915, 228)
+        Me.FilesListBox.TabIndex = 7
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(295, 115)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(154, 16)
+        Me.Label4.TabIndex = 8
+        Me.Label4.Text = "Save path and extension"
+        '
+        'CmdBrowse
+        '
+        Me.CmdBrowse.Location = New System.Drawing.Point(620, 23)
+        Me.CmdBrowse.Name = "CmdBrowse"
+        Me.CmdBrowse.Size = New System.Drawing.Size(75, 23)
+        Me.CmdBrowse.TabIndex = 9
+        Me.CmdBrowse.Text = "Browse"
+        Me.CmdBrowse.UseVisualStyleBackColor = True
         '
         'FrmUserPrefs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1028, 450)
-        Me.Controls.Add(Me.CmdEdit)
+        Me.Controls.Add(Me.CmdBrowse)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.FilesListBox)
+        Me.Controls.Add(Me.CmdSave)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.TxtExtension)
         Me.Controls.Add(Me.TxtPath)
@@ -116,5 +149,9 @@ Partial Class FrmUserPrefs
     Friend WithEvents TxtPath As TextBox
     Friend WithEvents TxtExtension As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents CmdEdit As Button
+    Friend WithEvents CmdSave As Button
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+    Friend WithEvents FilesListBox As ListBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents CmdBrowse As Button
 End Class

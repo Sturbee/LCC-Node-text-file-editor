@@ -81,6 +81,7 @@
     <Compile Include="ClassExportXml.vb" />
     <Compile Include="ClassExportXmlToCsv.vb" />
     <Compile Include="ClassExportXsd.vb" />
+    <Compile Include="ClassUserPrefs.vb" />
     <Compile Include="Events.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -291,9 +292,7 @@
     <Content Include="Tower.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="UserPrefs.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="UserPrefs.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

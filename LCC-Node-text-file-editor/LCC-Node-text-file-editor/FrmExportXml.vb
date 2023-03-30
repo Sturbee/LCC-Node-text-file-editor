@@ -2,13 +2,17 @@
 
     Private Sub MyFileExplorer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        ' Set the default directory of the folder browser to the current directory.
+        ' Set the default directory to the user JMRI backup directory
+        Dim cls As New ClassUserPrefs
 
-        Dim cls As New ClassAppConfigValues
+        Dim filePath As String = String.Empty
+        Dim fileExtension As String = String.Empty
 
-        FolderBrowserDialog1.SelectedPath = cls.FileFolderBackup
+        Call cls.ReadJMRIfileInfo(0, filePath, fileExtension)
 
-        Me.TextBoxFileExtension.Text = cls.FileExtensionBackup
+        FolderBrowserDialog1.SelectedPath = filePath
+
+        Me.TextBoxFileExtension.Text = fileExtension
 
         ListFiles(FolderBrowserDialog1.SelectedPath)
 

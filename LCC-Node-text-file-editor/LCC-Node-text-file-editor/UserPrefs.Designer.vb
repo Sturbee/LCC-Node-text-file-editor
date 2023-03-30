@@ -1238,11 +1238,11 @@ Partial Public Class UserPrefs
         
         Private columnvalue As Global.System.Data.DataColumn
         
+        Private columntitle As Global.System.Data.DataColumn
+        
         Private columnpath As Global.System.Data.DataColumn
         
         Private columnextension As Global.System.Data.DataColumn
-        
-        Private columncomment As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -1289,6 +1289,14 @@ Partial Public Class UserPrefs
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property titleColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntitle
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property pathColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnpath
@@ -1300,14 +1308,6 @@ Partial Public Class UserPrefs
         Public ReadOnly Property extensionColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnextension
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property commentColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columncomment
             End Get
         End Property
         
@@ -1348,9 +1348,9 @@ Partial Public Class UserPrefs
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddUserJMRIRow(ByVal value As Integer, ByVal path As String, ByVal extension As String, ByVal comment As String) As UserJMRIRow
+        Public Overloads Function AddUserJMRIRow(ByVal value As Integer, ByVal title As String, ByVal path As String, ByVal extension As String) As UserJMRIRow
             Dim rowUserJMRIRow As UserJMRIRow = CType(Me.NewRow,UserJMRIRow)
-            Dim columnValuesArray() As Object = New Object() {value, path, extension, comment}
+            Dim columnValuesArray() As Object = New Object() {value, title, path, extension}
             rowUserJMRIRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowUserJMRIRow)
             Return rowUserJMRIRow
@@ -1380,9 +1380,9 @@ Partial Public Class UserPrefs
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnvalue = MyBase.Columns("value")
+            Me.columntitle = MyBase.Columns("title")
             Me.columnpath = MyBase.Columns("path")
             Me.columnextension = MyBase.Columns("extension")
-            Me.columncomment = MyBase.Columns("comment")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1390,12 +1390,12 @@ Partial Public Class UserPrefs
         Private Sub InitClass()
             Me.columnvalue = New Global.System.Data.DataColumn("value", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnvalue)
+            Me.columntitle = New Global.System.Data.DataColumn("title", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntitle)
             Me.columnpath = New Global.System.Data.DataColumn("path", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnpath)
             Me.columnextension = New Global.System.Data.DataColumn("extension", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnextension)
-            Me.columncomment = New Global.System.Data.DataColumn("comment", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columncomment)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnvalue}, true))
             Me.columnvalue.AllowDBNull = false
             Me.columnvalue.Unique = true
@@ -1772,6 +1772,21 @@ Partial Public Class UserPrefs
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property title() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableUserJMRI.titleColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'title' in table 'UserJMRI' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableUserJMRI.titleColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property path() As String
             Get
                 Try 
@@ -1802,18 +1817,15 @@ Partial Public Class UserPrefs
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property comment() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableUserJMRI.commentColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'comment' in table 'UserJMRI' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableUserJMRI.commentColumn) = value
-            End Set
-        End Property
+        Public Function IstitleNull() As Boolean
+            Return Me.IsNull(Me.tableUserJMRI.titleColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SettitleNull()
+            Me(Me.tableUserJMRI.titleColumn) = Global.System.Convert.DBNull
+        End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -1837,18 +1849,6 @@ Partial Public Class UserPrefs
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetextensionNull()
             Me(Me.tableUserJMRI.extensionColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IscommentNull() As Boolean
-            Return Me.IsNull(Me.tableUserJMRI.commentColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetcommentNull()
-            Me(Me.tableUserJMRI.commentColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
