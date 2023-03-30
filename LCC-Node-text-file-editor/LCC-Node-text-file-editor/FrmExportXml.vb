@@ -6,9 +6,9 @@
 
         Dim cls As New ClassAppConfigValues
 
-        FolderBrowserDialog1.SelectedPath = cls.SavedFileFolder
+        FolderBrowserDialog1.SelectedPath = cls.FileFolderBackup
 
-        Me.TextBoxFileExtension.Text = cls.SavedFileExtension
+        Me.TextBoxFileExtension.Text = cls.FileExtensionBackup
 
         ListFiles(FolderBrowserDialog1.SelectedPath)
 
@@ -59,7 +59,7 @@
 
         Dim cls As New ClassAppConfigValues
 
-        If cls.AppConfigFileWrite(Me.FolderBrowserDialog1.SelectedPath, Me.TextBoxFileExtension.Text) Then
+        If cls.AppConfigFileWriteBackup(Me.FolderBrowserDialog1.SelectedPath, Me.TextBoxFileExtension.Text) Then
             ' do nothing
         Else
             MsgBox("Failed to save folder and extension values")

@@ -2,14 +2,18 @@
 
 Public Class ClassAppConfigValues
 
-    Public Property SavedFileFolder As String
-    Public Property SavedFileExtension As String
+    Public Property FileFolderBackup As String
+    Public Property FileExtensionBackup As String
+    Public Property FileFolderExportXml As String
+    Public Property FileExtensionExportXml As String
+    Public Property FileFolderRestore As String
+    Public Property FileExtensionRestore As String
     Public Property SavedImportCDIfile As String
     Public Property SavedUserFile As String
     Public Property SavedReportFile As String
     Public Property SavedTitlesFile As String
-    Public Property SavedBlankTowerFile
-    Public Property SavedBlankSignalFile
+    Public Property SavedBlankTowerFile As String
+    Public Property SavedBlankSignalFile As String
 
     Public Sub New()
 
@@ -19,8 +23,13 @@ Public Class ClassAppConfigValues
 
     Private Sub AppConfigFileRead()
 
-        Me.SavedFileFolder = My.Computer.FileSystem.CurrentDirectory
-        Me.SavedFileExtension = "*.*"
+        Me.FileFolderBackup = My.Computer.FileSystem.CurrentDirectory
+        Me.FileExtensionBackup = "*.*"
+        Me.FileFolderExportXml = My.Computer.FileSystem.CurrentDirectory
+        Me.FileExtensionExportXml = "*.*"
+        Me.FileFolderRestore = My.Computer.FileSystem.CurrentDirectory
+        Me.FileExtensionRestore = "*.*"
+
         Me.SavedImportCDIfile = "ImportCDI.xml"
         Me.SavedUserFile = "UserPrefs.xml"
         Me.SavedReportFile = "Report.xml"
@@ -38,18 +47,46 @@ Public Class ClassAppConfigValues
 
             Select Case keyName.Key
 
-                Case "savedFileFolder"
+                Case "fileFolderBackup"
                     If keyName.Value = String.Empty Then
                         ' do nothing
                     Else
-                        Me.SavedFileFolder = keyName.Value
+                        Me.FileFolderBackup = keyName.Value
                     End If
 
-                Case "savedFileExtension"
+                Case "fileExtensionBackup"
                     If keyName.Value = String.Empty Then
                         ' do nothing
                     Else
-                        Me.SavedFileExtension = keyName.Value
+                        Me.FileExtensionBackup = keyName.Value
+                    End If
+
+                Case "fileFolderExportXml"
+                    If keyName.Value = String.Empty Then
+                        ' do nothing
+                    Else
+                        Me.FileFolderExportXml = keyName.Value
+                    End If
+
+                Case "fileExtensionExportXml"
+                    If keyName.Value = String.Empty Then
+                        ' do nothing
+                    Else
+                        Me.FileExtensionExportXml = keyName.Value
+                    End If
+
+                Case "fileFolderRestore"
+                    If keyName.Value = String.Empty Then
+                        ' do nothing
+                    Else
+                        Me.FileFolderRestore = keyName.Value
+                    End If
+
+                Case "fileExtensionRestore"
+                    If keyName.Value = String.Empty Then
+                        ' do nothing
+                    Else
+                        Me.FileExtensionRestore = keyName.Value
                     End If
 
             End Select
@@ -59,7 +96,7 @@ Public Class ClassAppConfigValues
     End Sub
 
 
-    Public Function AppConfigFileWrite(selectedPath As String, fileExtension As String) As Boolean
+    Public Function AppConfigFileWriteBackup(selectedPath As String, fileExtension As String) As Boolean
 
         ' Get the application configuration file.
         Dim config As System.Configuration.Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)
@@ -73,11 +110,11 @@ Public Class ClassAppConfigValues
 
             Dim tempPath As String = selectedPath
 
-            appSettings.Settings.Remove("savedFileFolder")
+            appSettings.Settings.Remove("fileFolderBackup")
 
             config.Save(ConfigurationSaveMode.Modified)
 
-            appSettings.Settings.Add("savedFileFolder", tempPath)
+            appSettings.Settings.Add("fileFolderBackup", tempPath)
 
             config.Save(ConfigurationSaveMode.Modified)
 
@@ -97,11 +134,11 @@ Public Class ClassAppConfigValues
 
             Dim tempExt As String = fileExtension
 
-            appSettings.Settings.Remove("savedFileExtension")
+            appSettings.Settings.Remove("fileExtensionBackup")
 
             config.Save(ConfigurationSaveMode.Modified)
 
-            appSettings.Settings.Add("savedFileExtension", tempExt)
+            appSettings.Settings.Add("fileExtensionBackup", tempExt)
 
             config.Save(ConfigurationSaveMode.Modified)
 
@@ -118,6 +155,29 @@ Public Class ClassAppConfigValues
         End Try
 
         Return True
+
+    End Function
+
+
+    Public Function ReadAppKey(key As String) As String
+
+        Dim result As String = String.Empty
+
+        ' Get the application configuration file.
+        Dim config As System.Configuration.Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)
+
+        Dim appSettings As System.Configuration.AppSettingsSection = config.AppSettings
+
+        For Each keyName As KeyValueConfigurationElement In appSettings.Settings
+
+            If keyName.Key = key Then
+                result = keyName.Value
+                Exit For
+            End If
+
+        Next
+
+        Return result
 
     End Function
 

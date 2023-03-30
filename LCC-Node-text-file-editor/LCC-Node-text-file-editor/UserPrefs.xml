@@ -1,6 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <UserPrefs xmlns="http://tempuri.org/UserPrefs.xsd">
 
+	<!-- JMRI LCC User file directory -->
+	<!-- path and extension values are config app keys-->
+	<UserJMRI>
+		<value>0</value>
+		<path>fileFolderBackup</path>
+		<extension>fileExtensionBackup</extension>
+		<comment>JMRI LCC backup text file directory</comment>
+	</UserJMRI>
+	<UserJMRI>
+		<value>1</value>
+		<path>fileFolderExportXml</path>
+		<extension>fileExtensionExportXml</extension>
+		<comment>JMRI LCC export xml file directory</comment>
+	</UserJMRI>
+	<UserJMRI>
+		<value>2</value>
+		<path>fileFolderRestore</path>
+		<extension>fileExtensionRestore</extension>
+		<comment>JMRI LCC restore text file directory</comment>
+	</UserJMRI>
+	
+
 	<!-- Process data table -->
 	<Process>
 		<processID>1</processID>
