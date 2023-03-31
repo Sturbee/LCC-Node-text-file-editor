@@ -97,10 +97,10 @@
     <Compile Include="ExportXml.vb">
       <DependentUpon>ExportXml.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="FrmTrackSpeed.Designer.vb">
+      <DependentUpon>FrmTrackSpeed.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form1.vb">
+    <Compile Include="FrmTrackSpeed.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLine.Designer.vb">
@@ -125,12 +125,6 @@
       <DependentUpon>FrmPowerMonitor.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmPowerMonitor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTrackSpeed.Designer.vb">
-      <DependentUpon>FrmTrackSpeed.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FrmTrackSpeed.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmUserPrefs.Designer.vb">
@@ -183,8 +177,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="FrmTrackSpeed.resx">
+      <DependentUpon>FrmTrackSpeed.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLine.resx">
       <DependentUpon>FrmLine.vb</DependentUpon>
@@ -197,9 +191,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPowerMonitor.resx">
       <DependentUpon>FrmPowerMonitor.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmTrackSpeed.resx">
-      <DependentUpon>FrmTrackSpeed.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUserPrefs.resx">
       <DependentUpon>FrmUserPrefs.vb</DependentUpon>

@@ -1,42 +1,42 @@
-﻿Public Class FrmTrackSpeed
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
+
+Public Class FrmTrackSpeed
 
     Private Property ClsI As New ClsImportCDI
     Private Property ClsU As New ClsUserPrefs
 
-    Private Sub FrmTrackSpeed_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Dim LblValues(7) As Label
 
-        Call Me.DisplayTrackSpeeds()
+    Dim TxtValues(7) As TextBox
+
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Call Me.DisplayValues()
 
     End Sub
 
-    Private Sub DisplayTrackSpeeds()
+    Private Sub DisplayValues()
 
         ' populate labels with CDI values
 
         Try
 
             For count = 0 To ClsI.MyImportCDI.TrackSpeed.Count - 1
+
+                Dim MyLabel As New Label
+
+                MyLabel.Left = 10
+                MyLabel.Top = 10 + (25 * count)
+                MyLabel.Width = 120
+
                 Dim row As ImportCDI.TrackSpeedRow = ClsI.MyImportCDI.TrackSpeed.Item(count)
-                Select Case count
-                    Case 0
-                        Me.Label1.Text = row.text
-                    Case 1
-                        Me.Label2.Text = row.text
-                    Case 2
-                        Me.Label3.Text = row.text
-                    Case 3
-                        Me.Label4.Text = row.text
-                    Case 4
-                        Me.Label5.Text = row.text
-                    Case 5
-                        Me.Label6.Text = row.text
-                    Case 6
-                        Me.Label7.Text = row.text
-                    Case 7
-                        Me.Label8.Text = row.text
-                    Case Else
-                        Stop
-                End Select
+                MyLabel.Text = row.text
+
+                Me.LblValues(count) = MyLabel
+
+                Me.Controls.Add(LblValues(count))
+
             Next
 
         Catch ex As Exception
@@ -48,27 +48,20 @@
 
         Try
             For count = 0 To ClsU.MyUserPrefs.TrackSpeed.Count - 1
+
+                Dim MyTextBox As New TextBox
+
+                MyTextBox.Left = 150
+                MyTextBox.Top = 10 + (25 * count)
+                MyTextBox.Width = 120
+
                 Dim row As UserPrefs.TrackSpeedRow = ClsU.MyUserPrefs.TrackSpeed.Item(count)
-                Select Case count
-                    Case 0
-                        Me.TextBox1.Text = row.text
-                    Case 1
-                        Me.TextBox2.Text = row.text
-                    Case 2
-                        Me.TextBox3.Text = row.text
-                    Case 3
-                        Me.TextBox4.Text = row.text
-                    Case 4
-                        Me.TextBox5.Text = row.text
-                    Case 5
-                        Me.TextBox6.Text = row.text
-                    Case 6
-                        Me.TextBox7.Text = row.text
-                    Case 7
-                        Me.TextBox8.Text = row.text
-                    Case Else
-                        Stop
-                End Select
+                MyTextBox.Text = row.text
+
+                Me.TxtValues(count) = MyTextBox
+
+                Me.Controls.Add(TxtValues(count))
+
             Next
 
         Catch ex As Exception
@@ -76,37 +69,15 @@
             Exit Sub
         End Try
 
+
     End Sub
 
-    Private Sub ButSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
 
         Try
 
             For count = 0 To ClsU.MyUserPrefs.TrackSpeed.Count - 1
-                Dim row As UserPrefs.TrackSpeedRow = ClsU.MyUserPrefs.TrackSpeed.Item(count)
-                Select Case count
-                    Case 0
-                        row.text = Me.TextBox1.Text
-                    Case 1
-                        row.text = Me.TextBox2.Text
-                    Case 2
-                        row.text = Me.TextBox3.Text
-                    Case 3
-                        row.text = Me.TextBox4.Text
-                    Case 4
-                        row.text = Me.TextBox5.Text
-                    Case 5
-                        row.text = Me.TextBox6.Text
-                    Case 6
-                        row.text = Me.TextBox7.Text
-                    Case 7
-                        row.text = Me.TextBox8.Text
-                    Case Else
-                        Stop
-                End Select
-
-                ClsU.TrackSpeedRowChange(row.value, row.text)
-
+                ClsU.TrackSpeedRowChange(count, Me.TxtValues(count).Text)
             Next
 
             ClsU.UserPrefsXmlSave()
