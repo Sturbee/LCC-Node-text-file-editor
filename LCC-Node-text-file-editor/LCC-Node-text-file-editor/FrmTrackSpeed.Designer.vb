@@ -39,7 +39,7 @@ Partial Class FrmTrackSpeed
         Me.TextBox7 = New System.Windows.Forms.TextBox()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.ButSave = New System.Windows.Forms.Button()
+        Me.BtnSave = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -180,21 +180,21 @@ Partial Class FrmTrackSpeed
         Me.Label9.TabIndex = 16
         Me.Label9.Text = "Rename Track Speed to your liking"
         '
-        'ButSave
+        'BtnSave
         '
-        Me.ButSave.Location = New System.Drawing.Point(427, 18)
-        Me.ButSave.Name = "ButSave"
-        Me.ButSave.Size = New System.Drawing.Size(75, 23)
-        Me.ButSave.TabIndex = 17
-        Me.ButSave.Text = "Save"
-        Me.ButSave.UseVisualStyleBackColor = True
+        Me.BtnSave.Location = New System.Drawing.Point(427, 18)
+        Me.BtnSave.Name = "BtnSave"
+        Me.BtnSave.Size = New System.Drawing.Size(75, 23)
+        Me.BtnSave.TabIndex = 17
+        Me.BtnSave.Text = "Save"
+        Me.BtnSave.UseVisualStyleBackColor = True
         '
         'FrmTrackSpeed
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(569, 450)
-        Me.Controls.Add(Me.ButSave)
+        Me.Controls.Add(Me.BtnSave)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.TextBox8)
         Me.Controls.Add(Me.TextBox7)
@@ -237,5 +237,5 @@ Partial Class FrmTrackSpeed
     Friend WithEvents TextBox7 As TextBox
     Friend WithEvents TextBox8 As TextBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents ButSave As Button
+    Friend WithEvents BtnSave As Button
 End Class

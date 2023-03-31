@@ -15,8 +15,8 @@
 
         Try
 
-            For count = 0 To clsI.MyImportCDI.TrackSpeed.Count - 1
-                Dim row As ImportCDI.TrackSpeedRow = clsI.MyImportCDI.TrackSpeed.Item(count)
+            For count = 0 To ClsI.MyImportCDI.TrackSpeed.Count - 1
+                Dim row As ImportCDI.TrackSpeedRow = ClsI.MyImportCDI.TrackSpeed.Item(count)
                 Select Case count
                     Case 0
                         Me.Label1.Text = row.text
@@ -78,7 +78,7 @@
 
     End Sub
 
-    Private Sub ButSave_Click(sender As Object, e As EventArgs) Handles ButSave.Click
+    Private Sub ButSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
 
         Try
 
