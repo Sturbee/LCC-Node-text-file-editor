@@ -1,25 +1,32 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
+﻿
+Public Class ClsUserPrefs
 
-Public Class ClassUserPrefs
-
-    Public Property UserPrefsFileName As String = "UserPrefs.xml"
+    Private Property UserPrefsFileName As String = "UserPrefs.xml"
+    Private Property UserPrefsOrgFileName As String = "UserPrefs.org.xml"
 
     Public Property MyUserPrefs As New UserPrefs
 
     Public Sub New()
 
-        Call Me.ReadUserPrefsXml()
+        Call Me.UserPrefsXmlRead()
 
     End Sub
 
-    Private Sub ReadUserPrefsXml()
+    Private Sub UserPrefsXmlRead()
 
         ' import userprefs xml file
         Try
             MyUserPrefs.ReadXml(Me.UserPrefsFileName)
         Catch ex As Exception
-            MsgBox("Failed to read " + Me.UserPrefsFileName)
-            Exit Sub
+            ' file is not auto copied
+            ' try to create a new userprefs xml file
+            Try
+                MyUserPrefs.ReadXml(Me.UserPrefsOrgFileName)
+                MyUserPrefs.WriteXml(Me.UserPrefsFileName)
+            Catch ex1 As Exception
+                MsgBox("Failed to create/read " + Me.UserPrefsFileName)
+                Exit Sub
+            End Try
         End Try
 
         ' check for valid file directorys
@@ -27,7 +34,7 @@ Public Class ClassUserPrefs
             For count = 0 To Me.MyUserPrefs.UserJMRI.Count - 1
                 Dim filePath As String = String.Empty
                 Dim fileExtension As String = String.Empty
-                Call Me.ReadJMRIfileInfo(count, filePath, fileExtension)
+                Call Me.JMRIfileRowRead(count, filePath, fileExtension)
             Next
         Catch ex As Exception
             MsgBox("JMRI file directory check failed")
@@ -36,12 +43,12 @@ Public Class ClassUserPrefs
 
     End Sub
 
-    Public Sub ReadJMRIfileInfo(userJMRIvalue As Integer, ByRef filePath As String, ByRef fileExtension As String)
+    Public Sub JMRIfileRowRead(userJMRIvalue As Integer, ByRef filePath As String, ByRef fileExtension As String)
 
         Dim row As UserPrefs.UserJMRIRow = MyUserPrefs.UserJMRI.FindByvalue(userJMRIvalue)
 
-        If Me.CheckJMRIfileInfo(row.path, row.extension) = False Then
-            Call Me.WriteJMRIfileInfo(row.value, row.path, row.extension)
+        If Me.JMRIfileRowCheck(row.path, row.extension) = False Then
+            Call Me.JMRIfileRowWrite(row.value, row.path, row.extension)
         End If
 
         filePath = row.path
@@ -49,11 +56,11 @@ Public Class ClassUserPrefs
 
     End Sub
 
-    Public Function WriteJMRIfileInfo(userJMRIvalue As Integer, filePath As String, fileExtension As String) As Boolean
+    Public Function JMRIfileRowWrite(userJMRIvalue As Integer, filePath As String, fileExtension As String) As Boolean
 
         Dim result As Boolean = False
 
-        If Me.CheckJMRIfileInfo(filePath, fileExtension) = False Then
+        If Me.JMRIfileRowCheck(filePath, fileExtension) = False Then
             Return False
         End If
 
@@ -76,7 +83,7 @@ Public Class ClassUserPrefs
 
     End Function
 
-    Private Function CheckJMRIfileInfo(ByRef filePath As String, ByRef fileExtension As String) As Boolean
+    Private Function JMRIfileRowCheck(ByRef filePath As String, ByRef fileExtension As String) As Boolean
 
         Dim result As Boolean = False
 

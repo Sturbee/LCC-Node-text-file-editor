@@ -9,17 +9,10 @@
 
     Private Sub FrmPowerMonitor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        ' get App Config values
-        Dim cls As New ClassAppConfigValues
-
         ' read the titles xml file
-        Dim dsTitles As New Titles
-        Try
-            dsTitles.ReadXml(cls.SavedTitlesFile)
-        Catch ex As Exception
-            MsgBox("Failed to import titles")
-            Exit Sub
-        End Try
+        Dim clsT As New ClsTitles
+        Dim dsTitles As Titles = clsT.MyTitles
+
 
         Dim rowPower As Titles.PowerMonitorTitlesRow = dsTitles.PowerMonitorTitles.Item(0)
         Me.Text = rowPower.header
@@ -29,13 +22,8 @@
 
 
         ' read the attribute xml file
-        Dim dsRpt As New Rpt
-        Try
-            dsRpt.ReadXml(cls.SavedReportFile)
-        Catch ex As Exception
-            MsgBox("Failed to import attributes")
-            Exit Sub
-        End Try
+        Dim clsR As New ClsReport
+        Dim dsRpt As Rpt = clsR.MyReport
 
         ' fill combobox
         Try
@@ -52,7 +40,6 @@
 
 
         ' temporary
-        Me.MyFileName = cls.SavedBlankSignalFile
 
         Me.MyFileName = "EditTest.xml"
         Me.MySaveFile = "EditTest.xml"

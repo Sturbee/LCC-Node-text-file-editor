@@ -1,9 +1,6 @@
 ﻿Imports System.IO
-Imports System.Net.Http.Headers
 
 Public Class ClassExportXmlToCsv
-
-    Inherits ClassAppConfigValues
 
     Public Sub ExportToCvsFile(filePath As String)
 
@@ -25,46 +22,22 @@ Public Class ClassExportXmlToCsv
             Exit Sub
         End Try
 
-        ' get report value's tables
-        If My.Computer.FileSystem.FileExists(Me.SavedImportCDIfile) = False Then
-            MessageBox.Show("File Not Found: " & Me.SavedImportCDIfile)
-            Exit Sub
-        End If
+        ' get report xml file
+        Dim clsR As New ClsReport
+        Dim dsReport As Rpt = clsR.MyReport
 
-        Dim dsReport As New Rpt
+        ' get titles xml file
+        Dim clsT As New ClsTitles
+        Dim dsTitles As Titles = clsT.MyTitles
 
-        Try
-            dsReport.ReadXml(Me.SavedReportFile)
-        Catch ex As Exception
-            MsgBox("Failed to read report file " + Me.SavedReportFile)
-            Exit Sub
-        End Try
-
-        Dim dsTitles As New Titles
-
-        Try
-            dsTitles.ReadXml(Me.SavedTitlesFile)
-        Catch ex As Exception
-            MsgBox("Failed to read titles file " + Me.SavedTitlesFile)
-        End Try
-
-
-        ' import user selections
-        Dim dsImport As New ImportCDI
-
-        Try
-            dsImport.ReadXml(Me.SavedReportFile)
-        Catch ex As Exception
-            MsgBox("Faied to read import file " + Me.SavedImportCDIfile)
-        End Try
-
-
+        ' get importCDI xml file
+        Dim clsI As New ClsImportCDI
+        Dim dsImport As ImportCDI = clsI.MyImportCDI
 
         Try
 
-            Dim dsUser As New UserPrefs
-
-            dsUser.ReadXml(Me.SavedUserFile)
+            Dim clsU As New ClsUserPrefs
+            Dim dsUser As UserPrefs = clsU.MyUserPrefs
             dsUser.AcceptChanges()
 
             dsImport.Process.Merge(dsUser.Process)
@@ -80,7 +53,7 @@ Public Class ClassExportXmlToCsv
             End If
 
         Catch ex As Exception
-            MsgBox("Failed to merge import with user xml " + Me.SavedUserFile)
+            MsgBox("Failed to merge import with user")
         End Try
 
 
@@ -89,17 +62,17 @@ Public Class ClassExportXmlToCsv
 
         ' output Node table
         If Me.SegmentReport(0, dsImport) Then
-            Call Me.ReportNodeTable(dsInput, dsTitles, writer)
+            Call Me.ReportNodeTable(dsInput, writer)
         End If
 
         ' output PowerMonitor table
         If Me.SegmentReport(1, dsImport) Then
-            Call Me.ReportPowerMonitorTable(dsInput, dsTitles, writer)
+            Call Me.ReportPowerMonitorTable(dsInput, writer)
         End If
 
         ' output Port I/O table
         If Me.SegmentReport(2, dsImport) Then
-            Call Me.ReportPortTable(dsInput, dsTitles, writer)
+            Call Me.ReportPortTable(dsInput, writer)
         End If
 
         ' output Logic table
@@ -121,7 +94,7 @@ Public Class ClassExportXmlToCsv
 
     End Sub
 
-    Private Sub ReportNodeTable(dsInput As ExportXml, dsTitles As Titles, writer As StreamWriter)
+    Private Sub ReportNodeTable(dsInput As ExportXml, writer As StreamWriter)
 
         Dim comma As String = ","
 
@@ -186,7 +159,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportPowerMonitorTable(dsInput As ExportXml, dsTitles As Titles, writer As StreamWriter)
+    Private Sub ReportPowerMonitorTable(dsInput As ExportXml, writer As StreamWriter)
 
         Dim comma As String = ","
 
@@ -251,7 +224,7 @@ Public Class ClassExportXmlToCsv
 
     End Sub
 
-    Private Sub ReportPortTable(dsInput As ExportXml, dsTitles As Titles, writer As StreamWriter)
+    Private Sub ReportPortTable(dsInput As ExportXml, writer As StreamWriter)
 
         Dim comma As String = ","
 
@@ -306,10 +279,10 @@ Public Class ClassExportXmlToCsv
                 writer.WriteLine(comma)
 
                 ' write port delay info
-                Call Me.ReportPortDelayTable(rowTable.LineID, dsInput, dsTitles, writer)
+                Call Me.ReportPortDelayTable(rowTable.LineID, dsInput, writer)
                 writer.WriteLine(comma)
 
-                Call Me.ReportPortEventTable(rowTable.LineID, dsInput, dsTitles, writer)
+                Call Me.ReportPortEventTable(rowTable.LineID, dsInput, writer)
                 writer.WriteLine(comma)
 
             Next ' port row
@@ -323,7 +296,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportPortDelayTable(portID As Integer, dsInput As ExportXml, dsTitles As Titles, writer As StreamWriter)
+    Private Sub ReportPortDelayTable(portID As Integer, dsInput As ExportXml, writer As StreamWriter)
 
         Dim header As Boolean = True
 
@@ -396,7 +369,7 @@ Public Class ClassExportXmlToCsv
     End Sub
 
 
-    Private Sub ReportPortEventTable(portID As Integer, dsInput As ExportXml, dsTitles As Titles, writer As StreamWriter)
+    Private Sub ReportPortEventTable(portID As Integer, dsInput As ExportXml, writer As StreamWriter)
 
         Dim header As Boolean = True
 

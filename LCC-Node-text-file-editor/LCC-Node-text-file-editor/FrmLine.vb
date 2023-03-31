@@ -2,17 +2,9 @@
     Private Property MyImport As New ExportXml
     Private Sub FrmLine_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        ' get App Config values
-        Dim cls As New ClassAppConfigValues
-
         ' read the titles xml file
-        Dim dsTitles As New Titles
-        Try
-            dsTitles.ReadXml(cls.SavedTitlesFile)
-        Catch ex As Exception
-            MsgBox("Failed to import titles")
-            Exit Sub
-        End Try
+        Dim clsT As New ClsTitles
+        Dim dsTitles As Titles = clsT.MyTitles
 
         ' set labels
         Dim rowTitle As Titles.PortTitlesRow = dsTitles.PortTitles.Item(0)
@@ -33,14 +25,8 @@
         Me.LblInCommd.Text = rowTitleEvent.inputCommand
 
         ' read the attribute xml file
-        Dim dsRpt As New Rpt
-        Try
-            dsRpt.ReadXml(cls.SavedReportFile)
-        Catch ex As Exception
-            MsgBox("Failed to import attributes")
-            Exit Sub
-        End Try
-
+        Dim clsR As New ClsReport
+        Dim dsRpt As Rpt = clsR.MyReport
 
         ' fill combo box items
         Try

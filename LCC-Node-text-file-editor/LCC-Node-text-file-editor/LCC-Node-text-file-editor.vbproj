@@ -77,11 +77,13 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassAppConfigValues.vb" />
     <Compile Include="ClassExportXml.vb" />
     <Compile Include="ClassExportXmlToCsv.vb" />
     <Compile Include="ClassExportXsd.vb" />
-    <Compile Include="ClassUserPrefs.vb" />
+    <Compile Include="ClsImportCDI.vb" />
+    <Compile Include="ClsReport.vb" />
+    <Compile Include="ClsTitles.vb" />
+    <Compile Include="ClsUserPrefs.vb" />
     <Compile Include="Events.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -290,6 +292,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tower.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UserPrefs.org.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="UserPrefs.xml" />

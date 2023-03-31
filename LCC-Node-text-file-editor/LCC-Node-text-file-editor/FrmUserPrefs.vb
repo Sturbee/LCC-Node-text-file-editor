@@ -1,6 +1,6 @@
 ﻿Public Class FrmUserPrefs
 
-    Private Property ClsUserPrefs As New ClassUserPrefs
+    Private Property ClsUserPrefs As New ClsUserPrefs
 
     Private Sub FrmUserPrefs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -67,7 +67,7 @@
 
         Dim row As UserPrefs.UserJMRIRow = ClsUserPrefs.MyUserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
 
-        If ClsUserPrefs.WriteJMRIfileInfo(Me.CmbPath.SelectedIndex, Me.TxtPath.Text, Me.TxtExtension.Text) = True Then
+        If ClsUserPrefs.JMRIfileRowWrite(Me.CmbPath.SelectedIndex, Me.TxtPath.Text, Me.TxtExtension.Text) = True Then
             MsgBox("JMRI LCC file directory and extension updated")
         Else
             MsgBox("Faile to update JMRI LCC file directory and extension")

@@ -25,7 +25,6 @@ Partial Class FrmExportXml
         Me.BrowseButton = New System.Windows.Forms.Button()
         Me.FilesListBox = New System.Windows.Forms.ListBox()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
-        Me.ButtonSaveSearch = New System.Windows.Forms.Button()
         Me.TextBoxFileExtension = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ButtonProcess = New System.Windows.Forms.Button()
@@ -54,15 +53,6 @@ Partial Class FrmExportXml
         '
         Me.FolderBrowserDialog1.SelectedPath = "FilesListBox"
         '
-        'ButtonSaveSearch
-        '
-        Me.ButtonSaveSearch.Location = New System.Drawing.Point(394, 389)
-        Me.ButtonSaveSearch.Name = "ButtonSaveSearch"
-        Me.ButtonSaveSearch.Size = New System.Drawing.Size(98, 23)
-        Me.ButtonSaveSearch.TabIndex = 4
-        Me.ButtonSaveSearch.Text = "Save Search"
-        Me.ButtonSaveSearch.UseVisualStyleBackColor = True
-        '
         'TextBoxFileExtension
         '
         Me.TextBoxFileExtension.Location = New System.Drawing.Point(263, 390)
@@ -81,14 +71,14 @@ Partial Class FrmExportXml
         '
         'ButtonProcess
         '
-        Me.ButtonProcess.Location = New System.Drawing.Point(678, 162)
+        Me.ButtonProcess.Location = New System.Drawing.Point(678, 76)
         Me.ButtonProcess.Name = "ButtonProcess"
         Me.ButtonProcess.Size = New System.Drawing.Size(75, 23)
         Me.ButtonProcess.TabIndex = 7
         Me.ButtonProcess.Text = "Process"
         Me.ButtonProcess.UseVisualStyleBackColor = True
         '
-        'MyFileExplorer
+        'FrmExportXml
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -96,10 +86,9 @@ Partial Class FrmExportXml
         Me.Controls.Add(Me.ButtonProcess)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBoxFileExtension)
-        Me.Controls.Add(Me.ButtonSaveSearch)
         Me.Controls.Add(Me.BrowseButton)
         Me.Controls.Add(Me.FilesListBox)
-        Me.Name = "MyFileExplorer"
+        Me.Name = "FrmExportXml"
         Me.Text = "My File Explorer"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -109,7 +98,6 @@ Partial Class FrmExportXml
     Friend WithEvents FilesListBox As ListBox
     Friend WithEvents BrowseButton As Button
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
-    Friend WithEvents ButtonSaveSearch As Button
     Friend WithEvents TextBoxFileExtension As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents ButtonProcess As Button

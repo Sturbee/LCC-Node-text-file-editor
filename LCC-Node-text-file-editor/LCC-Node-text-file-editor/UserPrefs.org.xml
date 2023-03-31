@@ -59,7 +59,7 @@
 	<SegmentReport>
 		<level>3</level>
 		<text>Conditional</text>
-		<action>false</action>
+		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
 		<level>4</level>
@@ -74,17 +74,17 @@
 	<SegmentReport>
 		<level>6</level>
 		<text>Rule To Aspect</text>
-		<action>false</action>
+		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
 		<level>7</level>
 		<text>Direct Lamp Control</text>
-		<action>false</action>
+		<action>true</action>
 	</SegmentReport>
 	<SegmentReport>
 		<level>8</level>
 		<text>Brightness</text>
-		<action>false</action>
+		<action>true</action>
 	</SegmentReport>
 
 	<!-- Track Speed data table -->
@@ -106,7 +106,7 @@
 	</TrackSpeed>
 	<TrackSpeed>
 		<value>4</value>
-		<text>Dark</text>
+		<text>Limited</text>
 	</TrackSpeed>
 	<TrackSpeed>
 		<value>5</value>

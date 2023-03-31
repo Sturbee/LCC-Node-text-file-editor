@@ -1,29 +1,17 @@
-﻿Imports System.Diagnostics.Tracing
-Imports System.IO
-
+﻿
 Public Class ClassExportXsd
-
-    Inherits ClassAppConfigValues
 
     Public Sub ExportToXsdFile(filePath As String)
 
-        Dim dsImport As New ImportCDI
+        Dim clsI As New ClsImportCDI
+        Dim dsImport As ImportCDI = clsI.MyImportCDI
 
-        Try
-            dsImport.ReadXml(Me.SavedImportCDIfile)
-        Catch ex As Exception
-            MsgBox("Failed to read import file " + Me.SavedImportCDIfile)
-            Exit Sub
-        End Try
 
         ' import user selections
-
         Try
 
-            Dim dsUser As New UserPrefs
-
-            dsUser.ReadXml(Me.SavedUserFile)
-            dsUser.AcceptChanges()
+            Dim clsU As New ClsUserPrefs
+            Dim dsUser As UserPrefs = clsU.MyUserPrefs
 
             dsImport.Process.Merge(dsUser.Process)
             dsImport.AcceptChanges()
@@ -36,7 +24,7 @@ Public Class ClassExportXsd
             End If
 
         Catch ex As Exception
-            MsgBox("Failed to import xml " + Me.SavedUserFile)
+            MsgBox("Failed to merge user xml")
         End Try
 
 

@@ -3,12 +3,12 @@
     Private Sub MyFileExplorer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' Set the default directory to the user JMRI backup directory
-        Dim cls As New ClassUserPrefs
+        Dim cls As New ClsUserPrefs
 
         Dim filePath As String = String.Empty
         Dim fileExtension As String = String.Empty
 
-        Call cls.ReadJMRIfileInfo(0, filePath, fileExtension)
+        Call cls.JMRIfileRowRead(0, filePath, fileExtension)
 
         FolderBrowserDialog1.SelectedPath = filePath
 
@@ -59,17 +59,6 @@
 
     End Sub
 
-    Private Sub ButtonSaveFileFolder_Click(sender As Object, e As EventArgs) Handles ButtonSaveSearch.Click
-
-        Dim cls As New ClassAppConfigValues
-
-        If cls.AppConfigFileWriteBackup(Me.FolderBrowserDialog1.SelectedPath, Me.TextBoxFileExtension.Text) Then
-            ' do nothing
-        Else
-            MsgBox("Failed to save folder and extension values")
-        End If
-
-    End Sub
 
     Private Sub TextBoxFileExtension_TextChanged(sender As Object, e As EventArgs) Handles TextBoxFileExtension.TextChanged
 

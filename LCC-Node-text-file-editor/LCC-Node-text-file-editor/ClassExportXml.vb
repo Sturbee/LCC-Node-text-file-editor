@@ -3,8 +3,6 @@ Imports System.IO
 
 Public Class ClassExportXml
 
-    Inherits ClassAppConfigValues
-
     Private lineNum As Integer = 0
 
     Private dsImport As ImportCDI
@@ -16,9 +14,6 @@ Public Class ClassExportXml
 
 
     Public Sub MyExportToXmlFile(filePath As String)
-
-
-
 
         Me.dsImport = New ImportCDI
         Me.dsExport = New ExportXml
@@ -34,24 +29,20 @@ Public Class ClassExportXml
                 Exit Sub
             End If
 
-
+            ' import report xml file
             Try
-                Me.dsImport.ReadXml(Me.SavedImportCDIfile)
+                Dim clsImportCDI As New ClsImportCDI
+                Me.dsImport = clsImportCDI.MyImportCDI
             Catch ex As Exception
-                MsgBox("Failed to import " + Me.SavedImportCDIfile)
                 Exit Sub
             End Try
 
             ' import user selections
             Try
 
-                Dim dsUser As New UserPrefs
-
-                dsUser.ReadXml(Me.SavedUserFile)
-                dsUser.AcceptChanges()
-
-                dsImport.Process.Merge(dsUser.Process)
-                dsImport.SegmentReport.Merge(dsUser.SegmentReport)
+                Dim clsUser As New ClsUserPrefs
+                dsImport.Process.Merge(clsUser.MyUserPrefs.Process)
+                dsImport.SegmentReport.Merge(clsUser.MyUserPrefs.SegmentReport)
                 dsImport.AcceptChanges()
 
                 Dim rowProcess As ImportCDI.ProcessRow = dsImport.Process.FindByprocessID(1)
@@ -62,7 +53,7 @@ Public Class ClassExportXml
                 End If
 
             Catch ex As Exception
-                MsgBox("Failed to import xml " + Me.SavedUserFile)
+                MsgBox("Failed to merge tables")
             End Try
 
 
