@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.LCC_Node_text_file_editor.FrmExportXml
+            Me.MainForm = Global.LCC_Node_text_file_editor.FrmTrackSpeed
         End Sub
     End Class
 End Namespace

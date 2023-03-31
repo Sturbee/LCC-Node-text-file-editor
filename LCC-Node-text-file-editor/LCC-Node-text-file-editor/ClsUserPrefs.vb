@@ -99,5 +99,18 @@ Public Class ClsUserPrefs
 
     End Function
 
+    Public Sub TrackSpeedRowChange(value As Integer, text As String)
+
+        Dim row As UserPrefs.TrackSpeedRow = MyUserPrefs.TrackSpeed.FindByvalue(value)
+        row.text = text
+
+    End Sub
+
+
+    Public Sub UserPrefsXmlSave()
+
+        MyUserPrefs.WriteXml(Me.UserPrefsFileName)
+
+    End Sub
 
 End Class
