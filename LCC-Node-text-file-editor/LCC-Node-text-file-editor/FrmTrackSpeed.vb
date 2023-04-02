@@ -5,9 +5,12 @@ Public Class FrmTrackSpeed
     Private Property ClsI As New ClsImportCDI
     Private Property ClsU As New ClsUserPrefs
 
+#Disable Warning IDE0044 ' Add readonly modifier
     Dim LblValues(7) As Label
-
     Dim TxtValues(7) As TextBox
+#Enable Warning IDE0044 ' Add readonly modifier
+
+
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -24,11 +27,11 @@ Public Class FrmTrackSpeed
 
             For count = 0 To ClsI.MyImportCDI.TrackSpeed.Count - 1
 
-                Dim MyLabel As New Label
-
-                MyLabel.Left = 10
-                MyLabel.Top = 10 + (25 * count)
-                MyLabel.Width = 120
+                Dim MyLabel As New Label With {
+                    .Left = 10,
+                    .Top = 10 + (25 * count),
+                    .Width = 120
+                }
 
                 Dim row As ImportCDI.TrackSpeedRow = ClsI.MyImportCDI.TrackSpeed.Item(count)
                 MyLabel.Text = row.text
@@ -49,11 +52,11 @@ Public Class FrmTrackSpeed
         Try
             For count = 0 To ClsU.MyUserPrefs.TrackSpeed.Count - 1
 
-                Dim MyTextBox As New TextBox
-
-                MyTextBox.Left = 150
-                MyTextBox.Top = 10 + (25 * count)
-                MyTextBox.Width = 120
+                Dim MyTextBox As New TextBox With {
+                    .Left = 150,
+                    .Top = 10 + (25 * count),
+                    .Width = 120
+                }
 
                 Dim row As UserPrefs.TrackSpeedRow = ClsU.MyUserPrefs.TrackSpeed.Item(count)
                 MyTextBox.Text = row.text
