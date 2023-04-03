@@ -7,19 +7,19 @@
 		<value>0</value>
 		<title>JMRI LCC backup text file directory</title>
 		<path></path>
-		<extension>*.*</extension>
+		<extension></extension>
 	</UserJMRI>
 	<UserJMRI>
 		<value>1</value>
 		<title>JMRI LCC export xml file directory</title>
 		<path></path>
-		<extension>*.*</extension>
+		<extension></extension>
 	</UserJMRI>
 	<UserJMRI>
 		<value>2</value>
 		<title>JMRI LCC restore text file directory</title>
 		<path></path>
-		<extension>*.*</extension>
+		<extension></extension>
 	</UserJMRI>
 	
 

@@ -1,6 +1,6 @@
 ﻿Public Class FrmUserPrefs
 
-    Private Property ClsUserPrefs As New ClsUserPrefs
+    Private Property ClsU As New ClsUserPrefs
 
     Private Sub FrmUserPrefs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -13,13 +13,11 @@
         Try
 
             Me.CmbPath.BeginUpdate()
-            For count = 0 To Me.ClsUserPrefs.MyUserPrefs.UserJMRI.Count - 1
-                Dim row As UserPrefs.UserJMRIRow = ClsUserPrefs.MyUserPrefs.UserJMRI.Item(count)
+            For count = 0 To Me.ClsU.MyUserPrefs.UserJMRI.Count - 1
+                Dim row As UserPrefs.UserJMRIRow = ClsU.MyUserPrefs.UserJMRI.Item(count)
                 Me.CmbPath.Items.Add(row.title)
             Next
             Me.CmbPath.EndUpdate()
-
-            Me.CmbPath.SelectedIndex = 0
 
         Catch ex As Exception
 
@@ -28,13 +26,20 @@
 
         End Try
 
+        Me.CmbPath.SelectedIndex = Me.ClsU.CheckUserFileDirectories
+
     End Sub
 
     Private Sub CmbPath_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbPath.SelectedIndexChanged
 
-        Dim row As UserPrefs.UserJMRIRow = ClsUserPrefs.MyUserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
+        Dim row As UserPrefs.UserJMRIRow = ClsU.MyUserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
 
-        Me.TxtPath.Text = row.path
+        If row.path = Nothing Then
+            Me.TxtPath.Text = FolderBrowserDialog1.SelectedPath
+        Else
+            Me.TxtPath.Text = row.path
+        End If
+
         Me.TxtExtension.Text = row.extension
 
         Call Me.ListFiles(row.path)
@@ -65,9 +70,9 @@
 
     Private Sub CmdSave_Click(sender As Object, e As EventArgs) Handles CmdSave.Click
 
-        Dim row As UserPrefs.UserJMRIRow = ClsUserPrefs.MyUserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
+        Dim row As UserPrefs.UserJMRIRow = ClsU.MyUserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
 
-        If ClsUserPrefs.JMRIfileRowWrite(Me.CmbPath.SelectedIndex, Me.TxtPath.Text, Me.TxtExtension.Text) = True Then
+        If ClsU.JMRIfileRowWrite(Me.CmbPath.SelectedIndex, Me.TxtPath.Text, Me.TxtExtension.Text) = True Then
             MsgBox("JMRI LCC file directory and extension updated")
         Else
             MsgBox("Faile to update JMRI LCC file directory and extension")
@@ -92,5 +97,6 @@
         End Try
 
     End Sub
+
 
 End Class

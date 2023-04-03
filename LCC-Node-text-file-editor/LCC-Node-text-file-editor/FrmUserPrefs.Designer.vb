@@ -38,7 +38,7 @@ Partial Class FrmUserPrefs
         'CmbPath
         '
         Me.CmbPath.FormattingEnabled = True
-        Me.CmbPath.Location = New System.Drawing.Point(121, 23)
+        Me.CmbPath.Location = New System.Drawing.Point(193, 28)
         Me.CmbPath.Name = "CmbPath"
         Me.CmbPath.Size = New System.Drawing.Size(328, 24)
         Me.CmbPath.TabIndex = 0
@@ -48,9 +48,9 @@ Partial Class FrmUserPrefs
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(12, 31)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(103, 16)
+        Me.Label1.Size = New System.Drawing.Size(157, 16)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Select user path"
+        Me.Label1.Text = "Select JMRI user file path"
         '
         'Label2
         '
@@ -86,12 +86,15 @@ Partial Class FrmUserPrefs
         '
         'CmdSave
         '
-        Me.CmdSave.Location = New System.Drawing.Point(458, 111)
+        Me.CmdSave.Location = New System.Drawing.Point(467, 112)
         Me.CmdSave.Name = "CmdSave"
         Me.CmdSave.Size = New System.Drawing.Size(75, 23)
         Me.CmdSave.TabIndex = 6
         Me.CmdSave.Text = "Save"
         Me.CmdSave.UseVisualStyleBackColor = True
+        '
+        'FolderBrowserDialog1
+        '
         '
         'FilesListBox
         '
@@ -114,7 +117,7 @@ Partial Class FrmUserPrefs
         '
         'CmdBrowse
         '
-        Me.CmdBrowse.Location = New System.Drawing.Point(620, 23)
+        Me.CmdBrowse.Location = New System.Drawing.Point(624, 28)
         Me.CmdBrowse.Name = "CmdBrowse"
         Me.CmdBrowse.Size = New System.Drawing.Size(75, 23)
         Me.CmdBrowse.TabIndex = 9
@@ -137,7 +140,7 @@ Partial Class FrmUserPrefs
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CmbPath)
         Me.Name = "FrmUserPrefs"
-        Me.Text = "User Preferences"
+        Me.Text = "User JMRI Preferences"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

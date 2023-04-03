@@ -29,36 +29,46 @@ Public Class ClsUserPrefs
             End Try
         End Try
 
-        ' check for valid file directorys
+    End Sub
+
+    Public Function CheckUserFileDirectories() As Integer
+
+        ' check for valid file directorys, if valid return -1 else row value
+        For count = 0 To Me.MyUserPrefs.UserJMRI.Count - 1
+            Try
+                Dim row As UserPrefs.UserJMRIRow = Me.MyUserPrefs.UserJMRI.Item(count)
+                If Me.JMRIfileRowCheck(row.path, row.extension) Then
+                    ' do nothing row OK
+                Else
+                    Return count
+                End If
+            Catch ex As Exception
+                Return count
+            End Try
+        Next
+
+        Return -1
+
+    End Function
+
+    Public Function JMRIfileRowRead(userJMRIvalue As Integer, ByRef filePath As String, ByRef fileExtension As String) As Boolean
+
         Try
-            For count = 0 To Me.MyUserPrefs.UserJMRI.Count - 1
-                Dim filePath As String = String.Empty
-                Dim fileExtension As String = String.Empty
-                Call Me.JMRIfileRowRead(count, filePath, fileExtension)
-            Next
+            Dim row As UserPrefs.UserJMRIRow = MyUserPrefs.UserJMRI.FindByvalue(userJMRIvalue)
+            filePath = row.path
+            fileExtension = row.extension
+            If Me.JMRIfileRowCheck(row.path, row.extension) Then
+                Return True
+            Else
+                Return False
+            End If
         Catch ex As Exception
-            MsgBox("JMRI file directory check failed")
-            Exit Sub
+            Return False
         End Try
 
-    End Sub
-
-    Public Sub JMRIfileRowRead(userJMRIvalue As Integer, ByRef filePath As String, ByRef fileExtension As String)
-
-        Dim row As UserPrefs.UserJMRIRow = MyUserPrefs.UserJMRI.FindByvalue(userJMRIvalue)
-
-        If Me.JMRIfileRowCheck(row.path, row.extension) = False Then
-            Call Me.JMRIfileRowWrite(row.value, row.path, row.extension)
-        End If
-
-        filePath = row.path
-        fileExtension = row.extension
-
-    End Sub
+    End Function
 
     Public Function JMRIfileRowWrite(userJMRIvalue As Integer, filePath As String, fileExtension As String) As Boolean
-
-        Dim result As Boolean = False
 
         If Me.JMRIfileRowCheck(filePath, fileExtension) = False Then
             Return False
@@ -74,28 +84,22 @@ Public Class ClsUserPrefs
         ' write to userprefs xml file
         Try
             MyUserPrefs.WriteXml(Me.UserPrefsFileName)
-            result = True
+            Return True
         Catch ex As Exception
             MsgBox("Failed to write values to " + Me.UserPrefsFileName)
+            Return False
         End Try
-
-        Return result
 
     End Function
 
-    Private Function JMRIfileRowCheck(ByRef filePath As String, ByRef fileExtension As String) As Boolean
-
-        Dim result As Boolean = False
+    Private Function JMRIfileRowCheck(filePath As String, fileExtension As String) As Boolean
 
         Try
             Dim fileNames = My.Computer.FileSystem.GetFiles(filePath, FileIO.SearchOption.SearchTopLevelOnly, fileExtension)
-            result = True
+            Return True
         Catch ex As Exception
-            filePath = My.Computer.FileSystem.CurrentDirectory
-            fileExtension = "*.*"
+            Return False
         End Try
-
-        Return result
 
     End Function
 

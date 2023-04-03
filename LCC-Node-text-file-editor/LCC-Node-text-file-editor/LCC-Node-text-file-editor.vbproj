@@ -103,6 +103,12 @@
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmMenuMain.Designer.vb">
+      <DependentUpon>FrmMenuMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMenuMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmTrackSpeed.Designer.vb">
       <DependentUpon>FrmTrackSpeed.vb</DependentUpon>
     </Compile>
@@ -185,6 +191,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenuMain.resx">
+      <DependentUpon>FrmMenuMain.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTrackSpeed.resx">
       <DependentUpon>FrmTrackSpeed.vb</DependentUpon>
@@ -306,6 +315,7 @@
     <Content Include="Signal.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TextFile1.txt" />
     <Content Include="Titles.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

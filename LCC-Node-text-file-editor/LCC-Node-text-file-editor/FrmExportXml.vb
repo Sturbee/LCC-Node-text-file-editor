@@ -8,13 +8,15 @@
         Dim filePath As String = String.Empty
         Dim fileExtension As String = String.Empty
 
-        Call cls.JMRIfileRowRead(0, filePath, fileExtension)
+        If cls.JMRIfileRowRead(0, filePath, fileExtension) Then
 
-        FolderBrowserDialog1.SelectedPath = filePath
+            FolderBrowserDialog1.SelectedPath = filePath
 
-        Me.TextBoxFileExtension.Text = fileExtension
+            Me.TextBoxFileExtension.Text = fileExtension
 
-        ListFiles(FolderBrowserDialog1.SelectedPath)
+            ListFiles(FolderBrowserDialog1.SelectedPath)
+
+        End If
 
         SetEnabled()
 

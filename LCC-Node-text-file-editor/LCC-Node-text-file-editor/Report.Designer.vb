@@ -5847,7 +5847,39 @@ Partial Public Class Rpt
         
         Private columnvalue As Global.System.Data.DataColumn
         
-        Private columntext As Global.System.Data.DataColumn
+        Private columnname As Global.System.Data.DataColumn
+        
+        Private columnnode As Global.System.Data.DataColumn
+        
+        Private columnnodeItems As Global.System.Data.DataColumn
+        
+        Private columnpowerMonitor As Global.System.Data.DataColumn
+        
+        Private columnpowerMonitorItems As Global.System.Data.DataColumn
+        
+        Private columnport As Global.System.Data.DataColumn
+        
+        Private columnportItems As Global.System.Data.DataColumn
+        
+        Private columnlogic As Global.System.Data.DataColumn
+        
+        Private columnlogicItems As Global.System.Data.DataColumn
+        
+        Private columntrackCircuitRec As Global.System.Data.DataColumn
+        
+        Private columntrackCircuitRecItems As Global.System.Data.DataColumn
+        
+        Private columntrackCircuitTran As Global.System.Data.DataColumn
+        
+        Private columntrackCircuitTranItems As Global.System.Data.DataColumn
+        
+        Private columnmast As Global.System.Data.DataColumn
+        
+        Private columnmastItems As Global.System.Data.DataColumn
+        
+        Private columnlamp As Global.System.Data.DataColumn
+        
+        Private columnlampItems As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -5894,9 +5926,137 @@ Partial Public Class Rpt
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property textColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property nameColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columntext
+                Return Me.columnname
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property nodeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnode
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property nodeItemsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnodeItems
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property powerMonitorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnpowerMonitor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property powerMonitorItemsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnpowerMonitorItems
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property portColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnport
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property portItemsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnportItems
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property logicColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlogic
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property logicItemsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlogicItems
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property trackCircuitRecColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntrackCircuitRec
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property trackCircuitRecItemsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntrackCircuitRecItems
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property trackCircuitTranColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntrackCircuitTran
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property trackCircuitTranItemsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntrackCircuitTranItems
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property mastColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmast
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property mastItemsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmastItems
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property lampColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlamp
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property lampItemsColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlampItems
             End Get
         End Property
         
@@ -5937,9 +6097,27 @@ Partial Public Class Rpt
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddNodeTypeRow(ByVal value As Integer, ByVal text As String) As NodeTypeRow
+        Public Overloads Function AddNodeTypeRow( _
+                    ByVal value As Integer,  _
+                    ByVal name As String,  _
+                    ByVal node As Boolean,  _
+                    ByVal nodeItems As Integer,  _
+                    ByVal powerMonitor As Boolean,  _
+                    ByVal powerMonitorItems As Integer,  _
+                    ByVal port As Boolean,  _
+                    ByVal portItems As String,  _
+                    ByVal logic As Boolean,  _
+                    ByVal logicItems As Integer,  _
+                    ByVal trackCircuitRec As Boolean,  _
+                    ByVal trackCircuitRecItems As Integer,  _
+                    ByVal trackCircuitTran As Boolean,  _
+                    ByVal trackCircuitTranItems As String,  _
+                    ByVal mast As Boolean,  _
+                    ByVal mastItems As Integer,  _
+                    ByVal lamp As Boolean,  _
+                    ByVal lampItems As Integer) As NodeTypeRow
             Dim rowNodeTypeRow As NodeTypeRow = CType(Me.NewRow,NodeTypeRow)
-            Dim columnValuesArray() As Object = New Object() {value, text}
+            Dim columnValuesArray() As Object = New Object() {value, name, node, nodeItems, powerMonitor, powerMonitorItems, port, portItems, logic, logicItems, trackCircuitRec, trackCircuitRecItems, trackCircuitTran, trackCircuitTranItems, mast, mastItems, lamp, lampItems}
             rowNodeTypeRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowNodeTypeRow)
             Return rowNodeTypeRow
@@ -5969,7 +6147,23 @@ Partial Public Class Rpt
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnvalue = MyBase.Columns("value")
-            Me.columntext = MyBase.Columns("text")
+            Me.columnname = MyBase.Columns("name")
+            Me.columnnode = MyBase.Columns("node")
+            Me.columnnodeItems = MyBase.Columns("nodeItems")
+            Me.columnpowerMonitor = MyBase.Columns("powerMonitor")
+            Me.columnpowerMonitorItems = MyBase.Columns("powerMonitorItems")
+            Me.columnport = MyBase.Columns("port")
+            Me.columnportItems = MyBase.Columns("portItems")
+            Me.columnlogic = MyBase.Columns("logic")
+            Me.columnlogicItems = MyBase.Columns("logicItems")
+            Me.columntrackCircuitRec = MyBase.Columns("trackCircuitRec")
+            Me.columntrackCircuitRecItems = MyBase.Columns("trackCircuitRecItems")
+            Me.columntrackCircuitTran = MyBase.Columns("trackCircuitTran")
+            Me.columntrackCircuitTranItems = MyBase.Columns("trackCircuitTranItems")
+            Me.columnmast = MyBase.Columns("mast")
+            Me.columnmastItems = MyBase.Columns("mastItems")
+            Me.columnlamp = MyBase.Columns("lamp")
+            Me.columnlampItems = MyBase.Columns("lampItems")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5977,8 +6171,40 @@ Partial Public Class Rpt
         Private Sub InitClass()
             Me.columnvalue = New Global.System.Data.DataColumn("value", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnvalue)
-            Me.columntext = New Global.System.Data.DataColumn("text", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntext)
+            Me.columnname = New Global.System.Data.DataColumn("name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnname)
+            Me.columnnode = New Global.System.Data.DataColumn("node", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnode)
+            Me.columnnodeItems = New Global.System.Data.DataColumn("nodeItems", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnodeItems)
+            Me.columnpowerMonitor = New Global.System.Data.DataColumn("powerMonitor", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpowerMonitor)
+            Me.columnpowerMonitorItems = New Global.System.Data.DataColumn("powerMonitorItems", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpowerMonitorItems)
+            Me.columnport = New Global.System.Data.DataColumn("port", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnport)
+            Me.columnportItems = New Global.System.Data.DataColumn("portItems", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnportItems)
+            Me.columnlogic = New Global.System.Data.DataColumn("logic", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlogic)
+            Me.columnlogicItems = New Global.System.Data.DataColumn("logicItems", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlogicItems)
+            Me.columntrackCircuitRec = New Global.System.Data.DataColumn("trackCircuitRec", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntrackCircuitRec)
+            Me.columntrackCircuitRecItems = New Global.System.Data.DataColumn("trackCircuitRecItems", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntrackCircuitRecItems)
+            Me.columntrackCircuitTran = New Global.System.Data.DataColumn("trackCircuitTran", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntrackCircuitTran)
+            Me.columntrackCircuitTranItems = New Global.System.Data.DataColumn("trackCircuitTranItems", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntrackCircuitTranItems)
+            Me.columnmast = New Global.System.Data.DataColumn("mast", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmast)
+            Me.columnmastItems = New Global.System.Data.DataColumn("mastItems", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmastItems)
+            Me.columnlamp = New Global.System.Data.DataColumn("lamp", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlamp)
+            Me.columnlampItems = New Global.System.Data.DataColumn("lampItems", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlampItems)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnvalue}, true))
             Me.columnvalue.AllowDBNull = false
             Me.columnvalue.Unique = true
@@ -7111,29 +7337,461 @@ Partial Public Class Rpt
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property text() As String
+        Public Property name() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableNodeType.textColumn),String)
+                    Return CType(Me(Me.tableNodeType.nameColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'text' in table 'NodeType' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'name' in table 'NodeType' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableNodeType.textColumn) = value
+                Me(Me.tableNodeType.nameColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IstextNull() As Boolean
-            Return Me.IsNull(Me.tableNodeType.textColumn)
+        Public Property node() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.nodeColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'node' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.nodeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property nodeItems() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.nodeItemsColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'nodeItems' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.nodeItemsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property powerMonitor() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.powerMonitorColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'powerMonitor' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.powerMonitorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property powerMonitorItems() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.powerMonitorItemsColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'powerMonitorItems' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.powerMonitorItemsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property port() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.portColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'port' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.portColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property portItems() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.portItemsColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'portItems' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.portItemsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property logic() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.logicColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'logic' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.logicColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property logicItems() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.logicItemsColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'logicItems' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.logicItemsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property trackCircuitRec() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.trackCircuitRecColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'trackCircuitRec' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.trackCircuitRecColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property trackCircuitRecItems() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.trackCircuitRecItemsColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'trackCircuitRecItems' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.trackCircuitRecItemsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property trackCircuitTran() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.trackCircuitTranColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'trackCircuitTran' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.trackCircuitTranColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property trackCircuitTranItems() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.trackCircuitTranItemsColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'trackCircuitTranItems' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.trackCircuitTranItemsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property mast() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.mastColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'mast' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.mastColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property mastItems() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.mastItemsColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'mastItems' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.mastItemsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property lamp() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.lampColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'lamp' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.lampColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property lampItems() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeType.lampItemsColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'lampItems' in table 'NodeType' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeType.lampItemsColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsnameNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.nameColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SettextNull()
-            Me(Me.tableNodeType.textColumn) = Global.System.Convert.DBNull
+        Public Sub SetnameNull()
+            Me(Me.tableNodeType.nameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsnodeNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.nodeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetnodeNull()
+            Me(Me.tableNodeType.nodeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsnodeItemsNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.nodeItemsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetnodeItemsNull()
+            Me(Me.tableNodeType.nodeItemsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IspowerMonitorNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.powerMonitorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetpowerMonitorNull()
+            Me(Me.tableNodeType.powerMonitorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IspowerMonitorItemsNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.powerMonitorItemsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetpowerMonitorItemsNull()
+            Me(Me.tableNodeType.powerMonitorItemsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsportNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.portColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetportNull()
+            Me(Me.tableNodeType.portColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsportItemsNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.portItemsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetportItemsNull()
+            Me(Me.tableNodeType.portItemsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IslogicNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.logicColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetlogicNull()
+            Me(Me.tableNodeType.logicColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IslogicItemsNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.logicItemsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetlogicItemsNull()
+            Me(Me.tableNodeType.logicItemsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IstrackCircuitRecNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.trackCircuitRecColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SettrackCircuitRecNull()
+            Me(Me.tableNodeType.trackCircuitRecColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IstrackCircuitRecItemsNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.trackCircuitRecItemsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SettrackCircuitRecItemsNull()
+            Me(Me.tableNodeType.trackCircuitRecItemsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IstrackCircuitTranNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.trackCircuitTranColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SettrackCircuitTranNull()
+            Me(Me.tableNodeType.trackCircuitTranColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IstrackCircuitTranItemsNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.trackCircuitTranItemsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SettrackCircuitTranItemsNull()
+            Me(Me.tableNodeType.trackCircuitTranItemsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsmastNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.mastColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetmastNull()
+            Me(Me.tableNodeType.mastColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsmastItemsNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.mastItemsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetmastItemsNull()
+            Me(Me.tableNodeType.mastItemsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IslampNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.lampColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetlampNull()
+            Me(Me.tableNodeType.lampColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IslampItemsNull() As Boolean
+            Return Me.IsNull(Me.tableNodeType.lampItemsColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetlampItemsNull()
+            Me(Me.tableNodeType.lampItemsColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

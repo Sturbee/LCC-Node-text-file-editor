@@ -4,15 +4,63 @@
 	<!-- Node Type -->
 	<NodeType>
 		<value>0</value>
-		<text>Unknown</text>
+		<name>Unknown</name>
+		<node>true</node>
+		<nodeItems>1</nodeItems>
+		<powerMonitor>false</powerMonitor>
+		<powerMonitorItems>0</powerMonitorItems>
+		<port>false</port>
+		<portItems>0</portItems>
+		<logic>false</logic>
+		<logicItems>0</logicItems>
+		<trackCircuitRec>false</trackCircuitRec>
+		<trackCircuitRecItems>0</trackCircuitRecItems>
+		<trackCircuitTran>false</trackCircuitTran>
+		<trackCircuitTranItems>0</trackCircuitTranItems>
+		<mast>false</mast>
+		<mastItems>0</mastItems>
+		<lamp>false</lamp>
+		<lampItems>0</lampItems>
 	</NodeType>
 	<NodeType>
 		<value>1</value>
-		<text>Signal-LCC</text>
+		<name>Signal-LCC</name>
+		<node>true</node>
+		<nodeItems>1</nodeItems>
+		<powerMonitor>true</powerMonitor>
+		<powerMonitorItems>1</powerMonitorItems>
+		<port>true</port>
+		<portItems>8</portItems>
+		<logic>true</logic>
+		<logicItems>32</logicItems>
+		<trackCircuitRec>false</trackCircuitRec>
+		<trackCircuitRecItems>0</trackCircuitRecItems>
+		<trackCircuitTran>true</trackCircuitTran>
+		<trackCircuitTranItems>8</trackCircuitTranItems>
+		<mast>true</mast>
+		<mastItems>8</mastItems>
+		<lamp>true</lamp>
+		<lampItems>16</lampItems>
 	</NodeType>
 	<NodeType>
 		<value>2</value>
-		<text>Tower-LCC</text>
+		<name>Tower-LCC</name>
+		<node>true</node>
+		<nodeItems>1</nodeItems>
+		<powerMonitor>true</powerMonitor>
+		<powerMonitorItems>1</powerMonitorItems>
+		<port>true</port>
+		<portItems>16</portItems>
+		<logic>true</logic>
+		<logicItems>32</logicItems>
+		<trackCircuitRec>true</trackCircuitRec>
+		<trackCircuitRecItems>8</trackCircuitRecItems>
+		<trackCircuitTran>true</trackCircuitTran>
+		<trackCircuitTranItems>8</trackCircuitTranItems>
+		<mast>false</mast>
+		<mastItems>0</mastItems>
+		<lamp>false</lamp>
+		<lampItems>0</lampItems>
 	</NodeType>
 
 	<!-- Power Monitor Message Option -->

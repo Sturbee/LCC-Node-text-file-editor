@@ -45,7 +45,7 @@
         If row Is Nothing Then
             Me.LblType.Text = "Unknown"
         Else
-            Me.LblType.Text = row.text
+            Me.LblType.Text = row.name
         End If
 
         Me.LblBaseAddress.Text = Me.MyNodeRow.eventBase.ToString
