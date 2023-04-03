@@ -26,7 +26,14 @@
 
         End Try
 
-        Me.CmbPath.SelectedIndex = Me.ClsU.CheckUserFileDirectories
+        Dim result As Integer = Me.ClsU.CheckUserFileDirectories
+
+        If result = -1 Then
+            Me.CmbPath.SelectedIndex = 0
+        Else
+            Me.CmbPath.SelectedIndex = result
+        End If
+
 
     End Sub
 
