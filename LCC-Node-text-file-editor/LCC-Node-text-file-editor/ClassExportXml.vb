@@ -37,26 +37,6 @@ Public Class ClassExportXml
                 Exit Sub
             End Try
 
-            ' import user selections
-            Try
-
-                Dim clsUser As New ClsUserPrefs
-                dsImport.Process.Merge(clsUser.MyUserPrefs.Process)
-                dsImport.SegmentReport.Merge(clsUser.MyUserPrefs.SegmentReport)
-                dsImport.AcceptChanges()
-
-                Dim rowProcess As ImportCDI.ProcessRow = dsImport.Process.FindByprocessID(1)
-                If rowProcess Is Nothing Then
-                    ' do nothing
-                ElseIf Not rowProcess.action Then
-                    Exit Sub
-                End If
-
-            Catch ex As Exception
-                MsgBox("Failed to merge tables")
-            End Try
-
-
             ' export needs all track circuit data
             Try
 
@@ -117,7 +97,7 @@ Public Class ClassExportXml
                         Call Me.AddRowLampDirectControl(level1, resultText)
 
                     Case 8 ' 
-                        Call Me.UpDateRowLampDirectControl(level1, resultText)
+                        Call Me.UpDateRowLampDirectControl(resultText)
 
                 End Select
 
@@ -136,9 +116,12 @@ Public Class ClassExportXml
 
             Try
 
-                Dim nodesFilePath As String = filePath + ".xml"
-                Me.dsExport.WriteXml(nodesFilePath)
-                MsgBox("Xml file has been created for " + filePath)
+                Dim clsU As New ClsUserPrefs
+                Dim row As UserPrefs.UserJMRIRow = clsU.MyUserPrefs.UserJMRI.FindByvalue(1)
+
+                Dim filePathXml As String = row.path + "\" + Path.GetFileName(filePath) + ".xml"
+                Me.dsExport.WriteXml(filePathXml)
+                MsgBox("Xml file has been created for " + filePathXml)
 
             Catch ex As Exception
 
@@ -393,8 +376,6 @@ Public Class ClassExportXml
 
         Try
 
-            If Not Me.SegmentReport(level1) Then Exit Sub
-
             Dim NodeID As Integer
             Dim resultText As String = String.Empty
 
@@ -431,8 +412,6 @@ Public Class ClassExportXml
     Private Sub AddRowPowerMonitor(level1 As Integer, text As String)
 
         Try
-
-            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim PowerMonitorID As Integer
             Dim resultText As String = String.Empty
@@ -471,8 +450,6 @@ Public Class ClassExportXml
     Private Sub AddRowPort(level1 As Integer, text As String)
 
         Try
-
-            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim LineID As Integer
             Dim resultText As String = String.Empty
@@ -622,8 +599,6 @@ Public Class ClassExportXml
     Private Sub AddRowLogic(level1 As Integer, text As String)
 
         Try
-
-            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim LogicID As Integer
             Dim resultText As String = String.Empty
@@ -782,8 +757,6 @@ Public Class ClassExportXml
 
         Try
 
-            If Not Me.SegmentReport(level1) Then Exit Sub
-
             Dim CircuitID As Integer
             Dim resultText As String = String.Empty
 
@@ -820,8 +793,6 @@ Public Class ClassExportXml
     Private Sub AddRowTrackCircuitTran(level1 As Integer, text As String)
 
         Try
-
-            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim CircuitID As Integer
             Dim resultText As String = String.Empty
@@ -860,8 +831,6 @@ Public Class ClassExportXml
     Private Sub AddRowRuleToAspect(level1 As Integer, text As String)
 
         Try
-
-            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim MastID As Integer
             Dim resultText As String = String.Empty
@@ -1012,8 +981,6 @@ Public Class ClassExportXml
 
         Try
 
-            If Not Me.SegmentReport(level1) Then Exit Sub
-
             Dim lineID As Integer
             Dim resultText As String = String.Empty
 
@@ -1070,11 +1037,9 @@ Public Class ClassExportXml
     End Sub
 
 
-    Private Sub UpDateRowLampDirectControl(level1 As Integer, text As String)
+    Private Sub UpDateRowLampDirectControl(text As String)
 
         Try
-
-            If Not Me.SegmentReport(level1) Then Exit Sub
 
             Dim LampID As Integer = Val(text)
 
@@ -1130,17 +1095,6 @@ Public Class ClassExportXml
         End Try
 
         Return itemID
-
-    End Function
-
-    Private Function SegmentReport(level1 As Integer) As Boolean
-
-        Dim rowSegReport As ImportCDI.SegmentReportRow = Me.dsImport.SegmentReport.FindBylevel(level1)
-        If rowSegReport Is Nothing Then
-            Return True
-        End If
-
-        Return rowSegReport.action
 
     End Function
 

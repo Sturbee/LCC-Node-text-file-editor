@@ -337,6 +337,13 @@
 		<title>V2 Set False</title>
 		<comment>false2</comment>
 	</LogicOperationTitle>
+	
+	<!-- Lamp Titles -->
+	<LampTitles>
+		<header>Direct Control of Lamps</header>
+		<lampOn>(C) Event to set lamp on</lampOn>
+		<lampOff>(C) Event to set lamp off</lampOff>
+	</LampTitles>
 
 	<!-- Format types -->
 	<FormatType>

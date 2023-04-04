@@ -1,6 +1,8 @@
-﻿Public Class FrmPowerMonitor
+﻿Imports System.IO
+
+Public Class FrmPowerMonitor
     Public Property MyFileName As String
-    Public Property MySaveFile
+    Public Property MyFilePath
     Private Property MyImport As New ExportXml
     Private Property MyPowerMonitorRow As ExportXml.PowerMonitorRow
     Private Property SavePowerOK As String
@@ -13,6 +15,11 @@
         Dim clsT As New ClsTitles
         Dim dsTitles As Titles = clsT.MyTitles
 
+        ' read the file to read and edit
+        Me.MyFilePath = Me.Owner.Tag
+        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
+
+        Me.LblFileName.Text = Me.MyFileName
 
         Dim rowPower As Titles.PowerMonitorTitlesRow = dsTitles.PowerMonitorTitles.Item(0)
         Me.Text = rowPower.header
@@ -38,15 +45,9 @@
             Exit Sub
         End Try
 
-
-        ' temporary
-
-        Me.MyFileName = "EditTest.xml"
-        Me.MySaveFile = "EditTest.xml"
-
         ' read the file to read and edit
         Try
-            Me.MyImport.ReadXml(Me.MyFileName)
+            Me.MyImport.ReadXml(Me.MyFilePath)
         Catch ex As Exception
             MsgBox("Failed to read file " + Me.MyFileName)
             Exit Sub
@@ -99,13 +100,14 @@
         Try
             Me.MyPowerMonitorRow.powerOptionID = Me.CmbOption.SelectedIndex
 
-            Me.MyImport.WriteXml(Me.MySaveFile)
+            Me.MyImport.WriteXml(Me.MyFilePath)
 
-            MsgBox("Saved changes to file " + Me.MySaveFile)
+            MsgBox("Saved changes to file " + Me.MyFileName)
 
         Catch ex As Exception
-            MsgBox("Failed to save file " + Me.MySaveFile)
+            MsgBox("Failed to save file " + Me.MyFileName)
         End Try
 
     End Sub
+
 End Class

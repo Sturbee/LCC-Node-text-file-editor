@@ -192,15 +192,15 @@ Partial Class FrmLineSelect
         Me.ToolStripTextBox8.Text = "Line 8"
         Me.ToolStripTextBox8.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'FrmLine
+        'FrmLineSelect
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(853, 548)
         Me.Controls.Add(Me.MenuStrip2)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Name = "FrmLine"
-        Me.Text = "FrmLine"
+        Me.Name = "FrmLineSelect"
+        Me.Text = "Select Line"
         Me.MenuStrip2.ResumeLayout(False)
         Me.MenuStrip2.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)

@@ -1,7 +1,9 @@
-﻿Public Class FrmNode
+﻿Imports System.IO
 
-    Public Property MyFileName As String
-    Public Property MySaveFile
+Public Class FrmNode
+
+    Private Property MyFilePath As String
+    Private Property MyFileName As String
     Private Property MyImport As New ExportXml
     Private Property MyNodeRow As ExportXml.NodeRow
 
@@ -23,15 +25,12 @@
         Dim clsR As New ClsReport
         Dim dsRpt As Rpt = clsR.MyReport
 
-        ' temporary
-
-        Me.MyFileName = "EditTest.xml"
-        Me.MySaveFile = "EditTest.xml"
-
         ' read the file to read and edit
-        REM Dim myImport As New ExportXml
+        Me.MyFilePath = Me.Owner.Tag
+        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
+
         Try
-            Me.MyImport.ReadXml(Me.MyFileName)
+            Me.MyImport.ReadXml(Me.MyFilePath)
         Catch ex As Exception
             MsgBox("Failed to read file " + Me.MyFileName)
             Exit Sub
@@ -65,12 +64,12 @@
             Me.MyNodeRow.Name = Me.TxtNodeName.Text
             Me.MyNodeRow.Description = Me.TxtNodeDescription.Text
 
-            Me.MyImport.WriteXml(Me.MySaveFile)
+            Me.MyImport.WriteXml(Me.MyFilePath)
 
-            MsgBox("Saved changes to file " + Me.MySaveFile)
+            MsgBox("Saved changes to file " + Me.MyFileName)
 
         Catch ex As Exception
-            MsgBox("Failed to save file " + Me.MySaveFile)
+            MsgBox("Failed to save file " + Me.MyFileName)
         End Try
 
     End Sub

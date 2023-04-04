@@ -1,10 +1,20 @@
-﻿Public Class FrmLine
+﻿Imports System.IO
+
+Public Class FrmLine
+
+    Private Property MyFilePath As String
+    Private Property MyFileName As String
     Private Property MyImport As New ExportXml
+
     Private Sub FrmLine_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' read the titles xml file
         Dim clsT As New ClsTitles
         Dim dsTitles As Titles = clsT.MyTitles
+
+        ' read the file to read and edit
+        Me.MyFilePath = Me.Owner.Tag
+        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
         ' set labels
         Dim rowTitle As Titles.PortTitlesRow = dsTitles.PortTitles.Item(0)
@@ -99,13 +109,11 @@
         End Try
 
 
-        Dim myFileName As String = "EditTest.xml"
-
         ' reads the export xml file
         Try
-            Me.MyImport.ReadXml(myFileName)
+            Me.MyImport.ReadXml(Me.MyFilePath)
         Catch ex As Exception
-            MsgBox("Failed to read file " + myFileName)
+            MsgBox("Failed to read file " + Me.MyFileName)
             Exit Sub
         End Try
 
@@ -154,11 +162,6 @@
             End Select
 
         Next
-
-
-
-
-
 
     End Sub
 

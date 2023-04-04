@@ -577,68 +577,8 @@
 		<text>Track Circuit 8</text>
 	</TrackCircuitTran>
 	
-<!-- User edited parameters-->	
-	<Process>
-		<processID>1</processID>
-		<text>Process CDI file to XML</text>
-		<action>true</action>
-	</Process>
-	<Process>
-		<processID>2</processID>
-		<text>Create .xsd file</text>
-		<action>true</action>
-	</Process>
-	<Process>
-		<processID>3</processID>
-		<text>Create .csv file</text>
-		<action>true</action>
-	</Process>
 	
-	<SegmentReport>
-		<level>0</level>
-		<text>Node ID</text>
-		<action>true</action>
-	</SegmentReport>
-	<SegmentReport>
-		<level>1</level>
-		<text>Power Monitor</text>
-		<action>true</action>
-	</SegmentReport>
-	<SegmentReport>
-		<level>2</level>
-		<text>Port I/O</text>
-		<action>true</action>
-	</SegmentReport>
-	<SegmentReport>
-		<level>3</level>
-		<text>Conditional</text>
-		<action>true</action>
-	</SegmentReport>
-	<SegmentReport>
-		<level>4</level>
-		<text>Track Circuit Reciver</text>
-		<action>true</action>
-	</SegmentReport>
-	<SegmentReport>
-		<level>5</level>
-		<text>Track Circuit Transmitter</text>
-		<action>true</action>
-	</SegmentReport>
-	<SegmentReport>
-		<level>6</level>
-		<text>Rule To Aspect</text>
-		<action>true</action>
-	</SegmentReport>
-	<SegmentReport>
-		<level>7</level>
-		<text>Direct Lamp Control</text>
-		<action>true</action>
-	</SegmentReport>
-	<SegmentReport>
-		<level>8</level>
-		<text>Brightness</text>
-		<action>true</action>
-	</SegmentReport>
+	<!-- User edited parameters-->	
 	
 	<TrackSpeed>
 		<value>0</value>

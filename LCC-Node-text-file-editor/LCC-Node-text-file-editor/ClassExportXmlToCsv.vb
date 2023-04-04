@@ -40,17 +40,8 @@ Public Class ClassExportXmlToCsv
             Dim dsUser As UserPrefs = clsU.MyUserPrefs
             dsUser.AcceptChanges()
 
-            dsImport.Process.Merge(dsUser.Process)
-            dsImport.SegmentReport.Merge(dsUser.SegmentReport)
             dsImport.TrackSpeed.Merge(dsUser.TrackSpeed)
             dsImport.AcceptChanges()
-
-            Dim rowProcess As ImportCDI.ProcessRow = dsImport.Process.FindByprocessID(3)
-            If rowProcess Is Nothing Then
-                ' do nothing
-            ElseIf Not rowProcess.action Then
-                Exit Sub
-            End If
 
         Catch ex As Exception
             MsgBox("Failed to merge import with user")
@@ -61,24 +52,16 @@ Public Class ClassExportXmlToCsv
 
 
         ' output Node table
-        If Me.SegmentReport(0, dsImport) Then
-            Call Me.ReportNodeTable(dsInput, writer)
-        End If
+        Call Me.ReportNodeTable(dsInput, writer)
 
         ' output PowerMonitor table
-        If Me.SegmentReport(1, dsImport) Then
-            Call Me.ReportPowerMonitorTable(dsInput, writer)
-        End If
+        Call Me.ReportPowerMonitorTable(dsInput, writer)
 
         ' output Port I/O table
-        If Me.SegmentReport(2, dsImport) Then
-            Call Me.ReportPortTable(dsInput, writer)
-        End If
+        Call Me.ReportPortTable(dsInput, writer)
 
         ' output Logic table
-        If Me.SegmentReport(3, dsImport) Then
-            Call Me.ReportLogicTable(dsInput, dsReport, dsTitles, writer)
-        End If
+        Call Me.ReportLogicTable(dsInput, dsReport, dsTitles, writer)
 
         Try
 
@@ -872,18 +855,5 @@ Public Class ClassExportXmlToCsv
         End Select
 
     End Sub
-
-
-    Private Function SegmentReport(level1 As Integer, dsReport As ImportCDI) As Boolean
-
-        Dim rowSegReport As ImportCDI.SegmentReportRow = dsReport.SegmentReport.FindBylevel(level1)
-        If rowSegReport Is Nothing Then
-            Return True
-        End If
-
-        Return rowSegReport.action
-
-    End Function
-
 
 End Class

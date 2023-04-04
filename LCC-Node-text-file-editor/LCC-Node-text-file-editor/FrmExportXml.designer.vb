@@ -89,7 +89,7 @@ Partial Class FrmExportXml
         Me.Controls.Add(Me.BrowseButton)
         Me.Controls.Add(Me.FilesListBox)
         Me.Name = "FrmExportXml"
-        Me.Text = "My File Explorer"
+        Me.Text = "Process Backup file"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

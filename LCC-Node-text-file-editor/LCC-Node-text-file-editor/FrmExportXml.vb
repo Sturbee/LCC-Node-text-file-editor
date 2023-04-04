@@ -1,6 +1,6 @@
 ﻿Public Class FrmExportXml
 
-    Private Sub MyFileExplorer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmExportXml_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' Set the default directory to the user JMRI backup directory
         Dim cls As New ClsUserPrefs

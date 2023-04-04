@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmLine
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmLine
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.LblLine = New System.Windows.Forms.Label()
         Me.TxtDescription = New System.Windows.Forms.TextBox()
@@ -39,21 +39,21 @@ Partial Class FrmLine
         Me.CmbRetrigger2 = New System.Windows.Forms.ComboBox()
         Me.GroupBoxDelay = New System.Windows.Forms.GroupBox()
         Me.GroupBoxConsumer = New System.Windows.Forms.GroupBox()
-        Me.GroupBoxProducer = New System.Windows.Forms.GroupBox()
-        Me.CmbOutFunc = New System.Windows.Forms.ComboBox()
-        Me.CmbOutCommd = New System.Windows.Forms.ComboBox()
-        Me.CmbInFunc = New System.Windows.Forms.ComboBox()
-        Me.CmbInCommd = New System.Windows.Forms.ComboBox()
-        Me.LblOutFunc = New System.Windows.Forms.Label()
-        Me.LblOutCommd = New System.Windows.Forms.Label()
-        Me.LblInFunc = New System.Windows.Forms.Label()
-        Me.LblInCommd = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.TxtEventOut1 = New System.Windows.Forms.TextBox()
-        Me.CmbEventInCommd1 = New System.Windows.Forms.ComboBox()
         Me.CmbEventOutCommd1 = New System.Windows.Forms.ComboBox()
-        Me.TxtEventIn1 = New System.Windows.Forms.TextBox()
+        Me.TxtEventOut1 = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.LblOutCommd = New System.Windows.Forms.Label()
+        Me.LblOutFunc = New System.Windows.Forms.Label()
+        Me.CmbOutCommd = New System.Windows.Forms.ComboBox()
+        Me.CmbOutFunc = New System.Windows.Forms.ComboBox()
+        Me.GroupBoxProducer = New System.Windows.Forms.GroupBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.TxtEventIn1 = New System.Windows.Forms.TextBox()
+        Me.CmbEventInCommd1 = New System.Windows.Forms.ComboBox()
+        Me.LblInCommd = New System.Windows.Forms.Label()
+        Me.LblInFunc = New System.Windows.Forms.Label()
+        Me.CmbInCommd = New System.Windows.Forms.ComboBox()
+        Me.CmbInFunc = New System.Windows.Forms.ComboBox()
         Me.GroupBoxDelay.SuspendLayout()
         Me.GroupBoxConsumer.SuspendLayout()
         Me.GroupBoxProducer.SuspendLayout()
@@ -236,6 +236,70 @@ Partial Class FrmLine
         Me.GroupBoxConsumer.TabStop = False
         Me.GroupBoxConsumer.Text = "Consumer"
         '
+        'CmbEventOutCommd1
+        '
+        Me.CmbEventOutCommd1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbEventOutCommd1.FormattingEnabled = True
+        Me.CmbEventOutCommd1.Location = New System.Drawing.Point(85, 100)
+        Me.CmbEventOutCommd1.Name = "CmbEventOutCommd1"
+        Me.CmbEventOutCommd1.Size = New System.Drawing.Size(203, 24)
+        Me.CmbEventOutCommd1.TabIndex = 6
+        '
+        'TxtEventOut1
+        '
+        Me.TxtEventOut1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtEventOut1.Location = New System.Drawing.Point(85, 72)
+        Me.TxtEventOut1.Name = "TxtEventOut1"
+        Me.TxtEventOut1.Size = New System.Drawing.Size(203, 22)
+        Me.TxtEventOut1.TabIndex = 5
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(14, 79)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(54, 16)
+        Me.Label4.TabIndex = 4
+        Me.Label4.Text = "Events"
+        '
+        'LblOutCommd
+        '
+        Me.LblOutCommd.AutoSize = True
+        Me.LblOutCommd.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblOutCommd.Location = New System.Drawing.Point(300, 29)
+        Me.LblOutCommd.Name = "LblOutCommd"
+        Me.LblOutCommd.Size = New System.Drawing.Size(77, 16)
+        Me.LblOutCommd.TabIndex = 3
+        Me.LblOutCommd.Text = "Out Commd"
+        '
+        'LblOutFunc
+        '
+        Me.LblOutFunc.AutoSize = True
+        Me.LblOutFunc.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblOutFunc.Location = New System.Drawing.Point(45, 29)
+        Me.LblOutFunc.Name = "LblOutFunc"
+        Me.LblOutFunc.Size = New System.Drawing.Size(80, 16)
+        Me.LblOutFunc.TabIndex = 2
+        Me.LblOutFunc.Text = "Out Function"
+        '
+        'CmbOutCommd
+        '
+        Me.CmbOutCommd.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbOutCommd.FormattingEnabled = True
+        Me.CmbOutCommd.Location = New System.Drawing.Point(361, 26)
+        Me.CmbOutCommd.Name = "CmbOutCommd"
+        Me.CmbOutCommd.Size = New System.Drawing.Size(131, 24)
+        Me.CmbOutCommd.TabIndex = 1
+        '
+        'CmbOutFunc
+        '
+        Me.CmbOutFunc.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbOutFunc.FormattingEnabled = True
+        Me.CmbOutFunc.Location = New System.Drawing.Point(167, 26)
+        Me.CmbOutFunc.Name = "CmbOutFunc"
+        Me.CmbOutFunc.Size = New System.Drawing.Size(121, 24)
+        Me.CmbOutFunc.TabIndex = 0
+        '
         'GroupBoxProducer
         '
         Me.GroupBoxProducer.Controls.Add(Me.Label5)
@@ -253,71 +317,31 @@ Partial Class FrmLine
         Me.GroupBoxProducer.TabStop = False
         Me.GroupBoxProducer.Text = "Producer"
         '
-        'CmbOutFunc
+        'Label5
         '
-        Me.CmbOutFunc.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmbOutFunc.FormattingEnabled = True
-        Me.CmbOutFunc.Location = New System.Drawing.Point(167, 26)
-        Me.CmbOutFunc.Name = "CmbOutFunc"
-        Me.CmbOutFunc.Size = New System.Drawing.Size(121, 24)
-        Me.CmbOutFunc.TabIndex = 0
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 72)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(54, 16)
+        Me.Label5.TabIndex = 6
+        Me.Label5.Text = "Events"
         '
-        'CmbOutCommd
+        'TxtEventIn1
         '
-        Me.CmbOutCommd.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmbOutCommd.FormattingEnabled = True
-        Me.CmbOutCommd.Location = New System.Drawing.Point(361, 26)
-        Me.CmbOutCommd.Name = "CmbOutCommd"
-        Me.CmbOutCommd.Size = New System.Drawing.Size(131, 24)
-        Me.CmbOutCommd.TabIndex = 1
+        Me.TxtEventIn1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtEventIn1.Location = New System.Drawing.Point(85, 103)
+        Me.TxtEventIn1.Name = "TxtEventIn1"
+        Me.TxtEventIn1.Size = New System.Drawing.Size(203, 22)
+        Me.TxtEventIn1.TabIndex = 5
         '
-        'CmbInFunc
+        'CmbEventInCommd1
         '
-        Me.CmbInFunc.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmbInFunc.FormattingEnabled = True
-        Me.CmbInFunc.Location = New System.Drawing.Point(167, 29)
-        Me.CmbInFunc.Name = "CmbInFunc"
-        Me.CmbInFunc.Size = New System.Drawing.Size(121, 24)
-        Me.CmbInFunc.TabIndex = 0
-        '
-        'CmbInCommd
-        '
-        Me.CmbInCommd.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmbInCommd.FormattingEnabled = True
-        Me.CmbInCommd.Location = New System.Drawing.Point(361, 29)
-        Me.CmbInCommd.Name = "CmbInCommd"
-        Me.CmbInCommd.Size = New System.Drawing.Size(131, 24)
-        Me.CmbInCommd.TabIndex = 1
-        '
-        'LblOutFunc
-        '
-        Me.LblOutFunc.AutoSize = True
-        Me.LblOutFunc.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblOutFunc.Location = New System.Drawing.Point(45, 29)
-        Me.LblOutFunc.Name = "LblOutFunc"
-        Me.LblOutFunc.Size = New System.Drawing.Size(80, 16)
-        Me.LblOutFunc.TabIndex = 2
-        Me.LblOutFunc.Text = "Out Function"
-        '
-        'LblOutCommd
-        '
-        Me.LblOutCommd.AutoSize = True
-        Me.LblOutCommd.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblOutCommd.Location = New System.Drawing.Point(300, 29)
-        Me.LblOutCommd.Name = "LblOutCommd"
-        Me.LblOutCommd.Size = New System.Drawing.Size(77, 16)
-        Me.LblOutCommd.TabIndex = 3
-        Me.LblOutCommd.Text = "Out Commd"
-        '
-        'LblInFunc
-        '
-        Me.LblInFunc.AutoSize = True
-        Me.LblInFunc.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblInFunc.Location = New System.Drawing.Point(55, 32)
-        Me.LblInFunc.Name = "LblInFunc"
-        Me.LblInFunc.Size = New System.Drawing.Size(70, 16)
-        Me.LblInFunc.TabIndex = 2
-        Me.LblInFunc.Text = "In Function"
+        Me.CmbEventInCommd1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbEventInCommd1.FormattingEnabled = True
+        Me.CmbEventInCommd1.Location = New System.Drawing.Point(85, 72)
+        Me.CmbEventInCommd1.Name = "CmbEventInCommd1"
+        Me.CmbEventInCommd1.Size = New System.Drawing.Size(203, 24)
+        Me.CmbEventInCommd1.TabIndex = 4
         '
         'LblInCommd
         '
@@ -329,57 +353,33 @@ Partial Class FrmLine
         Me.LblInCommd.TabIndex = 3
         Me.LblInCommd.Text = "In Command"
         '
-        'Label4
+        'LblInFunc
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(14, 79)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(54, 16)
-        Me.Label4.TabIndex = 4
-        Me.Label4.Text = "Events"
+        Me.LblInFunc.AutoSize = True
+        Me.LblInFunc.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblInFunc.Location = New System.Drawing.Point(55, 32)
+        Me.LblInFunc.Name = "LblInFunc"
+        Me.LblInFunc.Size = New System.Drawing.Size(70, 16)
+        Me.LblInFunc.TabIndex = 2
+        Me.LblInFunc.Text = "In Function"
         '
-        'TxtEventOut1
+        'CmbInCommd
         '
-        Me.TxtEventOut1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtEventOut1.Location = New System.Drawing.Point(85, 72)
-        Me.TxtEventOut1.Name = "TxtEventOut1"
-        Me.TxtEventOut1.Size = New System.Drawing.Size(203, 22)
-        Me.TxtEventOut1.TabIndex = 5
+        Me.CmbInCommd.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbInCommd.FormattingEnabled = True
+        Me.CmbInCommd.Location = New System.Drawing.Point(361, 29)
+        Me.CmbInCommd.Name = "CmbInCommd"
+        Me.CmbInCommd.Size = New System.Drawing.Size(131, 24)
+        Me.CmbInCommd.TabIndex = 1
         '
-        'CmbEventInCommd1
+        'CmbInFunc
         '
-        Me.CmbEventInCommd1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmbEventInCommd1.FormattingEnabled = True
-        Me.CmbEventInCommd1.Location = New System.Drawing.Point(85, 72)
-        Me.CmbEventInCommd1.Name = "CmbEventInCommd1"
-        Me.CmbEventInCommd1.Size = New System.Drawing.Size(203, 24)
-        Me.CmbEventInCommd1.TabIndex = 4
-        '
-        'CmbEventOutCommd1
-        '
-        Me.CmbEventOutCommd1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmbEventOutCommd1.FormattingEnabled = True
-        Me.CmbEventOutCommd1.Location = New System.Drawing.Point(85, 100)
-        Me.CmbEventOutCommd1.Name = "CmbEventOutCommd1"
-        Me.CmbEventOutCommd1.Size = New System.Drawing.Size(203, 24)
-        Me.CmbEventOutCommd1.TabIndex = 6
-        '
-        'TxtEventIn1
-        '
-        Me.TxtEventIn1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtEventIn1.Location = New System.Drawing.Point(85, 103)
-        Me.TxtEventIn1.Name = "TxtEventIn1"
-        Me.TxtEventIn1.Size = New System.Drawing.Size(203, 22)
-        Me.TxtEventIn1.TabIndex = 5
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 72)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(54, 16)
-        Me.Label5.TabIndex = 6
-        Me.Label5.Text = "Events"
+        Me.CmbInFunc.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbInFunc.FormattingEnabled = True
+        Me.CmbInFunc.Location = New System.Drawing.Point(167, 29)
+        Me.CmbInFunc.Name = "CmbInFunc"
+        Me.CmbInFunc.Size = New System.Drawing.Size(121, 24)
+        Me.CmbInFunc.TabIndex = 0
         '
         'FrmLine
         '

@@ -30,6 +30,8 @@ Partial Class FrmPowerMonitor
         Me.ButSave = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.CmbOption = New System.Windows.Forms.ComboBox()
+        Me.LblFileName = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'LblOptions
@@ -99,11 +101,31 @@ Partial Class FrmPowerMonitor
         Me.CmbOption.Size = New System.Drawing.Size(290, 24)
         Me.CmbOption.TabIndex = 8
         '
+        'LblFileName
+        '
+        Me.LblFileName.AutoSize = True
+        Me.LblFileName.Location = New System.Drawing.Point(287, 28)
+        Me.LblFileName.Name = "LblFileName"
+        Me.LblFileName.Size = New System.Drawing.Size(84, 16)
+        Me.LblFileName.TabIndex = 10
+        Me.LblFileName.Text = "LblFileName"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(198, 28)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(69, 16)
+        Me.Label5.TabIndex = 9
+        Me.Label5.Text = "File Name"
+        '
         'FrmPowerMonitor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(665, 292)
+        Me.Controls.Add(Me.LblFileName)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.CmbOption)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.ButSave)
@@ -127,4 +149,6 @@ Partial Class FrmPowerMonitor
     Friend WithEvents ButSave As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents CmbOption As ComboBox
+    Friend WithEvents LblFileName As Label
+    Friend WithEvents Label5 As Label
 End Class

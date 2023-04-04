@@ -433,7 +433,7 @@
 	<!-- Lamp Selection used by Mast and Lamp -->
 	<LampSelection>
 		<value>0</value>
-		<text>Unused</text>
+		<text>Used by Mast</text>
 	</LampSelection>
 	<LampSelection>
 		<value>1</value>
@@ -441,63 +441,63 @@
 	</LampSelection>
 	<LampSelection>
 		<value>2</value>
-		<text>#1 H1-Y</text>
+		<text>#2 H1-Y</text>
 	</LampSelection>
 	<LampSelection>
 		<value>3</value>
-		<text>#1 H1-R</text>
+		<text>#3 H1-R</text>
 	</LampSelection>
 	<LampSelection>
 		<value>4</value>
-		<text>#1 H1-L</text>
+		<text>#4 H1-L</text>
 	</LampSelection>
 	<LampSelection>
 		<value>5</value>
-		<text>#1 H2-G</text>
+		<text>#5 H2-G</text>
 	</LampSelection>
 	<LampSelection>
 		<value>6</value>
-		<text>#1 H2-Y</text>
+		<text>#6 H2-Y</text>
 	</LampSelection>
 	<LampSelection>
 		<value>7</value>
-		<text>#1 H2-R</text>
+		<text>#7 H2-R</text>
 	</LampSelection>
 	<LampSelection>
 		<value>8</value>
-		<text>#1 H2-L</text>
+		<text>#8 H2-L</text>
 	</LampSelection>
 	<LampSelection>
 		<value>9</value>
-		<text>#1 H3-G</text>
+		<text>#9 H3-G</text>
 	</LampSelection>
 	<LampSelection>
 		<value>10</value>
-		<text>#1 H3-Y</text>
+		<text>#10 H3-Y</text>
 	</LampSelection>
 	<LampSelection>
 		<value>11</value>
-		<text>#1 H3-R</text>
+		<text>#11 H3-R</text>
 	</LampSelection>
 	<LampSelection>
 		<value>12</value>
-		<text>#1 H3-L</text>
+		<text>#12 H3-L</text>
 	</LampSelection>
 	<LampSelection>
 		<value>13</value>
-		<text>#1 H4-G</text>
+		<text>#13 H4-G</text>
 	</LampSelection>
 	<LampSelection>
 		<value>14</value>
-		<text>#1 H4-Y</text>
+		<text>#14 H4-Y</text>
 	</LampSelection>
 	<LampSelection>
 		<value>15</value>
-		<text>#1 H4-R</text>
+		<text>#15 H4-R</text>
 	</LampSelection>
 	<LampSelection>
 		<value>16</value>
-		<text>#1 H4-L</text>
+		<text>#16 H4-L</text>
 	</LampSelection>
 
 </Rpt>

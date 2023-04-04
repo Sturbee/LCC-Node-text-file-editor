@@ -7,27 +7,6 @@ Public Class ClassExportXsd
         Dim dsImport As ImportCDI = clsI.MyImportCDI
 
 
-        ' import user selections
-        Try
-
-            Dim clsU As New ClsUserPrefs
-            Dim dsUser As UserPrefs = clsU.MyUserPrefs
-
-            dsImport.Process.Merge(dsUser.Process)
-            dsImport.AcceptChanges()
-
-            Dim rowProcess As ImportCDI.ProcessRow = dsImport.Process.FindByprocessID(2)
-            If rowProcess Is Nothing Then
-                ' do nothing
-            ElseIf Not rowProcess.action Then
-                Exit Sub
-            End If
-
-        Catch ex As Exception
-            MsgBox("Failed to merge user xml")
-        End Try
-
-
         Dim xmlFilePath As String = filePath + ".xml"
 
         If My.Computer.FileSystem.FileExists(xmlFilePath) = False Then

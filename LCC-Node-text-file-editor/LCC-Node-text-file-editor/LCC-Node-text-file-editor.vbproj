@@ -80,6 +80,7 @@
     <Compile Include="ClassExportXml.vb" />
     <Compile Include="ClassExportXmlToCsv.vb" />
     <Compile Include="ClassExportXsd.vb" />
+    <Compile Include="ClsExportXML.vb" />
     <Compile Include="ClsImportCDI.vb" />
     <Compile Include="ClsReport.vb" />
     <Compile Include="ClsTitles.vb" />
@@ -101,6 +102,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
     </Compile>
     <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditXml.Designer.vb">
+      <DependentUpon>FrmEditXml.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditXml.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLamp.Designer.vb">
@@ -197,6 +204,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditXml.resx">
+      <DependentUpon>FrmEditXml.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLamp.resx">
       <DependentUpon>FrmLamp.vb</DependentUpon>
@@ -324,7 +334,6 @@
     <Content Include="Signal.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TextFile1.txt" />
     <Content Include="Titles.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -334,7 +343,6 @@
     <Content Include="UserPrefs.org.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="UserPrefs.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
