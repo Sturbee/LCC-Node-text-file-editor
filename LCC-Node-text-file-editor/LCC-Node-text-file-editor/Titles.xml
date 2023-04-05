@@ -69,17 +69,22 @@
 		<help>Each track circuit may send speed information to one remote mast</help>
 	</TrackTranTitles>
 
-	<!-- Lamp Titles level 1 -->
-	<LampTitles>
+	<!-- Lamps Titles level 1 -->
+	<LampsTitles>
 		<header>Segment: Direct Lamp Control</header>
 		<subHeader>Lamp</subHeader>
 		<help>Direct control of lamps that are not used by any mast</help>
+	</LampsTitles>
+	
+	<!-- Lamp Title level 2 -->
+	<LampTitles>
+		<header>Lamp Editor</header>
+		<subHeader>Lamp Name</subHeader>
+		<help></help>
 		<lampOn>(C) Event to set lamp on</lampOn>
 		<lampOff>(C) Event to set lamp off</lampOff>
 		<brightness>Set individual lamp intensity (0 = min; 255 = max)</brightness>
 	</LampTitles>
-
-
 
 
 	<Title>

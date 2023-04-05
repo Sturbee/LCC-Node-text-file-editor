@@ -20,7 +20,7 @@ Public Class FrmLamps
         Dim dsTitles As Titles = clsT.MyTitles
 
         ' set labels
-        Dim rowTitle As Titles.LampTitlesRow = dsTitles.LampTitles.Item(0)
+        Dim rowTitle As Titles.LampsTitlesRow = dsTitles.LampsTitles.Item(0)
         Me.Text = rowTitle.header
         Me.LblSubHeader.Text = rowTitle.subHeader
         Me.LblHelp.Text = rowTitle.help
@@ -30,8 +30,9 @@ Public Class FrmLamps
         Dim dsRpt As Rpt = clsR.MyReport
 
         ' read the file to read and edit
-        Me.MyFilePath = Me.Owner.Tag
-        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
+        Me.Tag = Me.Owner.Tag
+        Me.MyFilePath = Me.Tag
+        Me.MyFileName = Path.GetFileName(Me.Tag)
 
         Try
             Me.MyExportXml.ReadXml(Me.MyFilePath)
@@ -49,20 +50,15 @@ Public Class FrmLamps
 
                 Dim row As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(count)
 
-                Dim lamp As String = String.Empty
-                If row.description.Length = 0 Then
-                    lamp = rowTitle.subHeader + Space(1) + count.ToString
-                Else
-                    lamp = row.description
-                End If
-
                 Dim MyTabPage As New TabPage With {
-                .Text = lamp
+                .Text = rowTitle.subHeader + Space(1) + count.ToString + Space(1) + row.description
                 }
 
                 Me.TabControlLamps.Controls.Add(MyTabPage)
 
             Next
+
+            Me.TabControlLamps.SelectedIndex = -1
 
         Catch ex As Exception
             MsgBox("Failed to populate tab control")
@@ -71,9 +67,40 @@ Public Class FrmLamps
 
     End Sub
 
+    Private Sub CheckFormAndOpen(frm As Form)
+
+        If Me.OwnedForms.Length = 0 Then
+            ' do nothing
+        Else
+            For count = 0 To Me.OwnedForms.Length - 1
+                If Me.OwnedForms(count).Name = frm.Name Then
+                    Beep()
+                    Exit Sub
+                End If
+            Next
+        End If
+
+        Me.AddOwnedForm(frm)
+        frm.Show()
+
+    End Sub
+
     Private Sub TabControlLamps_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlLamps.Selected
 
-        ' Stop
+        If e.TabPageIndex = -1 Then
+            ' do nothing
+        Else
+            ' fill in row values
+            Dim row As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(e.TabPageIndex + 1)
+
+            Dim frm As New FrmLamp With {
+                .MyLampID = e.TabPageIndex + 1
+            }
+            Call Me.CheckFormAndOpen(frm)
+
+        End If
+
+        Me.TabControlLamps.SelectedIndex = -1
 
     End Sub
 

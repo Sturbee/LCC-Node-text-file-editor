@@ -124,7 +124,7 @@ Partial Class FrmNode
         '
         'ButSaveChanges
         '
-        Me.ButSaveChanges.Location = New System.Drawing.Point(209, 259)
+        Me.ButSaveChanges.Location = New System.Drawing.Point(209, 231)
         Me.ButSaveChanges.Name = "ButSaveChanges"
         Me.ButSaveChanges.Size = New System.Drawing.Size(75, 23)
         Me.ButSaveChanges.TabIndex = 10
@@ -134,7 +134,7 @@ Partial Class FrmNode
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(85, 262)
+        Me.Label6.Location = New System.Drawing.Point(85, 234)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(96, 16)
         Me.Label6.TabIndex = 11
@@ -144,7 +144,7 @@ Partial Class FrmNode
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(585, 315)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.ButSaveChanges)
         Me.Controls.Add(Me.LblBaseAddress)

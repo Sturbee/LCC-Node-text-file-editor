@@ -28,26 +28,24 @@ Partial Class FrmLamp
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TxtLampOn = New System.Windows.Forms.TextBox()
         Me.LblLampOn = New System.Windows.Forms.Label()
-        Me.LblHeader = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TxtLampOff = New System.Windows.Forms.TextBox()
         Me.LblLampOff = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.CmbLampFade = New System.Windows.Forms.ComboBox()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.CmbLampSelection = New System.Windows.Forms.ComboBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.CmbLampPhase = New System.Windows.Forms.ComboBox()
         Me.LblLampID = New System.Windows.Forms.Label()
         Me.ExportXml1 = New LCC_Node_text_file_editor.ExportXml()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.LblBrightness = New System.Windows.Forms.Label()
         Me.TxtBrightness = New System.Windows.Forms.TextBox()
+        Me.LblBrightness = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.ButSave = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         CType(Me.ExportXml1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox7.SuspendLayout()
@@ -93,6 +91,7 @@ Partial Class FrmLamp
         '
         'TxtLampOn
         '
+        Me.TxtLampOn.Enabled = False
         Me.TxtLampOn.Location = New System.Drawing.Point(44, 51)
         Me.TxtLampOn.Name = "TxtLampOn"
         Me.TxtLampOn.Size = New System.Drawing.Size(193, 22)
@@ -107,15 +106,6 @@ Partial Class FrmLamp
         Me.LblLampOn.TabIndex = 0
         Me.LblLampOn.Text = "LblLampOn"
         '
-        'LblHeader
-        '
-        Me.LblHeader.AutoSize = True
-        Me.LblHeader.Location = New System.Drawing.Point(157, 18)
-        Me.LblHeader.Name = "LblHeader"
-        Me.LblHeader.Size = New System.Drawing.Size(71, 16)
-        Me.LblHeader.TabIndex = 4
-        Me.LblHeader.Text = "LblHeader"
-        '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.TxtLampOff)
@@ -129,6 +119,7 @@ Partial Class FrmLamp
         '
         'TxtLampOff
         '
+        Me.TxtLampOff.Enabled = False
         Me.TxtLampOff.Location = New System.Drawing.Point(41, 58)
         Me.TxtLampOff.Name = "TxtLampOff"
         Me.TxtLampOff.Size = New System.Drawing.Size(190, 22)
@@ -161,28 +152,10 @@ Partial Class FrmLamp
         Me.CmbLampFade.Size = New System.Drawing.Size(190, 24)
         Me.CmbLampFade.TabIndex = 0
         '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.CmbLampSelection)
-        Me.GroupBox5.Location = New System.Drawing.Point(44, 365)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(519, 62)
-        Me.GroupBox5.TabIndex = 7
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Lamp Selection"
-        '
-        'CmbLampSelection
-        '
-        Me.CmbLampSelection.FormattingEnabled = True
-        Me.CmbLampSelection.Location = New System.Drawing.Point(41, 21)
-        Me.CmbLampSelection.Name = "CmbLampSelection"
-        Me.CmbLampSelection.Size = New System.Drawing.Size(190, 24)
-        Me.CmbLampSelection.TabIndex = 0
-        '
         'GroupBox6
         '
         Me.GroupBox6.Controls.Add(Me.CmbLampPhase)
-        Me.GroupBox6.Location = New System.Drawing.Point(44, 434)
+        Me.GroupBox6.Location = New System.Drawing.Point(44, 364)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(519, 59)
         Me.GroupBox6.TabIndex = 8
@@ -216,12 +189,19 @@ Partial Class FrmLamp
         '
         Me.GroupBox7.Controls.Add(Me.TxtBrightness)
         Me.GroupBox7.Controls.Add(Me.LblBrightness)
-        Me.GroupBox7.Location = New System.Drawing.Point(41, 500)
+        Me.GroupBox7.Location = New System.Drawing.Point(41, 430)
         Me.GroupBox7.Name = "GroupBox7"
         Me.GroupBox7.Size = New System.Drawing.Size(522, 58)
         Me.GroupBox7.TabIndex = 10
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Brightness"
+        '
+        'TxtBrightness
+        '
+        Me.TxtBrightness.Location = New System.Drawing.Point(374, 22)
+        Me.TxtBrightness.Name = "TxtBrightness"
+        Me.TxtBrightness.Size = New System.Drawing.Size(116, 22)
+        Me.TxtBrightness.TabIndex = 1
         '
         'LblBrightness
         '
@@ -232,30 +212,41 @@ Partial Class FrmLamp
         Me.LblBrightness.TabIndex = 0
         Me.LblBrightness.Text = "LblBrightness"
         '
-        'TxtBrightness
+        'Label4
         '
-        Me.TxtBrightness.Location = New System.Drawing.Point(374, 22)
-        Me.TxtBrightness.Name = "TxtBrightness"
-        Me.TxtBrightness.Size = New System.Drawing.Size(116, 22)
-        Me.TxtBrightness.TabIndex = 1
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(179, 516)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(96, 16)
+        Me.Label4.TabIndex = 12
+        Me.Label4.Text = "Save Changes"
+        '
+        'ButSave
+        '
+        Me.ButSave.Location = New System.Drawing.Point(298, 513)
+        Me.ButSave.Name = "ButSave"
+        Me.ButSave.Size = New System.Drawing.Size(75, 23)
+        Me.ButSave.TabIndex = 11
+        Me.ButSave.Text = "Save"
+        Me.ButSave.UseVisualStyleBackColor = True
         '
         'FrmLamp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(800, 589)
+        Me.ClientSize = New System.Drawing.Size(598, 585)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.ButSave)
         Me.Controls.Add(Me.GroupBox7)
         Me.Controls.Add(Me.LblLampID)
         Me.Controls.Add(Me.GroupBox6)
-        Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
-        Me.Controls.Add(Me.LblHeader)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "FrmLamp"
-        Me.Text = "Lamp Editor"
+        Me.Text = "FrmLamp"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -263,7 +254,6 @@ Partial Class FrmLamp
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox6.ResumeLayout(False)
         CType(Me.ExportXml1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox7.ResumeLayout(False)
@@ -278,14 +268,11 @@ Partial Class FrmLamp
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents TxtLampOn As TextBox
     Friend WithEvents LblLampOn As Label
-    Friend WithEvents LblHeader As Label
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents TxtLampOff As TextBox
     Friend WithEvents LblLampOff As Label
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents CmbLampFade As ComboBox
-    Friend WithEvents GroupBox5 As GroupBox
-    Friend WithEvents CmbLampSelection As ComboBox
     Friend WithEvents GroupBox6 As GroupBox
     Friend WithEvents CmbLampPhase As ComboBox
     Friend WithEvents LblLampID As Label
@@ -293,4 +280,6 @@ Partial Class FrmLamp
     Friend WithEvents GroupBox7 As GroupBox
     Friend WithEvents TxtBrightness As TextBox
     Friend WithEvents LblBrightness As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents ButSave As Button
 End Class
