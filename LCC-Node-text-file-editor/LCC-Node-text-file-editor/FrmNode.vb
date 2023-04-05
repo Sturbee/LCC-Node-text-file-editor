@@ -4,7 +4,7 @@ Public Class FrmNode
 
     Private Property MyFilePath As String
     Private Property MyFileName As String
-    Private Property MyImport As New ExportXml
+    Private Property MyExportXml As New ExportXml
     Private Property MyNodeRow As ExportXml.NodeRow
 
     Private Sub FrmNode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -36,13 +36,13 @@ Public Class FrmNode
         Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
         Try
-            Me.MyImport.ReadXml(Me.MyFilePath)
+            Me.MyExportXml.ReadXml(Me.MyFilePath)
         Catch ex As Exception
             MsgBox("Failed to read file " + Me.MyFileName)
             Exit Sub
         End Try
 
-        Me.MyNodeRow = Me.MyImport.Node.Item(0)
+        Me.MyNodeRow = Me.MyExportXml.Node.Item(0)
 
         Me.LblFileName.Text = Me.MyFileName
 
@@ -70,7 +70,7 @@ Public Class FrmNode
             Me.MyNodeRow.Name = Me.TxtNodeName.Text
             Me.MyNodeRow.Description = Me.TxtNodeDescription.Text
 
-            Me.MyImport.WriteXml(Me.MyFilePath)
+            Me.MyExportXml.WriteXml(Me.MyFilePath)
 
             MsgBox("Saved changes to file " + Me.MyFileName)
 

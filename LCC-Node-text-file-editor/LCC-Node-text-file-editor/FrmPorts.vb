@@ -1,6 +1,11 @@
-﻿Public Class FrmPorts
+﻿Imports System.IO
+
+Public Class FrmPorts
 
     Public Property MyLines As Integer
+    Private Property MyFilePath As String
+    Private Property MyFileName As String
+    Private Property MyExportXml As New ExportXml
 
     Private Sub FrmPorts_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -18,9 +23,26 @@
         ' set labels
         Dim rowTitle As Titles.PortTitlesRow = dsTitles.PortTitles.Item(0)
         Me.Text = rowTitle.header
+        Me.LblSubHeader.Text = rowTitle.subHeader
+        Me.LblHelp.Text = rowTitle.help
+
+        ' read the attribute xml file
+        Dim clsR As New ClsReport
+        Dim dsRpt As Rpt = clsR.MyReport
+
+        ' read the file to read and edit
+        Me.MyFilePath = Me.Owner.Tag
+        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
+
+        Try
+            Me.MyExportXml.ReadXml(Me.MyFilePath)
+        Catch ex As Exception
+            MsgBox("Failed to read file " + Me.MyFileName)
+            Exit Sub
+        End Try
 
 
-        ' poulate tab control
+        ' populate tab control
 
         Try
 
@@ -28,10 +50,10 @@
 
             For count = 1 To Me.MyLines
 
+                Dim row As ExportXml.PortRow = Me.MyExportXml.Port.FindByLineID(count)
+
                 Dim MyTabPage As New TabPage With {
-                    .Width = 90,
-                    .AutoSize = False,
-                    .Text = "Line" + count.ToString
+                    .Text = rowTitle.subHeader + Space(1) + count.ToString + " (" + row.Description + ")"
                 }
 
                 Me.TabControlLines.Controls.Add(MyTabPage)
@@ -40,7 +62,7 @@
 
         Catch ex As Exception
 
-            MsgBox("Failed to populate menu strip")
+            MsgBox("Failed to populate tab control")
             Exit Sub
 
         End Try
@@ -49,7 +71,7 @@
 
     Private Sub TabControlLines_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlLines.Selected
 
-        Stop
+        ' Stop
 
     End Sub
 

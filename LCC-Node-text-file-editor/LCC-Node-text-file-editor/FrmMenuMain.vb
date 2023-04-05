@@ -9,7 +9,6 @@ Public Class FrmMenuMain
     Private Property MyTrackTransmitters
     Private Property MyLamps As Integer
 
-
     Private Sub FrmMenuMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Call Me.CheckUserPreferences()
@@ -93,7 +92,7 @@ Public Class FrmMenuMain
 
     Private Sub LogicToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogicToolStripMenuItem.Click
 
-        Dim frm As New FrmLogicCells With {
+        Dim frm As New FrmLogics With {
             .MyLogicCells = Me.MyLogicCells
         }
         Call Me.CheckFormAndOpen(frm)
@@ -174,9 +173,10 @@ Public Class FrmMenuMain
                 Me.Text = newText
                 ' get node type
                 ' disable menu selections by node type
-                Dim clsE As New ClsExportXML
-                clsE.ExportXmlRead(Me.Tag)
-                Dim rowNode As ExportXml.NodeRow = clsE.MyExportXML.Node.FindByNodeID(0)
+
+                Dim MyExportXml As New ExportXml
+                MyExportXml.ReadXml(Me.Tag)
+                Dim rowNode As ExportXml.NodeRow = MyExportXml.Node.FindByNodeID(0)
 
                 Dim clsR As New ClsReport
                 Dim row As Rpt.NodeTypeRow = clsR.MyReport.NodeType.FindByvalue(rowNode.NodeType)
@@ -241,7 +241,4 @@ Public Class FrmMenuMain
 
     End Sub
 
-    Private Sub ProcessFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
-
-    End Sub
 End Class

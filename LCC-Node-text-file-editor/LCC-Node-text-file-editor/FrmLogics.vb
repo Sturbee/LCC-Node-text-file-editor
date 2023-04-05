@@ -1,13 +1,13 @@
 ﻿Imports System.IO
 
-Public Class FrmLamps
+Public Class FrmLogics
 
-    Public Property MyLamps As Integer
+    Public Property MyLogicCells As Integer
     Private Property MyFilePath As String
     Private Property MyFileName As String
     Private Property MyExportXml As New ExportXml
 
-    Private Sub FrmLamps_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmLogicCells_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Call Me.DisplayValues()
 
@@ -20,10 +20,9 @@ Public Class FrmLamps
         Dim dsTitles As Titles = clsT.MyTitles
 
         ' set labels
-        Dim rowTitle As Titles.LampTitlesRow = dsTitles.LampTitles.Item(0)
+        Dim rowTitle As Titles.LogicTitlesRow = dsTitles.LogicTitles.Item(0)
         Me.Text = rowTitle.header
         Me.LblSubHeader.Text = rowTitle.subHeader
-        Me.LblHelp.Text = rowTitle.help
 
         ' read the attribute xml file
         Dim clsR As New ClsReport
@@ -41,37 +40,33 @@ Public Class FrmLamps
         End Try
 
         ' populate tab control
+
         Try
 
-            Me.TabControlLamps.Controls.Clear()
+            Me.TabControlCells.Controls.Clear()
 
-            For count = 1 To Me.MyLamps
+            For count = 1 To Me.MyLogicCells
 
-                Dim row As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(count)
-
-                Dim lamp As String = String.Empty
-                If row.description.Length = 0 Then
-                    lamp = rowTitle.subHeader + Space(1) + count.ToString
-                Else
-                    lamp = row.description
-                End If
+                Dim row As ExportXml.LogicRow = Me.MyExportXml.Logic.FindByLogicID(count)
 
                 Dim MyTabPage As New TabPage With {
-                .Text = lamp
+                .Text = rowTitle.subHeader + " (" + count.ToString + ") " + row.Description
                 }
 
-                Me.TabControlLamps.Controls.Add(MyTabPage)
+                Me.TabControlCells.Controls.Add(MyTabPage)
 
             Next
 
         Catch ex As Exception
+
             MsgBox("Failed to populate tab control")
             Exit Sub
+
         End Try
 
     End Sub
 
-    Private Sub TabControlLamps_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlLamps.Selected
+    Private Sub TabControlCells_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlCells.Selected
 
         ' Stop
 

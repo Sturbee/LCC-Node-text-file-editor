@@ -19,7 +19,7 @@ Public Class FrmPortLine
         ' set labels
         Dim rowTitle As Titles.PortTitlesRow = dsTitles.PortTitles.Item(0)
         Me.Text = rowTitle.header
-        Me.LblLine.Text = rowTitle.port
+        Me.LblLine.Text = rowTitle.subHeader
         Me.LblDescription.Text = rowTitle.description
 
         Dim rowTitleDelay As Titles.PortDelayTitlesRow = dsTitles.PortDelayTitles.Item(0)

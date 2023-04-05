@@ -3,7 +3,7 @@
 Public Class FrmPowerMonitor
     Public Property MyFileName As String
     Public Property MyFilePath
-    Private Property MyImport As New ExportXml
+    Private Property MyExportXml As New ExportXml
     Private Property MyPowerMonitorRow As ExportXml.PowerMonitorRow
     Private Property SavePowerOK As String
     Private Property SavePowerNotOK As String
@@ -51,14 +51,14 @@ Public Class FrmPowerMonitor
 
         ' read the file to read and edit
         Try
-            Me.MyImport.ReadXml(Me.MyFilePath)
+            Me.MyExportXml.ReadXml(Me.MyFilePath)
         Catch ex As Exception
             MsgBox("Failed to read file " + Me.MyFileName)
             Exit Sub
         End Try
 
 
-        Me.MyPowerMonitorRow = Me.MyImport.PowerMonitor.Item(0)
+        Me.MyPowerMonitorRow = Me.MyExportXml.PowerMonitor.Item(0)
 
         Me.CmbOption.SelectedIndex = Me.MyPowerMonitorRow.powerOptionID
 
@@ -104,7 +104,7 @@ Public Class FrmPowerMonitor
         Try
             Me.MyPowerMonitorRow.powerOptionID = Me.CmbOption.SelectedIndex
 
-            Me.MyImport.WriteXml(Me.MyFilePath)
+            Me.MyExportXml.WriteXml(Me.MyFilePath)
 
             MsgBox("Saved changes to file " + Me.MyFileName)
 

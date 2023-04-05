@@ -98,12 +98,6 @@
     <Compile Include="ExportXml.vb">
       <DependentUpon>ExportXml.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FrmFileXml.Designer.vb">
       <DependentUpon>FrmFileXml.vb</DependentUpon>
     </Compile>
@@ -128,10 +122,16 @@
     <Compile Include="FrmLamps.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmLogicCells.Designer.vb">
-      <DependentUpon>FrmLogicCells.vb</DependentUpon>
+    <Compile Include="FrmLogicCell.Designer.vb">
+      <DependentUpon>FrmLogicCell.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmLogicCells.vb">
+    <Compile Include="FrmLogicCell.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogics.Designer.vb">
+      <DependentUpon>FrmLogics.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogics.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMasts.Designer.vb">
@@ -168,12 +168,6 @@
       <DependentUpon>FrmPortLine.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmPortLine.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmLineSelect.Designer.vb">
-      <DependentUpon>FrmLineSelect.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FrmLineSelect.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmNode.Designer.vb">
@@ -244,9 +238,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmFileXml.resx">
       <DependentUpon>FrmFileXml.vb</DependentUpon>
     </EmbeddedResource>
@@ -259,8 +250,8 @@
     <EmbeddedResource Include="FrmLamps.resx">
       <DependentUpon>FrmLamps.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmLogicCells.resx">
-      <DependentUpon>FrmLogicCells.vb</DependentUpon>
+    <EmbeddedResource Include="FrmLogics.resx">
+      <DependentUpon>FrmLogics.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMasts.resx">
       <DependentUpon>FrmMasts.vb</DependentUpon>
@@ -279,9 +270,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPortLine.resx">
       <DependentUpon>FrmPortLine.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmLineSelect.resx">
-      <DependentUpon>FrmLineSelect.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNode.resx">
       <DependentUpon>FrmNode.vb</DependentUpon>
