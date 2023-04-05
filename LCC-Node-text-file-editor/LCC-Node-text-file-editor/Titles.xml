@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Titles xmlns="http://tempuri.org/Titles.xsd">
 
-	<!-- Titles for Node ID segment level 1 -->
+	<!-- Titles for Node ID level 1 -->
 	<NodeTitles>
 		<header>Segment: Node ID</header>
 		<name>Node Name</name>
@@ -10,7 +10,7 @@
 		<eventBase>Base Address</eventBase>
 	</NodeTitles>
 
-	<!-- Titles for Power Monitor segment level 1 -->
+	<!-- Titles for Power Monitor level 1 -->
 	<PowerMonitorTitles>
 		<header>Segment: Node Power Monitor</header>
 		<options>Message Options</options>
@@ -18,7 +18,7 @@
 		<powerNotOK>Power Not OK EventID (may be lost)</powerNotOK>
 	</PowerMonitorTitles>
 
-	<!-- Titles for Port segement level 1 -->
+	<!-- Titles for Port level 1 -->
 	<PortTitles>
 		<header>Segment: Port I/O</header>
 		<port>Line #</port>
@@ -42,8 +42,35 @@
 	</PortEventTitles>
 
 
-
+	<!-- Logic Titles level 1 -->
+	<LogicTitles>
+		<header>Segment: Conditionals</header>
+	</LogicTitles>
 	
+	<!-- Mast Titles level 1 -->
+	<MastTitles>
+		<header>Segment: Rule to Aspect</header>
+	</MastTitles>
+	
+	<!-- Track Receiver Circuit Titles level 1-->
+	<TrackRecTitles>
+		<header>Segment: Track Receiver</header>
+	</TrackRecTitles>
+	
+	<!-- Track Transmitter Circuit Titles level 1-->
+	<TrackTranTitles>
+		<header>Segment: Track Transmitter</header>
+	</TrackTranTitles>
+
+	<!-- Lamp Titles level 1 -->
+	<LampTitles>
+		<header>Segment: Direct Lamp Control</header>
+		<lampOn>(C) Event to set lamp on</lampOn>
+		<lampOff>(C) Event to set lamp off</lampOff>
+		<brightness>Set individual lamp intensity (0 = min; 255 = max)</brightness>
+	</LampTitles>
+
+
 
 
 	<Title>
@@ -338,13 +365,6 @@
 		<comment>false2</comment>
 	</LogicOperationTitle>
 	
-	<!-- Lamp Titles -->
-	<LampTitles>
-		<header>Direct Control of Lamps</header>
-		<lampOn>(C) Event to set lamp on</lampOn>
-		<lampOff>(C) Event to set lamp off</lampOff>
-	</LampTitles>
-
 	<!-- Format types -->
 	<FormatType>
 		<value>0</value>
@@ -370,6 +390,5 @@
 		<value>5</value>
 		<text>add 2 blank columns</text>
 	</FormatType>
-
 
 </Titles>

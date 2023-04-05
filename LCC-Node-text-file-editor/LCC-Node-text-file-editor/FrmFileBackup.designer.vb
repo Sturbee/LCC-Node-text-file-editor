@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class FrmExportXml
+Partial Class FrmFileBackup
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -78,7 +78,7 @@ Partial Class FrmExportXml
         Me.ButtonProcess.Text = "Process"
         Me.ButtonProcess.UseVisualStyleBackColor = True
         '
-        'FrmExportXml
+        'FrmFileBackup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -88,8 +88,8 @@ Partial Class FrmExportXml
         Me.Controls.Add(Me.TextBoxFileExtension)
         Me.Controls.Add(Me.BrowseButton)
         Me.Controls.Add(Me.FilesListBox)
-        Me.Name = "FrmExportXml"
-        Me.Text = "Process Backup file"
+        Me.Name = "FrmFileBackup"
+        Me.Text = "Select CDI text file to process"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

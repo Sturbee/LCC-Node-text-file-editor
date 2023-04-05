@@ -1,4 +1,4 @@
-﻿Public Class FrmExportXml
+﻿Public Class FrmFileBackup
 
     Private Sub FrmExportXml_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

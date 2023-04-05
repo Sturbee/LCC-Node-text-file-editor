@@ -27,6 +27,8 @@ Public Class FrmLamp
             Me.LblHeader.Text = rowT.header
             Me.LblLampOn.Text = rowT.lampOn
             Me.LblLampOff.Text = rowT.lampOn
+            Me.LblBrightness.Text = rowT.brightness
+
         Catch ex As Exception
             MsgBox("Failed to read titles")
             Exit Sub
@@ -72,6 +74,7 @@ Public Class FrmLamp
         Me.TxtDescription.Text = Me.MyLampRow.description
         Me.TxtLampOn.Text = Me.MyLampRow.eventOn
         Me.TxtLampOff.Text = Me.MyLampRow.eventOff
+        Me.TxtBrightness.Text = Me.MyLampRow.brightness
 
         Me.CmbLampFade.SelectedIndex = Me.MyLampRow.lampFadeID
         Me.CmbLampSelection.SelectedIndex = Me.MyLampRow.lampSelectionID

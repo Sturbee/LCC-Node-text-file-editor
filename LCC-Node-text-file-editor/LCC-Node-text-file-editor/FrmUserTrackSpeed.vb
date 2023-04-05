@@ -1,6 +1,6 @@
 ﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
 
-Public Class FrmTrackSpeed
+Public Class FrmUserTrackSpeed
 
     Private Property ClsI As New ClsImportCDI
     Private Property ClsU As New ClsUserPrefs

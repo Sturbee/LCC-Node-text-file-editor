@@ -23,65 +23,100 @@ Partial Class FrmMenuMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.ProcessFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProcessToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RestoreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileProcessToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileEditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileRestoreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NodeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PwrMonitorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PortToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogicToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MastToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TrackReceiversToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TrackTransmittersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LampToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UserPrefsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.JMRIfilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TrackSpeedsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UserFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UserTrackSpeedsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProcessFileToolStripMenuItem, Me.NodeToolStripMenuItem, Me.PwrMonitorToolStripMenuItem, Me.LampToolStripMenuItem, Me.UserPrefsToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.NodeToolStripMenuItem, Me.PwrMonitorToolStripMenuItem, Me.PortToolStripMenuItem, Me.LogicToolStripMenuItem, Me.MastToolStripMenuItem, Me.TrackReceiversToolStripMenuItem, Me.TrackTransmittersToolStripMenuItem, Me.LampToolStripMenuItem, Me.UserToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(904, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1124, 28)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
-        'ProcessFileToolStripMenuItem
+        'FileToolStripMenuItem
         '
-        Me.ProcessFileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProcessToolStripMenuItem, Me.EditToolStripMenuItem, Me.RestoreToolStripMenuItem})
-        Me.ProcessFileToolStripMenuItem.Name = "ProcessFileToolStripMenuItem"
-        Me.ProcessFileToolStripMenuItem.Size = New System.Drawing.Size(52, 24)
-        Me.ProcessFileToolStripMenuItem.Text = "Files"
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileProcessToolStripMenuItem, Me.FileEditToolStripMenuItem, Me.FileRestoreToolStripMenuItem})
+        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(52, 24)
+        Me.FileToolStripMenuItem.Text = "Files"
         '
-        'ProcessToolStripMenuItem
+        'FileProcessToolStripMenuItem
         '
-        Me.ProcessToolStripMenuItem.Name = "ProcessToolStripMenuItem"
-        Me.ProcessToolStripMenuItem.Size = New System.Drawing.Size(142, 26)
-        Me.ProcessToolStripMenuItem.Text = "Process"
+        Me.FileProcessToolStripMenuItem.Name = "FileProcessToolStripMenuItem"
+        Me.FileProcessToolStripMenuItem.Size = New System.Drawing.Size(142, 26)
+        Me.FileProcessToolStripMenuItem.Text = "Process"
         '
-        'EditToolStripMenuItem
+        'FileEditToolStripMenuItem
         '
-        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(142, 26)
-        Me.EditToolStripMenuItem.Text = "Edit"
+        Me.FileEditToolStripMenuItem.Name = "FileEditToolStripMenuItem"
+        Me.FileEditToolStripMenuItem.Size = New System.Drawing.Size(142, 26)
+        Me.FileEditToolStripMenuItem.Text = "Edit"
         '
-        'RestoreToolStripMenuItem
+        'FileRestoreToolStripMenuItem
         '
-        Me.RestoreToolStripMenuItem.Name = "RestoreToolStripMenuItem"
-        Me.RestoreToolStripMenuItem.Size = New System.Drawing.Size(142, 26)
-        Me.RestoreToolStripMenuItem.Text = "Restore"
+        Me.FileRestoreToolStripMenuItem.Name = "FileRestoreToolStripMenuItem"
+        Me.FileRestoreToolStripMenuItem.Size = New System.Drawing.Size(142, 26)
+        Me.FileRestoreToolStripMenuItem.Text = "Restore"
         '
         'NodeToolStripMenuItem
         '
         Me.NodeToolStripMenuItem.Name = "NodeToolStripMenuItem"
-        Me.NodeToolStripMenuItem.Size = New System.Drawing.Size(60, 24)
-        Me.NodeToolStripMenuItem.Text = "Node"
+        Me.NodeToolStripMenuItem.Size = New System.Drawing.Size(79, 24)
+        Me.NodeToolStripMenuItem.Text = "Node ID"
         '
         'PwrMonitorToolStripMenuItem
         '
         Me.PwrMonitorToolStripMenuItem.Name = "PwrMonitorToolStripMenuItem"
-        Me.PwrMonitorToolStripMenuItem.Size = New System.Drawing.Size(104, 24)
-        Me.PwrMonitorToolStripMenuItem.Text = "Pwr Monitor"
+        Me.PwrMonitorToolStripMenuItem.Size = New System.Drawing.Size(120, 24)
+        Me.PwrMonitorToolStripMenuItem.Text = "Power Monitor"
+        '
+        'PortToolStripMenuItem
+        '
+        Me.PortToolStripMenuItem.Name = "PortToolStripMenuItem"
+        Me.PortToolStripMenuItem.Size = New System.Drawing.Size(74, 24)
+        Me.PortToolStripMenuItem.Text = "Port I/O"
+        '
+        'LogicToolStripMenuItem
+        '
+        Me.LogicToolStripMenuItem.Name = "LogicToolStripMenuItem"
+        Me.LogicToolStripMenuItem.Size = New System.Drawing.Size(106, 24)
+        Me.LogicToolStripMenuItem.Text = "Conditionals"
+        '
+        'MastToolStripMenuItem
+        '
+        Me.MastToolStripMenuItem.Name = "MastToolStripMenuItem"
+        Me.MastToolStripMenuItem.Size = New System.Drawing.Size(121, 24)
+        Me.MastToolStripMenuItem.Text = "Rule To Aspect"
+        '
+        'TrackReceiversToolStripMenuItem
+        '
+        Me.TrackReceiversToolStripMenuItem.Name = "TrackReceiversToolStripMenuItem"
+        Me.TrackReceiversToolStripMenuItem.Size = New System.Drawing.Size(117, 24)
+        Me.TrackReceiversToolStripMenuItem.Text = "Track Receiver"
+        '
+        'TrackTransmittersToolStripMenuItem
+        '
+        Me.TrackTransmittersToolStripMenuItem.Name = "TrackTransmittersToolStripMenuItem"
+        Me.TrackTransmittersToolStripMenuItem.Size = New System.Drawing.Size(135, 24)
+        Me.TrackTransmittersToolStripMenuItem.Text = "Track Transmitter"
         '
         'LampToolStripMenuItem
         '
@@ -89,30 +124,30 @@ Partial Class FrmMenuMain
         Me.LampToolStripMenuItem.Size = New System.Drawing.Size(66, 24)
         Me.LampToolStripMenuItem.Text = "Lamps"
         '
-        'UserPrefsToolStripMenuItem
+        'UserToolStripMenuItem
         '
-        Me.UserPrefsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.JMRIfilesToolStripMenuItem, Me.TrackSpeedsToolStripMenuItem})
-        Me.UserPrefsToolStripMenuItem.Name = "UserPrefsToolStripMenuItem"
-        Me.UserPrefsToolStripMenuItem.Size = New System.Drawing.Size(132, 24)
-        Me.UserPrefsToolStripMenuItem.Text = "User Preferences"
+        Me.UserToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UserFilesToolStripMenuItem, Me.UserTrackSpeedsToolStripMenuItem})
+        Me.UserToolStripMenuItem.Name = "UserToolStripMenuItem"
+        Me.UserToolStripMenuItem.Size = New System.Drawing.Size(132, 24)
+        Me.UserToolStripMenuItem.Text = "User Preferences"
         '
-        'JMRIfilesToolStripMenuItem
+        'UserFilesToolStripMenuItem
         '
-        Me.JMRIfilesToolStripMenuItem.Name = "JMRIfilesToolStripMenuItem"
-        Me.JMRIfilesToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
-        Me.JMRIfilesToolStripMenuItem.Text = "JMRI File Location"
+        Me.UserFilesToolStripMenuItem.Name = "UserFilesToolStripMenuItem"
+        Me.UserFilesToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.UserFilesToolStripMenuItem.Text = "JMRI File Locations"
         '
-        'TrackSpeedsToolStripMenuItem
+        'UserTrackSpeedsToolStripMenuItem
         '
-        Me.TrackSpeedsToolStripMenuItem.Name = "TrackSpeedsToolStripMenuItem"
-        Me.TrackSpeedsToolStripMenuItem.Size = New System.Drawing.Size(211, 26)
-        Me.TrackSpeedsToolStripMenuItem.Text = "Track Speeds"
+        Me.UserTrackSpeedsToolStripMenuItem.Name = "UserTrackSpeedsToolStripMenuItem"
+        Me.UserTrackSpeedsToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.UserTrackSpeedsToolStripMenuItem.Text = "Track Speeds"
         '
         'FrmMenuMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(904, 450)
+        Me.ClientSize = New System.Drawing.Size(1124, 450)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MainMenuStrip = Me.MenuStrip1
@@ -126,14 +161,19 @@ Partial Class FrmMenuMain
     End Sub
 
     Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents UserPrefsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents JMRIfilesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TrackSpeedsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents UserToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents UserFilesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents UserTrackSpeedsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LampToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ProcessFileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ProcessToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EditToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents RestoreToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileProcessToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileEditToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileRestoreToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NodeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PwrMonitorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PortToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LogicToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MastToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TrackReceiversToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TrackTransmittersToolStripMenuItem As ToolStripMenuItem
 End Class

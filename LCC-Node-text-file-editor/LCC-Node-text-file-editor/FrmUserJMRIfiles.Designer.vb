@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FrmUserPrefs
+Partial Class FrmUserJMRIfiles
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -93,9 +93,6 @@ Partial Class FrmUserPrefs
         Me.CmdSave.Text = "Save"
         Me.CmdSave.UseVisualStyleBackColor = True
         '
-        'FolderBrowserDialog1
-        '
-        '
         'FilesListBox
         '
         Me.FilesListBox.FormattingEnabled = True
@@ -124,7 +121,7 @@ Partial Class FrmUserPrefs
         Me.CmdBrowse.Text = "Browse"
         Me.CmdBrowse.UseVisualStyleBackColor = True
         '
-        'FrmUserPrefs
+        'FrmUserJMRIfiles
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -139,8 +136,8 @@ Partial Class FrmUserPrefs
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CmbPath)
-        Me.Name = "FrmUserPrefs"
-        Me.Text = "User JMRI Preferences"
+        Me.Name = "FrmUserJMRIfiles"
+        Me.Text = "User JMRI Files Location"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -5,62 +5,38 @@
 	<NodeType>
 		<value>0</value>
 		<name>Unknown</name>
-		<node>true</node>
-		<nodeItems>1</nodeItems>
-		<powerMonitor>false</powerMonitor>
-		<powerMonitorItems>0</powerMonitorItems>
-		<port>false</port>
-		<portItems>0</portItems>
-		<logic>false</logic>
-		<logicItems>0</logicItems>
-		<trackCircuitRec>false</trackCircuitRec>
-		<trackCircuitRecItems>0</trackCircuitRecItems>
-		<trackCircuitTran>false</trackCircuitTran>
-		<trackCircuitTranItems>0</trackCircuitTranItems>
-		<mast>false</mast>
-		<mastItems>0</mastItems>
-		<lamp>false</lamp>
-		<lampItems>0</lampItems>
+		<node>1</node>
+		<pwrMonitor>0</pwrMonitor>
+		<port>0</port>
+		<logic>0</logic>
+		<trackCircuitRec>0</trackCircuitRec>
+		<trackCircuitTran>0</trackCircuitTran>
+		<mast>0</mast>
+		<lamp>0</lamp>
 	</NodeType>
 	<NodeType>
 		<value>1</value>
 		<name>Signal-LCC</name>
-		<node>true</node>
-		<nodeItems>1</nodeItems>
-		<powerMonitor>true</powerMonitor>
-		<powerMonitorItems>1</powerMonitorItems>
-		<port>true</port>
-		<portItems>8</portItems>
-		<logic>true</logic>
-		<logicItems>32</logicItems>
-		<trackCircuitRec>false</trackCircuitRec>
-		<trackCircuitRecItems>0</trackCircuitRecItems>
-		<trackCircuitTran>true</trackCircuitTran>
-		<trackCircuitTranItems>8</trackCircuitTranItems>
-		<mast>true</mast>
-		<mastItems>8</mastItems>
-		<lamp>true</lamp>
-		<lampItems>16</lampItems>
+		<node>1</node>
+		<pwrMonitor>1</pwrMonitor>
+		<port>8</port>
+		<logic>32</logic>
+		<trackCircuitRec>8</trackCircuitRec>
+		<trackCircuitTran>0</trackCircuitTran>
+		<mast>8</mast>
+		<lamp>16</lamp>
 	</NodeType>
 	<NodeType>
 		<value>2</value>
 		<name>Tower-LCC</name>
-		<node>true</node>
-		<nodeItems>1</nodeItems>
-		<powerMonitor>true</powerMonitor>
-		<powerMonitorItems>1</powerMonitorItems>
-		<port>true</port>
-		<portItems>16</portItems>
-		<logic>true</logic>
-		<logicItems>32</logicItems>
-		<trackCircuitRec>true</trackCircuitRec>
-		<trackCircuitRecItems>8</trackCircuitRecItems>
-		<trackCircuitTran>true</trackCircuitTran>
-		<trackCircuitTranItems>8</trackCircuitTranItems>
-		<mast>false</mast>
-		<mastItems>0</mastItems>
-		<lamp>false</lamp>
-		<lampItems>0</lampItems>
+		<node>1</node>
+		<pwrMonitor>1</pwrMonitor>
+		<port>16</port>
+		<logic>32</logic>
+		<trackCircuitRec>8</trackCircuitRec>
+		<trackCircuitTran>8</trackCircuitTran>
+		<mast>0</mast>
+		<lamp>0</lamp>
 	</NodeType>
 
 	<!-- Power Monitor Message Option -->

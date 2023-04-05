@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 
-Public Class FrmLine
+Public Class FrmPortLine
 
     Private Property MyFilePath As String
     Private Property MyFileName As String

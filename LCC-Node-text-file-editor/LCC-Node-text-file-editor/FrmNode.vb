@@ -9,6 +9,12 @@ Public Class FrmNode
 
     Private Sub FrmNode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Call Me.DisplayValues()
+
+    End Sub
+
+    Private Sub DisplayValues()
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
         Dim dsTitles As Titles = clsT.MyTitles

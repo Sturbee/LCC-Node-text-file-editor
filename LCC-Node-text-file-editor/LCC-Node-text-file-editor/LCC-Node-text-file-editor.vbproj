@@ -104,10 +104,16 @@
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmEditXml.Designer.vb">
-      <DependentUpon>FrmEditXml.vb</DependentUpon>
+    <Compile Include="FrmFileXml.Designer.vb">
+      <DependentUpon>FrmFileXml.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmEditXml.vb">
+    <Compile Include="FrmFileXml.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFileRestore.Designer.vb">
+      <DependentUpon>FrmFileRestore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFileRestore.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLamp.Designer.vb">
@@ -116,22 +122,52 @@
     <Compile Include="FrmLamp.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmLamps.Designer.vb">
+      <DependentUpon>FrmLamps.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLamps.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogicCells.Designer.vb">
+      <DependentUpon>FrmLogicCells.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogicCells.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMasts.Designer.vb">
+      <DependentUpon>FrmMasts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMasts.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmMenuMain.Designer.vb">
       <DependentUpon>FrmMenuMain.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmMenuMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmTrackSpeed.Designer.vb">
-      <DependentUpon>FrmTrackSpeed.vb</DependentUpon>
+    <Compile Include="FrmPorts.Designer.vb">
+      <DependentUpon>FrmPorts.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmTrackSpeed.vb">
+    <Compile Include="FrmPorts.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmLine.Designer.vb">
-      <DependentUpon>FrmLine.vb</DependentUpon>
+    <Compile Include="FrmTrackReceivers.Designer.vb">
+      <DependentUpon>FrmTrackReceivers.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmLine.vb">
+    <Compile Include="FrmTrackReceivers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserTrackSpeed.Designer.vb">
+      <DependentUpon>FrmUserTrackSpeed.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserTrackSpeed.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPortLine.Designer.vb">
+      <DependentUpon>FrmPortLine.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPortLine.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLineSelect.Designer.vb">
@@ -152,10 +188,16 @@
     <Compile Include="FrmPowerMonitor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmUserPrefs.Designer.vb">
-      <DependentUpon>FrmUserPrefs.vb</DependentUpon>
+    <Compile Include="FrmTrackTransmitters.Designer.vb">
+      <DependentUpon>FrmTrackTransmitters.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmUserPrefs.vb">
+    <Compile Include="FrmTrackTransmitters.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserJMRIfiles.Designer.vb">
+      <DependentUpon>FrmUserJMRIfiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserJMRIfiles.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ImportCDI.Designer.vb">
@@ -179,10 +221,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="FrmExportXml.designer.vb">
-      <DependentUpon>FrmExportXml.vb</DependentUpon>
+    <Compile Include="FrmFileBackup.designer.vb">
+      <DependentUpon>FrmFileBackup.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmExportXml.vb">
+    <Compile Include="FrmFileBackup.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Report.Designer.vb">
@@ -205,20 +247,38 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmEditXml.resx">
-      <DependentUpon>FrmEditXml.vb</DependentUpon>
+    <EmbeddedResource Include="FrmFileXml.resx">
+      <DependentUpon>FrmFileXml.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFileRestore.resx">
+      <DependentUpon>FrmFileRestore.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLamp.resx">
       <DependentUpon>FrmLamp.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmLamps.resx">
+      <DependentUpon>FrmLamps.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogicCells.resx">
+      <DependentUpon>FrmLogicCells.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMasts.resx">
+      <DependentUpon>FrmMasts.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuMain.resx">
       <DependentUpon>FrmMenuMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmTrackSpeed.resx">
-      <DependentUpon>FrmTrackSpeed.vb</DependentUpon>
+    <EmbeddedResource Include="FrmPorts.resx">
+      <DependentUpon>FrmPorts.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmLine.resx">
-      <DependentUpon>FrmLine.vb</DependentUpon>
+    <EmbeddedResource Include="FrmTrackReceivers.resx">
+      <DependentUpon>FrmTrackReceivers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserTrackSpeed.resx">
+      <DependentUpon>FrmUserTrackSpeed.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPortLine.resx">
+      <DependentUpon>FrmPortLine.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLineSelect.resx">
       <DependentUpon>FrmLineSelect.vb</DependentUpon>
@@ -229,8 +289,11 @@
     <EmbeddedResource Include="FrmPowerMonitor.resx">
       <DependentUpon>FrmPowerMonitor.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmUserPrefs.resx">
-      <DependentUpon>FrmUserPrefs.vb</DependentUpon>
+    <EmbeddedResource Include="FrmTrackTransmitters.resx">
+      <DependentUpon>FrmTrackTransmitters.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserJMRIfiles.resx">
+      <DependentUpon>FrmUserJMRIfiles.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -238,8 +301,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmExportXml.resx">
-      <DependentUpon>FrmExportXml.vb</DependentUpon>
+    <EmbeddedResource Include="FrmFileBackup.resx">
+      <DependentUpon>FrmFileBackup.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

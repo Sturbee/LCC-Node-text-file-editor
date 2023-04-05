@@ -1,4 +1,4 @@
-﻿Public Class FrmUserPrefs
+﻿Public Class FrmUserJMRIfiles
 
     Private Property ClsU As New ClsUserPrefs
 

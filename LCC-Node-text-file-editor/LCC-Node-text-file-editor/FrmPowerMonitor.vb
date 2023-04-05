@@ -11,6 +11,12 @@ Public Class FrmPowerMonitor
 
     Private Sub FrmPowerMonitor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Call Me.DisplayValues()
+
+    End Sub
+
+    Private Sub DisplayValues()
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
         Dim dsTitles As Titles = clsT.MyTitles
@@ -18,8 +24,6 @@ Public Class FrmPowerMonitor
         ' read the file to read and edit
         Me.MyFilePath = Me.Owner.Tag
         Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
-
-        Me.LblFileName.Text = Me.MyFileName
 
         Dim rowPower As Titles.PowerMonitorTitlesRow = dsTitles.PowerMonitorTitles.Item(0)
         Me.Text = rowPower.header

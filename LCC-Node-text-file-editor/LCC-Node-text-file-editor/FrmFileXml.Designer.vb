@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FrmEditXml
+Partial Class FrmFileXml
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -73,7 +73,7 @@ Partial Class FrmEditXml
         Me.CmdBrowse.Text = "Browse"
         Me.CmdBrowse.UseVisualStyleBackColor = True
         '
-        'FrmEditXml
+        'FrmFileXml
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -84,8 +84,8 @@ Partial Class FrmEditXml
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TxtFileExtension)
         Me.Controls.Add(Me.FilesListBox)
-        Me.Name = "FrmEditXml"
-        Me.Text = "File Xml Editor"
+        Me.Name = "FrmFileXml"
+        Me.Text = "Select Xml file to edit"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
