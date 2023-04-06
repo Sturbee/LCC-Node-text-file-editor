@@ -15,8 +15,8 @@
     <Shape ID="DesignTable:LogicProducer" ZOrder="9" X="1003" Y="46" Height="171" Width="171" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="167" />
     <Shape ID="DesignTable:LogicOperation" ZOrder="8" X="630" Y="41" Height="309" Width="179" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="305" />
     <Shape ID="DesignTable:LogicAction" ZOrder="7" X="820" Y="42" Height="171" Width="153" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="167" />
-    <Shape ID="DesignTable:TrackCircuitRec" ZOrder="6" X="982" Y="525" Height="102" Width="179" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="98" />
-    <Shape ID="DesignTable:TrackCircuitTran" ZOrder="5" X="966" Y="392" Height="102" Width="186" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="98" />
+    <Shape ID="DesignTable:TrackReceiver" ZOrder="6" X="982" Y="525" Height="102" Width="179" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="98" />
+    <Shape ID="DesignTable:TrackTransmitter" ZOrder="5" X="966" Y="392" Height="102" Width="186" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="98" />
     <Shape ID="DesignTable:Mast" ZOrder="4" X="453" Y="172" Height="148" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="144" />
     <Shape ID="DesignTable:MastRule" ZOrder="3" X="1189" Y="46" Height="264" Width="168" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="260" />
     <Shape ID="DesignTable:MastRuleAppear" ZOrder="2" X="480" Y="386" Height="148" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="144" />

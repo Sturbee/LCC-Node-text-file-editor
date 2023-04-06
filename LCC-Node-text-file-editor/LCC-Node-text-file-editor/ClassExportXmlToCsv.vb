@@ -543,7 +543,7 @@ Public Class ClassExportXmlToCsv
 
                                 Select Case countRow
                                     Case 4, 10 ' source1, source2
-                                        Dim rowTrackCircuit As ExportXml.TrackCircuitRecRow = dsInput.TrackCircuitRec.FindByCircuitID(columnValue)
+                                        Dim rowTrackCircuit As ExportXml.TrackReceiverRow = dsInput.TrackReceiver.FindByCircuitID(columnValue)
                                         If rowTrackCircuit Is Nothing Then
                                             ' do nothing
                                             Stop
@@ -749,13 +749,13 @@ Public Class ClassExportXmlToCsv
                         If IsNumeric(columnValue) Then
                             ' get the attribute values for each value in rowNode
                             Stop
-                            Dim rowAttribute As ImportCDI.TrackCircuitRecRow = Nothing ' dsReport.TrackCircuitRec.FindByvalue(columnValue)
+                            Dim rowAttribute As ImportCDI.TrackReceiverRow = Nothing ' dsReport.TrackCircuitRec.FindByvalue(columnValue)
                             If rowAttribute Is Nothing Then
                                 attributeText = "<" + columnValue.ToString + ">"
 
                                 Select Case countRow
                                     Case 5 ' destination
-                                        Dim rowCircuit As ExportXml.TrackCircuitTranRow = dsInput.TrackCircuitTran.FindByCircuitID(columnValue)
+                                        Dim rowCircuit As ExportXml.TrackTransmitterRow = dsInput.TrackTransmitter.FindByCircuitID(columnValue)
                                         If rowCircuit Is Nothing Then
                                             ' do nothing
                                             Stop

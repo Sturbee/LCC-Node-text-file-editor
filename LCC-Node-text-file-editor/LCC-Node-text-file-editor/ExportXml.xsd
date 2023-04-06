@@ -15,7 +15,7 @@
         <xs:element name="Node" msprop:Generator_RowEvHandlerName="NodeRowChangeEventHandler" msprop:Generator_RowDeletedName="NodeRowDeleted" msprop:Generator_RowDeletingName="NodeRowDeleting" msprop:Generator_RowEvArgName="NodeRowChangeEvent" msprop:Generator_TablePropName="Node" msprop:Generator_RowChangedName="NodeRowChanged" msprop:Generator_UserTableName="Node" msprop:Generator_RowChangingName="NodeRowChanging" msprop:Generator_RowClassName="NodeRow" msprop:Generator_TableClassName="NodeDataTable" msprop:Generator_TableVarName="tableNode">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="NodeID" msprop:Generator_UserColumnName="NodeID" msprop:Generator_ColumnPropNameInTable="NodeIDColumn" msprop:Generator_ColumnPropNameInRow="NodeID" msprop:Generator_ColumnVarNameInTable="columnNodeID" type="xs:int" />
+              <xs:element name="NodeID" msprop:Generator_ColumnPropNameInTable="NodeIDColumn" msprop:Generator_ColumnPropNameInRow="NodeID" msprop:Generator_UserColumnName="NodeID" msprop:Generator_ColumnVarNameInTable="columnNodeID" type="xs:int" />
               <xs:element name="name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_UserColumnName="name" msprop:Generator_ColumnVarNameInTable="columnName" type="xs:string" />
               <xs:element name="description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_UserColumnName="description" msprop:Generator_ColumnVarNameInTable="columnDescription" type="xs:string" minOccurs="0" />
               <xs:element name="nodeType" msprop:Generator_ColumnPropNameInTable="NodeTypeColumn" msprop:Generator_ColumnPropNameInRow="NodeType" msprop:Generator_UserColumnName="nodeType" msprop:Generator_ColumnVarNameInTable="columnNodeType" type="xs:int" minOccurs="0" />
@@ -26,7 +26,7 @@
         <xs:element name="PowerMonitor" msprop:Generator_RowEvHandlerName="PowerMonitorRowChangeEventHandler" msprop:Generator_RowDeletedName="PowerMonitorRowDeleted" msprop:Generator_RowDeletingName="PowerMonitorRowDeleting" msprop:Generator_RowEvArgName="PowerMonitorRowChangeEvent" msprop:Generator_TablePropName="PowerMonitor" msprop:Generator_RowChangedName="PowerMonitorRowChanged" msprop:Generator_UserTableName="PowerMonitor" msprop:Generator_RowChangingName="PowerMonitorRowChanging" msprop:Generator_RowClassName="PowerMonitorRow" msprop:Generator_TableClassName="PowerMonitorDataTable" msprop:Generator_TableVarName="tablePowerMonitor">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="PowerMonitorID" msprop:Generator_UserColumnName="PowerMonitorID" msprop:Generator_ColumnPropNameInTable="PowerMonitorIDColumn" msprop:Generator_ColumnPropNameInRow="PowerMonitorID" msprop:Generator_ColumnVarNameInTable="columnPowerMonitorID" type="xs:int" />
+              <xs:element name="PowerMonitorID" msprop:Generator_ColumnPropNameInTable="PowerMonitorIDColumn" msprop:Generator_ColumnPropNameInRow="PowerMonitorID" msprop:Generator_UserColumnName="PowerMonitorID" msprop:Generator_ColumnVarNameInTable="columnPowerMonitorID" type="xs:int" />
               <xs:element name="powerOptionID" msprop:Generator_ColumnPropNameInTable="powerOptionIDColumn" msprop:Generator_ColumnPropNameInRow="powerOptionID" msprop:Generator_UserColumnName="powerOptionID" msprop:Generator_ColumnVarNameInTable="columnpowerOptionID" type="xs:int" minOccurs="0" />
               <xs:element name="eventPowerOK" msprop:Generator_ColumnPropNameInTable="eventPowerOKColumn" msprop:Generator_ColumnPropNameInRow="eventPowerOK" msprop:Generator_UserColumnName="eventPowerOK" msprop:Generator_ColumnVarNameInTable="columneventPowerOK" type="xs:string" minOccurs="0" />
               <xs:element name="eventPowerNotOK" msprop:Generator_ColumnPropNameInTable="eventPowerNotOKColumn" msprop:Generator_ColumnPropNameInRow="eventPowerNotOK" msprop:Generator_UserColumnName="eventPowerNotOK" msprop:Generator_ColumnVarNameInTable="columneventPowerNotOK" type="xs:string" minOccurs="0" />
@@ -36,7 +36,7 @@
         <xs:element name="Port" msprop:Generator_RowEvHandlerName="PortRowChangeEventHandler" msprop:Generator_RowDeletedName="PortRowDeleted" msprop:Generator_RowDeletingName="PortRowDeleting" msprop:Generator_RowEvArgName="PortRowChangeEvent" msprop:Generator_TablePropName="Port" msprop:Generator_RowChangedName="PortRowChanged" msprop:Generator_UserTableName="Port" msprop:Generator_RowChangingName="PortRowChanging" msprop:Generator_RowClassName="PortRow" msprop:Generator_TableClassName="PortDataTable" msprop:Generator_TableVarName="tablePort">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="LineID" msprop:Generator_UserColumnName="LineID" msprop:Generator_ColumnPropNameInTable="LineIDColumn" msprop:Generator_ColumnPropNameInRow="LineID" msprop:Generator_ColumnVarNameInTable="columnLineID" type="xs:int" />
+              <xs:element name="LineID" msprop:Generator_ColumnPropNameInTable="LineIDColumn" msprop:Generator_ColumnPropNameInRow="LineID" msprop:Generator_UserColumnName="LineID" msprop:Generator_ColumnVarNameInTable="columnLineID" type="xs:int" />
               <xs:element name="description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_UserColumnName="description" msprop:Generator_ColumnVarNameInTable="columnDescription" type="xs:string" minOccurs="0" />
               <xs:element name="outputFunctionID" msprop:Generator_ColumnPropNameInTable="outputFunctionIDColumn" msprop:Generator_ColumnPropNameInRow="outputFunctionID" msprop:Generator_UserColumnName="outputFunctionID" msprop:Generator_ColumnVarNameInTable="columnoutputFunctionID" type="xs:int" minOccurs="0" />
               <xs:element name="outputCommand" msprop:Generator_ColumnPropNameInTable="OutPutCommandColumn" msprop:Generator_ColumnPropNameInRow="OutPutCommand" msprop:Generator_UserColumnName="outputCommand" msprop:Generator_ColumnVarNameInTable="columnOutPutCommand" type="xs:int" minOccurs="0" />
@@ -48,8 +48,8 @@
         <xs:element name="PortDelay" msprop:Generator_RowEvHandlerName="PortDelayRowChangeEventHandler" msprop:Generator_RowDeletedName="PortDelayRowDeleted" msprop:Generator_RowDeletingName="PortDelayRowDeleting" msprop:Generator_RowEvArgName="PortDelayRowChangeEvent" msprop:Generator_TablePropName="PortDelay" msprop:Generator_RowChangedName="PortDelayRowChanged" msprop:Generator_UserTableName="PortDelay" msprop:Generator_RowChangingName="PortDelayRowChanging" msprop:Generator_RowClassName="PortDelayRow" msprop:Generator_TableClassName="PortDelayDataTable" msprop:Generator_TableVarName="tablePortDelay">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="LineID" msprop:Generator_UserColumnName="LineID" msprop:Generator_ColumnPropNameInTable="LineIDColumn" msprop:Generator_ColumnPropNameInRow="LineID" msprop:Generator_ColumnVarNameInTable="columnLineID" type="xs:int" />
-              <xs:element name="DelayID" msprop:Generator_UserColumnName="DelayID" msprop:Generator_ColumnPropNameInTable="DelayIDColumn" msprop:Generator_ColumnPropNameInRow="DelayID" msprop:Generator_ColumnVarNameInTable="columnDelayID" type="xs:int" />
+              <xs:element name="LineID" msprop:Generator_ColumnPropNameInTable="LineIDColumn" msprop:Generator_ColumnPropNameInRow="LineID" msprop:Generator_UserColumnName="LineID" msprop:Generator_ColumnVarNameInTable="columnLineID" type="xs:int" />
+              <xs:element name="DelayID" msprop:Generator_ColumnPropNameInTable="DelayIDColumn" msprop:Generator_ColumnPropNameInRow="DelayID" msprop:Generator_UserColumnName="DelayID" msprop:Generator_ColumnVarNameInTable="columnDelayID" type="xs:int" />
               <xs:element name="time" msprop:Generator_ColumnPropNameInTable="timeColumn" msprop:Generator_ColumnPropNameInRow="time" msprop:Generator_UserColumnName="time" msprop:Generator_ColumnVarNameInTable="columntime" type="xs:int" minOccurs="0" />
               <xs:element name="timeUnitID" msprop:Generator_ColumnPropNameInTable="timeUnitIDColumn" msprop:Generator_ColumnPropNameInRow="timeUnitID" msprop:Generator_UserColumnName="timeUnitID" msprop:Generator_ColumnVarNameInTable="columntimeUnitID" type="xs:int" minOccurs="0" />
               <xs:element name="retriggerID" msprop:Generator_ColumnPropNameInTable="retriggerIDColumn" msprop:Generator_ColumnPropNameInRow="retriggerID" msprop:Generator_UserColumnName="retriggerID" msprop:Generator_ColumnVarNameInTable="columnretriggerID" type="xs:int" minOccurs="0" />
@@ -59,8 +59,8 @@
         <xs:element name="PortEvent" msprop:Generator_RowEvHandlerName="PortEventRowChangeEventHandler" msprop:Generator_RowDeletedName="PortEventRowDeleted" msprop:Generator_RowDeletingName="PortEventRowDeleting" msprop:Generator_RowEvArgName="PortEventRowChangeEvent" msprop:Generator_TablePropName="PortEvent" msprop:Generator_RowChangedName="PortEventRowChanged" msprop:Generator_UserTableName="PortEvent" msprop:Generator_RowChangingName="PortEventRowChanging" msprop:Generator_RowClassName="PortEventRow" msprop:Generator_TableClassName="PortEventDataTable" msprop:Generator_TableVarName="tablePortEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="LineID" msprop:Generator_UserColumnName="LineID" msprop:Generator_ColumnPropNameInTable="LineIDColumn" msprop:Generator_ColumnPropNameInRow="LineID" msprop:Generator_ColumnVarNameInTable="columnLineID" type="xs:int" />
-              <xs:element name="EventID" msprop:Generator_UserColumnName="EventID" msprop:Generator_ColumnPropNameInTable="EventIDColumn" msprop:Generator_ColumnPropNameInRow="EventID" msprop:Generator_ColumnVarNameInTable="columnEventID" type="xs:int" />
+              <xs:element name="LineID" msprop:Generator_ColumnPropNameInTable="LineIDColumn" msprop:Generator_ColumnPropNameInRow="LineID" msprop:Generator_UserColumnName="LineID" msprop:Generator_ColumnVarNameInTable="columnLineID" type="xs:int" />
+              <xs:element name="EventID" msprop:Generator_ColumnPropNameInTable="EventIDColumn" msprop:Generator_ColumnPropNameInRow="EventID" msprop:Generator_UserColumnName="EventID" msprop:Generator_ColumnVarNameInTable="columnEventID" type="xs:int" />
               <xs:element name="eventConsumer" msprop:Generator_ColumnPropNameInTable="eventConsumerColumn" msprop:Generator_ColumnPropNameInRow="eventConsumer" msprop:Generator_UserColumnName="eventConsumer" msprop:Generator_ColumnVarNameInTable="columneventConsumer" type="xs:string" minOccurs="0" />
               <xs:element name="consumerActionID" msprop:Generator_ColumnPropNameInTable="consumerActionIDColumn" msprop:Generator_ColumnPropNameInRow="consumerActionID" msprop:Generator_UserColumnName="consumerActionID" msprop:Generator_ColumnVarNameInTable="columnconsumerActionID" type="xs:int" minOccurs="0" />
               <xs:element name="producerActionID" msprop:Generator_ColumnPropNameInTable="producerActionIDColumn" msprop:Generator_ColumnPropNameInRow="producerActionID" msprop:Generator_UserColumnName="producerActionID" msprop:Generator_ColumnVarNameInTable="columnproducerActionID" type="xs:int" minOccurs="0" />
@@ -119,7 +119,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TrackCircuitRec" msprop:Generator_RowEvHandlerName="TrackCircuitRecRowChangeEventHandler" msprop:Generator_RowDeletedName="TrackCircuitRecRowDeleted" msprop:Generator_RowDeletingName="TrackCircuitRecRowDeleting" msprop:Generator_RowEvArgName="TrackCircuitRecRowChangeEvent" msprop:Generator_TablePropName="TrackCircuitRec" msprop:Generator_RowChangedName="TrackCircuitRecRowChanged" msprop:Generator_UserTableName="TrackCircuitRec" msprop:Generator_RowChangingName="TrackCircuitRecRowChanging" msprop:Generator_RowClassName="TrackCircuitRecRow" msprop:Generator_TableClassName="TrackCircuitRecDataTable" msprop:Generator_TableVarName="tableTrackCircuitRec">
+        <xs:element name="TrackReceiver" msprop:Generator_RowEvHandlerName="TrackReceiverRowChangeEventHandler" msprop:Generator_RowDeletedName="TrackReceiverRowDeleted" msprop:Generator_RowDeletingName="TrackReceiverRowDeleting" msprop:Generator_RowEvArgName="TrackReceiverRowChangeEvent" msprop:Generator_TablePropName="TrackReceiver" msprop:Generator_RowChangedName="TrackReceiverRowChanged" msprop:Generator_UserTableName="TrackReceiver" msprop:Generator_RowChangingName="TrackReceiverRowChanging" msprop:Generator_RowClassName="TrackReceiverRow" msprop:Generator_TableClassName="TrackReceiverDataTable" msprop:Generator_TableVarName="tableTrackReceiver">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CircuitID" msprop:Generator_ColumnPropNameInTable="CircuitIDColumn" msprop:Generator_ColumnPropNameInRow="CircuitID" msprop:Generator_UserColumnName="CircuitID" msprop:Generator_ColumnVarNameInTable="columnCircuitID" type="xs:int" />
@@ -128,7 +128,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TrackCircuitTran" msprop:Generator_RowEvHandlerName="TrackCircuitTranRowChangeEventHandler" msprop:Generator_RowDeletedName="TrackCircuitTranRowDeleted" msprop:Generator_RowDeletingName="TrackCircuitTranRowDeleting" msprop:Generator_RowEvArgName="TrackCircuitTranRowChangeEvent" msprop:Generator_TablePropName="TrackCircuitTran" msprop:Generator_RowChangedName="TrackCircuitTranRowChanged" msprop:Generator_UserTableName="TrackCircuitTran" msprop:Generator_RowChangingName="TrackCircuitTranRowChanging" msprop:Generator_RowClassName="TrackCircuitTranRow" msprop:Generator_TableClassName="TrackCircuitTranDataTable" msprop:Generator_TableVarName="tableTrackCircuitTran">
+        <xs:element name="TrackTransmitter" msprop:Generator_RowEvHandlerName="TrackTransmitterRowChangeEventHandler" msprop:Generator_RowDeletedName="TrackTransmitterRowDeleted" msprop:Generator_RowDeletingName="TrackTransmitterRowDeleting" msprop:Generator_RowEvArgName="TrackTransmitterRowChangeEvent" msprop:Generator_TablePropName="TrackTransmitter" msprop:Generator_RowChangedName="TrackTransmitterRowChanged" msprop:Generator_UserTableName="TrackTransmitter" msprop:Generator_RowChangingName="TrackTransmitterRowChanging" msprop:Generator_RowClassName="TrackTransmitterRow" msprop:Generator_TableClassName="TrackTransmitterDataTable" msprop:Generator_TableVarName="tableTrackTransmitter">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CircuitID" msprop:Generator_ColumnPropNameInTable="CircuitIDColumn" msprop:Generator_ColumnPropNameInRow="CircuitID" msprop:Generator_UserColumnName="CircuitID" msprop:Generator_ColumnVarNameInTable="columnCircuitID" type="xs:int" />
@@ -229,12 +229,12 @@
       <xs:selector xpath=".//mstns:LogicAction" />
       <xs:field xpath="mstns:LogicID" />
     </xs:unique>
-    <xs:unique name="TrackCircuitRec_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:TrackCircuitRec" />
+    <xs:unique name="TrackReceiver_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TrackReceiver" />
       <xs:field xpath="mstns:CircuitID" />
     </xs:unique>
-    <xs:unique name="TrackCircuitTran_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:TrackCircuitTran" />
+    <xs:unique name="TrackTransmitter_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TrackTransmitter" />
       <xs:field xpath="mstns:CircuitID" />
     </xs:unique>
     <xs:unique name="Mast_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">

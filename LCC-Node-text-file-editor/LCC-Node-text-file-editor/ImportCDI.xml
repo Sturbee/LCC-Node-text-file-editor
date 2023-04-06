@@ -502,82 +502,154 @@
 	</MatchLevel4>
 	
 <!-- Track Circuit Receive -->	
-	<TrackCircuitRec>
+	<TrackReceiver>
 		<value>0</value>
 		<text>Use Variable (C) Event</text>
-	</TrackCircuitRec>
-	<TrackCircuitRec>
+	</TrackReceiver>
+	<TrackReceiver>
 		<value>1</value>
 		<text>Track Circuit 1</text>
-	</TrackCircuitRec>
-	<TrackCircuitRec>
+	</TrackReceiver>
+	<TrackReceiver>
 		<value>2</value>
 		<text>Track Circuit 2</text>
-	</TrackCircuitRec>
-	<TrackCircuitRec>
+	</TrackReceiver>
+	<TrackReceiver>
 		<value>3</value>
 		<text>Track Circuit 3</text>
-	</TrackCircuitRec>
-	<TrackCircuitRec>
+	</TrackReceiver>
+	<TrackReceiver>
 		<value>4</value>
 		<text>Track Circuit 4</text>
-	</TrackCircuitRec>
-	<TrackCircuitRec>
+	</TrackReceiver>
+	<TrackReceiver>
 		<value>5</value>
 		<text>Track Circuit 5</text>
-	</TrackCircuitRec>
-	<TrackCircuitRec>
+	</TrackReceiver>
+	<TrackReceiver>
 		<value>6</value>
 		<text>Track Circuit 6</text>
-	</TrackCircuitRec>
-	<TrackCircuitRec>
+	</TrackReceiver>
+	<TrackReceiver>
 		<value>7</value>
 		<text>Track Circuit 7</text>
-	</TrackCircuitRec>
-	<TrackCircuitRec>
+	</TrackReceiver>
+	<TrackReceiver>
 		<value>8</value>
 		<text>Track Circuit 8</text>
-	</TrackCircuitRec>
+	</TrackReceiver>
 
 <!-- Track Circuit Transmitter -->	
-	<TrackCircuitTran>
+	<TrackTransmitter>
 		<value>0</value>
 		<text>Use Variable (P) Event</text>
-	</TrackCircuitTran>
-	<TrackCircuitTran>
+	</TrackTransmitter>
+	<TrackTransmitter>
 		<value>1</value>
 		<text>Track Circuit 1</text>
-	</TrackCircuitTran>
-	<TrackCircuitTran>
+	</TrackTransmitter>
+	<TrackTransmitter>
 		<value>2</value>
 		<text>Track Circuit 2</text>
-	</TrackCircuitTran>
-	<TrackCircuitTran>
+	</TrackTransmitter>
+	<TrackTransmitter>
 		<value>3</value>
 		<text>Track Circuit 3</text>
-	</TrackCircuitTran>
-	<TrackCircuitTran>
+	</TrackTransmitter>
+	<TrackTransmitter>
 		<value>4</value>
 		<text>Track Circuit 4</text>
-	</TrackCircuitTran>
-	<TrackCircuitTran>
+	</TrackTransmitter>
+	<TrackTransmitter>
 		<value>5</value>
 		<text>Track Circuit 5</text>
-	</TrackCircuitTran>
-	<TrackCircuitTran>
+	</TrackTransmitter>
+	<TrackTransmitter>
 		<value>6</value>
 		<text>Track Circuit 6</text>
-	</TrackCircuitTran>
-	<TrackCircuitTran>
+	</TrackTransmitter>
+	<TrackTransmitter>
 		<value>7</value>
 		<text>Track Circuit 7</text>
-	</TrackCircuitTran>
-	<TrackCircuitTran>
+	</TrackTransmitter>
+	<TrackTransmitter>
 		<value>8</value>
 		<text>Track Circuit 8</text>
-	</TrackCircuitTran>
-	
-	
+	</TrackTransmitter>
+
+
+	<!-- Lamp Name used by Mast and Lamp -->
+	<LampName>
+		<value>0</value>
+		<text>Used by Mast</text>
+	</LampName>
+	<LampName>
+		<value>1</value>
+		<text>#1 H1-G</text>
+	</LampName>
+	<LampName>
+		<value>2</value>
+		<text>#2 H1-Y</text>
+	</LampName>
+	<LampName>
+		<value>3</value>
+		<text>#3 H1-R</text>
+	</LampName>
+	<LampName>
+		<value>4</value>
+		<text>#4 H1-L</text>
+	</LampName>
+	<LampName>
+		<value>5</value>
+		<text>#5 H2-G</text>
+	</LampName>
+	<LampName>
+		<value>6</value>
+		<text>#6 H2-Y</text>
+	</LampName>
+	<LampName>
+		<value>7</value>
+		<text>#7 H2-R</text>
+	</LampName>
+	<LampName>
+		<value>8</value>
+		<text>#8 H2-L</text>
+	</LampName>
+	<LampName>
+		<value>9</value>
+		<text>#9 H3-G</text>
+	</LampName>
+	<LampName>
+		<value>10</value>
+		<text>#10 H3-Y</text>
+	</LampName>
+	<LampName>
+		<value>11</value>
+		<text>#11 H3-R</text>
+	</LampName>
+	<LampName>
+		<value>12</value>
+		<text>#12 H3-L</text>
+	</LampName>
+	<LampName>
+		<value>13</value>
+		<text>#13 H4-G</text>
+	</LampName>
+	<LampName>
+		<value>14</value>
+		<text>#14 H4-Y</text>
+	</LampName>
+	<LampName>
+		<value>15</value>
+		<text>#15 H4-R</text>
+	</LampName>
+	<LampName>
+		<value>16</value>
+		<text>#16 H4-L</text>
+	</LampName>
+
+
+
 	<!-- User edited parameters-->	
 	
 	<TrackSpeed>

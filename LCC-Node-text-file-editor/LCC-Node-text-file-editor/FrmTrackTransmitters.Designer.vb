@@ -26,8 +26,17 @@ Partial Class FrmTrackTransmitters
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.LblSubHeader = New System.Windows.Forms.Label()
-        Me.LblHelp = New System.Windows.Forms.Label()
+        Me.LblHelp1 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.TxtLinkEvent = New System.Windows.Forms.TextBox()
+        Me.LblHelp2 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.TxtDescription = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.BtnSave = New System.Windows.Forms.Button()
         Me.TabControlTransmitters.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControlTransmitters
@@ -38,7 +47,7 @@ Partial Class FrmTrackTransmitters
         Me.TabControlTransmitters.Multiline = True
         Me.TabControlTransmitters.Name = "TabControlTransmitters"
         Me.TabControlTransmitters.SelectedIndex = 0
-        Me.TabControlTransmitters.Size = New System.Drawing.Size(889, 502)
+        Me.TabControlTransmitters.Size = New System.Drawing.Size(700, 41)
         Me.TabControlTransmitters.TabIndex = 5
         '
         'TabPage1
@@ -46,7 +55,7 @@ Partial Class FrmTrackTransmitters
         Me.TabPage1.Location = New System.Drawing.Point(4, 25)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(881, 473)
+        Me.TabPage1.Size = New System.Drawing.Size(692, 12)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -56,7 +65,7 @@ Partial Class FrmTrackTransmitters
         Me.TabPage2.Location = New System.Drawing.Point(4, 25)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(881, 473)
+        Me.TabPage2.Size = New System.Drawing.Size(692, 12)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -71,26 +80,97 @@ Partial Class FrmTrackTransmitters
         Me.LblSubHeader.TabIndex = 6
         Me.LblSubHeader.Text = "LblSubHeader"
         '
-        'LblHelp
+        'LblHelp1
         '
-        Me.LblHelp.AutoSize = True
-        Me.LblHelp.Location = New System.Drawing.Point(10, 35)
-        Me.LblHelp.Name = "LblHelp"
-        Me.LblHelp.Size = New System.Drawing.Size(50, 16)
-        Me.LblHelp.TabIndex = 9
-        Me.LblHelp.Text = "lblHelp"
+        Me.LblHelp1.AutoSize = True
+        Me.LblHelp1.Location = New System.Drawing.Point(10, 35)
+        Me.LblHelp1.Name = "LblHelp1"
+        Me.LblHelp1.Size = New System.Drawing.Size(57, 16)
+        Me.LblHelp1.TabIndex = 9
+        Me.LblHelp1.Text = "lblHelp1"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.TxtLinkEvent)
+        Me.GroupBox2.Controls.Add(Me.LblHelp2)
+        Me.GroupBox2.Location = New System.Drawing.Point(10, 180)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(696, 96)
+        Me.GroupBox2.TabIndex = 11
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Link Address"
+        '
+        'TxtLinkEvent
+        '
+        Me.TxtLinkEvent.Enabled = False
+        Me.TxtLinkEvent.Location = New System.Drawing.Point(37, 54)
+        Me.TxtLinkEvent.Name = "TxtLinkEvent"
+        Me.TxtLinkEvent.Size = New System.Drawing.Size(348, 22)
+        Me.TxtLinkEvent.TabIndex = 1
+        '
+        'LblHelp2
+        '
+        Me.LblHelp2.AutoSize = True
+        Me.LblHelp2.Location = New System.Drawing.Point(34, 22)
+        Me.LblHelp2.Name = "LblHelp2"
+        Me.LblHelp2.Size = New System.Drawing.Size(57, 16)
+        Me.LblHelp2.TabIndex = 0
+        Me.LblHelp2.Text = "lblHelp2"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.TxtDescription)
+        Me.GroupBox1.Location = New System.Drawing.Point(10, 102)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(696, 72)
+        Me.GroupBox1.TabIndex = 10
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Remote Mast Description"
+        '
+        'TxtDescription
+        '
+        Me.TxtDescription.Location = New System.Drawing.Point(34, 33)
+        Me.TxtDescription.Name = "TxtDescription"
+        Me.TxtDescription.Size = New System.Drawing.Size(351, 22)
+        Me.TxtDescription.TabIndex = 0
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(516, 31)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(96, 16)
+        Me.Label4.TabIndex = 16
+        Me.Label4.Text = "Save Changes"
+        '
+        'BtnSave
+        '
+        Me.BtnSave.Location = New System.Drawing.Point(635, 28)
+        Me.BtnSave.Name = "BtnSave"
+        Me.BtnSave.Size = New System.Drawing.Size(75, 23)
+        Me.BtnSave.TabIndex = 15
+        Me.BtnSave.Text = "Save"
+        Me.BtnSave.UseVisualStyleBackColor = True
         '
         'FrmTrackTransmitters
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(927, 583)
-        Me.Controls.Add(Me.LblHelp)
+        Me.ClientSize = New System.Drawing.Size(722, 303)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.BtnSave)
+        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.LblHelp1)
         Me.Controls.Add(Me.LblSubHeader)
         Me.Controls.Add(Me.TabControlTransmitters)
         Me.Name = "FrmTrackTransmitters"
         Me.Text = "FrmTrackTransmitters"
         Me.TabControlTransmitters.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -100,5 +180,12 @@ Partial Class FrmTrackTransmitters
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents LblSubHeader As Label
-    Friend WithEvents LblHelp As Label
+    Friend WithEvents LblHelp1 As Label
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents TxtLinkEvent As TextBox
+    Friend WithEvents LblHelp2 As Label
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents TxtDescription As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents BtnSave As Button
 End Class

@@ -24,10 +24,28 @@ Public Class FrmLamps
         Me.Text = rowTitle.header
         Me.LblSubHeader.Text = rowTitle.subHeader
         Me.LblHelp.Text = rowTitle.help
+        Me.LblLampOn.Text = rowTitle.lampOn
+        Me.LblLampOff.Text = rowTitle.lampOff
+        Me.LblBrightness.Text = rowTitle.brightness
+
 
         ' read the attribute xml file
         Dim clsR As New ClsReport
         Dim dsRpt As Rpt = clsR.MyReport
+
+        Me.CmbLampFade.BeginUpdate()
+        For I = 0 To clsR.MyReport.LampFade.Count - 1
+            Dim row As Rpt.LampFadeRow = clsR.MyReport.LampFade.Item(I)
+            Me.CmbLampFade.Items.Add(row.text)
+        Next
+        Me.CmbLampFade.EndUpdate()
+
+        Me.CmbLampPhase.BeginUpdate()
+        For I = 0 To clsR.MyReport.LampPhase.Count - 1
+            Dim row As Rpt.LampPhaseRow = clsR.MyReport.LampPhase.Item(I)
+            Me.CmbLampPhase.Items.Add(row.text)
+        Next
+        Me.CmbLampPhase.EndUpdate()
 
         ' read the file to read and edit
         Me.Tag = Me.Owner.Tag
@@ -41,6 +59,7 @@ Public Class FrmLamps
             Exit Sub
         End Try
 
+
         ' populate tab control
         Try
 
@@ -51,14 +70,12 @@ Public Class FrmLamps
                 Dim row As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(count)
 
                 Dim MyTabPage As New TabPage With {
-                .Text = rowTitle.subHeader + Space(1) + count.ToString + Space(1) + row.description
+                .Text = count.ToString + " - " + row.description
                 }
 
                 Me.TabControlLamps.Controls.Add(MyTabPage)
 
             Next
-
-            Me.TabControlLamps.SelectedIndex = -1
 
         Catch ex As Exception
             MsgBox("Failed to populate tab control")
@@ -67,40 +84,61 @@ Public Class FrmLamps
 
     End Sub
 
-    Private Sub CheckFormAndOpen(frm As Form)
+    Private Sub TabControlLamps_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlLamps.Selected
 
-        If Me.OwnedForms.Length = 0 Then
-            ' do nothing
+        Dim lampID As Integer
+
+        If e.TabPageIndex = -1 Then
+            lampID = 1
         Else
-            For count = 0 To Me.OwnedForms.Length - 1
-                If Me.OwnedForms(count).Name = frm.Name Then
-                    Beep()
-                    Exit Sub
-                End If
-            Next
+            lampID = e.TabPageIndex + 1
         End If
+        ' fill in row values
+        Dim row As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(lampID)
 
-        Me.AddOwnedForm(frm)
-        frm.Show()
+        Me.TxtDescription.Text = row.description
+            Me.TxtLampOn.Text = row.eventOn
+            Me.TxtLampOff.Text = row.eventOff
+            Me.TxtBrightness.Text = row.brightness
+
+            Me.CmbLampFade.SelectedIndex = row.lampFadeID
+            Me.CmbLampPhase.SelectedIndex = row.lampPhaseID
 
     End Sub
 
-    Private Sub TabControlLamps_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlLamps.Selected
+    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
 
-        If e.TabPageIndex = -1 Then
-            ' do nothing
-        Else
-            ' fill in row values
-            Dim row As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(e.TabPageIndex + 1)
+        Try
+            Dim row As ExportXml.LampRow = MyExportXml.Lamp.FindByLampID(Me.TabControlLamps.SelectedIndex + 1)
+            row.description = Me.TxtDescription.Text
+            row.eventOn = Me.TxtLampOn.Text
+            row.eventOff = Me.TxtLampOff.Text
+            row.lampFadeID = Me.CmbLampFade.SelectedIndex
+            row.lampPhaseID = Me.CmbLampPhase.SelectedIndex
 
-            Dim frm As New FrmLamp With {
-                .MyLampID = e.TabPageIndex + 1
-            }
-            Call Me.CheckFormAndOpen(frm)
+            ' check for integer value
+            Try
+                row.brightness = Me.TxtBrightness.Text
+                If (row.brightness > 255) Or (row.brightness < 0) Then
+                    MsgBox("Brightness value out of range")
+                    Exit Sub
+                End If
+            Catch ex As Exception
+                MsgBox("Brighness value is not a integer")
+                Exit Sub
+            End Try
 
-        End If
+            Me.MyExportXml.WriteXml(Me.MyFilePath)
+            MsgBox("Saved changes to file " + Me.MyFileName)
 
-        Me.TabControlLamps.SelectedIndex = -1
+            ' need to reload after save
+            MyExportXml = New ExportXml
+            Call Me.DisplayValues()
+
+        Catch ex As Exception
+            MsgBox("Failed to save lamp data")
+            Exit Sub
+        End Try
 
     End Sub
 

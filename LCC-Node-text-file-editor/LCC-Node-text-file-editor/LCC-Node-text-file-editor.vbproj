@@ -110,12 +110,6 @@
     <Compile Include="FrmFileRestore.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmLamp.Designer.vb">
-      <DependentUpon>FrmLamp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FrmLamp.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FrmLamps.Designer.vb">
       <DependentUpon>FrmLamps.vb</DependentUpon>
     </Compile>
@@ -243,9 +237,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFileRestore.resx">
       <DependentUpon>FrmFileRestore.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmLamp.resx">
-      <DependentUpon>FrmLamp.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLamps.resx">
       <DependentUpon>FrmLamps.vb</DependentUpon>

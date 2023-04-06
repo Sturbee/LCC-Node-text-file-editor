@@ -23,7 +23,8 @@ Public Class FrmTrackReceivers
         Dim rowTitle As Titles.TrackRecTitlesRow = dsTitles.TrackRecTitles.Item(0)
         Me.Text = rowTitle.header
         Me.LblSubHeader.Text = rowTitle.subHeader
-        Me.LblHelp.Text = rowTitle.help
+        Me.LblHelp1.Text = rowTitle.help1
+        Me.LblHelp2.Text = rowTitle.help2
 
         ' read the attribute xml file
         Dim clsR As New ClsReport
@@ -47,17 +48,17 @@ Public Class FrmTrackReceivers
 
             For count = 1 To Me.MyTrackCircuits
 
-                Dim row As ExportXml.TrackCircuitRecRow = Me.MyExportXml.TrackCircuitRec.FindByCircuitID(count)
+                Dim row As ExportXml.TrackReceiverRow = Me.MyExportXml.TrackReceiver.FindByCircuitID(count)
 
                 Dim circuit As String = String.Empty
                 If row.description.Length = 0 Then
-                    circuit = rowTitle.subHeader + Space(1) + count.ToString
+                    circuit = rowTitle.subHeader
                 Else
                     circuit = row.description
                 End If
 
                 Dim MyTabPage As New TabPage With {
-                .Text = circuit
+                .Text = count.ToString + " - " + circuit
                 }
 
                 Me.TabControlReceivers.Controls.Add(MyTabPage)
@@ -73,7 +74,37 @@ Public Class FrmTrackReceivers
 
     Private Sub TabControlReceivers_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlReceivers.Selected
 
-        ' Stop
+        Dim circuitID As Integer
+
+        If e.TabPageIndex = -1 Then
+            circuitID = 1
+        Else
+            circuitID = e.TabPageIndex + 1
+        End If
+        ' fill in row values
+        Dim row As ExportXml.TrackReceiverRow = Me.MyExportXml.TrackReceiver.FindByCircuitID(circuitID)
+        Me.TxtDescription.Text = row.description
+        Me.TxtLinkEvent.Text = row.eventAddress
+
+    End Sub
+
+    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+
+        Try
+            Dim row As ExportXml.TrackReceiverRow = MyExportXml.TrackReceiver.FindByCircuitID(Me.TabControlReceivers.SelectedIndex + 1)
+            row.description = Me.TxtDescription.Text
+            row.eventAddress = Me.TxtLinkEvent.Text
+            Me.MyExportXml.WriteXml(Me.MyFilePath)
+            MsgBox("Saved changes to file " + Me.MyFileName)
+
+            ' need to reload after save
+            MyExportXml = New ExportXml
+            Call Me.DisplayValues()
+
+        Catch ex As Exception
+            MsgBox("Failed to save track receiver circuit data")
+            Exit Sub
+        End Try
 
     End Sub
 

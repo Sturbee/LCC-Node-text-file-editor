@@ -43,9 +43,9 @@ Partial Public Class ExportXml
     
     Private tableLogicAction As LogicActionDataTable
     
-    Private tableTrackCircuitRec As TrackCircuitRecDataTable
+    Private tableTrackReceiver As TrackReceiverDataTable
     
-    Private tableTrackCircuitTran As TrackCircuitTranDataTable
+    Private tableTrackTransmitter As TrackTransmitterDataTable
     
     Private tableMast As MastDataTable
     
@@ -111,11 +111,11 @@ Partial Public Class ExportXml
             If (Not (ds.Tables("LogicAction")) Is Nothing) Then
                 MyBase.Tables.Add(New LogicActionDataTable(ds.Tables("LogicAction")))
             End If
-            If (Not (ds.Tables("TrackCircuitRec")) Is Nothing) Then
-                MyBase.Tables.Add(New TrackCircuitRecDataTable(ds.Tables("TrackCircuitRec")))
+            If (Not (ds.Tables("TrackReceiver")) Is Nothing) Then
+                MyBase.Tables.Add(New TrackReceiverDataTable(ds.Tables("TrackReceiver")))
             End If
-            If (Not (ds.Tables("TrackCircuitTran")) Is Nothing) Then
-                MyBase.Tables.Add(New TrackCircuitTranDataTable(ds.Tables("TrackCircuitTran")))
+            If (Not (ds.Tables("TrackTransmitter")) Is Nothing) Then
+                MyBase.Tables.Add(New TrackTransmitterDataTable(ds.Tables("TrackTransmitter")))
             End If
             If (Not (ds.Tables("Mast")) Is Nothing) Then
                 MyBase.Tables.Add(New MastDataTable(ds.Tables("Mast")))
@@ -240,9 +240,9 @@ Partial Public Class ExportXml
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property TrackCircuitRec() As TrackCircuitRecDataTable
+    Public ReadOnly Property TrackReceiver() As TrackReceiverDataTable
         Get
-            Return Me.tableTrackCircuitRec
+            Return Me.tableTrackReceiver
         End Get
     End Property
     
@@ -250,9 +250,9 @@ Partial Public Class ExportXml
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property TrackCircuitTran() As TrackCircuitTranDataTable
+    Public ReadOnly Property TrackTransmitter() As TrackTransmitterDataTable
         Get
-            Return Me.tableTrackCircuitTran
+            Return Me.tableTrackTransmitter
         End Get
     End Property
     
@@ -390,11 +390,11 @@ Partial Public Class ExportXml
             If (Not (ds.Tables("LogicAction")) Is Nothing) Then
                 MyBase.Tables.Add(New LogicActionDataTable(ds.Tables("LogicAction")))
             End If
-            If (Not (ds.Tables("TrackCircuitRec")) Is Nothing) Then
-                MyBase.Tables.Add(New TrackCircuitRecDataTable(ds.Tables("TrackCircuitRec")))
+            If (Not (ds.Tables("TrackReceiver")) Is Nothing) Then
+                MyBase.Tables.Add(New TrackReceiverDataTable(ds.Tables("TrackReceiver")))
             End If
-            If (Not (ds.Tables("TrackCircuitTran")) Is Nothing) Then
-                MyBase.Tables.Add(New TrackCircuitTranDataTable(ds.Tables("TrackCircuitTran")))
+            If (Not (ds.Tables("TrackTransmitter")) Is Nothing) Then
+                MyBase.Tables.Add(New TrackTransmitterDataTable(ds.Tables("TrackTransmitter")))
             End If
             If (Not (ds.Tables("Mast")) Is Nothing) Then
                 MyBase.Tables.Add(New MastDataTable(ds.Tables("Mast")))
@@ -494,16 +494,16 @@ Partial Public Class ExportXml
                 Me.tableLogicAction.InitVars
             End If
         End If
-        Me.tableTrackCircuitRec = CType(MyBase.Tables("TrackCircuitRec"),TrackCircuitRecDataTable)
+        Me.tableTrackReceiver = CType(MyBase.Tables("TrackReceiver"),TrackReceiverDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableTrackCircuitRec) Is Nothing) Then
-                Me.tableTrackCircuitRec.InitVars
+            If (Not (Me.tableTrackReceiver) Is Nothing) Then
+                Me.tableTrackReceiver.InitVars
             End If
         End If
-        Me.tableTrackCircuitTran = CType(MyBase.Tables("TrackCircuitTran"),TrackCircuitTranDataTable)
+        Me.tableTrackTransmitter = CType(MyBase.Tables("TrackTransmitter"),TrackTransmitterDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableTrackCircuitTran) Is Nothing) Then
-                Me.tableTrackCircuitTran.InitVars
+            If (Not (Me.tableTrackTransmitter) Is Nothing) Then
+                Me.tableTrackTransmitter.InitVars
             End If
         End If
         Me.tableMast = CType(MyBase.Tables("Mast"),MastDataTable)
@@ -558,10 +558,10 @@ Partial Public Class ExportXml
         MyBase.Tables.Add(Me.tableLogicOperation)
         Me.tableLogicAction = New LogicActionDataTable()
         MyBase.Tables.Add(Me.tableLogicAction)
-        Me.tableTrackCircuitRec = New TrackCircuitRecDataTable()
-        MyBase.Tables.Add(Me.tableTrackCircuitRec)
-        Me.tableTrackCircuitTran = New TrackCircuitTranDataTable()
-        MyBase.Tables.Add(Me.tableTrackCircuitTran)
+        Me.tableTrackReceiver = New TrackReceiverDataTable()
+        MyBase.Tables.Add(Me.tableTrackReceiver)
+        Me.tableTrackTransmitter = New TrackTransmitterDataTable()
+        MyBase.Tables.Add(Me.tableTrackTransmitter)
         Me.tableMast = New MastDataTable()
         MyBase.Tables.Add(Me.tableMast)
         Me.tableMastRule = New MastRuleDataTable()
@@ -628,13 +628,13 @@ Partial Public Class ExportXml
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerializeTrackCircuitRec() As Boolean
+    Private Function ShouldSerializeTrackReceiver() As Boolean
         Return false
     End Function
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerializeTrackCircuitTran() As Boolean
+    Private Function ShouldSerializeTrackTransmitter() As Boolean
         Return false
     End Function
     
@@ -748,10 +748,10 @@ Partial Public Class ExportXml
     Public Delegate Sub LogicActionRowChangeEventHandler(ByVal sender As Object, ByVal e As LogicActionRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Delegate Sub TrackCircuitRecRowChangeEventHandler(ByVal sender As Object, ByVal e As TrackCircuitRecRowChangeEvent)
+    Public Delegate Sub TrackReceiverRowChangeEventHandler(ByVal sender As Object, ByVal e As TrackReceiverRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Delegate Sub TrackCircuitTranRowChangeEventHandler(ByVal sender As Object, ByVal e As TrackCircuitTranRowChangeEvent)
+    Public Delegate Sub TrackTransmitterRowChangeEventHandler(ByVal sender As Object, ByVal e As TrackTransmitterRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Public Delegate Sub MastRowChangeEventHandler(ByVal sender As Object, ByVal e As MastRowChangeEvent)
@@ -3732,8 +3732,8 @@ Partial Public Class ExportXml
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class TrackCircuitRecDataTable
-        Inherits Global.System.Data.TypedTableBase(Of TrackCircuitRecRow)
+    Partial Public Class TrackReceiverDataTable
+        Inherits Global.System.Data.TypedTableBase(Of TrackReceiverRow)
         
         Private columnCircuitID As Global.System.Data.DataColumn
         
@@ -3745,7 +3745,7 @@ Partial Public Class ExportXml
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "TrackCircuitRec"
+            Me.TableName = "TrackReceiver"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -3811,50 +3811,50 @@ Partial Public Class ExportXml
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As TrackCircuitRecRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As TrackReceiverRow
             Get
-                Return CType(Me.Rows(index),TrackCircuitRecRow)
+                Return CType(Me.Rows(index),TrackReceiverRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event TrackCircuitRecRowChanging As TrackCircuitRecRowChangeEventHandler
+        Public Event TrackReceiverRowChanging As TrackReceiverRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event TrackCircuitRecRowChanged As TrackCircuitRecRowChangeEventHandler
+        Public Event TrackReceiverRowChanged As TrackReceiverRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event TrackCircuitRecRowDeleting As TrackCircuitRecRowChangeEventHandler
+        Public Event TrackReceiverRowDeleting As TrackReceiverRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event TrackCircuitRecRowDeleted As TrackCircuitRecRowChangeEventHandler
+        Public Event TrackReceiverRowDeleted As TrackReceiverRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Sub AddTrackCircuitRecRow(ByVal row As TrackCircuitRecRow)
+        Public Overloads Sub AddTrackReceiverRow(ByVal row As TrackReceiverRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddTrackCircuitRecRow(ByVal CircuitID As Integer, ByVal description As String, ByVal eventAddress As String) As TrackCircuitRecRow
-            Dim rowTrackCircuitRecRow As TrackCircuitRecRow = CType(Me.NewRow,TrackCircuitRecRow)
+        Public Overloads Function AddTrackReceiverRow(ByVal CircuitID As Integer, ByVal description As String, ByVal eventAddress As String) As TrackReceiverRow
+            Dim rowTrackReceiverRow As TrackReceiverRow = CType(Me.NewRow,TrackReceiverRow)
             Dim columnValuesArray() As Object = New Object() {CircuitID, description, eventAddress}
-            rowTrackCircuitRecRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowTrackCircuitRecRow)
-            Return rowTrackCircuitRecRow
+            rowTrackReceiverRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowTrackReceiverRow)
+            Return rowTrackReceiverRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindByCircuitID(ByVal CircuitID As Integer) As TrackCircuitRecRow
-            Return CType(Me.Rows.Find(New Object() {CircuitID}),TrackCircuitRecRow)
+        Public Function FindByCircuitID(ByVal CircuitID As Integer) As TrackReceiverRow
+            Return CType(Me.Rows.Find(New Object() {CircuitID}),TrackReceiverRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As TrackCircuitRecDataTable = CType(MyBase.Clone,TrackCircuitRecDataTable)
+            Dim cln As TrackReceiverDataTable = CType(MyBase.Clone,TrackReceiverDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -3862,7 +3862,7 @@ Partial Public Class ExportXml
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New TrackCircuitRecDataTable()
+            Return New TrackReceiverDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3889,28 +3889,28 @@ Partial Public Class ExportXml
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function NewTrackCircuitRecRow() As TrackCircuitRecRow
-            Return CType(Me.NewRow,TrackCircuitRecRow)
+        Public Function NewTrackReceiverRow() As TrackReceiverRow
+            Return CType(Me.NewRow,TrackReceiverRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New TrackCircuitRecRow(builder)
+            Return New TrackReceiverRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(TrackCircuitRecRow)
+            Return GetType(TrackReceiverRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.TrackCircuitRecRowChangedEvent) Is Nothing) Then
-                RaiseEvent TrackCircuitRecRowChanged(Me, New TrackCircuitRecRowChangeEvent(CType(e.Row,TrackCircuitRecRow), e.Action))
+            If (Not (Me.TrackReceiverRowChangedEvent) Is Nothing) Then
+                RaiseEvent TrackReceiverRowChanged(Me, New TrackReceiverRowChangeEvent(CType(e.Row,TrackReceiverRow), e.Action))
             End If
         End Sub
         
@@ -3918,8 +3918,8 @@ Partial Public Class ExportXml
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.TrackCircuitRecRowChangingEvent) Is Nothing) Then
-                RaiseEvent TrackCircuitRecRowChanging(Me, New TrackCircuitRecRowChangeEvent(CType(e.Row,TrackCircuitRecRow), e.Action))
+            If (Not (Me.TrackReceiverRowChangingEvent) Is Nothing) Then
+                RaiseEvent TrackReceiverRowChanging(Me, New TrackReceiverRowChangeEvent(CType(e.Row,TrackReceiverRow), e.Action))
             End If
         End Sub
         
@@ -3927,8 +3927,8 @@ Partial Public Class ExportXml
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.TrackCircuitRecRowDeletedEvent) Is Nothing) Then
-                RaiseEvent TrackCircuitRecRowDeleted(Me, New TrackCircuitRecRowChangeEvent(CType(e.Row,TrackCircuitRecRow), e.Action))
+            If (Not (Me.TrackReceiverRowDeletedEvent) Is Nothing) Then
+                RaiseEvent TrackReceiverRowDeleted(Me, New TrackReceiverRowChangeEvent(CType(e.Row,TrackReceiverRow), e.Action))
             End If
         End Sub
         
@@ -3936,14 +3936,14 @@ Partial Public Class ExportXml
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.TrackCircuitRecRowDeletingEvent) Is Nothing) Then
-                RaiseEvent TrackCircuitRecRowDeleting(Me, New TrackCircuitRecRowChangeEvent(CType(e.Row,TrackCircuitRecRow), e.Action))
+            If (Not (Me.TrackReceiverRowDeletingEvent) Is Nothing) Then
+                RaiseEvent TrackReceiverRowDeleting(Me, New TrackReceiverRowChangeEvent(CType(e.Row,TrackReceiverRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub RemoveTrackCircuitRecRow(ByVal row As TrackCircuitRecRow)
+        Public Sub RemoveTrackReceiverRow(ByVal row As TrackReceiverRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -3970,7 +3970,7 @@ Partial Public Class ExportXml
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "TrackCircuitRecDataTable"
+            attribute2.FixedValue = "TrackReceiverDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -4019,8 +4019,8 @@ Partial Public Class ExportXml
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class TrackCircuitTranDataTable
-        Inherits Global.System.Data.TypedTableBase(Of TrackCircuitTranRow)
+    Partial Public Class TrackTransmitterDataTable
+        Inherits Global.System.Data.TypedTableBase(Of TrackTransmitterRow)
         
         Private columnCircuitID As Global.System.Data.DataColumn
         
@@ -4032,7 +4032,7 @@ Partial Public Class ExportXml
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "TrackCircuitTran"
+            Me.TableName = "TrackTransmitter"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -4098,50 +4098,50 @@ Partial Public Class ExportXml
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As TrackCircuitTranRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As TrackTransmitterRow
             Get
-                Return CType(Me.Rows(index),TrackCircuitTranRow)
+                Return CType(Me.Rows(index),TrackTransmitterRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event TrackCircuitTranRowChanging As TrackCircuitTranRowChangeEventHandler
+        Public Event TrackTransmitterRowChanging As TrackTransmitterRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event TrackCircuitTranRowChanged As TrackCircuitTranRowChangeEventHandler
+        Public Event TrackTransmitterRowChanged As TrackTransmitterRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event TrackCircuitTranRowDeleting As TrackCircuitTranRowChangeEventHandler
+        Public Event TrackTransmitterRowDeleting As TrackTransmitterRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event TrackCircuitTranRowDeleted As TrackCircuitTranRowChangeEventHandler
+        Public Event TrackTransmitterRowDeleted As TrackTransmitterRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Sub AddTrackCircuitTranRow(ByVal row As TrackCircuitTranRow)
+        Public Overloads Sub AddTrackTransmitterRow(ByVal row As TrackTransmitterRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddTrackCircuitTranRow(ByVal CircuitID As Integer, ByVal description As String, ByVal eventAddress As String) As TrackCircuitTranRow
-            Dim rowTrackCircuitTranRow As TrackCircuitTranRow = CType(Me.NewRow,TrackCircuitTranRow)
+        Public Overloads Function AddTrackTransmitterRow(ByVal CircuitID As Integer, ByVal description As String, ByVal eventAddress As String) As TrackTransmitterRow
+            Dim rowTrackTransmitterRow As TrackTransmitterRow = CType(Me.NewRow,TrackTransmitterRow)
             Dim columnValuesArray() As Object = New Object() {CircuitID, description, eventAddress}
-            rowTrackCircuitTranRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowTrackCircuitTranRow)
-            Return rowTrackCircuitTranRow
+            rowTrackTransmitterRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowTrackTransmitterRow)
+            Return rowTrackTransmitterRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindByCircuitID(ByVal CircuitID As Integer) As TrackCircuitTranRow
-            Return CType(Me.Rows.Find(New Object() {CircuitID}),TrackCircuitTranRow)
+        Public Function FindByCircuitID(ByVal CircuitID As Integer) As TrackTransmitterRow
+            Return CType(Me.Rows.Find(New Object() {CircuitID}),TrackTransmitterRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As TrackCircuitTranDataTable = CType(MyBase.Clone,TrackCircuitTranDataTable)
+            Dim cln As TrackTransmitterDataTable = CType(MyBase.Clone,TrackTransmitterDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -4149,7 +4149,7 @@ Partial Public Class ExportXml
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New TrackCircuitTranDataTable()
+            Return New TrackTransmitterDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4176,28 +4176,28 @@ Partial Public Class ExportXml
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function NewTrackCircuitTranRow() As TrackCircuitTranRow
-            Return CType(Me.NewRow,TrackCircuitTranRow)
+        Public Function NewTrackTransmitterRow() As TrackTransmitterRow
+            Return CType(Me.NewRow,TrackTransmitterRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New TrackCircuitTranRow(builder)
+            Return New TrackTransmitterRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(TrackCircuitTranRow)
+            Return GetType(TrackTransmitterRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.TrackCircuitTranRowChangedEvent) Is Nothing) Then
-                RaiseEvent TrackCircuitTranRowChanged(Me, New TrackCircuitTranRowChangeEvent(CType(e.Row,TrackCircuitTranRow), e.Action))
+            If (Not (Me.TrackTransmitterRowChangedEvent) Is Nothing) Then
+                RaiseEvent TrackTransmitterRowChanged(Me, New TrackTransmitterRowChangeEvent(CType(e.Row,TrackTransmitterRow), e.Action))
             End If
         End Sub
         
@@ -4205,8 +4205,8 @@ Partial Public Class ExportXml
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.TrackCircuitTranRowChangingEvent) Is Nothing) Then
-                RaiseEvent TrackCircuitTranRowChanging(Me, New TrackCircuitTranRowChangeEvent(CType(e.Row,TrackCircuitTranRow), e.Action))
+            If (Not (Me.TrackTransmitterRowChangingEvent) Is Nothing) Then
+                RaiseEvent TrackTransmitterRowChanging(Me, New TrackTransmitterRowChangeEvent(CType(e.Row,TrackTransmitterRow), e.Action))
             End If
         End Sub
         
@@ -4214,8 +4214,8 @@ Partial Public Class ExportXml
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.TrackCircuitTranRowDeletedEvent) Is Nothing) Then
-                RaiseEvent TrackCircuitTranRowDeleted(Me, New TrackCircuitTranRowChangeEvent(CType(e.Row,TrackCircuitTranRow), e.Action))
+            If (Not (Me.TrackTransmitterRowDeletedEvent) Is Nothing) Then
+                RaiseEvent TrackTransmitterRowDeleted(Me, New TrackTransmitterRowChangeEvent(CType(e.Row,TrackTransmitterRow), e.Action))
             End If
         End Sub
         
@@ -4223,14 +4223,14 @@ Partial Public Class ExportXml
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.TrackCircuitTranRowDeletingEvent) Is Nothing) Then
-                RaiseEvent TrackCircuitTranRowDeleting(Me, New TrackCircuitTranRowChangeEvent(CType(e.Row,TrackCircuitTranRow), e.Action))
+            If (Not (Me.TrackTransmitterRowDeletingEvent) Is Nothing) Then
+                RaiseEvent TrackTransmitterRowDeleting(Me, New TrackTransmitterRowChangeEvent(CType(e.Row,TrackTransmitterRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub RemoveTrackCircuitTranRow(ByVal row As TrackCircuitTranRow)
+        Public Sub RemoveTrackTransmitterRow(ByVal row As TrackTransmitterRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -4257,7 +4257,7 @@ Partial Public Class ExportXml
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "TrackCircuitTranDataTable"
+            attribute2.FixedValue = "TrackTransmitterDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -7015,26 +7015,26 @@ Partial Public Class ExportXml
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class TrackCircuitRecRow
+    Partial Public Class TrackReceiverRow
         Inherits Global.System.Data.DataRow
         
-        Private tableTrackCircuitRec As TrackCircuitRecDataTable
+        Private tableTrackReceiver As TrackReceiverDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableTrackCircuitRec = CType(Me.Table,TrackCircuitRecDataTable)
+            Me.tableTrackReceiver = CType(Me.Table,TrackReceiverDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property CircuitID() As Integer
             Get
-                Return CType(Me(Me.tableTrackCircuitRec.CircuitIDColumn),Integer)
+                Return CType(Me(Me.tableTrackReceiver.CircuitIDColumn),Integer)
             End Get
             Set
-                Me(Me.tableTrackCircuitRec.CircuitIDColumn) = value
+                Me(Me.tableTrackReceiver.CircuitIDColumn) = value
             End Set
         End Property
         
@@ -7043,13 +7043,13 @@ Partial Public Class ExportXml
         Public Property description() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTrackCircuitRec.descriptionColumn),String)
+                    Return CType(Me(Me.tableTrackReceiver.descriptionColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'description' in table 'TrackCircuitRec' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'description' in table 'TrackReceiver' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTrackCircuitRec.descriptionColumn) = value
+                Me(Me.tableTrackReceiver.descriptionColumn) = value
             End Set
         End Property
         
@@ -7058,64 +7058,64 @@ Partial Public Class ExportXml
         Public Property eventAddress() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTrackCircuitRec.eventAddressColumn),String)
+                    Return CType(Me(Me.tableTrackReceiver.eventAddressColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'eventAddress' in table 'TrackCircuitRec' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'eventAddress' in table 'TrackReceiver' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTrackCircuitRec.eventAddressColumn) = value
+                Me(Me.tableTrackReceiver.eventAddressColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsdescriptionNull() As Boolean
-            Return Me.IsNull(Me.tableTrackCircuitRec.descriptionColumn)
+            Return Me.IsNull(Me.tableTrackReceiver.descriptionColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetdescriptionNull()
-            Me(Me.tableTrackCircuitRec.descriptionColumn) = Global.System.Convert.DBNull
+            Me(Me.tableTrackReceiver.descriptionColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IseventAddressNull() As Boolean
-            Return Me.IsNull(Me.tableTrackCircuitRec.eventAddressColumn)
+            Return Me.IsNull(Me.tableTrackReceiver.eventAddressColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SeteventAddressNull()
-            Me(Me.tableTrackCircuitRec.eventAddressColumn) = Global.System.Convert.DBNull
+            Me(Me.tableTrackReceiver.eventAddressColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class TrackCircuitTranRow
+    Partial Public Class TrackTransmitterRow
         Inherits Global.System.Data.DataRow
         
-        Private tableTrackCircuitTran As TrackCircuitTranDataTable
+        Private tableTrackTransmitter As TrackTransmitterDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableTrackCircuitTran = CType(Me.Table,TrackCircuitTranDataTable)
+            Me.tableTrackTransmitter = CType(Me.Table,TrackTransmitterDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property CircuitID() As Integer
             Get
-                Return CType(Me(Me.tableTrackCircuitTran.CircuitIDColumn),Integer)
+                Return CType(Me(Me.tableTrackTransmitter.CircuitIDColumn),Integer)
             End Get
             Set
-                Me(Me.tableTrackCircuitTran.CircuitIDColumn) = value
+                Me(Me.tableTrackTransmitter.CircuitIDColumn) = value
             End Set
         End Property
         
@@ -7124,13 +7124,13 @@ Partial Public Class ExportXml
         Public Property description() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTrackCircuitTran.descriptionColumn),String)
+                    Return CType(Me(Me.tableTrackTransmitter.descriptionColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'description' in table 'TrackCircuitTran' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'description' in table 'TrackTransmitter' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTrackCircuitTran.descriptionColumn) = value
+                Me(Me.tableTrackTransmitter.descriptionColumn) = value
             End Set
         End Property
         
@@ -7139,38 +7139,38 @@ Partial Public Class ExportXml
         Public Property eventAddress() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTrackCircuitTran.eventAddressColumn),String)
+                    Return CType(Me(Me.tableTrackTransmitter.eventAddressColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'eventAddress' in table 'TrackCircuitTran' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'eventAddress' in table 'TrackTransmitter' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTrackCircuitTran.eventAddressColumn) = value
+                Me(Me.tableTrackTransmitter.eventAddressColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsdescriptionNull() As Boolean
-            Return Me.IsNull(Me.tableTrackCircuitTran.descriptionColumn)
+            Return Me.IsNull(Me.tableTrackTransmitter.descriptionColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetdescriptionNull()
-            Me(Me.tableTrackCircuitTran.descriptionColumn) = Global.System.Convert.DBNull
+            Me(Me.tableTrackTransmitter.descriptionColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IseventAddressNull() As Boolean
-            Return Me.IsNull(Me.tableTrackCircuitTran.eventAddressColumn)
+            Return Me.IsNull(Me.tableTrackTransmitter.eventAddressColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SeteventAddressNull()
-            Me(Me.tableTrackCircuitTran.eventAddressColumn) = Global.System.Convert.DBNull
+            Me(Me.tableTrackTransmitter.eventAddressColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8183,16 +8183,16 @@ Partial Public Class ExportXml
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Class TrackCircuitRecRowChangeEvent
+    Public Class TrackReceiverRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As TrackCircuitRecRow
+        Private eventRow As TrackReceiverRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New(ByVal row As TrackCircuitRecRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As TrackReceiverRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -8200,7 +8200,7 @@ Partial Public Class ExportXml
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Row() As TrackCircuitRecRow
+        Public ReadOnly Property Row() As TrackReceiverRow
             Get
                 Return Me.eventRow
             End Get
@@ -8219,16 +8219,16 @@ Partial Public Class ExportXml
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Class TrackCircuitTranRowChangeEvent
+    Public Class TrackTransmitterRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As TrackCircuitTranRow
+        Private eventRow As TrackTransmitterRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New(ByVal row As TrackCircuitTranRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As TrackTransmitterRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -8236,7 +8236,7 @@ Partial Public Class ExportXml
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Row() As TrackCircuitTranRow
+        Public ReadOnly Property Row() As TrackTransmitterRow
             Get
                 Return Me.eventRow
             End Get

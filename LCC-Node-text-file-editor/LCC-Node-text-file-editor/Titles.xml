@@ -59,14 +59,16 @@
 	<TrackRecTitles>
 		<header>Segment: Track Receiver</header>
 		<subHeader>Circuit</subHeader>
-		<help>Each track circuit may receive speed information from one remote mast</help>
+		<help1>Each track circuit may receive speed information from one remote mast</help1>
+		<help2>(C) Remote Mast Link Address. Copy from 'Next' Mast and Paste here</help2>
 	</TrackRecTitles>
 	
 	<!-- Track Transmitter Circuit Titles level 1-->
 	<TrackTranTitles>
 		<header>Segment: Track Transmitter</header>
 		<subHeader>Circuit</subHeader>
-		<help>Each track circuit may send speed information to one remote mast</help>
+		<help1>Each track circuit may send speed information to one remote mast</help1>
+		<help2>(P) Track Circuit Link Address. Copy and Paste into linked Track Circuit (Write Limited)</help2>
 	</TrackTranTitles>
 
 	<!-- Lamps Titles level 1 -->
@@ -74,18 +76,11 @@
 		<header>Segment: Direct Lamp Control</header>
 		<subHeader>Lamp</subHeader>
 		<help>Direct control of lamps that are not used by any mast</help>
-	</LampsTitles>
-	
-	<!-- Lamp Title level 2 -->
-	<LampTitles>
-		<header>Lamp Editor</header>
-		<subHeader>Lamp Name</subHeader>
-		<help></help>
 		<lampOn>(C) Event to set lamp on</lampOn>
 		<lampOff>(C) Event to set lamp off</lampOff>
 		<brightness>Set individual lamp intensity (0 = min; 255 = max)</brightness>
-	</LampTitles>
-
+	</LampsTitles>
+	
 
 	<Title>
 		<segID>2</segID>

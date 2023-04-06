@@ -23,7 +23,8 @@ Public Class FrmTrackTransmitters
         Dim rowTitle As Titles.TrackTranTitlesRow = dsTitles.TrackTranTitles.Item(0)
         Me.Text = rowTitle.header
         Me.LblSubHeader.Text = rowTitle.subHeader
-        Me.LblHelp.Text = rowTitle.help
+        Me.LblHelp1.Text = rowTitle.help1
+        Me.LblHelp2.Text = rowTitle.help2
 
         ' read the attribute xml file
         Dim clsR As New ClsReport
@@ -47,17 +48,17 @@ Public Class FrmTrackTransmitters
 
             For count = 1 To Me.MyTrackCircuits
 
-                Dim row As ExportXml.TrackCircuitTranRow = Me.MyExportXml.TrackCircuitTran.FindByCircuitID(count)
+                Dim row As ExportXml.TrackTransmitterRow = Me.MyExportXml.TrackTransmitter.FindByCircuitID(count)
 
                 Dim circuit As String = String.Empty
                 If row.description.Length = 0 Then
-                    circuit = rowTitle.subHeader + Space(1) + count.ToString
+                    circuit = rowTitle.subHeader
                 Else
                     circuit = row.description
                 End If
 
                 Dim MyTabPage As New TabPage With {
-                .Text = circuit
+                .Text = count.ToString + " - " + circuit
                 }
 
                 Me.TabControlTransmitters.Controls.Add(MyTabPage)
@@ -73,7 +74,37 @@ Public Class FrmTrackTransmitters
 
     Private Sub TabControlTransmitters_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlTransmitters.Selected
 
-        ' Stop
+        Dim circuitID As Integer
+
+        If e.TabPageIndex = -1 Then
+            circuitID = 1
+        Else
+            circuitID = e.TabPageIndex + 1
+        End If
+        ' fill in row values
+        Dim row As ExportXml.TrackTransmitterRow = Me.MyExportXml.TrackTransmitter.FindByCircuitID(circuitID)
+        Me.TxtDescription.Text = row.description
+        Me.TxtLinkEvent.Text = row.eventAddress
+
+    End Sub
+
+    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+
+        Try
+            Dim row As ExportXml.TrackTransmitterRow = MyExportXml.TrackTransmitter.FindByCircuitID(Me.TabControlTransmitters.SelectedIndex + 1)
+            row.description = Me.TxtDescription.Text
+            row.eventAddress = Me.TxtLinkEvent.Text
+            Me.MyExportXml.WriteXml(Me.MyFilePath)
+            MsgBox("Saved changes to file " + Me.MyFileName)
+
+            ' need to reload after save
+            MyExportXml = New ExportXml
+            Call Me.DisplayValues()
+
+        Catch ex As Exception
+            MsgBox("Failed to save track transmitter circuit data")
+            Exit Sub
+        End Try
 
     End Sub
 

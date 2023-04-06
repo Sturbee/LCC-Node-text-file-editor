@@ -53,8 +53,6 @@ Partial Public Class Titles
     
     Private tableTrackTranTitles As TrackTranTitlesDataTable
     
-    Private tableLampTitles As LampTitlesDataTable
-    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -125,9 +123,6 @@ Partial Public Class Titles
             End If
             If (Not (ds.Tables("TrackTranTitles")) Is Nothing) Then
                 MyBase.Tables.Add(New TrackTranTitlesDataTable(ds.Tables("TrackTranTitles")))
-            End If
-            If (Not (ds.Tables("LampTitles")) Is Nothing) Then
-                MyBase.Tables.Add(New LampTitlesDataTable(ds.Tables("LampTitles")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -288,16 +283,6 @@ Partial Public Class Titles
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property LampTitles() As LampTitlesDataTable
-        Get
-            Return Me.tableLampTitles
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
      Global.System.ComponentModel.BrowsableAttribute(true),  _
      Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Visible)>  _
     Public Overrides Property SchemaSerializationMode() As Global.System.Data.SchemaSerializationMode
@@ -404,9 +389,6 @@ Partial Public Class Titles
             End If
             If (Not (ds.Tables("TrackTranTitles")) Is Nothing) Then
                 MyBase.Tables.Add(New TrackTranTitlesDataTable(ds.Tables("TrackTranTitles")))
-            End If
-            If (Not (ds.Tables("LampTitles")) Is Nothing) Then
-                MyBase.Tables.Add(New LampTitlesDataTable(ds.Tables("LampTitles")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -524,12 +506,6 @@ Partial Public Class Titles
                 Me.tableTrackTranTitles.InitVars
             End If
         End If
-        Me.tableLampTitles = CType(MyBase.Tables("LampTitles"),LampTitlesDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tableLampTitles) Is Nothing) Then
-                Me.tableLampTitles.InitVars
-            End If
-        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -568,8 +544,6 @@ Partial Public Class Titles
         MyBase.Tables.Add(Me.tableTrackRecTitles)
         Me.tableTrackTranTitles = New TrackTranTitlesDataTable()
         MyBase.Tables.Add(Me.tableTrackTranTitles)
-        Me.tableLampTitles = New LampTitlesDataTable()
-        MyBase.Tables.Add(Me.tableLampTitles)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -653,12 +627,6 @@ Partial Public Class Titles
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Private Function ShouldSerializeTrackTranTitles() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerializeLampTitles() As Boolean
         Return false
     End Function
     
@@ -761,9 +729,6 @@ Partial Public Class Titles
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Public Delegate Sub TrackTranTitlesRowChangeEventHandler(ByVal sender As Object, ByVal e As TrackTranTitlesRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Delegate Sub LampTitlesRowChangeEventHandler(ByVal sender As Object, ByVal e As LampTitlesRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -3448,6 +3413,12 @@ Partial Public Class Titles
         
         Private columnhelp As Global.System.Data.DataColumn
         
+        Private columnlampOn As Global.System.Data.DataColumn
+        
+        Private columnlampOff As Global.System.Data.DataColumn
+        
+        Private columnbrightness As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -3508,6 +3479,30 @@ Partial Public Class Titles
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property lampOnColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlampOn
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property lampOffColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlampOff
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property brightnessColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnbrightness
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3544,9 +3539,9 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddLampsTitlesRow(ByVal header As String, ByVal subHeader As String, ByVal help As String) As LampsTitlesRow
+        Public Overloads Function AddLampsTitlesRow(ByVal header As String, ByVal subHeader As String, ByVal help As String, ByVal lampOn As String, ByVal lampOff As String, ByVal brightness As String) As LampsTitlesRow
             Dim rowLampsTitlesRow As LampsTitlesRow = CType(Me.NewRow,LampsTitlesRow)
-            Dim columnValuesArray() As Object = New Object() {header, subHeader, help}
+            Dim columnValuesArray() As Object = New Object() {header, subHeader, help, lampOn, lampOff, brightness}
             rowLampsTitlesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowLampsTitlesRow)
             Return rowLampsTitlesRow
@@ -3572,6 +3567,9 @@ Partial Public Class Titles
             Me.columnheader = MyBase.Columns("header")
             Me.columnsubHeader = MyBase.Columns("subHeader")
             Me.columnhelp = MyBase.Columns("help")
+            Me.columnlampOn = MyBase.Columns("lampOn")
+            Me.columnlampOff = MyBase.Columns("lampOff")
+            Me.columnbrightness = MyBase.Columns("brightness")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3583,6 +3581,12 @@ Partial Public Class Titles
             MyBase.Columns.Add(Me.columnsubHeader)
             Me.columnhelp = New Global.System.Data.DataColumn("help", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnhelp)
+            Me.columnlampOn = New Global.System.Data.DataColumn("lampOn", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlampOn)
+            Me.columnlampOff = New Global.System.Data.DataColumn("lampOff", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlampOff)
+            Me.columnbrightness = New Global.System.Data.DataColumn("brightness", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnbrightness)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4254,7 +4258,9 @@ Partial Public Class Titles
         
         Private columnsubHeader As Global.System.Data.DataColumn
         
-        Private columnhelp As Global.System.Data.DataColumn
+        Private columnhelp1 As Global.System.Data.DataColumn
+        
+        Private columnhelp2 As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -4309,9 +4315,17 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property helpColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property help1Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnhelp
+                Return Me.columnhelp1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property help2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnhelp2
             End Get
         End Property
         
@@ -4352,9 +4366,9 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddTrackRecTitlesRow(ByVal header As String, ByVal subHeader As String, ByVal help As String) As TrackRecTitlesRow
+        Public Overloads Function AddTrackRecTitlesRow(ByVal header As String, ByVal subHeader As String, ByVal help1 As String, ByVal help2 As String) As TrackRecTitlesRow
             Dim rowTrackRecTitlesRow As TrackRecTitlesRow = CType(Me.NewRow,TrackRecTitlesRow)
-            Dim columnValuesArray() As Object = New Object() {header, subHeader, help}
+            Dim columnValuesArray() As Object = New Object() {header, subHeader, help1, help2}
             rowTrackRecTitlesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTrackRecTitlesRow)
             Return rowTrackRecTitlesRow
@@ -4379,7 +4393,8 @@ Partial Public Class Titles
         Friend Sub InitVars()
             Me.columnheader = MyBase.Columns("header")
             Me.columnsubHeader = MyBase.Columns("subHeader")
-            Me.columnhelp = MyBase.Columns("help")
+            Me.columnhelp1 = MyBase.Columns("help1")
+            Me.columnhelp2 = MyBase.Columns("help2")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4389,8 +4404,10 @@ Partial Public Class Titles
             MyBase.Columns.Add(Me.columnheader)
             Me.columnsubHeader = New Global.System.Data.DataColumn("subHeader", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnsubHeader)
-            Me.columnhelp = New Global.System.Data.DataColumn("help", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnhelp)
+            Me.columnhelp1 = New Global.System.Data.DataColumn("help1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnhelp1)
+            Me.columnhelp2 = New Global.System.Data.DataColumn("help2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnhelp2)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4532,7 +4549,9 @@ Partial Public Class Titles
         
         Private columnsubHeader As Global.System.Data.DataColumn
         
-        Private columnhelp As Global.System.Data.DataColumn
+        Private columnhelp1 As Global.System.Data.DataColumn
+        
+        Private columnhelp2 As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -4587,9 +4606,17 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property helpColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property help1Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnhelp
+                Return Me.columnhelp1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property help2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnhelp2
             End Get
         End Property
         
@@ -4630,9 +4657,9 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddTrackTranTitlesRow(ByVal header As String, ByVal subHeader As String, ByVal help As String) As TrackTranTitlesRow
+        Public Overloads Function AddTrackTranTitlesRow(ByVal header As String, ByVal subHeader As String, ByVal help1 As String, ByVal help2 As String) As TrackTranTitlesRow
             Dim rowTrackTranTitlesRow As TrackTranTitlesRow = CType(Me.NewRow,TrackTranTitlesRow)
-            Dim columnValuesArray() As Object = New Object() {header, subHeader, help}
+            Dim columnValuesArray() As Object = New Object() {header, subHeader, help1, help2}
             rowTrackTranTitlesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTrackTranTitlesRow)
             Return rowTrackTranTitlesRow
@@ -4657,7 +4684,8 @@ Partial Public Class Titles
         Friend Sub InitVars()
             Me.columnheader = MyBase.Columns("header")
             Me.columnsubHeader = MyBase.Columns("subHeader")
-            Me.columnhelp = MyBase.Columns("help")
+            Me.columnhelp1 = MyBase.Columns("help1")
+            Me.columnhelp2 = MyBase.Columns("help2")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4667,8 +4695,10 @@ Partial Public Class Titles
             MyBase.Columns.Add(Me.columnheader)
             Me.columnsubHeader = New Global.System.Data.DataColumn("subHeader", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnsubHeader)
-            Me.columnhelp = New Global.System.Data.DataColumn("help", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnhelp)
+            Me.columnhelp1 = New Global.System.Data.DataColumn("help1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnhelp1)
+            Me.columnhelp2 = New Global.System.Data.DataColumn("help2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnhelp2)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4755,323 +4785,6 @@ Partial Public Class Titles
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "TrackTranTitlesDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class LampTitlesDataTable
-        Inherits Global.System.Data.TypedTableBase(Of LampTitlesRow)
-        
-        Private columnheader As Global.System.Data.DataColumn
-        
-        Private columnsubHeader As Global.System.Data.DataColumn
-        
-        Private columnhelp As Global.System.Data.DataColumn
-        
-        Private columnlampOn As Global.System.Data.DataColumn
-        
-        Private columnlampOff As Global.System.Data.DataColumn
-        
-        Private columnbrightness As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "LampTitles"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property headerColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnheader
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property subHeaderColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnsubHeader
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property helpColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnhelp
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property lampOnColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnlampOn
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property lampOffColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnlampOff
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property brightnessColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnbrightness
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As LampTitlesRow
-            Get
-                Return CType(Me.Rows(index),LampTitlesRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event LampTitlesRowChanging As LampTitlesRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event LampTitlesRowChanged As LampTitlesRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event LampTitlesRowDeleting As LampTitlesRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event LampTitlesRowDeleted As LampTitlesRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Sub AddLampTitlesRow(ByVal row As LampTitlesRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddLampTitlesRow(ByVal header As String, ByVal subHeader As String, ByVal help As String, ByVal lampOn As String, ByVal lampOff As String, ByVal brightness As String) As LampTitlesRow
-            Dim rowLampTitlesRow As LampTitlesRow = CType(Me.NewRow,LampTitlesRow)
-            Dim columnValuesArray() As Object = New Object() {header, subHeader, help, lampOn, lampOff, brightness}
-            rowLampTitlesRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowLampTitlesRow)
-            Return rowLampTitlesRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As LampTitlesDataTable = CType(MyBase.Clone,LampTitlesDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New LampTitlesDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnheader = MyBase.Columns("header")
-            Me.columnsubHeader = MyBase.Columns("subHeader")
-            Me.columnhelp = MyBase.Columns("help")
-            Me.columnlampOn = MyBase.Columns("lampOn")
-            Me.columnlampOff = MyBase.Columns("lampOff")
-            Me.columnbrightness = MyBase.Columns("brightness")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnheader = New Global.System.Data.DataColumn("header", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnheader)
-            Me.columnsubHeader = New Global.System.Data.DataColumn("subHeader", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsubHeader)
-            Me.columnhelp = New Global.System.Data.DataColumn("help", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnhelp)
-            Me.columnlampOn = New Global.System.Data.DataColumn("lampOn", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnlampOn)
-            Me.columnlampOff = New Global.System.Data.DataColumn("lampOff", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnlampOff)
-            Me.columnbrightness = New Global.System.Data.DataColumn("brightness", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnbrightness)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function NewLampTitlesRow() As LampTitlesRow
-            Return CType(Me.NewRow,LampTitlesRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New LampTitlesRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(LampTitlesRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.LampTitlesRowChangedEvent) Is Nothing) Then
-                RaiseEvent LampTitlesRowChanged(Me, New LampTitlesRowChangeEvent(CType(e.Row,LampTitlesRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.LampTitlesRowChangingEvent) Is Nothing) Then
-                RaiseEvent LampTitlesRowChanging(Me, New LampTitlesRowChangeEvent(CType(e.Row,LampTitlesRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.LampTitlesRowDeletedEvent) Is Nothing) Then
-                RaiseEvent LampTitlesRowDeleted(Me, New LampTitlesRowChangeEvent(CType(e.Row,LampTitlesRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.LampTitlesRowDeletingEvent) Is Nothing) Then
-                RaiseEvent LampTitlesRowDeleting(Me, New LampTitlesRowChangeEvent(CType(e.Row,LampTitlesRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub RemoveLampTitlesRow(ByVal row As LampTitlesRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As Titles = New Titles()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "LampTitlesDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -6224,6 +5937,51 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property lampOn() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLampsTitles.lampOnColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'lampOn' in table 'LampsTitles' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLampsTitles.lampOnColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property lampOff() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLampsTitles.lampOffColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'lampOff' in table 'LampsTitles' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLampsTitles.lampOffColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property brightness() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLampsTitles.brightnessColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'brightness' in table 'LampsTitles' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLampsTitles.brightnessColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsheaderNull() As Boolean
             Return Me.IsNull(Me.tableLampsTitles.headerColumn)
         End Function
@@ -6256,6 +6014,42 @@ Partial Public Class Titles
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SethelpNull()
             Me(Me.tableLampsTitles.helpColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IslampOnNull() As Boolean
+            Return Me.IsNull(Me.tableLampsTitles.lampOnColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetlampOnNull()
+            Me(Me.tableLampsTitles.lampOnColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IslampOffNull() As Boolean
+            Return Me.IsNull(Me.tableLampsTitles.lampOffColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetlampOffNull()
+            Me(Me.tableLampsTitles.lampOffColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsbrightnessNull() As Boolean
+            Return Me.IsNull(Me.tableLampsTitles.brightnessColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetbrightnessNull()
+            Me(Me.tableLampsTitles.brightnessColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -6446,16 +6240,31 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property help() As String
+        Public Property help1() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTrackRecTitles.helpColumn),String)
+                    Return CType(Me(Me.tableTrackRecTitles.help1Column),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'help' in table 'TrackRecTitles' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'help1' in table 'TrackRecTitles' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTrackRecTitles.helpColumn) = value
+                Me(Me.tableTrackRecTitles.help1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property help2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableTrackRecTitles.help2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'help2' in table 'TrackRecTitles' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTrackRecTitles.help2Column) = value
             End Set
         End Property
         
@@ -6485,14 +6294,26 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IshelpNull() As Boolean
-            Return Me.IsNull(Me.tableTrackRecTitles.helpColumn)
+        Public Function Ishelp1Null() As Boolean
+            Return Me.IsNull(Me.tableTrackRecTitles.help1Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SethelpNull()
-            Me(Me.tableTrackRecTitles.helpColumn) = Global.System.Convert.DBNull
+        Public Sub Sethelp1Null()
+            Me(Me.tableTrackRecTitles.help1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function Ishelp2Null() As Boolean
+            Return Me.IsNull(Me.tableTrackRecTitles.help2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub Sethelp2Null()
+            Me(Me.tableTrackRecTitles.help2Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -6543,16 +6364,31 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property help() As String
+        Public Property help1() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableTrackTranTitles.helpColumn),String)
+                    Return CType(Me(Me.tableTrackTranTitles.help1Column),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'help' in table 'TrackTranTitles' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'help1' in table 'TrackTranTitles' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableTrackTranTitles.helpColumn) = value
+                Me(Me.tableTrackTranTitles.help1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property help2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableTrackTranTitles.help2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'help2' in table 'TrackTranTitles' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTrackTranTitles.help2Column) = value
             End Set
         End Property
         
@@ -6582,192 +6418,26 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IshelpNull() As Boolean
-            Return Me.IsNull(Me.tableTrackTranTitles.helpColumn)
+        Public Function Ishelp1Null() As Boolean
+            Return Me.IsNull(Me.tableTrackTranTitles.help1Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SethelpNull()
-            Me(Me.tableTrackTranTitles.helpColumn) = Global.System.Convert.DBNull
-        End Sub
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
-    Partial Public Class LampTitlesRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tableLampTitles As LampTitlesDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tableLampTitles = CType(Me.Table,LampTitlesDataTable)
+        Public Sub Sethelp1Null()
+            Me(Me.tableTrackTranTitles.help1Column) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property header() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLampTitles.headerColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'header' in table 'LampTitles' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLampTitles.headerColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property subHeader() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLampTitles.subHeaderColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'subHeader' in table 'LampTitles' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLampTitles.subHeaderColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property help() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLampTitles.helpColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'help' in table 'LampTitles' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLampTitles.helpColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property lampOn() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLampTitles.lampOnColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'lampOn' in table 'LampTitles' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLampTitles.lampOnColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property lampOff() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLampTitles.lampOffColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'lampOff' in table 'LampTitles' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLampTitles.lampOffColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property brightness() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLampTitles.brightnessColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'brightness' in table 'LampTitles' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLampTitles.brightnessColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsheaderNull() As Boolean
-            Return Me.IsNull(Me.tableLampTitles.headerColumn)
+        Public Function Ishelp2Null() As Boolean
+            Return Me.IsNull(Me.tableTrackTranTitles.help2Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetheaderNull()
-            Me(Me.tableLampTitles.headerColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IssubHeaderNull() As Boolean
-            Return Me.IsNull(Me.tableLampTitles.subHeaderColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetsubHeaderNull()
-            Me(Me.tableLampTitles.subHeaderColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IshelpNull() As Boolean
-            Return Me.IsNull(Me.tableLampTitles.helpColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SethelpNull()
-            Me(Me.tableLampTitles.helpColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IslampOnNull() As Boolean
-            Return Me.IsNull(Me.tableLampTitles.lampOnColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetlampOnNull()
-            Me(Me.tableLampTitles.lampOnColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IslampOffNull() As Boolean
-            Return Me.IsNull(Me.tableLampTitles.lampOffColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetlampOffNull()
-            Me(Me.tableLampTitles.lampOffColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsbrightnessNull() As Boolean
-            Return Me.IsNull(Me.tableLampTitles.brightnessColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetbrightnessNull()
-            Me(Me.tableLampTitles.brightnessColumn) = Global.System.Convert.DBNull
+        Public Sub Sethelp2Null()
+            Me(Me.tableTrackTranTitles.help2Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -7261,42 +6931,6 @@ Partial Public Class Titles
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property Row() As TrackTranTitlesRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Class LampTitlesRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As LampTitlesRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New(ByVal row As LampTitlesRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Row() As LampTitlesRow
             Get
                 Return Me.eventRow
             End Get
