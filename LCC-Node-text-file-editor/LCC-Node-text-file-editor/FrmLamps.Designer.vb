@@ -109,7 +109,7 @@ Partial Class FrmLamps
         '
         Me.GroupBox7.Controls.Add(Me.TxtBrightness)
         Me.GroupBox7.Controls.Add(Me.LblBrightness)
-        Me.GroupBox7.Location = New System.Drawing.Point(15, 514)
+        Me.GroupBox7.Location = New System.Drawing.Point(15, 557)
         Me.GroupBox7.Name = "GroupBox7"
         Me.GroupBox7.Size = New System.Drawing.Size(522, 58)
         Me.GroupBox7.TabIndex = 17
@@ -136,7 +136,7 @@ Partial Class FrmLamps
         '
         Me.LblLampID.AutoSize = True
         Me.LblLampID.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblLampID.Location = New System.Drawing.Point(12, 102)
+        Me.LblLampID.Location = New System.Drawing.Point(12, 145)
         Me.LblLampID.Name = "LblLampID"
         Me.LblLampID.Size = New System.Drawing.Size(81, 16)
         Me.LblLampID.TabIndex = 16
@@ -145,7 +145,7 @@ Partial Class FrmLamps
         'GroupBox6
         '
         Me.GroupBox6.Controls.Add(Me.CmbLampPhase)
-        Me.GroupBox6.Location = New System.Drawing.Point(18, 448)
+        Me.GroupBox6.Location = New System.Drawing.Point(18, 491)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(519, 59)
         Me.GroupBox6.TabIndex = 15
@@ -163,7 +163,7 @@ Partial Class FrmLamps
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.CmbLampFade)
-        Me.GroupBox4.Location = New System.Drawing.Point(18, 383)
+        Me.GroupBox4.Location = New System.Drawing.Point(18, 426)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(519, 59)
         Me.GroupBox4.TabIndex = 14
@@ -182,7 +182,7 @@ Partial Class FrmLamps
         '
         Me.GroupBox3.Controls.Add(Me.TxtLampOff)
         Me.GroupBox3.Controls.Add(Me.LblLampOff)
-        Me.GroupBox3.Location = New System.Drawing.Point(18, 291)
+        Me.GroupBox3.Location = New System.Drawing.Point(18, 334)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(519, 86)
         Me.GroupBox3.TabIndex = 13
@@ -210,7 +210,7 @@ Partial Class FrmLamps
         '
         Me.GroupBox2.Controls.Add(Me.TxtLampOn)
         Me.GroupBox2.Controls.Add(Me.LblLampOn)
-        Me.GroupBox2.Location = New System.Drawing.Point(15, 195)
+        Me.GroupBox2.Location = New System.Drawing.Point(15, 238)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(522, 89)
         Me.GroupBox2.TabIndex = 12
@@ -238,7 +238,7 @@ Partial Class FrmLamps
         '
         Me.GroupBox1.Controls.Add(Me.TxtDescription)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(15, 131)
+        Me.GroupBox1.Location = New System.Drawing.Point(15, 174)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(522, 58)
         Me.GroupBox1.TabIndex = 11
@@ -284,7 +284,7 @@ Partial Class FrmLamps
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1134, 589)
+        Me.ClientSize = New System.Drawing.Size(1134, 649)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.BtnSave)
         Me.Controls.Add(Me.GroupBox7)

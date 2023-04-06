@@ -6,6 +6,7 @@ Public Class FrmLamps
     Private Property MyFilePath As String
     Private Property MyFileName As String
     Private Property MyExportXml As New ExportXml
+    Private Property MyReport As New Rpt
 
     Private Sub FrmLamps_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -28,21 +29,20 @@ Public Class FrmLamps
         Me.LblLampOff.Text = rowTitle.lampOff
         Me.LblBrightness.Text = rowTitle.brightness
 
-
         ' read the attribute xml file
         Dim clsR As New ClsReport
-        Dim dsRpt As Rpt = clsR.MyReport
+        MyReport = clsR.MyReport
 
         Me.CmbLampFade.BeginUpdate()
-        For I = 0 To clsR.MyReport.LampFade.Count - 1
-            Dim row As Rpt.LampFadeRow = clsR.MyReport.LampFade.Item(I)
+        For I = 0 To MyReport.LampFade.Count - 1
+            Dim row As Rpt.LampFadeRow = MyReport.LampFade.Item(I)
             Me.CmbLampFade.Items.Add(row.text)
         Next
         Me.CmbLampFade.EndUpdate()
 
         Me.CmbLampPhase.BeginUpdate()
-        For I = 0 To clsR.MyReport.LampPhase.Count - 1
-            Dim row As Rpt.LampPhaseRow = clsR.MyReport.LampPhase.Item(I)
+        For I = 0 To MyReport.LampPhase.Count - 1
+            Dim row As Rpt.LampPhaseRow = MyReport.LampPhase.Item(I)
             Me.CmbLampPhase.Items.Add(row.text)
         Next
         Me.CmbLampPhase.EndUpdate()
@@ -58,7 +58,6 @@ Public Class FrmLamps
             MsgBox("Failed to read file " + Me.MyFileName)
             Exit Sub
         End Try
-
 
         ' populate tab control
         Try
@@ -94,6 +93,10 @@ Public Class FrmLamps
             lampID = e.TabPageIndex + 1
         End If
         ' fill in row values
+
+        Dim rowName As Rpt.LampSelectionRow = MyReport.LampSelection.FindByvalue(lampID)
+        Me.LblLampID.Text = "Lamp " + rowName.text
+
         Dim row As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(lampID)
 
         Me.TxtDescription.Text = row.description
