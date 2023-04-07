@@ -71,6 +71,7 @@ Public Class FrmFileXml
         Dim anySelected As Boolean = (FilesListBox.SelectedItem IsNot Nothing)
 
         Me.CmdEdit.Enabled = anySelected
+        Me.CmdRestore.Enabled = anySelected
 
     End Sub
 
@@ -82,5 +83,31 @@ Public Class FrmFileXml
 
     End Sub
 
+    Private Sub CmdRestore_Click(sender As Object, e As EventArgs) Handles CmdRestore.Click
+
+        If FilesListBox.SelectedItem Is Nothing Then
+            MessageBox.Show("Please select a file.")
+            Exit Sub
+        End If
+
+        ' Obtain the file path from the list box selection.
+        Dim filePath = FilesListBox.SelectedItem.ToString
+
+        ' Verify that the file was not removed since the
+        ' Browse button was clicked.
+        If My.Computer.FileSystem.FileExists(filePath) = False Then
+            MessageBox.Show("File Not Found: " & filePath)
+            Exit Sub
+        End If
+
+        ' process export xml file
+        Dim clsTxt As New ClassExportXmlToText
+        clsTxt.MyExportXmlToTextFile(filePath)
+
+        Me.ListFiles(FolderBrowserDialog1.SelectedPath)
+
+        FilesListBox.SelectedItem = filePath
+
+    End Sub
 
 End Class

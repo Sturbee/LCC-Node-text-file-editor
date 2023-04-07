@@ -98,13 +98,16 @@ Public Class ClassExportXml
 
             End While ' read the next text line
 
+            sr.Close()
+
             ' update values after process is done
             Dim rowNode As ExportXml.NodeRow = Me.MyExportXml.Node.FindByNodeID(0)
             If rowNode Is Nothing Then
                 ' do nothing
             Else
                 rowNode.eventBase = Me.MyNodeEventBase
-                rowNode.NodeType = Me.MyNodeType
+                rowNode.nodeType = Me.MyNodeType
+                rowNode.sourceFile = filePath
             End If
 
             ' check for Lamp table
@@ -396,7 +399,7 @@ Public Class ClassExportXml
             Dim rowNode As ExportXml.NodeRow = MyExportXml.Node.FindByNodeID(NodeID)
             Try
                 If rowNode Is Nothing Then
-                    Me.MyExportXml.Node.AddNodeRow(NodeID, String.Empty, String.Empty, 0, String.Empty)
+                    Me.MyExportXml.Node.AddNodeRow(NodeID, String.Empty, String.Empty, 0, String.Empty, String.Empty)
                     Me.MyExportXml.AcceptChanges()
                     rowNode = Me.MyExportXml.Node.FindByNodeID(NodeID)
                 End If

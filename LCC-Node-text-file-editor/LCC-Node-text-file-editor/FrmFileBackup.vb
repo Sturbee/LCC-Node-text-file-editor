@@ -51,7 +51,7 @@
 
         Dim anySelected As Boolean = (FilesListBox.SelectedItem IsNot Nothing)
 
-        Me.ButtonProcess.Enabled = anySelected
+        Me.CmdProcess.Enabled = anySelected
 
     End Sub
 
@@ -68,7 +68,7 @@
 
     End Sub
 
-    Private Sub ButtonProcess_Click(sender As Object, e As EventArgs) Handles ButtonProcess.Click
+    Private Sub ButtonProcess_Click(sender As Object, e As EventArgs) Handles CmdProcess.Click
 
         If FilesListBox.SelectedItem Is Nothing Then
             MessageBox.Show("Please select a file.")

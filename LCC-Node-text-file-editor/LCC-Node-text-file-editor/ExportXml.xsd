@@ -20,6 +20,7 @@
               <xs:element name="description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_UserColumnName="description" msprop:Generator_ColumnVarNameInTable="columnDescription" type="xs:string" minOccurs="0" />
               <xs:element name="nodeType" msprop:Generator_ColumnPropNameInTable="NodeTypeColumn" msprop:Generator_ColumnPropNameInRow="NodeType" msprop:Generator_UserColumnName="nodeType" msprop:Generator_ColumnVarNameInTable="columnNodeType" type="xs:int" minOccurs="0" />
               <xs:element name="eventBase" msprop:Generator_ColumnPropNameInTable="eventBaseColumn" msprop:Generator_ColumnPropNameInRow="eventBase" msprop:Generator_UserColumnName="eventBase" msprop:Generator_ColumnVarNameInTable="columneventBase" type="xs:string" minOccurs="0" />
+              <xs:element name="sourceFile" msprop:Generator_ColumnPropNameInRow="sourceFile" msprop:Generator_ColumnPropNameInTable="sourceFileColumn" msprop:Generator_ColumnVarNameInTable="columnsourceFile" msprop:Generator_UserColumnName="sourceFile" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

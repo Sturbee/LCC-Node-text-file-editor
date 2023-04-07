@@ -783,6 +783,8 @@ Partial Public Class ExportXml
         
         Private columneventBase As Global.System.Data.DataColumn
         
+        Private columnsourceFile As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -859,6 +861,14 @@ Partial Public Class ExportXml
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property sourceFileColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsourceFile
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -895,9 +905,9 @@ Partial Public Class ExportXml
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddNodeRow(ByVal NodeID As Integer, ByVal Name As String, ByVal Description As String, ByVal NodeType As Integer, ByVal eventBase As String) As NodeRow
+        Public Overloads Function AddNodeRow(ByVal NodeID As Integer, ByVal Name As String, ByVal Description As String, ByVal NodeType As Integer, ByVal eventBase As String, ByVal sourceFile As String) As NodeRow
             Dim rowNodeRow As NodeRow = CType(Me.NewRow,NodeRow)
-            Dim columnValuesArray() As Object = New Object() {NodeID, Name, Description, NodeType, eventBase}
+            Dim columnValuesArray() As Object = New Object() {NodeID, Name, Description, NodeType, eventBase, sourceFile}
             rowNodeRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowNodeRow)
             Return rowNodeRow
@@ -931,6 +941,7 @@ Partial Public Class ExportXml
             Me.columnDescription = MyBase.Columns("description")
             Me.columnNodeType = MyBase.Columns("nodeType")
             Me.columneventBase = MyBase.Columns("eventBase")
+            Me.columnsourceFile = MyBase.Columns("sourceFile")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -958,6 +969,8 @@ Partial Public Class ExportXml
             MyBase.Columns.Add(Me.columnNodeType)
             Me.columneventBase = New Global.System.Data.DataColumn("eventBase", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columneventBase)
+            Me.columnsourceFile = New Global.System.Data.DataColumn("sourceFile", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsourceFile)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnNodeID}, true))
             Me.columnNodeID.AllowDBNull = false
             Me.columnNodeID.Unique = true
@@ -5697,21 +5710,21 @@ Partial Public Class ExportXml
             End Set
         End Property
         
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property NodeType() As Integer
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
+        Public Property nodeType() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tableNode.NodeTypeColumn),Integer)
+                Try
+                    Return CType(Me(Me.tableNode.NodeTypeColumn), Integer)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'nodeType' in table 'Node' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableNode.NodeTypeColumn) = value
+                Me(Me.tableNode.NodeTypeColumn) = Value
             End Set
         End Property
-        
+
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property eventBase() As String
@@ -5724,6 +5737,21 @@ Partial Public Class ExportXml
             End Get
             Set
                 Me(Me.tableNode.eventBaseColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property sourceFile() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableNode.sourceFileColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'sourceFile' in table 'Node' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNode.sourceFileColumn) = value
             End Set
         End Property
         
@@ -5761,6 +5789,18 @@ Partial Public Class ExportXml
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SeteventBaseNull()
             Me(Me.tableNode.eventBaseColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IssourceFileNull() As Boolean
+            Return Me.IsNull(Me.tableNode.sourceFileColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetsourceFileNull()
+            Me(Me.tableNode.sourceFileColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

@@ -77,6 +77,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassExportXmlToText.vb" />
     <Compile Include="ClassExportXml.vb" />
     <Compile Include="ClassExportXmlToCsv.vb" />
     <Compile Include="ClassExportXsd.vb" />
@@ -98,16 +99,16 @@
     <Compile Include="ExportXml.vb">
       <DependentUpon>ExportXml.xsd</DependentUpon>
     </Compile>
-    <Compile Include="FrmFileXml.Designer.vb">
-      <DependentUpon>FrmFileXml.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FrmFileXml.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FrmFileRestore.Designer.vb">
       <DependentUpon>FrmFileRestore.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmFileRestore.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFileXml.Designer.vb">
+      <DependentUpon>FrmFileXml.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFileXml.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLamps.Designer.vb">
@@ -232,11 +233,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FrmFileXml.resx">
-      <DependentUpon>FrmFileXml.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmFileRestore.resx">
       <DependentUpon>FrmFileRestore.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFileXml.resx">
+      <DependentUpon>FrmFileXml.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLamps.resx">
       <DependentUpon>FrmLamps.vb</DependentUpon>

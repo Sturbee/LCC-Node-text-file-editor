@@ -63,7 +63,8 @@ Public Class FrmMenuMain
 
     Private Sub FileRestoreToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileRestoreToolStripMenuItem.Click
 
-        Beep()
+        Dim frm As New FrmFileRestore
+        Call Me.CheckFormAndOpen(frm)
 
     End Sub
 

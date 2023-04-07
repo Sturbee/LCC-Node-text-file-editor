@@ -22,12 +22,15 @@ Partial Class FrmFileXml
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.FilesListBox = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtFileExtension = New System.Windows.Forms.TextBox()
         Me.CmdEdit = New System.Windows.Forms.Button()
         Me.CmdBrowse = New System.Windows.Forms.Button()
+        Me.CmdRestore = New System.Windows.Forms.Button()
+        Me.MyToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'FilesListBox
@@ -62,6 +65,7 @@ Partial Class FrmFileXml
         Me.CmdEdit.Size = New System.Drawing.Size(75, 23)
         Me.CmdEdit.TabIndex = 10
         Me.CmdEdit.Text = "Edit"
+        Me.MyToolTip.SetToolTip(Me.CmdEdit, "Edit values for the selected file")
         Me.CmdEdit.UseVisualStyleBackColor = True
         '
         'CmdBrowse
@@ -73,12 +77,23 @@ Partial Class FrmFileXml
         Me.CmdBrowse.Text = "Browse"
         Me.CmdBrowse.UseVisualStyleBackColor = True
         '
+        'CmdRestore
+        '
+        Me.CmdRestore.Location = New System.Drawing.Point(851, 147)
+        Me.CmdRestore.Name = "CmdRestore"
+        Me.CmdRestore.Size = New System.Drawing.Size(75, 23)
+        Me.CmdRestore.TabIndex = 11
+        Me.CmdRestore.Text = "Restore"
+        Me.MyToolTip.SetToolTip(Me.CmdRestore, "Creates a text file with edited values for restoring a node")
+        Me.CmdRestore.UseVisualStyleBackColor = True
+        '
         'FrmFileXml
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(960, 450)
+        Me.Controls.Add(Me.CmdRestore)
         Me.Controls.Add(Me.CmdEdit)
         Me.Controls.Add(Me.CmdBrowse)
         Me.Controls.Add(Me.Label1)
@@ -97,4 +112,6 @@ Partial Class FrmFileXml
     Friend WithEvents TxtFileExtension As TextBox
     Friend WithEvents CmdEdit As Button
     Friend WithEvents CmdBrowse As Button
+    Friend WithEvents MyToolTip As ToolTip
+    Friend WithEvents CmdRestore As Button
 End Class
