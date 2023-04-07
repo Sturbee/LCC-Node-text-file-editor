@@ -2,8 +2,9 @@
 
 Public Class ClassExportXmlToText
 
+    Inherits ClsShared
+
     Private Property MyLineNum As Integer = 0
-    Private Property MyImportCDI As New ImportCDI
     Private Property MyExportXml As New ExportXml
 
     Public Sub MyExportXmlToTextFile(filePath As String)
@@ -13,16 +14,6 @@ Public Class ClassExportXmlToText
             MsgBox(filePath + " does not exit")
             Exit Sub
         End If
-
-        ' import cdi xml file file
-        Try
-            Dim clsImportCDI As New ClsImportCDI
-            Me.MyImportCDI = clsImportCDI.MyImportCDI
-            MyImportCDI.AcceptChanges()
-        Catch ex As Exception
-            MsgBox("Failed to import the import cdi xml file")
-            Exit Sub
-        End Try
 
         Try
             MyExportXml.ReadXml(filePath)
@@ -64,9 +55,46 @@ Public Class ClassExportXmlToText
 
                 myText = srIn.ReadLine
 
+                ' process read line
+                Dim level1 As Integer = Me.MatchLevel1(MyLineNum, myText, resultText)
+
+                Select Case level1
+
+                    Case -1 ' unknown segment
+                        Stop
+
+                    Case 0 ' segment node ID
+                        Call Me.RowNode(level1, myText, resultText)
+
+                    Case 1 ' segment power monitor
+                        REM Call Me.AddRowPowerMonitor(level1, resultText)
+
+                    Case 2 ' segment port
+                        REM Call Me.AddRowPort(level1, resultText)
+
+                    Case 3 ' segment conditional
+                        REM Call Me.AddRowLogic(level1, resultText)
+
+                    Case 4 ' segment track circuit receiver
+                        REM Call Me.AddRowTrackCircuitRec(level1, resultText)
+
+                    Case 5 ' segment track circuit transmitter
+                        REM Call Me.AddRowTrackCircuitTran(level1, resultText)
+
+                    Case 6 ' segment rule to aspect
+                        REM Call Me.AddRowRuleToAspect(level1, resultText)
+
+                    Case 7 ' segment Direct Lamp Control
+                        REM Call Me.AddRowLampDirectControl(level1, resultText)
+
+                    Case 8 ' 
+                        REM Call Me.UpDateRowLampDirectControl(resultText)
+
+                End Select
+
                 srOut.WriteLine(myText)
 
-                Console.WriteLine(MyLineNum.ToString + Space(1) + myText)
+                REM Console.WriteLine(MyLineNum.ToString + Space(1) + myText)
 
             End While
 
@@ -75,6 +103,34 @@ Public Class ClassExportXmlToText
 
         Catch ex As Exception
             MsgBox("Failed to create new text file")
+        End Try
+
+    End Sub
+
+    Private Sub RowNode(level1 As Integer, myText As String, text As String)
+
+        Try
+
+            Dim NodeID As Integer
+            Dim resultText As String = String.Empty
+
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(MyLineNum, level1, text, NodeID, resultText)
+            If rowLevel2 Is Nothing Then
+                Stop
+            End If
+
+            Dim rowNode As ExportXml.NodeRow = MyExportXml.Node.FindByNodeID(NodeID)
+            Dim newResultText = rowNode.Item(rowLevel2.columnID - 1)
+
+            Dim cut As Integer = InStr(myText, resultText) - 1
+            Dim writeText As String = Mid(myText, 1, cut) + newResultText
+
+            Console.WriteLine(MyLineNum.ToString + Space(1) + "Node ID - " + rowLevel2.text + Space(1) + newResultText)
+
+        Catch ex As Exception
+
+            MsgBox("Failed read table Node row")
+
         End Try
 
     End Sub
