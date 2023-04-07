@@ -22,6 +22,7 @@ Partial Class FrmPowerMonitor
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.LblOptions = New System.Windows.Forms.Label()
         Me.LblPowerOK = New System.Windows.Forms.Label()
         Me.LblPowerNotOK = New System.Windows.Forms.Label()
@@ -30,6 +31,7 @@ Partial Class FrmPowerMonitor
         Me.ButSave = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.CmbOption = New System.Windows.Forms.ComboBox()
+        Me.MyToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'LblOptions
@@ -65,6 +67,7 @@ Partial Class FrmPowerMonitor
         Me.TxtPowerOK.Name = "TxtPowerOK"
         Me.TxtPowerOK.Size = New System.Drawing.Size(181, 22)
         Me.TxtPowerOK.TabIndex = 4
+        Me.MyToolTip.SetToolTip(Me.TxtPowerOK, "Not recommend to change the PowerOK event")
         '
         'TxtPowerNotOK
         '
@@ -72,6 +75,7 @@ Partial Class FrmPowerMonitor
         Me.TxtPowerNotOK.Name = "TxtPowerNotOK"
         Me.TxtPowerNotOK.Size = New System.Drawing.Size(181, 22)
         Me.TxtPowerNotOK.TabIndex = 5
+        Me.MyToolTip.SetToolTip(Me.TxtPowerNotOK, "Not recommended to change the PowerNotOK event")
         '
         'ButSave
         '
@@ -80,6 +84,7 @@ Partial Class FrmPowerMonitor
         Me.ButSave.Size = New System.Drawing.Size(75, 23)
         Me.ButSave.TabIndex = 6
         Me.ButSave.Text = "Save"
+        Me.MyToolTip.SetToolTip(Me.ButSave, "Save changes and reloads the values")
         Me.ButSave.UseVisualStyleBackColor = True
         '
         'Label4
@@ -127,4 +132,5 @@ Partial Class FrmPowerMonitor
     Friend WithEvents ButSave As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents CmbOption As ComboBox
+    Friend WithEvents MyToolTip As ToolTip
 End Class

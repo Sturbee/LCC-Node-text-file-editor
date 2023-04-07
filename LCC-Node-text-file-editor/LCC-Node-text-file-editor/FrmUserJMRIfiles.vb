@@ -64,11 +64,6 @@
 
     End Sub
 
-
-    Private Sub TxtPath_TextChanged(sender As Object, e As EventArgs) Handles TxtPath.TextChanged
-
-    End Sub
-
     Private Sub TxtExtension_TextChanged(sender As Object, e As EventArgs) Handles TxtExtension.TextChanged
 
         Call Me.ListFiles(FolderBrowserDialog1.SelectedPath)

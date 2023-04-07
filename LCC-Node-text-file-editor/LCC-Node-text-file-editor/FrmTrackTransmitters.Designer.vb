@@ -22,6 +22,7 @@ Partial Class FrmTrackTransmitters
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.TabControlTransmitters = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
@@ -34,6 +35,7 @@ Partial Class FrmTrackTransmitters
         Me.TxtDescription = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.BtnSave = New System.Windows.Forms.Button()
+        Me.MyToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.TabControlTransmitters.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -107,6 +109,7 @@ Partial Class FrmTrackTransmitters
         Me.TxtLinkEvent.Name = "TxtLinkEvent"
         Me.TxtLinkEvent.Size = New System.Drawing.Size(348, 22)
         Me.TxtLinkEvent.TabIndex = 1
+        Me.MyToolTip.SetToolTip(Me.TxtLinkEvent, "Event address of remote reciving mast")
         '
         'LblHelp2
         '
@@ -133,6 +136,7 @@ Partial Class FrmTrackTransmitters
         Me.TxtDescription.Name = "TxtDescription"
         Me.TxtDescription.Size = New System.Drawing.Size(351, 22)
         Me.TxtDescription.TabIndex = 0
+        Me.MyToolTip.SetToolTip(Me.TxtDescription, "Mast to transmit track speed changes to")
         '
         'Label4
         '
@@ -150,6 +154,7 @@ Partial Class FrmTrackTransmitters
         Me.BtnSave.Size = New System.Drawing.Size(75, 23)
         Me.BtnSave.TabIndex = 15
         Me.BtnSave.Text = "Save"
+        Me.MyToolTip.SetToolTip(Me.BtnSave, "Will save changes and reload values")
         Me.BtnSave.UseVisualStyleBackColor = True
         '
         'FrmTrackTransmitters
@@ -188,4 +193,5 @@ Partial Class FrmTrackTransmitters
     Friend WithEvents TxtDescription As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents BtnSave As Button
+    Friend WithEvents MyToolTip As ToolTip
 End Class

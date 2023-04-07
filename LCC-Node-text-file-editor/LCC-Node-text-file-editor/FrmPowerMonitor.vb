@@ -4,9 +4,6 @@ Public Class FrmPowerMonitor
     Public Property MyFileName As String
     Public Property MyFilePath
     Private Property MyExportXml As New ExportXml
-    Private Property MyPowerMonitorRow As ExportXml.PowerMonitorRow
-    Private Property SavePowerOK As String
-    Private Property SavePowerNotOK As String
 
 
     Private Sub FrmPowerMonitor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -58,58 +55,33 @@ Public Class FrmPowerMonitor
         End Try
 
 
-        Me.MyPowerMonitorRow = Me.MyExportXml.PowerMonitor.Item(0)
+        Dim powerMonitorRow = Me.MyExportXml.PowerMonitor.Item(0)
 
-        Me.CmbOption.SelectedIndex = Me.MyPowerMonitorRow.powerOptionID
+        Me.CmbOption.SelectedIndex = powerMonitorRow.powerOptionID
 
-        Me.SavePowerOK = Me.MyPowerMonitorRow.eventPowerOK
-        Me.SavePowerNotOK = Me.MyPowerMonitorRow.eventPowerNotOK
-
-        Me.TxtPowerOK.Text = Me.MyPowerMonitorRow.eventPowerOK.ToString
-        Me.TxtPowerNotOK.Text = Me.MyPowerMonitorRow.eventPowerNotOK.ToString
+        Me.TxtPowerOK.Text = powerMonitorRow.eventPowerOK
+        Me.TxtPowerNotOK.Text = powerMonitorRow.eventPowerNotOK
 
     End Sub
 
-    Private Sub TxtPowerOK_TextChanged(sender As Object, e As EventArgs) Handles TxtPowerOK.TextChanged
-
-        If Me.TxtPowerOK.Text = Me.SavePowerOK Then
-            ' do nothing
-        Else
-            MsgBox("Not recommended to change PowerOK eventID")
-        End If
-
-        Me.TxtPowerOK.Text = Me.SavePowerOK
-
-    End Sub
-
-    Private Sub TxtPowerNotOK_TextChanged(sender As Object, e As EventArgs) Handles TxtPowerNotOK.TextChanged
-
-        If Me.TxtPowerNotOK.Text = Me.SavePowerNotOK Then
-            ' do nothing
-        Else
-            MsgBox("Not recommended to change PowerNotOK eventID")
-        End If
-
-        Me.TxtPowerNotOK.Text = Me.SavePowerNotOK
-
-    End Sub
 
     Private Sub ButSave_Click(sender As Object, e As EventArgs) Handles ButSave.Click
 
-        If Me.MyPowerMonitorRow Is Nothing Then
-            MsgBox("Node Power Monior data missing")
-            Exit Sub
-        End If
-
         Try
-            Me.MyPowerMonitorRow.powerOptionID = Me.CmbOption.SelectedIndex
+            Dim pwrRow As ExportXml.PowerMonitorRow = MyExportXml.PowerMonitor.Item(0)
+            pwrRow.powerOptionID = Me.CmbOption.SelectedIndex
+            pwrRow.eventPowerOK = Me.TxtPowerOK.Text
+            pwrRow.eventPowerNotOK = Me.TxtPowerNotOK.Text
 
             Me.MyExportXml.WriteXml(Me.MyFilePath)
+            MsgBox("Saved changes to power monitor values")
 
-            MsgBox("Saved changes to file " + Me.MyFileName)
+            ' need to reload after save
+            MyExportXml = New ExportXml
+            Call Me.DisplayValues()
 
         Catch ex As Exception
-            MsgBox("Failed to save file " + Me.MyFileName)
+            MsgBox("Failed to save power monitor values")
         End Try
 
     End Sub

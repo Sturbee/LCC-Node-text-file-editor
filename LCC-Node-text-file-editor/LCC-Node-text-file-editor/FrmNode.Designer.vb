@@ -22,6 +22,7 @@ Partial Class FrmNode
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.LblName = New System.Windows.Forms.Label()
         Me.LblDecription = New System.Windows.Forms.Label()
         Me.LblNodeType = New System.Windows.Forms.Label()
@@ -34,6 +35,7 @@ Partial Class FrmNode
         Me.LblBaseAddress = New System.Windows.Forms.Label()
         Me.ButSaveChanges = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.MyToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'LblName
@@ -87,6 +89,7 @@ Partial Class FrmNode
         Me.TxtNodeName.Name = "TxtNodeName"
         Me.TxtNodeName.Size = New System.Drawing.Size(282, 22)
         Me.TxtNodeName.TabIndex = 5
+        Me.MyToolTip.SetToolTip(Me.TxtNodeName, "Node name should be short")
         '
         'TxtNodeDescription
         '
@@ -94,6 +97,7 @@ Partial Class FrmNode
         Me.TxtNodeDescription.Name = "TxtNodeDescription"
         Me.TxtNodeDescription.Size = New System.Drawing.Size(282, 22)
         Me.TxtNodeDescription.TabIndex = 6
+        Me.MyToolTip.SetToolTip(Me.TxtNodeDescription, "Describe what this node does")
         '
         'LblFileName
         '
@@ -129,6 +133,7 @@ Partial Class FrmNode
         Me.ButSaveChanges.Size = New System.Drawing.Size(75, 23)
         Me.ButSaveChanges.TabIndex = 10
         Me.ButSaveChanges.Text = "Save"
+        Me.MyToolTip.SetToolTip(Me.ButSaveChanges, "Will save changes and reload the values")
         Me.ButSaveChanges.UseVisualStyleBackColor = True
         '
         'Label6
@@ -176,4 +181,5 @@ Partial Class FrmNode
     Friend WithEvents LblBaseAddress As Label
     Friend WithEvents ButSaveChanges As Button
     Friend WithEvents Label6 As Label
+    Friend WithEvents MyToolTip As ToolTip
 End Class

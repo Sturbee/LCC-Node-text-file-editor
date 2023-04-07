@@ -22,6 +22,7 @@ Partial Class FrmUserJMRIfiles
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.CmbPath = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -33,6 +34,7 @@ Partial Class FrmUserJMRIfiles
         Me.FilesListBox = New System.Windows.Forms.ListBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.CmdBrowse = New System.Windows.Forms.Button()
+        Me.MyToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'CmbPath
@@ -74,6 +76,7 @@ Partial Class FrmUserJMRIfiles
         Me.TxtExtension.Name = "TxtExtension"
         Me.TxtExtension.Size = New System.Drawing.Size(100, 22)
         Me.TxtExtension.TabIndex = 4
+        Me.MyToolTip.SetToolTip(Me.TxtExtension, "All files *.*")
         '
         'Label3
         '
@@ -91,6 +94,7 @@ Partial Class FrmUserJMRIfiles
         Me.CmdSave.Size = New System.Drawing.Size(75, 23)
         Me.CmdSave.TabIndex = 6
         Me.CmdSave.Text = "Save"
+        Me.MyToolTip.SetToolTip(Me.CmdSave, "Will save changes and reload values")
         Me.CmdSave.UseVisualStyleBackColor = True
         '
         'FilesListBox
@@ -119,6 +123,7 @@ Partial Class FrmUserJMRIfiles
         Me.CmdBrowse.Size = New System.Drawing.Size(75, 23)
         Me.CmdBrowse.TabIndex = 9
         Me.CmdBrowse.Text = "Browse"
+        Me.MyToolTip.SetToolTip(Me.CmdBrowse, "Search in other file directories")
         Me.CmdBrowse.UseVisualStyleBackColor = True
         '
         'FrmUserJMRIfiles
@@ -154,4 +159,5 @@ Partial Class FrmUserJMRIfiles
     Friend WithEvents FilesListBox As ListBox
     Friend WithEvents Label4 As Label
     Friend WithEvents CmdBrowse As Button
+    Friend WithEvents MyToolTip As ToolTip
 End Class

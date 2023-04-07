@@ -1,16 +1,14 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar
-
+﻿
 Public Class FrmUserTrackSpeed
 
-    Private Property ClsI As New ClsImportCDI
-    Private Property ClsU As New ClsUserPrefs
 
 #Disable Warning IDE0044 ' Add readonly modifier
     Dim LblValues(7) As Label
     Dim TxtValues(7) As TextBox
 #Enable Warning IDE0044 ' Add readonly modifier
 
-
+    Private Property MyUserPrefsFilePath As String
+    Private Property MyUserPrefs As New UserPrefs
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -23,9 +21,11 @@ Public Class FrmUserTrackSpeed
 
         ' populate labels with CDI values
 
+        Dim clsI As New ClsImportCDI
+
         Try
 
-            For count = 0 To ClsI.MyImportCDI.TrackSpeed.Count - 1
+            For count = 0 To clsI.MyImportCDI.TrackSpeed.Count - 1
 
                 Dim MyLabel As New Label With {
                     .Left = 10,
@@ -33,7 +33,7 @@ Public Class FrmUserTrackSpeed
                     .Width = 120
                 }
 
-                Dim row As ImportCDI.TrackSpeedRow = ClsI.MyImportCDI.TrackSpeed.Item(count)
+                Dim row As ImportCDI.TrackSpeedRow = clsI.MyImportCDI.TrackSpeed.Item(count)
                 MyLabel.Text = row.text
 
                 Me.LblValues(count) = MyLabel
@@ -47,10 +47,15 @@ Public Class FrmUserTrackSpeed
             Exit Sub
         End Try
 
+
         ' populate text boxes with user track speeds
 
+        Dim clsU As New ClsUserPrefs
+        MyUserPrefsFilePath = clsU.UserPrefsFileName
+        MyUserPrefs = clsU.MyUserPrefs
+
         Try
-            For count = 0 To ClsU.MyUserPrefs.TrackSpeed.Count - 1
+            For count = 0 To MyUserPrefs.TrackSpeed.Count - 1
 
                 Dim MyTextBox As New TextBox With {
                     .Left = 150,
@@ -58,7 +63,7 @@ Public Class FrmUserTrackSpeed
                     .Width = 120
                 }
 
-                Dim row As UserPrefs.TrackSpeedRow = ClsU.MyUserPrefs.TrackSpeed.Item(count)
+                Dim row As UserPrefs.TrackSpeedRow = MyUserPrefs.TrackSpeed.Item(count)
                 MyTextBox.Text = row.text
 
                 Me.TxtValues(count) = MyTextBox
@@ -79,17 +84,21 @@ Public Class FrmUserTrackSpeed
 
         Try
 
-            For count = 0 To ClsU.MyUserPrefs.TrackSpeed.Count - 1
-                ClsU.TrackSpeedRowChange(count, Me.TxtValues(count).Text)
+            For count = 0 To MyUserPrefs.TrackSpeed.Count - 1
+                Dim row As UserPrefs.TrackSpeedRow = MyUserPrefs.TrackSpeed.FindByvalue(count)
+                row.text = Me.TxtValues(count).Text
             Next
 
-            ClsU.UserPrefsXmlSave()
+            Me.MyUserPrefs.WriteXml(Me.MyUserPrefsFilePath)
+            MsgBox("Saved your track speed values")
 
-            MsgBox("Saved your track speeds")
+            ' need to reload after save
+            MyUserPrefs = New UserPrefs
+            Call Me.DisplayValues()
 
         Catch ex As Exception
 
-            MsgBox("Failed to save your track speeds")
+            MsgBox("Failed to save your track speed values")
 
         End Try
 

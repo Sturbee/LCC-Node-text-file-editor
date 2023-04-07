@@ -53,12 +53,13 @@
 
             If level1 = -1 Then
                 Console.WriteLine(lineNum.ToString + " Level1 not found - " + text)
-                Stop
+                MsgBox(lineNum.ToString + " Level1 not found - " + text)
             End If
 
         Catch ex As Exception
 
-            Stop
+            MsgBox("MatchLevel1 failure")
+            Return -1
 
         End Try
 
@@ -115,12 +116,12 @@
 
             If IsNothing(rowLevel2) Then
                 Console.WriteLine(lineNum.ToString + " Section not found - " + text)
-                Stop
+                MsgBox(lineNum.ToString + " Section not found - " + text)
             End If
 
         Catch ex As Exception
 
-            Stop
+            MsgBox("MatchLevel2 failure")
 
         End Try
 
@@ -146,7 +147,7 @@
 
         Catch ex As Exception
 
-            Stop
+            MsgBox("GetMyIDvalue failure for text " + resultText)
 
         End Try
 

@@ -5,7 +5,7 @@ Public Class FrmNode
     Private Property MyFilePath As String
     Private Property MyFileName As String
     Private Property MyExportXml As New ExportXml
-    Private Property MyNodeRow As ExportXml.NodeRow
+
 
     Private Sub FrmNode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -42,40 +42,39 @@ Public Class FrmNode
             Exit Sub
         End Try
 
-        Me.MyNodeRow = Me.MyExportXml.Node.Item(0)
+        Dim nodeRow As ExportXml.NodeRow = Me.MyExportXml.Node.Item(0)
 
         Me.LblFileName.Text = Me.MyFileName
 
-        Dim row As Rpt.NodeTypeRow = dsRpt.NodeType.FindByvalue(Me.MyNodeRow.NodeType)
+        Dim row As Rpt.NodeTypeRow = dsRpt.NodeType.FindByvalue(nodeRow.nodeType)
         If row Is Nothing Then
             Me.LblType.Text = "Unknown"
         Else
             Me.LblType.Text = row.name
         End If
 
-        Me.LblBaseAddress.Text = Me.MyNodeRow.eventBase.ToString
-        Me.TxtNodeName.Text = Me.MyNodeRow.Name.ToString
-        Me.TxtNodeDescription.Text = Me.MyNodeRow.Description.ToString
+        Me.LblBaseAddress.Text = nodeRow.eventBase.ToString
+        Me.TxtNodeName.Text = nodeRow.Name.ToString
+        Me.TxtNodeDescription.Text = nodeRow.Description.ToString
 
     End Sub
 
     Private Sub ButSaveChanges_Click(sender As Object, e As EventArgs) Handles ButSaveChanges.Click
 
-        If Me.MyNodeRow Is Nothing Then
-            MsgBox("Node data missing")
-            Exit Sub
-        End If
-
         Try
-            Me.MyNodeRow.Name = Me.TxtNodeName.Text
-            Me.MyNodeRow.Description = Me.TxtNodeDescription.Text
+            Dim nodeRow As ExportXml.NodeRow = MyExportXml.Node.Item(0)
+            nodeRow.Name = Me.TxtNodeName.Text
+            nodeRow.Description = Me.TxtNodeDescription.Text
 
             Me.MyExportXml.WriteXml(Me.MyFilePath)
+            MsgBox("Saved changes to node values")
 
-            MsgBox("Saved changes to file " + Me.MyFileName)
+            ' need to reload after save
+            MyExportXml = New ExportXml
+            Call Me.DisplayValues()
 
         Catch ex As Exception
-            MsgBox("Failed to save file " + Me.MyFileName)
+            MsgBox("Failed to save node values")
         End Try
 
     End Sub

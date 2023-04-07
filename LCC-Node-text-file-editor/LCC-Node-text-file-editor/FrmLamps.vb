@@ -132,14 +132,14 @@ Public Class FrmLamps
             End Try
 
             Me.MyExportXml.WriteXml(Me.MyFilePath)
-            MsgBox("Saved changes to file " + Me.MyFileName)
+            MsgBox("Saved changes to lamp values")
 
             ' need to reload after save
             MyExportXml = New ExportXml
             Call Me.DisplayValues()
 
         Catch ex As Exception
-            MsgBox("Failed to save lamp data")
+            MsgBox("Failed to save lamp values")
             Exit Sub
         End Try
 

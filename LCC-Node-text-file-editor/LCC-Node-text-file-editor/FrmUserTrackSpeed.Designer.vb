@@ -22,7 +22,9 @@ Partial Class FrmUserTrackSpeed
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.BtnSave = New System.Windows.Forms.Button()
+        Me.MyToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'BtnSave
@@ -32,19 +34,21 @@ Partial Class FrmUserTrackSpeed
         Me.BtnSave.Size = New System.Drawing.Size(75, 23)
         Me.BtnSave.TabIndex = 0
         Me.BtnSave.Text = "Save"
+        Me.MyToolTip.SetToolTip(Me.BtnSave, "Will save changes and reload values")
         Me.BtnSave.UseVisualStyleBackColor = True
         '
-        'FrmTrackSpeed
+        'FrmUserTrackSpeed
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.BtnSave)
-        Me.Name = "FrmTrackSpeed"
+        Me.Name = "FrmUserTrackSpeed"
         Me.Text = "User Track Speed Editor"
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents BtnSave As Button
+    Friend WithEvents MyToolTip As ToolTip
 End Class

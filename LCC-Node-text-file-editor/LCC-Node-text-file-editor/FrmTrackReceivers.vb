@@ -94,15 +94,16 @@ Public Class FrmTrackReceivers
             Dim row As ExportXml.TrackReceiverRow = MyExportXml.TrackReceiver.FindByCircuitID(Me.TabControlReceivers.SelectedIndex + 1)
             row.description = Me.TxtDescription.Text
             row.eventAddress = Me.TxtLinkEvent.Text
+
             Me.MyExportXml.WriteXml(Me.MyFilePath)
-            MsgBox("Saved changes to file " + Me.MyFileName)
+            MsgBox("Saved changes to track receiver values")
 
             ' need to reload after save
             MyExportXml = New ExportXml
             Call Me.DisplayValues()
 
         Catch ex As Exception
-            MsgBox("Failed to save track receiver circuit data")
+            MsgBox("Failed to save track receiver circuit values")
             Exit Sub
         End Try
 

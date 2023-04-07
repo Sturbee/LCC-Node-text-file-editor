@@ -1,7 +1,7 @@
 ﻿
 Public Class ClsUserPrefs
 
-    Private Property UserPrefsFileName As String = "UserPrefs.xml"
+    Public Property UserPrefsFileName As String = "UserPrefs.xml"
     Private Property UserPrefsOrgFileName As String = "UserPrefs.org.xml"
 
     Public Property MyUserPrefs As New UserPrefs
@@ -102,19 +102,5 @@ Public Class ClsUserPrefs
         End Try
 
     End Function
-
-    Public Sub TrackSpeedRowChange(value As Integer, text As String)
-
-        Dim row As UserPrefs.TrackSpeedRow = MyUserPrefs.TrackSpeed.FindByvalue(value)
-        row.text = text
-
-    End Sub
-
-
-    Public Sub UserPrefsXmlSave()
-
-        MyUserPrefs.WriteXml(Me.UserPrefsFileName)
-
-    End Sub
 
 End Class

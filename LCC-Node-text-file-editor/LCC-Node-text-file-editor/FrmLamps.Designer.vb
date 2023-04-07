@@ -22,6 +22,7 @@ Partial Class FrmLamps
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.TabControlLamps = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
@@ -46,6 +47,7 @@ Partial Class FrmLamps
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.BtnSave = New System.Windows.Forms.Button()
+        Me.MyToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.TabControlLamps.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
@@ -122,6 +124,7 @@ Partial Class FrmLamps
         Me.TxtBrightness.Name = "TxtBrightness"
         Me.TxtBrightness.Size = New System.Drawing.Size(116, 22)
         Me.TxtBrightness.TabIndex = 1
+        Me.MyToolTip.SetToolTip(Me.TxtBrightness, "Values limited from 0 to 255, 0 being off, 255 being max brightness")
         '
         'LblBrightness
         '
@@ -196,6 +199,7 @@ Partial Class FrmLamps
         Me.TxtLampOff.Name = "TxtLampOff"
         Me.TxtLampOff.Size = New System.Drawing.Size(190, 22)
         Me.TxtLampOff.TabIndex = 1
+        Me.MyToolTip.SetToolTip(Me.TxtLampOff, "Event address to turn lamp off")
         '
         'LblLampOff
         '
@@ -224,6 +228,7 @@ Partial Class FrmLamps
         Me.TxtLampOn.Name = "TxtLampOn"
         Me.TxtLampOn.Size = New System.Drawing.Size(193, 22)
         Me.TxtLampOn.TabIndex = 1
+        Me.MyToolTip.SetToolTip(Me.TxtLampOn, "Event address to turn lamp on")
         '
         'LblLampOn
         '
@@ -251,6 +256,7 @@ Partial Class FrmLamps
         Me.TxtDescription.Name = "TxtDescription"
         Me.TxtDescription.Size = New System.Drawing.Size(292, 22)
         Me.TxtDescription.TabIndex = 1
+        Me.MyToolTip.SetToolTip(Me.TxtDescription, "Name of your lamp, ex: Mast 1 Head 1 Green")
         '
         'Label1
         '
@@ -277,6 +283,7 @@ Partial Class FrmLamps
         Me.BtnSave.Size = New System.Drawing.Size(75, 23)
         Me.BtnSave.TabIndex = 19
         Me.BtnSave.Text = "Save"
+        Me.MyToolTip.SetToolTip(Me.BtnSave, "Will save changes and reload values")
         Me.BtnSave.UseVisualStyleBackColor = True
         '
         'FrmLamps
@@ -339,4 +346,5 @@ Partial Class FrmLamps
     Friend WithEvents Label1 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents BtnSave As Button
+    Friend WithEvents MyToolTip As ToolTip
 End Class

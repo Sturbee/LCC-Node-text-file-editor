@@ -46,6 +46,7 @@ Public Class ClassExportXmlToText
             Dim srIn As New StreamReader(sourcePath)
             Dim myText As String = String.Empty
             Dim resultText As String = String.Empty
+            Dim writeText As String = String.Empty
 
             Dim srOut As New StreamWriter(outputPath)
 
@@ -64,10 +65,10 @@ Public Class ClassExportXmlToText
                         Stop
 
                     Case 0 ' segment node ID
-                        Call Me.RowNode(level1, myText, resultText)
+                        Call Me.RowNode(level1, myText, resultText, writeText)
 
                     Case 1 ' segment power monitor
-                        REM Call Me.AddRowPowerMonitor(level1, resultText)
+                        Call Me.RowPowerMonitor(level1, myText, resultText, writeText)
 
                     Case 2 ' segment port
                         REM Call Me.AddRowPort(level1, resultText)
@@ -92,7 +93,7 @@ Public Class ClassExportXmlToText
 
                 End Select
 
-                srOut.WriteLine(myText)
+                srOut.WriteLine(writeText)
 
                 REM Console.WriteLine(MyLineNum.ToString + Space(1) + myText)
 
@@ -107,7 +108,7 @@ Public Class ClassExportXmlToText
 
     End Sub
 
-    Private Sub RowNode(level1 As Integer, myText As String, text As String)
+    Private Sub RowNode(level1 As Integer, myText As String, text As String, ByRef writeText As String)
 
         Try
 
@@ -120,10 +121,10 @@ Public Class ClassExportXmlToText
             End If
 
             Dim rowNode As ExportXml.NodeRow = MyExportXml.Node.FindByNodeID(NodeID)
-            Dim newResultText = rowNode.Item(rowLevel2.columnID - 1)
+            Dim newResultText = rowNode.Item(rowLevel2.columnID - 1).ToString
 
             Dim cut As Integer = InStr(myText, resultText) - 1
-            Dim writeText As String = Mid(myText, 1, cut) + newResultText
+            writeText = Mid(myText, 1, cut) + newResultText
 
             Console.WriteLine(MyLineNum.ToString + Space(1) + "Node ID - " + rowLevel2.text + Space(1) + newResultText)
 
@@ -134,5 +135,34 @@ Public Class ClassExportXmlToText
         End Try
 
     End Sub
+
+    Private Sub RowPowerMonitor(level1 As Integer, myText As String, text As String, ByRef writeText As String)
+
+        Try
+
+            Dim PowerMonitorID As Integer
+            Dim resultText As String = String.Empty
+
+            Dim rowlevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(MyLineNum, level1, text, PowerMonitorID, resultText)
+            If rowlevel2 Is Nothing Then
+                Stop
+            End If
+
+            Dim rowPowerMonitor As ExportXml.PowerMonitorRow = Me.MyExportXml.PowerMonitor.FindByPowerMonitorID(PowerMonitorID)
+            Dim newResultText = rowPowerMonitor.Item(rowlevel2.columnID - 1).ToString
+
+            Dim cut As Integer = InStr(myText, resultText) - 1
+            writeText = Mid(myText, 1, cut) + newResultText
+
+            Console.WriteLine(MyLineNum.ToString + Space(1) + "Node Power Monitor - " + rowlevel2.text + Space(1) + resultText)
+
+        Catch ex As Exception
+
+            MsgBox("Failed to read table Power Monitor row")
+
+        End Try
+
+    End Sub
+
 
 End Class
