@@ -41,6 +41,7 @@
             <xs:sequence>
               <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
               <xs:element name="level1" msprop:Generator_ColumnPropNameInTable="level1Column" msprop:Generator_ColumnPropNameInRow="level1" msprop:Generator_UserColumnName="level1" msprop:Generator_ColumnVarNameInTable="columnlevel1" type="xs:int" minOccurs="0" />
+              <xs:element name="resultText" msprop:Generator_ColumnPropNameInRow="resultText" msprop:Generator_ColumnPropNameInTable="resultTextColumn" msprop:Generator_ColumnVarNameInTable="columnresultText" msprop:Generator_UserColumnName="resultText" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -51,6 +52,8 @@
               <xs:element name="level1" msprop:Generator_ColumnPropNameInTable="level1Column" msprop:Generator_ColumnPropNameInRow="level1" msprop:Generator_UserColumnName="level1" msprop:Generator_ColumnVarNameInTable="columnlevel1" type="xs:int" minOccurs="0" />
               <xs:element name="level2" msprop:Generator_ColumnPropNameInTable="level2Column" msprop:Generator_ColumnPropNameInRow="level2" msprop:Generator_UserColumnName="level2" msprop:Generator_ColumnVarNameInTable="columnlevel2" type="xs:int" minOccurs="0" />
               <xs:element name="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_UserColumnName="columnID" msprop:Generator_ColumnVarNameInTable="columncolumnID" type="xs:int" minOccurs="0" />
+              <xs:element name="level3" msprop:Generator_ColumnPropNameInRow="level3" msprop:Generator_ColumnPropNameInTable="level3Column" msprop:Generator_ColumnVarNameInTable="columnlevel3" msprop:Generator_UserColumnName="level3" type="xs:int" minOccurs="0" />
+              <xs:element name="resultText" msprop:Generator_ColumnPropNameInRow="resultText" msprop:Generator_ColumnPropNameInTable="resultTextColumn" msprop:Generator_ColumnVarNameInTable="columnresultText" msprop:Generator_UserColumnName="resultText" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -61,6 +64,8 @@
               <xs:element name="level1" msprop:Generator_ColumnPropNameInTable="level1Column" msprop:Generator_ColumnPropNameInRow="level1" msprop:Generator_UserColumnName="level1" msprop:Generator_ColumnVarNameInTable="columnlevel1" type="xs:int" minOccurs="0" />
               <xs:element name="level2" msprop:Generator_ColumnPropNameInTable="level2Column" msprop:Generator_ColumnPropNameInRow="level2" msprop:Generator_UserColumnName="level2" msprop:Generator_ColumnVarNameInTable="columnlevel2" type="xs:int" minOccurs="0" />
               <xs:element name="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_UserColumnName="columnID" msprop:Generator_ColumnVarNameInTable="columncolumnID" type="xs:int" minOccurs="0" />
+              <xs:element name="level4" msprop:Generator_ColumnPropNameInRow="level4" msprop:Generator_ColumnPropNameInTable="level4Column" msprop:Generator_ColumnVarNameInTable="columnlevel4" msprop:Generator_UserColumnName="level4" type="xs:int" minOccurs="0" />
+              <xs:element name="resultText" msprop:Generator_ColumnPropNameInRow="resultText" msprop:Generator_ColumnPropNameInTable="resultTextColumn" msprop:Generator_ColumnVarNameInTable="columnresultText" msprop:Generator_UserColumnName="resultText" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -71,14 +76,16 @@
               <xs:element name="level1" msprop:Generator_ColumnPropNameInTable="level1Column" msprop:Generator_ColumnPropNameInRow="level1" msprop:Generator_UserColumnName="level1" msprop:Generator_ColumnVarNameInTable="columnlevel1" type="xs:int" minOccurs="0" />
               <xs:element name="level2" msprop:Generator_ColumnPropNameInTable="level2Column" msprop:Generator_ColumnPropNameInRow="level2" msprop:Generator_UserColumnName="level2" msprop:Generator_ColumnVarNameInTable="columnlevel2" type="xs:int" minOccurs="0" />
               <xs:element name="columnID" msprop:Generator_ColumnPropNameInTable="columnIDColumn" msprop:Generator_ColumnPropNameInRow="columnID" msprop:Generator_UserColumnName="columnID" msprop:Generator_ColumnVarNameInTable="columncolumnID" type="xs:int" minOccurs="0" />
+              <xs:element name="level5" msprop:Generator_ColumnPropNameInRow="level5" msprop:Generator_ColumnPropNameInTable="level5Column" msprop:Generator_ColumnVarNameInTable="columnlevel5" msprop:Generator_UserColumnName="level5" type="xs:int" minOccurs="0" />
+              <xs:element name="resultText" msprop:Generator_ColumnPropNameInRow="resultText" msprop:Generator_ColumnPropNameInTable="resultTextColumn" msprop:Generator_ColumnVarNameInTable="columnresultText" msprop:Generator_UserColumnName="resultText" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LampName" msprop:Generator_RowClassName="LampNameRow" msprop:Generator_RowEvHandlerName="LampNameRowChangeEventHandler" msprop:Generator_RowDeletedName="LampNameRowDeleted" msprop:Generator_RowDeletingName="LampNameRowDeleting" msprop:Generator_RowEvArgName="LampNameRowChangeEvent" msprop:Generator_TablePropName="LampName" msprop:Generator_RowChangedName="LampNameRowChanged" msprop:Generator_UserTableName="LampName" msprop:Generator_RowChangingName="LampNameRowChanging" msprop:Generator_TableClassName="LampNameDataTable" msprop:Generator_TableVarName="tableLampName">
+        <xs:element name="LampName" msprop:Generator_RowEvHandlerName="LampNameRowChangeEventHandler" msprop:Generator_RowDeletedName="LampNameRowDeleted" msprop:Generator_RowDeletingName="LampNameRowDeleting" msprop:Generator_RowEvArgName="LampNameRowChangeEvent" msprop:Generator_TablePropName="LampName" msprop:Generator_RowChangedName="LampNameRowChanged" msprop:Generator_UserTableName="LampName" msprop:Generator_RowChangingName="LampNameRowChanging" msprop:Generator_RowClassName="LampNameRow" msprop:Generator_TableClassName="LampNameDataTable" msprop:Generator_TableVarName="tableLampName">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
-              <xs:element name="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
+              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
+              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -1354,6 +1354,8 @@ Partial Public Class ImportCDI
         
         Private columnlevel1 As Global.System.Data.DataColumn
         
+        Private columnresultText As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -1406,6 +1408,14 @@ Partial Public Class ImportCDI
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property resultTextColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnresultText
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1442,9 +1452,9 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddMatchLevel1Row(ByVal text As String, ByVal level1 As Integer) As MatchLevel1Row
+        Public Overloads Function AddMatchLevel1Row(ByVal text As String, ByVal level1 As Integer, ByVal resultText As String) As MatchLevel1Row
             Dim rowMatchLevel1Row As MatchLevel1Row = CType(Me.NewRow,MatchLevel1Row)
-            Dim columnValuesArray() As Object = New Object() {text, level1}
+            Dim columnValuesArray() As Object = New Object() {text, level1, resultText}
             rowMatchLevel1Row.ItemArray = columnValuesArray
             Me.Rows.Add(rowMatchLevel1Row)
             Return rowMatchLevel1Row
@@ -1469,6 +1479,7 @@ Partial Public Class ImportCDI
         Friend Sub InitVars()
             Me.columntext = MyBase.Columns("text")
             Me.columnlevel1 = MyBase.Columns("level1")
+            Me.columnresultText = MyBase.Columns("resultText")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1478,6 +1489,8 @@ Partial Public Class ImportCDI
             MyBase.Columns.Add(Me.columntext)
             Me.columnlevel1 = New Global.System.Data.DataColumn("level1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnlevel1)
+            Me.columnresultText = New Global.System.Data.DataColumn("resultText", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnresultText)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1623,6 +1636,10 @@ Partial Public Class ImportCDI
         
         Private columncolumnID As Global.System.Data.DataColumn
         
+        Private columnlevel3 As Global.System.Data.DataColumn
+        
+        Private columnresultText As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -1691,6 +1708,22 @@ Partial Public Class ImportCDI
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property level3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlevel3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property resultTextColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnresultText
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1727,9 +1760,9 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddMatchLevel2Row(ByVal text As String, ByVal level1 As Integer, ByVal level2 As Integer, ByVal columnID As Integer) As MatchLevel2Row
+        Public Overloads Function AddMatchLevel2Row(ByVal text As String, ByVal level1 As Integer, ByVal level2 As Integer, ByVal columnID As Integer, ByVal level3 As Integer, ByVal resultText As String) As MatchLevel2Row
             Dim rowMatchLevel2Row As MatchLevel2Row = CType(Me.NewRow,MatchLevel2Row)
-            Dim columnValuesArray() As Object = New Object() {text, level1, level2, columnID}
+            Dim columnValuesArray() As Object = New Object() {text, level1, level2, columnID, level3, resultText}
             rowMatchLevel2Row.ItemArray = columnValuesArray
             Me.Rows.Add(rowMatchLevel2Row)
             Return rowMatchLevel2Row
@@ -1756,6 +1789,8 @@ Partial Public Class ImportCDI
             Me.columnlevel1 = MyBase.Columns("level1")
             Me.columnlevel2 = MyBase.Columns("level2")
             Me.columncolumnID = MyBase.Columns("columnID")
+            Me.columnlevel3 = MyBase.Columns("level3")
+            Me.columnresultText = MyBase.Columns("resultText")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1769,6 +1804,10 @@ Partial Public Class ImportCDI
             MyBase.Columns.Add(Me.columnlevel2)
             Me.columncolumnID = New Global.System.Data.DataColumn("columnID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncolumnID)
+            Me.columnlevel3 = New Global.System.Data.DataColumn("level3", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlevel3)
+            Me.columnresultText = New Global.System.Data.DataColumn("resultText", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnresultText)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1914,6 +1953,10 @@ Partial Public Class ImportCDI
         
         Private columncolumnID As Global.System.Data.DataColumn
         
+        Private columnlevel4 As Global.System.Data.DataColumn
+        
+        Private columnresultText As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -1982,6 +2025,22 @@ Partial Public Class ImportCDI
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property level4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlevel4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property resultTextColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnresultText
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2018,9 +2077,9 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddMatchLevel3Row(ByVal text As String, ByVal level1 As Integer, ByVal level2 As Integer, ByVal columnID As Integer) As MatchLevel3Row
+        Public Overloads Function AddMatchLevel3Row(ByVal text As String, ByVal level1 As Integer, ByVal level2 As Integer, ByVal columnID As Integer, ByVal level4 As Integer, ByVal resultText As String) As MatchLevel3Row
             Dim rowMatchLevel3Row As MatchLevel3Row = CType(Me.NewRow,MatchLevel3Row)
-            Dim columnValuesArray() As Object = New Object() {text, level1, level2, columnID}
+            Dim columnValuesArray() As Object = New Object() {text, level1, level2, columnID, level4, resultText}
             rowMatchLevel3Row.ItemArray = columnValuesArray
             Me.Rows.Add(rowMatchLevel3Row)
             Return rowMatchLevel3Row
@@ -2047,6 +2106,8 @@ Partial Public Class ImportCDI
             Me.columnlevel1 = MyBase.Columns("level1")
             Me.columnlevel2 = MyBase.Columns("level2")
             Me.columncolumnID = MyBase.Columns("columnID")
+            Me.columnlevel4 = MyBase.Columns("level4")
+            Me.columnresultText = MyBase.Columns("resultText")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2060,6 +2121,10 @@ Partial Public Class ImportCDI
             MyBase.Columns.Add(Me.columnlevel2)
             Me.columncolumnID = New Global.System.Data.DataColumn("columnID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncolumnID)
+            Me.columnlevel4 = New Global.System.Data.DataColumn("level4", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlevel4)
+            Me.columnresultText = New Global.System.Data.DataColumn("resultText", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnresultText)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2205,6 +2270,10 @@ Partial Public Class ImportCDI
         
         Private columncolumnID As Global.System.Data.DataColumn
         
+        Private columnlevel5 As Global.System.Data.DataColumn
+        
+        Private columnresultText As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -2273,6 +2342,22 @@ Partial Public Class ImportCDI
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property level5Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlevel5
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property resultTextColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnresultText
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2309,9 +2394,9 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddMatchLevel4Row(ByVal text As String, ByVal level1 As Integer, ByVal level2 As Integer, ByVal columnID As Integer) As MatchLevel4Row
+        Public Overloads Function AddMatchLevel4Row(ByVal text As String, ByVal level1 As Integer, ByVal level2 As Integer, ByVal columnID As Integer, ByVal level5 As Integer, ByVal resultText As String) As MatchLevel4Row
             Dim rowMatchLevel4Row As MatchLevel4Row = CType(Me.NewRow,MatchLevel4Row)
-            Dim columnValuesArray() As Object = New Object() {text, level1, level2, columnID}
+            Dim columnValuesArray() As Object = New Object() {text, level1, level2, columnID, level5, resultText}
             rowMatchLevel4Row.ItemArray = columnValuesArray
             Me.Rows.Add(rowMatchLevel4Row)
             Return rowMatchLevel4Row
@@ -2338,6 +2423,8 @@ Partial Public Class ImportCDI
             Me.columnlevel1 = MyBase.Columns("level1")
             Me.columnlevel2 = MyBase.Columns("level2")
             Me.columncolumnID = MyBase.Columns("columnID")
+            Me.columnlevel5 = MyBase.Columns("level5")
+            Me.columnresultText = MyBase.Columns("resultText")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2351,6 +2438,10 @@ Partial Public Class ImportCDI
             MyBase.Columns.Add(Me.columnlevel2)
             Me.columncolumnID = New Global.System.Data.DataColumn("columnID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncolumnID)
+            Me.columnlevel5 = New Global.System.Data.DataColumn("level5", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlevel5)
+            Me.columnresultText = New Global.System.Data.DataColumn("resultText", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnresultText)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2963,6 +3054,21 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property resultText() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMatchLevel1.resultTextColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'resultText' in table 'MatchLevel1' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMatchLevel1.resultTextColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IstextNull() As Boolean
             Return Me.IsNull(Me.tableMatchLevel1.textColumn)
         End Function
@@ -2983,6 +3089,18 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub Setlevel1Null()
             Me(Me.tableMatchLevel1.level1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsresultTextNull() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel1.resultTextColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetresultTextNull()
+            Me(Me.tableMatchLevel1.resultTextColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -3063,6 +3181,36 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property level3() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableMatchLevel2.level3Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'level3' in table 'MatchLevel2' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMatchLevel2.level3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property resultText() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMatchLevel2.resultTextColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'resultText' in table 'MatchLevel2' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMatchLevel2.resultTextColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IstextNull() As Boolean
             Return Me.IsNull(Me.tableMatchLevel2.textColumn)
         End Function
@@ -3107,6 +3255,30 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetcolumnIDNull()
             Me(Me.tableMatchLevel2.columnIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function Islevel3Null() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel2.level3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub Setlevel3Null()
+            Me(Me.tableMatchLevel2.level3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsresultTextNull() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel2.resultTextColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetresultTextNull()
+            Me(Me.tableMatchLevel2.resultTextColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -3187,6 +3359,36 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property level4() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableMatchLevel3.level4Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'level4' in table 'MatchLevel3' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMatchLevel3.level4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property resultText() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMatchLevel3.resultTextColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'resultText' in table 'MatchLevel3' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMatchLevel3.resultTextColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IstextNull() As Boolean
             Return Me.IsNull(Me.tableMatchLevel3.textColumn)
         End Function
@@ -3231,6 +3433,30 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetcolumnIDNull()
             Me(Me.tableMatchLevel3.columnIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function Islevel4Null() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel3.level4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub Setlevel4Null()
+            Me(Me.tableMatchLevel3.level4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsresultTextNull() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel3.resultTextColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetresultTextNull()
+            Me(Me.tableMatchLevel3.resultTextColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -3311,6 +3537,36 @@ Partial Public Class ImportCDI
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property level5() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableMatchLevel4.level5Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'level5' in table 'MatchLevel4' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMatchLevel4.level5Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property resultText() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMatchLevel4.resultTextColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'resultText' in table 'MatchLevel4' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMatchLevel4.resultTextColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IstextNull() As Boolean
             Return Me.IsNull(Me.tableMatchLevel4.textColumn)
         End Function
@@ -3355,6 +3611,30 @@ Partial Public Class ImportCDI
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetcolumnIDNull()
             Me(Me.tableMatchLevel4.columnIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function Islevel5Null() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel4.level5Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub Setlevel5Null()
+            Me(Me.tableMatchLevel4.level5Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsresultTextNull() As Boolean
+            Return Me.IsNull(Me.tableMatchLevel4.resultTextColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetresultTextNull()
+            Me(Me.tableMatchLevel4.resultTextColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

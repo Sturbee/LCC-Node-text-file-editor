@@ -22,12 +22,11 @@
 
     End Sub
 
-    Public Function MatchLevel1(lineNum As Integer, text As String, ByRef resultText As String) As Integer
+    Public Function MatchLevel1(lineNum As Integer, inputText As String) As ImportCDI.MatchLevel1Row
 
         Dim startInt As Integer
         Dim resultInt As Integer
-        resultText = String.Empty
-        Dim level1 As Integer = -1 ' default value
+        Dim rowLevel1 As ImportCDI.MatchLevel1Row = Nothing
 
         Try
 
@@ -39,7 +38,7 @@
                 ' find match text
                 Dim myMatch = row.text
 
-                startInt = InStr(text, myMatch)
+                startInt = InStr(inputText, myMatch)
                 If startInt > 0 Then
 
                     ' Ok, found a known segment row
@@ -47,9 +46,9 @@
                     ' then exit count and read next line
 
                     resultInt = startInt + Len(myMatch)
-                    resultText = Mid(text, resultInt)
+                    row.resultText = Mid(inputText, resultInt)
 
-                    level1 = row.level1
+                    rowLevel1 = row
 
                     Exit For
 
@@ -57,9 +56,9 @@
 
             Next
 
-            If level1 = -1 Then
-                Console.WriteLine(lineNum.ToString + " Level1 not found - " + text)
-                MsgBox(lineNum.ToString + " Level1 not found - " + text)
+            If IsNothing(rowLevel1) Then
+                Console.WriteLine(lineNum.ToString + " Level1 not found - " + inputText)
+                MsgBox(lineNum.ToString + " Level1 not found - " + inputText)
             End If
 
         Catch ex As Exception
@@ -68,15 +67,15 @@
 
         End Try
 
-        Return level1
+        Return rowLevel1
 
     End Function
 
-    Public Function MatchLevel2(lineNum As Integer, level1 As Integer, text As String, ByRef level2 As Integer, ByRef resultText As String) As ImportCDI.MatchLevel2Row
+    Public Function MatchLevel2(lineNum As Integer, level1 As Integer, inputText As String) As ImportCDI.MatchLevel2Row
 
         Dim startInt As Integer
         Dim resultInt As Integer
-        resultText = String.Empty
+        Dim resultText As String
         Dim rowLevel2 As ImportCDI.MatchLevel2Row = Nothing
 
         Try
@@ -91,7 +90,7 @@
                     ' find match text
                     Dim myMatch = row.text
 
-                    startInt = InStr(text, myMatch)
+                    startInt = InStr(inputText, myMatch)
                     If startInt > 0 Then
 
                         ' Ok, found a known section row
@@ -99,15 +98,15 @@
                         ' then exit count and read next line
 
                         ' need to check for line and return lineID and reformatted resultText
-                        level2 = Me.GetMyIDvalue(text)
+                        row.level3 = Me.GetMyIDvalue(inputText)
 
-                        If level2 > 0 Then
-                            resultInt = InStr(text, ").") + 2
-                            resultText = Mid(text, resultInt)
+                        If row.level3 > 0 Then
+                            resultInt = InStr(inputText, ").") + 2
+                            resultText = Mid(inputText, resultInt)
                         End If
 
                         resultInt = startInt + Len(myMatch)
-                        resultText = Mid(text, resultInt)
+                        row.resultText = Mid(inputText, resultInt)
 
                         rowLevel2 = row
 
@@ -120,8 +119,8 @@
             Next
 
             If IsNothing(rowLevel2) Then
-                Console.WriteLine(lineNum.ToString + " Section not found - " + text)
-                MsgBox(lineNum.ToString + " Level2 not found - " + text)
+                Console.WriteLine(lineNum.ToString + " Section not found - " + inputText)
+                MsgBox(lineNum.ToString + " Level2 not found - " + inputText)
             End If
 
         Catch ex As Exception
@@ -134,11 +133,11 @@
 
     End Function
 
-    Public Function MatchLevel3(lineNum As Integer, level1 As Integer, text As String, ByRef level3 As Integer, ByRef resultText As String) As ImportCDI.MatchLevel3Row
+    Public Function MatchLevel3(lineNum As Integer, level1 As Integer, inputText As String) As ImportCDI.MatchLevel3Row
 
         Dim startInt As Integer
         Dim resultInt As Integer
-        resultText = String.Empty
+        Dim resultText As String
         Dim rowLevel3 As ImportCDI.MatchLevel3Row = Nothing
 
         Try
@@ -153,21 +152,19 @@
                     ' find match text
                     Dim myMatch = row.text
 
-                    startInt = InStr(text, myMatch)
+                    startInt = InStr(inputText, myMatch)
                     If startInt > 0 Then
 
                         ' need to check for line and return lineID and reformatted resultText
-                        level3 = Me.GetMyIDvalue(text)
+                        row.level4 = Me.GetMyIDvalue(inputText)
 
-                        If level3 = 0 Then Stop
-
-                        If level3 > 0 Then
-                            resultInt = InStr(text, ").") + 2
-                            resultText = Mid(text, resultInt)
+                        If row.level4 > 0 Then
+                            resultInt = InStr(inputText, ").") + 2
+                            resultText = Mid(inputText, resultInt)
                         End If
 
                         resultInt = startInt + Len(myMatch)
-                        resultText = Mid(text, resultInt)
+                        row.resultText = Mid(inputText, resultInt)
 
                         rowLevel3 = row
 
@@ -180,8 +177,8 @@
             Next
 
             If IsNothing(rowLevel3) Then
-                Console.WriteLine(lineNum.ToString + " Level3 not found - " + text)
-                MsgBox(lineNum.ToString + " Level3 not found - " + text)
+                Console.WriteLine(lineNum.ToString + " Level3 not found - " + inputText)
+                MsgBox(lineNum.ToString + " Level3 not found - " + inputText)
             End If
 
         Catch ex As Exception
@@ -195,11 +192,11 @@
     End Function
 
 
-    Public Function MatchLevel4(lineNum As Integer, level1 As Integer, text As String, ByRef level4 As Integer, ByRef resultText As String) As ImportCDI.MatchLevel4Row
+    Public Function MatchLevel4(lineNum As Integer, level1 As Integer, inputText As String) As ImportCDI.MatchLevel4Row
 
         Dim startInt As Integer
         Dim resultInt As Integer
-        resultText = String.Empty
+        Dim resultText As String
         Dim rowLevel4 As ImportCDI.MatchLevel4Row = Nothing
 
         Try
@@ -214,21 +211,19 @@
                     ' find match text
                     Dim myMatch = row.text
 
-                    startInt = InStr(text, myMatch)
+                    startInt = InStr(inputText, myMatch)
                     If startInt > 0 Then
 
                         ' need to check for line and return lineID and reformatted resultText
-                        level4 = Me.GetMyIDvalue(text)
+                        row.level5 = Me.GetMyIDvalue(inputText)
 
-                        If level4 = 0 Then Stop
-
-                        If level4 > 0 Then
-                            resultInt = InStr(text, ").") + 2
-                            resultText = Mid(text, resultInt)
+                        If row.level5 > 0 Then
+                            resultInt = InStr(inputText, ").") + 2
+                            resultText = Mid(inputText, resultInt)
                         End If
 
                         resultInt = startInt + Len(myMatch)
-                        resultText = Mid(text, resultInt)
+                        row.resultText = Mid(inputText, resultInt)
 
                         rowLevel4 = row
 
@@ -241,8 +236,8 @@
             Next
 
             If IsNothing(rowLevel4) Then
-                Console.WriteLine(lineNum.ToString + " Level4 not found - " + text)
-                MsgBox(lineNum.ToString + " Level4 not found - " + text)
+                Console.WriteLine(lineNum.ToString + " Level4 not found - " + inputText)
+                MsgBox(lineNum.ToString + " Level4 not found - " + inputText)
             End If
 
         Catch ex As Exception
@@ -254,8 +249,6 @@
         Return rowLevel4
 
     End Function
-
-
 
     Private Function GetMyIDvalue(resultText As String) As Integer
 
