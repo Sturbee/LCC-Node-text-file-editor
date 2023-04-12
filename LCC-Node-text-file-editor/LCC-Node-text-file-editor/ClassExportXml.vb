@@ -116,7 +116,7 @@ Public Class ClassExportXml
                     Dim rowI As ImportCDI.LampNameRow = MyImportCDI.LampName.Item(count)
                     Dim rowE As ExportXml.LampRow = MyExportXml.Lamp.Item(count - 1)
                     If rowE.description = String.Empty Then
-                        rowE.description = rowI.text
+                        REM rowE.description = rowI.text
                     End If
                 Next
             Catch ex As Exception

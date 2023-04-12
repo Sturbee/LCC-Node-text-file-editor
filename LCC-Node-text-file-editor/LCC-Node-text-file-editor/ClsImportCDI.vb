@@ -28,44 +28,36 @@
         Dim resultInt As Integer
         Dim rowLevel1 As ImportCDI.MatchLevel1Row = Nothing
 
-        Try
+        ' find the match segment record
+        For count = 0 To Me.MyImportCDI.MatchLevel1.Count - 1
 
-            ' find the match segment record
-            For count = 0 To Me.MyImportCDI.MatchLevel1.Count - 1
+            Dim row As ImportCDI.MatchLevel1Row = Me.MyImportCDI.MatchLevel1.Rows.Item(count)
 
-                Dim row As ImportCDI.MatchLevel1Row = Me.MyImportCDI.MatchLevel1.Rows.Item(count)
+            ' find match text
+            Dim myMatch = row.text
 
-                ' find match text
-                Dim myMatch = row.text
+            startInt = InStr(inputText, myMatch)
+            If startInt > 0 Then
 
-                startInt = InStr(inputText, myMatch)
-                If startInt > 0 Then
+                ' Ok, found a known segment row
+                ' return resultTxt and level1
+                ' then exit count and read next line
 
-                    ' Ok, found a known segment row
-                    ' return resultTxt and level1
-                    ' then exit count and read next line
+                resultInt = startInt + Len(myMatch)
+                row.resultText = Mid(inputText, resultInt)
 
-                    resultInt = startInt + Len(myMatch)
-                    row.resultText = Mid(inputText, resultInt)
+                rowLevel1 = row
 
-                    rowLevel1 = row
+                Exit For
 
-                    Exit For
-
-                End If
-
-            Next
-
-            If IsNothing(rowLevel1) Then
-                Console.WriteLine(lineNum.ToString + " Level1 not found - " + inputText)
-                MsgBox(lineNum.ToString + " Level1 not found - " + inputText)
             End If
 
-        Catch ex As Exception
+        Next
 
-            MsgBox("MatchLevel1 failure")
-
-        End Try
+        If IsNothing(rowLevel1) Then
+            Console.WriteLine(lineNum.ToString + " Level1 not found - " + inputText)
+            Throw New System.Exception(lineNum.ToString + " Level1 not found - " + inputText)
+        End If
 
         Return rowLevel1
 
@@ -78,56 +70,48 @@
         Dim resultText As String
         Dim rowLevel2 As ImportCDI.MatchLevel2Row = Nothing
 
-        Try
+        ' find the match segment record
+        For count = 0 To Me.MyImportCDI.MatchLevel2.Count - 1
 
-            ' find the match segment record
-            For count = 0 To Me.MyImportCDI.MatchLevel2.Count - 1
+            Dim row As ImportCDI.MatchLevel2Row = Me.MyImportCDI.MatchLevel2.Rows.Item(count)
 
-                Dim row As ImportCDI.MatchLevel2Row = Me.MyImportCDI.MatchLevel2.Rows.Item(count)
+            If row.level1 = level1 Then
 
-                If row.level1 = level1 Then
+                ' find match text
+                Dim myMatch = row.text
 
-                    ' find match text
-                    Dim myMatch = row.text
+                startInt = InStr(inputText, myMatch)
+                If startInt > 0 Then
 
-                    startInt = InStr(inputText, myMatch)
-                    If startInt > 0 Then
+                    ' Ok, found a known section row
+                    ' return resultTxt and level1
+                    ' then exit count and read next line
 
-                        ' Ok, found a known section row
-                        ' return resultTxt and level1
-                        ' then exit count and read next line
+                    ' need to check for line and return lineID and reformatted resultText
+                    row.item1 = Me.GetItemValue(inputText)
 
-                        ' need to check for line and return lineID and reformatted resultText
-                        row.level3 = Me.GetMyIDvalue(inputText)
-
-                        If row.level3 > 0 Then
-                            resultInt = InStr(inputText, ").") + 2
-                            resultText = Mid(inputText, resultInt)
-                        End If
-
-                        resultInt = startInt + Len(myMatch)
-                        row.resultText = Mid(inputText, resultInt)
-
-                        rowLevel2 = row
-
-                        Exit For
-
+                    If row.item1 > 0 Then
+                        resultInt = InStr(inputText, ").") + 2
+                        resultText = Mid(inputText, resultInt)
                     End If
+
+                    resultInt = startInt + Len(myMatch)
+                    row.resultText = Mid(inputText, resultInt)
+
+                    rowLevel2 = row
+
+                    Exit For
 
                 End If
 
-            Next
-
-            If IsNothing(rowLevel2) Then
-                Console.WriteLine(lineNum.ToString + " Section not found - " + inputText)
-                MsgBox(lineNum.ToString + " Level2 not found - " + inputText)
             End If
 
-        Catch ex As Exception
+        Next
 
-            MsgBox("MatchLevel2 failure")
-
-        End Try
+        If IsNothing(rowLevel2) Then
+            Console.WriteLine(lineNum.ToString + " Section not found - " + inputText)
+            Throw New System.Exception(lineNum.ToString + " Level2 not found - " + inputText)
+        End If
 
         Return rowLevel2
 
@@ -140,52 +124,44 @@
         Dim resultText As String
         Dim rowLevel3 As ImportCDI.MatchLevel3Row = Nothing
 
-        Try
+        ' find the match segment record
+        For count = 0 To Me.MyImportCDI.MatchLevel3.Count - 1
 
-            ' find the match segment record
-            For count = 0 To Me.MyImportCDI.MatchLevel3.Count - 1
+            Dim row As ImportCDI.MatchLevel3Row = Me.MyImportCDI.MatchLevel3.Rows.Item(count)
 
-                Dim row As ImportCDI.MatchLevel3Row = Me.MyImportCDI.MatchLevel3.Rows.Item(count)
+            If row.level1 = level1 Then
 
-                If row.level1 = level1 Then
+                ' find match text
+                Dim myMatch = row.text
 
-                    ' find match text
-                    Dim myMatch = row.text
+                startInt = InStr(inputText, myMatch)
+                If startInt > 0 Then
 
-                    startInt = InStr(inputText, myMatch)
-                    If startInt > 0 Then
+                    ' need to check for line and return lineID and reformatted resultText
+                    row.item2 = Me.GetItemValue(inputText)
 
-                        ' need to check for line and return lineID and reformatted resultText
-                        row.level4 = Me.GetMyIDvalue(inputText)
-
-                        If row.level4 > 0 Then
-                            resultInt = InStr(inputText, ").") + 2
-                            resultText = Mid(inputText, resultInt)
-                        End If
-
-                        resultInt = startInt + Len(myMatch)
-                        row.resultText = Mid(inputText, resultInt)
-
-                        rowLevel3 = row
-
-                        Exit For
-
+                    If row.item2 > 0 Then
+                        resultInt = InStr(inputText, ").") + 2
+                        resultText = Mid(inputText, resultInt)
                     End If
+
+                    resultInt = startInt + Len(myMatch)
+                    row.resultText = Mid(inputText, resultInt)
+
+                    rowLevel3 = row
+
+                    Exit For
 
                 End If
 
-            Next
-
-            If IsNothing(rowLevel3) Then
-                Console.WriteLine(lineNum.ToString + " Level3 not found - " + inputText)
-                MsgBox(lineNum.ToString + " Level3 not found - " + inputText)
             End If
 
-        Catch ex As Exception
+        Next
 
-            MsgBox("MatchLevel3 failure")
-
-        End Try
+        If IsNothing(rowLevel3) Then
+            Console.WriteLine(lineNum.ToString + " Level3 not found - " + inputText)
+            Throw New System.Exception(lineNum.ToString + " Level3 not found - " + inputText)
+        End If
 
         Return rowLevel3
 
@@ -199,58 +175,50 @@
         Dim resultText As String
         Dim rowLevel4 As ImportCDI.MatchLevel4Row = Nothing
 
-        Try
+        ' find the match segment record
+        For count = 0 To Me.MyImportCDI.MatchLevel4.Count - 1
 
-            ' find the match segment record
-            For count = 0 To Me.MyImportCDI.MatchLevel4.Count - 1
+            Dim row As ImportCDI.MatchLevel4Row = Me.MyImportCDI.MatchLevel4.Rows.Item(count)
 
-                Dim row As ImportCDI.MatchLevel4Row = Me.MyImportCDI.MatchLevel4.Rows.Item(count)
+            If row.level1 = level1 Then
 
-                If row.level1 = level1 Then
+                ' find match text
+                Dim myMatch = row.text
 
-                    ' find match text
-                    Dim myMatch = row.text
+                startInt = InStr(inputText, myMatch)
+                If startInt > 0 Then
 
-                    startInt = InStr(inputText, myMatch)
-                    If startInt > 0 Then
+                    ' need to check for line and return lineID and reformatted resultText
+                    row.item3 = Me.GetItemValue(inputText)
 
-                        ' need to check for line and return lineID and reformatted resultText
-                        row.level5 = Me.GetMyIDvalue(inputText)
-
-                        If row.level5 > 0 Then
-                            resultInt = InStr(inputText, ").") + 2
-                            resultText = Mid(inputText, resultInt)
-                        End If
-
-                        resultInt = startInt + Len(myMatch)
-                        row.resultText = Mid(inputText, resultInt)
-
-                        rowLevel4 = row
-
-                        Exit For
-
+                    If row.item3 > 0 Then
+                        resultInt = InStr(inputText, ").") + 2
+                        resultText = Mid(inputText, resultInt)
                     End If
+
+                    resultInt = startInt + Len(myMatch)
+                    row.resultText = Mid(inputText, resultInt)
+
+                    rowLevel4 = row
+
+                    Exit For
 
                 End If
 
-            Next
-
-            If IsNothing(rowLevel4) Then
-                Console.WriteLine(lineNum.ToString + " Level4 not found - " + inputText)
-                MsgBox(lineNum.ToString + " Level4 not found - " + inputText)
             End If
 
-        Catch ex As Exception
+        Next
 
-            MsgBox("MatchLevel4 failure")
-
-        End Try
+        If IsNothing(rowLevel4) Then
+            Console.WriteLine(lineNum.ToString + " Level4 not found - " + inputText)
+            Throw New System.Exception(lineNum.ToString + " Level4 not found - " + inputText)
+        End If
 
         Return rowLevel4
 
     End Function
 
-    Private Function GetMyIDvalue(resultText As String) As Integer
+    Private Function GetItemValue(resultText As String) As Integer
 
         Dim valueInt As Integer
         Dim valueText As String
@@ -267,7 +235,7 @@
 
         Catch ex As Exception
 
-            MsgBox("GetMyIDvalue failure for text " + resultText)
+            Throw New System.Exception("GetItemValue failure for text " + resultText)
 
         End Try
 
