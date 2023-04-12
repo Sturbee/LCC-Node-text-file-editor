@@ -1,11 +1,8 @@
 ﻿Imports System.IO
-Imports System.Runtime.Remoting.Metadata.W3cXsd2001
 
 Public Class ClassExportXmlToText
 
-
     Private Property MyClsImport As New ClsImportCDI
-
     Private Property MyExportXml As New ExportXml
 
     Public Sub MyExportXmlToTextFile(filePath As String)
@@ -37,7 +34,7 @@ Public Class ClassExportXmlToText
                 Dim clsU As New ClsUserPrefs
                 Dim row As UserPrefs.UserJMRIRow = clsU.MyUserPrefs.UserJMRI.FindByvalue(2)
 
-                outputPath = row.path + "\" + Path.GetFileName(sourcePath)
+                outputPath = row.path + "\" + Path.GetFileName(sourcePath) + ".xml.txt"
 
             Catch ex As Exception
                 MsgBox("Failed to get restore file name")
@@ -76,10 +73,10 @@ Public Class ClassExportXmlToText
                         Call Me.RowLogic(lineNum, myText, row.level1, row.resultText, writeText)
 
                     Case 4 ' segment track circuit receiver
-                        Call Me.RowTrackCircuitRec(lineNum, myText, row.level1, row.resultText, writeText)
+                        Call Me.RowTrackReceiver(lineNum, myText, row.level1, row.resultText, writeText)
 
                     Case 5 ' segment track circuit transmitter
-                        REM Call Me.AddRowTrackCircuitTran(level1, resultText)
+                        Call Me.RowTrackTransmitter(lineNum, myText, row.level1, row.resultText, writeText)
 
                     Case 6 ' segment rule to aspect
                         Call Me.RowRuleToAspect(lineNum, myText, row.level1, row.resultText, writeText)
@@ -101,15 +98,17 @@ Public Class ClassExportXmlToText
                 If myText = writeText Then
                     ' do nothing
                 Else
-                    srOut.WriteLine(writeText)
+                    ' output text lines that are different from input to output
                 End If
 
-                REM Console.WriteLine(MyLineNum.ToString + Space(1) + myText)
+                srOut.WriteLine(writeText)
 
             End While
 
             srIn.Close()
             srOut.Close()
+
+            MsgBox("Finished creating restore file " + outputPath)
 
         Catch ex As Exception
             MsgBox("Failed to create new text file")
@@ -525,7 +524,7 @@ Public Class ClassExportXmlToText
     End Sub
 
 
-    Private Sub RowTrackCircuitRec(lineNum As Integer, myText As String, level1 As Integer, inputText As String, ByRef writeText As String)
+    Private Sub RowTrackReceiver(lineNum As Integer, myText As String, level1 As Integer, inputText As String, ByRef writeText As String)
 
         Try
 
@@ -541,11 +540,34 @@ Public Class ClassExportXmlToText
 
         Catch ex As Exception
 
-            MsgBox("Failed to process table Track Circuit Receiver row")
+            MsgBox("Failed to process table Track Receiver row")
 
         End Try
 
     End Sub
+
+    Private Sub RowTrackTransmitter(lineNum As Integer, myText As String, level1 As Integer, inputText As String, ByRef writeText As String)
+
+        Try
+
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
+
+            Dim rowCircuit As ExportXml.TrackTransmitterRow = Me.MyExportXml.TrackTransmitter.FindByCircuitID(rowLevel2.item1)
+            Dim newResultText = rowCircuit.Item(rowLevel2.columnID).ToString
+
+            Dim cut As Integer = InStr(myText, rowLevel2.text) + Len(rowLevel2.text) - 1
+            writeText = Mid(myText, 1, cut) + newResultText
+
+            Console.WriteLine(lineNum.ToString + " Track Circuit Receiver - Circuit(" + rowLevel2.item1.ToString + ") - " + rowLevel2.text + Space(1) + newResultText)
+
+        Catch ex As Exception
+
+            MsgBox("Failed to process table Track Transmitter row")
+
+        End Try
+
+    End Sub
+
 
 
     Private Sub UpDateRowLampDirectControl(lineNum As Integer, myText As String, inputText As String, ByRef writeText As String)
