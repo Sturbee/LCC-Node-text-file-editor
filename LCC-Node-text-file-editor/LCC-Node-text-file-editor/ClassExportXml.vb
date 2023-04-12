@@ -1,10 +1,10 @@
 ﻿
 Imports System.IO
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class ClassExportXml
 
-    Private Property MyLineNum As Integer = 0
-    Private Property MyImportCDI As New ImportCDI
+    Private Property MyClsImport As New ClsImportCDI
     Private Property MyExportXml As New ExportXml
     Private Property MyNodeEventBase As String
     Private Property MyNodeType As Integer
@@ -23,25 +23,16 @@ Public Class ClassExportXml
                 Exit Sub
             End If
 
-            ' import cdi xml file file
-            Try
-                Dim clsImportCDI As New ClsImportCDI
-                Me.MyImportCDI = clsImportCDI.MyImportCDI
-            Catch ex As Exception
-                MsgBox("Failed to import the import cdi xml file")
-                Exit Sub
-            End Try
-
             ' export needs all track circuit data
             Try
 
-                For rowCount = 0 To MyImportCDI.TrackReceiver.Count - 1
-                    Dim rowInRec As ImportCDI.TrackReceiverRow = MyImportCDI.TrackReceiver.Item(rowCount)
+                For rowCount = 0 To MyClsImport.MyImportCDI.TrackReceiver.Count - 1
+                    Dim rowInRec As ImportCDI.TrackReceiverRow = MyClsImport.MyImportCDI.TrackReceiver.Item(rowCount)
                     MyExportXml.TrackReceiver.AddTrackReceiverRow(rowInRec.value, rowInRec.text, String.Empty)
                 Next
 
-                For rowCount = 0 To MyImportCDI.TrackTransmitter.Count - 1
-                    Dim rowInTran As ImportCDI.TrackTransmitterRow = MyImportCDI.TrackTransmitter.Item(rowCount)
+                For rowCount = 0 To MyClsImport.MyImportCDI.TrackTransmitter.Count - 1
+                    Dim rowInTran As ImportCDI.TrackTransmitterRow = MyClsImport.MyImportCDI.TrackTransmitter.Item(rowCount)
                     MyExportXml.TrackTransmitter.AddTrackTransmitterRow(rowInTran.value, rowInTran.text, String.Empty)
                 Next
 
@@ -50,49 +41,51 @@ Public Class ClassExportXml
             End Try
 
 
+            Dim lineNum As Integer = 0
             Dim sr As New StreamReader(filePath)
             Dim myText As String = String.Empty
-            Dim resultText As String = String.Empty
 
             While Not sr.EndOfStream
 
+                lineNum += 1
+
                 myText = sr.ReadLine
 
-                MyLineNum += 1
+                Dim row As ImportCDI.MatchLevel1Row = MyClsImport.MatchLevel1(lineNum, myText)
 
-                Dim level1 As Integer = Me.MatchLevel1(myText, resultText)
-
-                Select Case level1
-
-                    Case -1 ' unknown segment
-                        Stop
+                Select Case row.level1
 
                     Case 0 ' segment node ID
-                        Call Me.AddRowNode(level1, resultText)
+                        Call Me.AddRowNode(lineNum, row.level1, row.resultText)
 
                     Case 1 ' segment power monitor
-                        Call Me.AddRowPowerMonitor(level1, resultText)
+                        Call Me.AddRowPowerMonitor(lineNum, row.level1, row.resultText)
 
                     Case 2 ' segment port
-                        Call Me.AddRowPort(level1, resultText)
+                        Call Me.AddRowPort(lineNum, row.level1, row.resultText)
 
                     Case 3 ' segment conditional
-                        Call Me.AddRowLogic(level1, resultText)
+                        Call Me.AddRowLogic(lineNum, row.level1, row.resultText)
 
                     Case 4 ' segment track circuit receiver
-                        Call Me.AddRowTrackCircuitRec(level1, resultText)
+                        Call Me.AddRowTrackReceiver(lineNum, row.level1, row.resultText)
 
                     Case 5 ' segment track circuit transmitter
-                        Call Me.AddRowTrackCircuitTran(level1, resultText)
+                        Call Me.AddRowTrackTransmitter(lineNum, row.level1, row.resultText)
 
                     Case 6 ' segment rule to aspect
-                        Call Me.AddRowRuleToAspect(level1, resultText)
+                        Call Me.AddRowRuleToAspect(lineNum, row.level1, row.resultText)
 
                     Case 7 ' segment Direct Lamp Control
-                        Call Me.AddRowLampDirectControl(level1, resultText)
+                        Call Me.AddRowLampDirectControl(lineNum, row.level1, row.resultText)
 
                     Case 8 ' 
-                        Call Me.UpDateRowLampDirectControl(resultText)
+                        Call Me.UpDateRowLampDirectControl(lineNum, row.resultText)
+
+                    Case 9 ' Rules, ignore
+
+                    Case Else
+                        Stop
 
                 End Select
 
@@ -113,7 +106,7 @@ Public Class ClassExportXml
             ' check for Lamp table
             Try
                 For count = 1 To MyExportXml.Lamp.Count
-                    Dim rowI As ImportCDI.LampNameRow = MyImportCDI.LampName.Item(count)
+                    Dim rowI As ImportCDI.LampNameRow = MyClsImport.MyImportCDI.LampName.Item(count)
                     Dim rowE As ExportXml.LampRow = MyExportXml.Lamp.Item(count - 1)
                     If rowE.description = String.Empty Then
                         REM rowE.description = rowI.text
@@ -149,267 +142,26 @@ Public Class ClassExportXml
 
     End Sub
 
-    Private Function MatchLevel1(text As String, ByRef resultText As String) As Integer
-
-        Dim startInt As Integer
-        Dim resultInt As Integer
-        resultText = String.Empty
-        Dim level1 As Integer = -1 ' default value
+    Private Sub AddRowNode(lineNum As Integer, level1 As Integer, inputText As String)
 
         Try
 
-            ' find the match segment record
-            For count = 0 To Me.MyImportCDI.MatchLevel1.Count - 1
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
 
-                Dim row As ImportCDI.MatchLevel1Row = Me.MyImportCDI.MatchLevel1.Rows.Item(count)
-
-                ' find match text
-                Dim myMatch = row.text
-
-                startInt = InStr(text, myMatch)
-                If startInt > 0 Then
-
-                    ' Ok, found a known segment row
-                    ' return resultTxt and level1
-                    ' then exit count and read next line
-
-                    resultInt = startInt + Len(myMatch)
-                    resultText = Mid(text, resultInt)
-
-                    level1 = row.level1
-
-                    Exit For
-
-                End If
-
-            Next
-
-            If level1 = -1 Then
-                Console.WriteLine(MyLineNum.ToString + " Level1 not found - " + text)
-                Stop
-            End If
-
-        Catch ex As Exception
-
-            Stop
-
-        End Try
-
-        Return level1
-
-    End Function
-
-
-    Private Function MatchLevel2(level1 As Integer, text As String, ByRef level2 As Integer, ByRef resultText As String) As ImportCDI.MatchLevel2Row
-
-        Dim startInt As Integer
-        Dim resultInt As Integer
-        resultText = String.Empty
-        Dim rowLevel2 As ImportCDI.MatchLevel2Row = Nothing
-
-        Try
-
-            ' find the match segment record
-            For count = 0 To Me.MyImportCDI.MatchLevel2.Count - 1
-
-                Dim row As ImportCDI.MatchLevel2Row = Me.MyImportCDI.MatchLevel2.Rows.Item(count)
-
-                If row.level1 = level1 Then
-
-                    ' find match text
-                    Dim myMatch = row.text
-
-                    startInt = InStr(text, myMatch)
-                    If startInt > 0 Then
-
-                        ' Ok, found a known section row
-                        ' return resultTxt and level1
-                        ' then exit count and read next line
-
-                        ' need to check for line and return lineID and reformatted resultText
-                        level2 = Me.GetMyIDvalue(text)
-
-                        If level2 > 0 Then
-                            resultInt = InStr(text, ").") + 2
-                            resultText = Mid(text, resultInt)
-                        End If
-
-                        resultInt = startInt + Len(myMatch)
-                        resultText = Mid(text, resultInt)
-
-                        rowLevel2 = row
-
-                        Exit For
-
-                    End If
-
-                End If
-
-            Next
-
-            If IsNothing(rowLevel2) Then
-                Console.WriteLine(MyLineNum.ToString + " Section not found - " + text)
-                Stop
-            End If
-
-        Catch ex As Exception
-
-            Stop
-
-        End Try
-
-        Return rowLevel2
-
-    End Function
-
-
-    Private Function MatchLevel3(level1 As Integer, text As String, ByRef level3 As Integer, ByRef resultText As String) As ImportCDI.MatchLevel3Row
-
-        Dim startInt As Integer
-        Dim resultInt As Integer
-        resultText = String.Empty
-        Dim rowLevel3 As ImportCDI.MatchLevel3Row = Nothing
-
-        Try
-
-            ' find the match segment record
-            For count = 0 To Me.MyImportCDI.MatchLevel3.Count - 1
-
-                Dim row As ImportCDI.MatchLevel3Row = Me.MyImportCDI.MatchLevel3.Rows.Item(count)
-
-                If row.level1 = level1 Then
-
-                    ' find match text
-                    Dim myMatch = row.text
-
-                    startInt = InStr(text, myMatch)
-                    If startInt > 0 Then
-
-                        ' need to check for line and return lineID and reformatted resultText
-                        level3 = Me.GetMyIDvalue(text)
-
-                        If level3 = 0 Then Stop
-
-                        If level3 > 0 Then
-                            resultInt = InStr(text, ").") + 2
-                            resultText = Mid(text, resultInt)
-                        End If
-
-                        resultInt = startInt + Len(myMatch)
-                        resultText = Mid(text, resultInt)
-
-                        rowLevel3 = row
-
-                        Exit For
-
-                    End If
-
-                End If
-
-            Next
-
-            If IsNothing(rowLevel3) Then
-                Console.WriteLine(MyLineNum.ToString + " Level3 not found - " + text)
-                Stop
-            End If
-
-        Catch ex As Exception
-
-            Stop
-
-        End Try
-
-        Return rowLevel3
-
-    End Function
-
-
-    Private Function MatchLevel4(level1 As Integer, text As String, ByRef level4 As Integer, ByRef resultText As String) As ImportCDI.MatchLevel4Row
-
-        Dim startInt As Integer
-        Dim resultInt As Integer
-        resultText = String.Empty
-        Dim rowLevel4 As ImportCDI.MatchLevel4Row = Nothing
-
-        Try
-
-            ' find the match segment record
-            For count = 0 To Me.MyImportCDI.MatchLevel4.Count - 1
-
-                Dim row As ImportCDI.MatchLevel4Row = Me.MyImportCDI.MatchLevel4.Rows.Item(count)
-
-                If row.level1 = level1 Then
-
-                    ' find match text
-                    Dim myMatch = row.text
-
-                    startInt = InStr(text, myMatch)
-                    If startInt > 0 Then
-
-                        ' need to check for line and return lineID and reformatted resultText
-                        level4 = Me.GetMyIDvalue(text)
-
-                        If level4 = 0 Then Stop
-
-                        If level4 > 0 Then
-                            resultInt = InStr(text, ").") + 2
-                            resultText = Mid(text, resultInt)
-                        End If
-
-                        resultInt = startInt + Len(myMatch)
-                        resultText = Mid(text, resultInt)
-
-                        rowLevel4 = row
-
-                        Exit For
-
-                    End If
-
-                End If
-
-            Next
-
-            If IsNothing(rowLevel4) Then
-                Console.WriteLine(MyLineNum.ToString + " Level4 not found - " + text)
-                Stop
-            End If
-
-        Catch ex As Exception
-
-            Stop
-
-        End Try
-
-        Return rowLevel4
-
-    End Function
-
-    Private Sub AddRowNode(level1 As Integer, text As String)
-
-        Try
-
-            Dim NodeID As Integer
-            Dim resultText As String = String.Empty
-
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, NodeID, resultText)
-            If rowLevel2 Is Nothing Then
-                Stop
-            End If
-
-            Dim rowNode As ExportXml.NodeRow = MyExportXml.Node.FindByNodeID(NodeID)
+            Dim rowNode As ExportXml.NodeRow = MyExportXml.Node.FindByNodeID(rowLevel2.item1)
             Try
                 If rowNode Is Nothing Then
-                    Me.MyExportXml.Node.AddNodeRow(NodeID, String.Empty, String.Empty, 0, String.Empty, String.Empty)
+                    Me.MyExportXml.Node.AddNodeRow(rowLevel2.item1, String.Empty, String.Empty, 0, String.Empty, String.Empty)
                     Me.MyExportXml.AcceptChanges()
-                    rowNode = Me.MyExportXml.Node.FindByNodeID(NodeID)
+                    rowNode = Me.MyExportXml.Node.FindByNodeID(rowLevel2.item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Node row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(MyLineNum.ToString + Space(1) + "Node ID - " + rowLevel2.text + Space(1) + resultText)
-            rowNode.Item(rowLevel2.columnID - 1) = resultText
+            Console.WriteLine(lineNum.ToString + Space(1) + "Node ID - " + rowLevel2.text + Space(1) + rowLevel2.resultText)
+            rowNode.Item(rowLevel2.columnID - 1) = rowLevel2.resultText
 
             Me.MyExportXml.AcceptChanges()
 
@@ -421,33 +173,27 @@ Public Class ClassExportXml
 
     End Sub
 
-    Private Sub AddRowPowerMonitor(level1 As Integer, text As String)
+    Private Sub AddRowPowerMonitor(lineNum As Integer, level1 As Integer, inputText As String)
 
         Try
 
-            Dim PowerMonitorID As Integer
-            Dim resultText As String = String.Empty
+            Dim rowlevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowlevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, PowerMonitorID, resultText)
-            If rowlevel2 Is Nothing Then
-                Stop
-            End If
-
-            Dim rowPowerMonitor As ExportXml.PowerMonitorRow = Me.MyExportXml.PowerMonitor.FindByPowerMonitorID(PowerMonitorID)
+            Dim rowPowerMonitor As ExportXml.PowerMonitorRow = Me.MyExportXml.PowerMonitor.FindByPowerMonitorID(rowlevel2.item1)
             Try
                 If rowPowerMonitor Is Nothing Then
-                    Me.MyExportXml.PowerMonitor.AddPowerMonitorRow(PowerMonitorID, 0, String.Empty, String.Empty)
+                    Me.MyExportXml.PowerMonitor.AddPowerMonitorRow(rowlevel2.item1, 0, String.Empty, String.Empty)
                     Me.MyExportXml.AcceptChanges()
-                    rowPowerMonitor = Me.MyExportXml.PowerMonitor.FindByPowerMonitorID(PowerMonitorID)
+                    rowPowerMonitor = Me.MyExportXml.PowerMonitor.FindByPowerMonitorID(rowlevel2.item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table PowerMonitor row")
             End Try
 
-            Console.WriteLine(MyLineNum.ToString + Space(1) + "Node Power Monitor - " + rowlevel2.text + Space(1) + resultText)
-            rowPowerMonitor.Item(rowlevel2.columnID - 1) = resultText
+            Console.WriteLine(lineNum.ToString + Space(1) + "Node Power Monitor - " + rowlevel2.text + Space(1) + rowlevel2.resultText)
+            rowPowerMonitor.Item(rowlevel2.columnID - 1) = rowlevel2.resultText
             If rowlevel2.columnID = 3 Then
-                Me.MyNodeEventBase = Left(resultText, 17)
+                Me.MyNodeEventBase = Left(rowlevel2.resultText, 17)
             End If
 
             Me.MyExportXml.AcceptChanges()
@@ -459,27 +205,21 @@ Public Class ClassExportXml
 
     End Sub
 
-    Private Sub AddRowPort(level1 As Integer, text As String)
+    Private Sub AddRowPort(lineNum As Integer, level1 As Integer, inputText As String)
 
         Try
 
-            Dim LineID As Integer
-            Dim resultText As String = String.Empty
-
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, LineID, resultText)
-            If rowLevel2 Is Nothing Then
-                Stop
-            End If
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
 
             Select Case rowLevel2.level2
                 Case 0
-                    Call Me.TablePort(LineID, rowLevel2.columnID, rowLevel2.text, resultText)
+                    Call Me.TablePort(lineNum, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, rowLevel2.resultText)
 
                 Case 1
-                    Call Me.TablePortDelay(rowLevel2.level1, LineID, resultText)
+                    Call Me.TablePortDelay(lineNum, rowLevel2.level1, rowLevel2.item1, rowLevel2.resultText)
 
                 Case 2
-                    Call Me.TablePortEvent(rowLevel2.level1, LineID, resultText)
+                    Call Me.TablePortEvent(lineNum, rowLevel2.level1, rowLevel2.item1, rowLevel2.resultText)
 
                 Case Else
                     Stop
@@ -497,30 +237,30 @@ Public Class ClassExportXml
     End Sub
 
 
-    Private Sub TablePort(LineID As Integer, columnID As Integer, matchText As String, resultText As String)
+    Private Sub TablePort(lineNum As Integer, item1 As Integer, columnID As Integer, inputText As String, resultText As String)
 
         Try
 
-            Select Case LineID
+            Select Case item1
                 Case 8
                     Me.MyNodeType = 1 ' Signal-LCC
                 Case 16
                     Me.MyNodeType = 2 ' Tower-LCC
             End Select
 
-            Dim rowPort As ExportXml.PortRow = Me.MyExportXml.Port.FindByLineID(LineID)
+            Dim rowPort As ExportXml.PortRow = Me.MyExportXml.Port.FindByLineID(item1)
             Try
                 If rowPort Is Nothing Then
-                    Me.MyExportXml.Port.AddPortRow(LineID, String.Empty, 0, 0, 0, 0)
+                    Me.MyExportXml.Port.AddPortRow(item1, String.Empty, 0, 0, 0, 0)
                     Me.MyExportXml.AcceptChanges()
-                    rowPort = Me.MyExportXml.Port.FindByLineID(LineID)
+                    rowPort = Me.MyExportXml.Port.FindByLineID(item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Port row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(MyLineNum.ToString + " Port I/O - " + "Line(" + LineID.ToString + ") - " + matchText + Space(1) + resultText)
+            Console.WriteLine(lineNum.ToString + " Port I/O - " + "Line(" + item1.ToString + ") - " + inputText + Space(1) + resultText)
             rowPort.Item(columnID - 2) = resultText
 
             Me.MyExportXml.AcceptChanges()
@@ -533,32 +273,26 @@ Public Class ClassExportXml
 
     End Sub
 
-    Private Sub TablePortDelay(level1 As Integer, LineID As Integer, text As String)
+    Private Sub TablePortDelay(lineNum As Integer, level1 As Integer, item1 As Integer, inputText As String)
 
         Try
 
-            Dim DelayID As Integer
-            Dim resultText As String = String.Empty
+            Dim rowlevel3 As ImportCDI.MatchLevel3Row = MyClsImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowlevel3 As ImportCDI.MatchLevel3Row = Me.MatchLevel3(level1, text, DelayID, resultText)
-            If rowlevel3 Is Nothing Then
-                Stop
-            End If
-
-            Dim rowPortDelay As ExportXml.PortDelayRow = Me.MyExportXml.PortDelay.FindByLineIDDelayID(LineID, DelayID)
+            Dim rowPortDelay As ExportXml.PortDelayRow = Me.MyExportXml.PortDelay.FindByLineIDDelayID(item1, rowlevel3.item2)
             If rowPortDelay Is Nothing Then
                 Try
-                    Me.MyExportXml.PortDelay.AddPortDelayRow(LineID, DelayID, 0, 0, 0)
+                    Me.MyExportXml.PortDelay.AddPortDelayRow(item1, rowlevel3.item2, 0, 0, 0)
                     Me.MyExportXml.AcceptChanges()
-                    rowPortDelay = Me.MyExportXml.PortDelay.FindByLineIDDelayID(LineID, DelayID)
+                    rowPortDelay = Me.MyExportXml.PortDelay.FindByLineIDDelayID(item1, rowlevel3.item2)
                 Catch ex As Exception
                     MsgBox("Failed to create table Port Delay row")
                     Exit Sub
                 End Try
             End If
 
-            Console.WriteLine(MyLineNum.ToString + " Port I/O - " + "Line(" + LineID.ToString + ") - Delay(" + DelayID.ToString + ") - " + rowlevel3.text + Space(1) + resultText)
-            rowPortDelay.Item(rowlevel3.columnID - 2) = resultText
+            Console.WriteLine(lineNum.ToString + " Port I/O - " + "Line(" + item1.ToString + ") - Delay(" + rowlevel3.item2.ToString + ") - " + rowlevel3.text + Space(1) + rowlevel3.resultText)
+            rowPortDelay.Item(rowlevel3.columnID - 2) = rowlevel3.resultText
 
             Me.MyExportXml.AcceptChanges()
 
@@ -570,32 +304,26 @@ Public Class ClassExportXml
 
     End Sub
 
-    Private Sub TablePortEvent(level1 As Integer, LineID As Integer, text As String)
+    Private Sub TablePortEvent(lineNum As Integer, level1 As Integer, item1 As Integer, inputText As String)
 
         Try
 
-            Dim EventID As Integer
-            Dim resultText As String = String.Empty
+            Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyClsImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowLevel3 As ImportCDI.MatchLevel3Row = Me.MatchLevel3(level1, text, EventID, resultText)
-            If rowLevel3 Is Nothing Then
-                Stop
-            End If
-
-            Dim rowPortEvent As ExportXml.PortEventRow = Me.MyExportXml.PortEvent.FindByLineIDEventID(LineID, EventID)
+            Dim rowPortEvent As ExportXml.PortEventRow = Me.MyExportXml.PortEvent.FindByLineIDEventID(item1, rowLevel3.item2)
             If rowPortEvent Is Nothing Then
                 Try
-                    Me.MyExportXml.PortEvent.AddPortEventRow(LineID, EventID, String.Empty, 0, 0, String.Empty)
+                    Me.MyExportXml.PortEvent.AddPortEventRow(item1, rowLevel3.item2, String.Empty, 0, 0, String.Empty)
                     Me.MyExportXml.AcceptChanges()
-                    rowPortEvent = Me.MyExportXml.PortEvent.FindByLineIDEventID(LineID, EventID)
+                    rowPortEvent = Me.MyExportXml.PortEvent.FindByLineIDEventID(item1, rowLevel3.item2)
                 Catch ex As Exception
                     MsgBox("Failed to create table Port Event row")
                     Exit Sub
                 End Try
             End If
 
-            Console.WriteLine(MyLineNum.ToString + " Port I/O - Line(" + LineID.ToString + ") - " + "Event(" + EventID.ToString + ") - " + resultText)
-            rowPortEvent.Item(rowLevel3.columnID - 2) = resultText
+            Console.WriteLine(lineNum.ToString + " Port I/O - Line(" + item1.ToString + ") - " + "Event(" + rowLevel3.item2.ToString + ") - " + rowLevel3.resultText)
+            rowPortEvent.Item(rowLevel3.columnID - 2) = rowLevel3.resultText
 
             Me.MyExportXml.AcceptChanges()
 
@@ -608,30 +336,24 @@ Public Class ClassExportXml
     End Sub
 
 
-    Private Sub AddRowLogic(level1 As Integer, text As String)
+    Private Sub AddRowLogic(lineNum As Integer, level1 As Integer, inputText As String)
 
         Try
 
-            Dim LogicID As Integer
-            Dim resultText As String = String.Empty
-
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, LogicID, resultText)
-            If rowLevel2 Is Nothing Then
-                Stop
-            End If
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
 
             Select Case rowLevel2.level2
                 Case 0 ' Logic section
-                    Call Me.TableLogic(LogicID, rowLevel2.columnID, rowLevel2.text, resultText)
+                    Call Me.TableLogic(lineNum, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, rowLevel2.resultText)
 
                 Case 1 ' Logic Operation section
-                    Call Me.TableLogicOperation(LogicID, rowLevel2.columnID, rowLevel2.text, resultText)
+                    Call Me.TableLogicOperation(lineNum, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, rowLevel2.resultText)
 
                 Case 2 ' Logic Action
-                    Call Me.TableLogicAction(LogicID, rowLevel2.columnID, rowLevel2.text, resultText)
+                    Call Me.TableLogicAction(lineNum, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, rowLevel2.resultText)
 
                 Case 3
-                    Call Me.TableLogicProducer(rowLevel2.level1, LogicID, resultText)
+                    Call Me.TableLogicProducer(lineNum, rowLevel2.level1, rowLevel2.item1, rowLevel2.resultText)
 
                 Case Else
                     MsgBox("Logic Section unknown - " + rowLevel2.level2)
@@ -648,23 +370,23 @@ Public Class ClassExportXml
 
     End Sub
 
-    Private Sub TableLogic(LogicID As Integer, columnID As Integer, matchText As String, resultText As String)
+    Private Sub TableLogic(lineNum As Integer, item1 As Integer, columnID As Integer, inputText As String, resultText As String)
 
         Try
 
-            Dim rowLogic As ExportXml.LogicRow = Me.MyExportXml.Logic.FindByLogicID(LogicID)
+            Dim rowLogic As ExportXml.LogicRow = Me.MyExportXml.Logic.FindByLogicID(item1)
             Try
                 If rowLogic Is Nothing Then
-                    Me.MyExportXml.Logic.AddLogicRow(LogicID, String.Empty, 0)
+                    Me.MyExportXml.Logic.AddLogicRow(item1, String.Empty, 0)
                     Me.MyExportXml.AcceptChanges()
-                    rowLogic = Me.MyExportXml.Logic.FindByLogicID(LogicID)
+                    rowLogic = Me.MyExportXml.Logic.FindByLogicID(item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Logic row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(MyLineNum.ToString + " Conditional - " + "Logic(" + LogicID.ToString + ") - " + matchText + Space(1) + resultText)
+            Console.WriteLine(lineNum.ToString + " Conditional - " + "Logic(" + item1.ToString + ") - " + inputText + Space(1) + resultText)
             rowLogic.Item(columnID - 2) = resultText
 
         Catch ex As Exception
@@ -675,23 +397,23 @@ Public Class ClassExportXml
 
     End Sub
 
-    Private Sub TableLogicOperation(LogicID As Integer, columnID As Integer, matchText As String, resultText As String)
+    Private Sub TableLogicOperation(lineNum As Integer, item1 As Integer, columnID As Integer, inputText As String, resultText As String)
 
         Try
 
-            Dim rowLogicOP As ExportXml.LogicOperationRow = Me.MyExportXml.LogicOperation.FindByLogicID(LogicID)
+            Dim rowLogicOP As ExportXml.LogicOperationRow = Me.MyExportXml.LogicOperation.FindByLogicID(item1)
             Try
                 If rowLogicOP Is Nothing Then
-                    Me.MyExportXml.LogicOperation.AddLogicOperationRow(LogicID, 0, 0, 0, String.Empty, String.Empty, 0, 0, 0, 0, String.Empty, String.Empty)
+                    Me.MyExportXml.LogicOperation.AddLogicOperationRow(item1, 0, 0, 0, String.Empty, String.Empty, 0, 0, 0, 0, String.Empty, String.Empty)
                     Me.MyExportXml.AcceptChanges()
-                    rowLogicOP = Me.MyExportXml.LogicOperation.FindByLogicID(LogicID)
+                    rowLogicOP = Me.MyExportXml.LogicOperation.FindByLogicID(item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Logic Operation row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(MyLineNum.ToString + " Conditional - " + "Logic(" + LogicID.ToString + ") - " + matchText + Space(1) + resultText)
+            Console.WriteLine(lineNum.ToString + " Conditional - " + "Logic(" + item1.ToString + ") - " + inputText + Space(1) + resultText)
             rowLogicOP.Item(columnID - 2) = resultText
 
         Catch ex As Exception
@@ -702,23 +424,23 @@ Public Class ClassExportXml
 
     End Sub
 
-    Private Sub TableLogicAction(LogicID As Integer, columnID As Integer, matchText As String, resultText As String)
+    Private Sub TableLogicAction(lineNum As Integer, item1 As Integer, columnID As Integer, inputText As String, resultText As String)
 
         Try
 
-            Dim rowLogicAction As ExportXml.LogicActionRow = Me.MyExportXml.LogicAction.FindByLogicID(LogicID)
+            Dim rowLogicAction As ExportXml.LogicActionRow = Me.MyExportXml.LogicAction.FindByLogicID(item1)
             Try
                 If rowLogicAction Is Nothing Then
-                    Me.MyExportXml.LogicAction.AddLogicActionRow(LogicID, 0, 0, 0, 0, 0)
+                    Me.MyExportXml.LogicAction.AddLogicActionRow(item1, 0, 0, 0, 0, 0)
                     Me.MyExportXml.AcceptChanges()
-                    rowLogicAction = Me.MyExportXml.LogicAction.FindByLogicID(LogicID)
+                    rowLogicAction = Me.MyExportXml.LogicAction.FindByLogicID(item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Logic Action row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(MyLineNum.ToString + " Conditional - " + "Logic(" + LogicID.ToString + ") - " + matchText + Space(1) + resultText)
+            Console.WriteLine(lineNum.ToString + " Conditional - " + "Logic(" + item1.ToString + ") - " + inputText + Space(1) + resultText)
             rowLogicAction.Item(columnID - 2) = resultText
 
         Catch ex As Exception
@@ -729,32 +451,26 @@ Public Class ClassExportXml
 
     End Sub
 
-    Private Sub TableLogicProducer(level1 As Integer, LogicID As Integer, text As String)
+    Private Sub TableLogicProducer(lineNum As Integer, level1 As Integer, item1 As Integer, inputText As String)
 
         Try
 
-            Dim ActionID As Integer
-            Dim resultText As String = String.Empty
+            Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyClsImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowLevel3 As ImportCDI.MatchLevel3Row = Me.MatchLevel3(level1, text, ActionID, resultText)
-            If rowLevel3 Is Nothing Then
-                Stop
-            End If
-
-            Dim rowLogicProducer As ExportXml.LogicProducerRow = Me.MyExportXml.LogicProducer.FindByLogicIDActionID(LogicID, ActionID)
+            Dim rowLogicProducer As ExportXml.LogicProducerRow = Me.MyExportXml.LogicProducer.FindByLogicIDActionID(item1, rowLevel3.item2)
             If rowLogicProducer Is Nothing Then
                 Try
-                    Me.MyExportXml.LogicProducer.AddLogicProducerRow(LogicID, ActionID, 0, 0, 0, String.Empty)
+                    Me.MyExportXml.LogicProducer.AddLogicProducerRow(item1, rowLevel3.item2, 0, 0, 0, String.Empty)
                     Me.MyExportXml.AcceptChanges()
-                    rowLogicProducer = Me.MyExportXml.LogicProducer.FindByLogicIDActionID(LogicID, ActionID)
+                    rowLogicProducer = Me.MyExportXml.LogicProducer.FindByLogicIDActionID(item1, rowLevel3.item2)
                 Catch ex As Exception
                     MsgBox("Failed to create table Logic Producer row")
                     Exit Sub
                 End Try
             End If
 
-            Console.WriteLine(MyLineNum.ToString + " Conditional - Logic(" + LogicID.ToString + ") - Action(" + ActionID.ToString + ") - " + rowLevel3.text + Space(1) + resultText)
-            rowLogicProducer.Item(rowLevel3.columnID - 2) = resultText
+            Console.WriteLine(lineNum.ToString + " Conditional - Logic(" + item1.ToString + ") - Action(" + rowLevel3.item2.ToString + ") - " + rowLevel3.text + Space(1) + rowLevel3.resultText)
+            rowLogicProducer.Item(rowLevel3.columnID - 2) = rowLevel3.resultText
 
         Catch ex As Exception
 
@@ -765,32 +481,26 @@ Public Class ClassExportXml
     End Sub
 
 
-    Private Sub AddRowTrackCircuitRec(level1 As Integer, text As String)
+    Private Sub AddRowTrackReceiver(lineNum As Integer, level1 As Integer, inputText As String)
 
         Try
 
-            Dim CircuitID As Integer
-            Dim resultText As String = String.Empty
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, CircuitID, resultText)
-            If rowLevel2 Is Nothing Then
-                Stop
-            End If
-
-            Dim rowCircuit As ExportXml.TrackReceiverRow = Me.MyExportXml.TrackReceiver.FindByCircuitID(CircuitID)
+            Dim rowCircuit As ExportXml.TrackReceiverRow = Me.MyExportXml.TrackReceiver.FindByCircuitID(rowLevel2.item1)
             Try
                 If rowCircuit Is Nothing Then
-                    Me.MyExportXml.TrackReceiver.AddTrackReceiverRow(CircuitID, String.Empty, String.Empty)
+                    Me.MyExportXml.TrackReceiver.AddTrackReceiverRow(rowLevel2.item1, String.Empty, String.Empty)
                     Me.MyExportXml.AcceptChanges()
-                    rowCircuit = Me.MyExportXml.TrackReceiver.FindByCircuitID(CircuitID)
+                    rowCircuit = Me.MyExportXml.TrackReceiver.FindByCircuitID(rowLevel2.item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Track Circuit Receiver row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(MyLineNum.ToString + " Track Circuit Receiver - Circuit(" + CircuitID.ToString + ") - " + rowLevel2.text + Space(1) + resultText)
-            rowCircuit.Item(rowLevel2.columnID) = resultText
+            Console.WriteLine(lineNum.ToString + " Track Circuit Receiver - Circuit(" + rowLevel2.item1.ToString + ") - " + rowLevel2.text + Space(1) + rowLevel2.resultText)
+            rowCircuit.Item(rowLevel2.columnID) = rowLevel2.resultText
 
             Me.MyExportXml.AcceptChanges()
 
@@ -802,32 +512,26 @@ Public Class ClassExportXml
 
     End Sub
 
-    Private Sub AddRowTrackCircuitTran(level1 As Integer, text As String)
+    Private Sub AddRowTrackTransmitter(lineNum As Integer, level1 As Integer, inputText As String)
 
         Try
 
-            Dim CircuitID As Integer
-            Dim resultText As String = String.Empty
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, CircuitID, resultText)
-            If rowLevel2 Is Nothing Then
-                Stop
-            End If
-
-            Dim rowCircuit As ExportXml.TrackTransmitterRow = Me.MyExportXml.TrackTransmitter.FindByCircuitID(CircuitID)
+            Dim rowCircuit As ExportXml.TrackTransmitterRow = Me.MyExportXml.TrackTransmitter.FindByCircuitID(rowLevel2.item1)
             Try
                 If rowCircuit Is Nothing Then
-                    Me.MyExportXml.TrackTransmitter.AddTrackTransmitterRow(CircuitID, String.Empty, String.Empty)
+                    Me.MyExportXml.TrackTransmitter.AddTrackTransmitterRow(rowLevel2.item1, String.Empty, String.Empty)
                     Me.MyExportXml.AcceptChanges()
-                    rowCircuit = Me.MyExportXml.TrackTransmitter.FindByCircuitID(CircuitID)
+                    rowCircuit = Me.MyExportXml.TrackTransmitter.FindByCircuitID(rowLevel2.item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Track Circuit Transmitter row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(MyLineNum.ToString + " Track Circuit Transmitter - Circuit(" + CircuitID.ToString + ") - " + rowLevel2.text + Space(1) + resultText)
-            rowCircuit.Item(rowLevel2.columnID) = resultText
+            Console.WriteLine(lineNum.ToString + " Track Circuit Transmitter - Circuit(" + rowLevel2.item1.ToString + ") - " + rowLevel2.text + Space(1) + rowLevel2.resultText)
+            rowCircuit.Item(rowLevel2.columnID) = rowLevel2.resultText
 
             Me.MyExportXml.AcceptChanges()
 
@@ -840,24 +544,18 @@ Public Class ClassExportXml
     End Sub
 
 
-    Private Sub AddRowRuleToAspect(level1 As Integer, text As String)
+    Private Sub AddRowRuleToAspect(lineNum As Integer, level1 As Integer, inputText As String)
 
         Try
 
-            Dim MastID As Integer
-            Dim resultText As String = String.Empty
-
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, MastID, resultText)
-            If rowLevel2 Is Nothing Then
-                Stop
-            End If
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
 
             Select Case rowLevel2.level2
                 Case 0
-                    Call Me.TableMast(MastID, rowLevel2.columnID, rowLevel2.text, resultText)
+                    Call Me.TableMast(lineNum, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, rowLevel2.resultText)
 
                 Case 1
-                    Call Me.TableMastRule(rowLevel2.level1, MastID, resultText)
+                    Call Me.TableMastRule(lineNum, rowLevel2.level1, rowLevel2.item1, rowLevel2.resultText)
 
                 Case Else
                     Stop
@@ -874,23 +572,23 @@ Public Class ClassExportXml
 
     End Sub
 
-    Private Sub TableMast(MastID As Integer, columnID As Integer, matchText As String, resultText As String)
+    Private Sub TableMast(lineNum As Integer, item1 As Integer, columnID As Integer, inputText As String, resultText As String)
 
         Try
 
-            Dim rowLogic As ExportXml.MastRow = Me.MyExportXml.Mast.FindByMastID(MastID)
+            Dim rowLogic As ExportXml.MastRow = Me.MyExportXml.Mast.FindByMastID(item1)
             Try
                 If rowLogic Is Nothing Then
-                    Me.MyExportXml.Mast.AddMastRow(MastID, 0, String.Empty, String.Empty, 0)
+                    Me.MyExportXml.Mast.AddMastRow(item1, 0, String.Empty, String.Empty, 0)
                     Me.MyExportXml.AcceptChanges()
-                    rowLogic = Me.MyExportXml.Mast.FindByMastID(MastID)
+                    rowLogic = Me.MyExportXml.Mast.FindByMastID(item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Mast row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(MyLineNum.ToString + " Mast(" + MastID.ToString + ") - " + matchText + Space(1) + resultText)
+            Console.WriteLine(lineNum.ToString + " Mast(" + item1.ToString + ") - " + inputText + Space(1) + resultText)
             rowLogic.Item(columnID - 2) = resultText
 
         Catch ex As Exception
@@ -902,40 +600,33 @@ Public Class ClassExportXml
     End Sub
 
 
-    Private Sub TableMastRule(level1 As Integer, MastID As Integer, text As String)
+    Private Sub TableMastRule(lineNum As Integer, level1 As Integer, item1 As Integer, inputText As String)
 
         Try
 
-            Dim RuleID As Integer
-            Dim resultText As String = String.Empty
-
-            Dim rowLevel3 As ImportCDI.MatchLevel3Row = Me.MatchLevel3(level1, text, RuleID, resultText)
-            If rowLevel3 Is Nothing Then
-                Stop
-            End If
-
+            Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyClsImport.MatchLevel3(lineNum, level1, inputText)
 
             Select Case rowLevel3.level2
                 Case 1
 
-                    Dim rowMastRule As ExportXml.MastRuleRow = Me.MyExportXml.MastRule.FindByMastIDRuleID(MastID, RuleID)
+                    Dim rowMastRule As ExportXml.MastRuleRow = Me.MyExportXml.MastRule.FindByMastIDRuleID(item1, rowLevel3.item2)
                     If rowMastRule Is Nothing Then
                         Try
-                            Me.MyExportXml.MastRule.AddMastRuleRow(MastID, RuleID, 0, 0, String.Empty, String.Empty, String.Empty, 0, 0)
+                            Me.MyExportXml.MastRule.AddMastRuleRow(item1, rowLevel3.item2, 0, 0, String.Empty, String.Empty, String.Empty, 0, 0)
                             Me.MyExportXml.AcceptChanges()
-                            rowMastRule = Me.MyExportXml.MastRule.FindByMastIDRuleID(MastID, RuleID)
+                            rowMastRule = Me.MyExportXml.MastRule.FindByMastIDRuleID(item1, rowLevel3.item2)
                         Catch ex As Exception
                             MsgBox("Failed to create table Mast Rule row")
                             Exit Sub
                         End Try
                     End If
 
-                    Console.WriteLine(MyLineNum.ToString + " Mast - Mast(" + MastID.ToString + ") " + " - Rule(" + RuleID.ToString + ") - " + rowLevel3.text + Space(1) + resultText)
-                    rowMastRule.Item(rowLevel3.columnID - 2) = resultText
+                    Console.WriteLine(lineNum.ToString + " Mast - Mast(" + item1.ToString + ") " + " - Rule(" + rowLevel3.item2.ToString + ") - " + rowLevel3.text + Space(1) + rowLevel3.resultText)
+                    rowMastRule.Item(rowLevel3.columnID - 2) = rowLevel3.resultText
 
                 Case 2
 
-                    Call Me.TableMastAppearance(rowLevel3.level1, MastID, RuleID, resultText)
+                    Call Me.TableMastAppearance(lineNum, rowLevel3.level1, item1, rowLevel3.item2, rowLevel3.resultText)
 
                 Case Else
 
@@ -953,32 +644,26 @@ Public Class ClassExportXml
     End Sub
 
 
-    Private Sub TableMastAppearance(level1 As Integer, MastID As Integer, RuleID As Integer, text As String)
+    Private Sub TableMastAppearance(lineNum As Integer, level1 As Integer, item1 As Integer, item2 As Integer, inputText As String)
 
         Try
 
-            Dim AppearanceID As Integer
-            Dim resultText As String = String.Empty
+            Dim rowLevel4 As ImportCDI.MatchLevel4Row = MyClsImport.MatchLevel4(lineNum, level1, inputText)
 
-            Dim rowLevel4 As ImportCDI.MatchLevel4Row = Me.MatchLevel4(level1, text, AppearanceID, resultText)
-            If rowLevel4 Is Nothing Then
-                Stop
-            End If
-
-            Dim rowMastRuleAppear As ExportXml.MastRuleAppearRow = Me.MyExportXml.MastRuleAppear.FindByMastIDRuleIDAppearanceID(MastID, RuleID, AppearanceID)
+            Dim rowMastRuleAppear As ExportXml.MastRuleAppearRow = Me.MyExportXml.MastRuleAppear.FindByMastIDRuleIDAppearanceID(item1, item2, rowLevel4.item3)
             If rowMastRuleAppear Is Nothing Then
                 Try
-                    Me.MyExportXml.MastRuleAppear.AddMastRuleAppearRow(MastID, RuleID, AppearanceID, 0, 0)
+                    Me.MyExportXml.MastRuleAppear.AddMastRuleAppearRow(item1, item2, rowLevel4.item3, 0, 0)
                     Me.MyExportXml.AcceptChanges()
-                    rowMastRuleAppear = Me.MyExportXml.MastRuleAppear.FindByMastIDRuleIDAppearanceID(MastID, RuleID, AppearanceID)
+                    rowMastRuleAppear = Me.MyExportXml.MastRuleAppear.FindByMastIDRuleIDAppearanceID(item1, item2, rowLevel4.item3)
                 Catch ex As Exception
                     MsgBox("Failed to create table Mast Rule Apperance row")
                     Exit Sub
                 End Try
             End If
 
-            Console.WriteLine(MyLineNum.ToString + " Mast - " + "Mast(" + MastID.ToString + ") - Rule(" + RuleID.ToString + ") - Appearance(" + AppearanceID.ToString + ") - " + rowLevel4.text + Space(1) + resultText)
-            rowMastRuleAppear.Item(rowLevel4.columnID - 2) = resultText
+            Console.WriteLine(lineNum.ToString + " Mast - " + "Mast(" + item1.ToString + ") - Rule(" + item2.ToString + ") - Appearance(" + rowLevel4.item3.ToString + ") - " + rowLevel4.text + Space(1) + rowLevel4.resultText)
+            rowMastRuleAppear.Item(rowLevel4.columnID - 2) = rowLevel4.resultText
 
         Catch ex As Exception
 
@@ -989,21 +674,15 @@ Public Class ClassExportXml
     End Sub
 
 
-    Private Sub AddRowLampDirectControl(level1 As Integer, text As String)
+    Private Sub AddRowLampDirectControl(lineNum As Integer, level1 As Integer, inputText As String)
 
         Try
 
-            Dim lineID As Integer
-            Dim resultText As String = String.Empty
-
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = Me.MatchLevel2(level1, text, lineID, resultText)
-            If rowLevel2 Is Nothing Then
-                Stop
-            End If
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
 
             Select Case rowLevel2.level2
                 Case 0
-                    Call Me.TableLamp(lineID, rowLevel2.columnID, rowLevel2.text, resultText)
+                    Call Me.TableLamp(lineNum, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, rowLevel2.resultText)
 
                 Case Else
                     Stop
@@ -1021,23 +700,23 @@ Public Class ClassExportXml
     End Sub
 
 
-    Private Sub TableLamp(LampID As Integer, columnID As Integer, matchText As String, resultText As String)
+    Private Sub TableLamp(lineNum As Integer, item1 As Integer, columnID As Integer, inputText As String, resultText As String)
 
         Try
 
-            Dim rowLamp As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(LampID)
+            Dim rowLamp As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(item1)
             Try
                 If rowLamp Is Nothing Then
-                    Me.MyExportXml.Lamp.AddLampRow(LampID, String.Empty, String.Empty, String.Empty, 0, 0, 0, 0)
+                    Me.MyExportXml.Lamp.AddLampRow(item1, String.Empty, String.Empty, String.Empty, 0, 0, 0, 0)
                     Me.MyExportXml.AcceptChanges()
-                    rowLamp = Me.MyExportXml.Lamp.FindByLampID(LampID)
+                    rowLamp = Me.MyExportXml.Lamp.FindByLampID(item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Lamp row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(MyLineNum.ToString + " Lamp(" + LampID.ToString + ") - " + matchText + Space(1) + resultText)
+            Console.WriteLine(lineNum.ToString + " Lamp(" + item1.ToString + ") - " + inputText + Space(1) + resultText)
             rowLamp.Item(columnID - 2) = resultText
 
         Catch ex As Exception
@@ -1049,29 +728,29 @@ Public Class ClassExportXml
     End Sub
 
 
-    Private Sub UpDateRowLampDirectControl(text As String)
+    Private Sub UpDateRowLampDirectControl(lineNum As Integer, inputText As String)
 
         Try
 
-            Dim LampID As Integer = Val(text)
+            Dim item1 As Integer = Val(inputText)
 
             Dim startInt As Integer = 0
             Dim myMatch As String = "="
             Dim resultInt As Integer = 0
             Dim resultText As String = String.Empty
 
-            startInt = InStr(text, myMatch)
+            startInt = InStr(inputText, myMatch)
             If startInt > 0 Then
                 resultInt = startInt + Len(myMatch)
-                resultText = Mid(text, resultInt)
+                resultText = Mid(inputText, resultInt)
             End If
 
-            Dim rowLamp As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(LampID)
+            Dim rowLamp As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(item1)
             If rowLamp Is Nothing Then
-                MsgBox("Failed to find Lamp row " + LampID.ToString)
+                MsgBox("Failed to find Lamp row " + item1.ToString)
             Else
                 rowLamp.brightness = resultText
-                Console.WriteLine(MyLineNum.ToString + " Lamp(" + LampID.ToString + ") - Brightness= " + resultText)
+                Console.WriteLine(lineNum.ToString + " Lamp(" + item1.ToString + ") - Brightness= " + resultText)
             End If
 
             Me.MyExportXml.AcceptChanges()
@@ -1083,31 +762,5 @@ Public Class ClassExportXml
         End Try
 
     End Sub
-
-
-    Private Function GetMyIDvalue(resultText As String) As Integer
-
-        Dim valueInt As Integer
-        Dim valueText As String
-        Dim testText As String = ")"
-        Dim itemID As Integer = 0
-
-        Try
-
-            valueInt = InStr(resultText, testText)
-            If valueInt > 0 Then
-                valueText = Mid(resultText, Len(valueInt.ToString), valueInt - 1)
-                itemID = Val(valueText) + 1
-            End If
-
-        Catch ex As Exception
-
-            Stop
-
-        End Try
-
-        Return itemID
-
-    End Function
 
 End Class

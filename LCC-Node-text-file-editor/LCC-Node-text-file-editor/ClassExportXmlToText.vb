@@ -99,6 +99,7 @@ Public Class ClassExportXmlToText
                     ' do nothing
                 Else
                     ' output text lines that are different from input to output
+                    ' Stop
                 End If
 
                 srOut.WriteLine(writeText)
