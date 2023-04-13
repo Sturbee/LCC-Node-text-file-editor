@@ -4,8 +4,7 @@ Public Class FrmNode
 
     Private Property MyFilePath As String
     Private Property MyFileName As String
-    Private Property MyExportXml As New ExportXml
-
+    Private Property MyExport As New ClsExportXML
 
     Private Sub FrmNode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -15,38 +14,32 @@ Public Class FrmNode
 
     Private Sub DisplayValues()
 
+        ' read the file to read and edit
+        Me.MyFilePath = Me.Owner.Tag
+        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
-        Dim dsTitles As Titles = clsT.MyTitles
 
         ' set labels
-        Dim rowTitle As Titles.NodeTitlesRow = dsTitles.NodeTitles.Item(0)
+        Dim rowTitle As Titles.NodeTitlesRow = clsT.Titles.NodeTitles.Item(0)
         Me.Text = rowTitle.header
         Me.LblName.Text = rowTitle.name
         Me.LblDecription.Text = rowTitle.description
         Me.LblNodeType.Text = rowTitle.nodeType
         Me.LblEventBase.Text = rowTitle.eventBase
 
-        ' read the attribute xml file
-        Dim clsR As New ClsReport
-        Dim dsRpt As Rpt = clsR.MyReport
-
-        ' read the file to read and edit
-        Me.MyFilePath = Me.Owner.Tag
-        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
-
-        Try
-            Me.MyExportXml.ReadXml(Me.MyFilePath)
-        Catch ex As Exception
-            MsgBox("Failed to read file " + Me.MyFileName)
-            Exit Sub
-        End Try
-
-        Dim nodeRow As ExportXml.NodeRow = Me.MyExportXml.Node.Item(0)
+        Dim nodeRow As ExportXml.NodeRow = MyExport.ExportXML.Node.Item(0)
 
         Me.LblFileName.Text = Me.MyFileName
 
-        Dim row As Rpt.NodeTypeRow = dsRpt.NodeType.FindByvalue(nodeRow.nodeType)
+        ' read the attribute xml file
+        Dim clsR As New ClsReport
+
+        ' read the export xml file
+        MyExport.ExportXmlRead(MyFilePath)
+
+        Dim row As Rpt.NodeTypeRow = clsR.Rpt.NodeType.FindByvalue(nodeRow.nodeType)
         If row Is Nothing Then
             Me.LblType.Text = "Unknown"
         Else
@@ -62,15 +55,16 @@ Public Class FrmNode
     Private Sub ButSaveChanges_Click(sender As Object, e As EventArgs) Handles ButSaveChanges.Click
 
         Try
-            Dim nodeRow As ExportXml.NodeRow = MyExportXml.Node.Item(0)
+            Dim nodeRow As ExportXml.NodeRow = MyExport.ExportXML.Node.Item(0)
             nodeRow.Name = Me.TxtNodeName.Text
             nodeRow.Description = Me.TxtNodeDescription.Text
 
-            Me.MyExportXml.WriteXml(Me.MyFilePath)
+            MyExport.ExportXML.WriteXml(Me.MyFilePath)
             MsgBox("Saved changes to node values")
 
             ' need to reload after save
-            MyExportXml = New ExportXml
+            MyExport.ExportXmlRead(Me.MyFilePath)
+
             Call Me.DisplayValues()
 
         Catch ex As Exception

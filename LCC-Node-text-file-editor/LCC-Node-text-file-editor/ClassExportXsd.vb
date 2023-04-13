@@ -4,7 +4,7 @@ Public Class ClassExportXsd
     Public Sub ExportToXsdFile(filePath As String)
 
         Dim clsI As New ClsImportCDI
-        Dim dsImport As ImportCDI = clsI.MyImportCDI
+        Dim dsImport As ImportCDI = clsI.ImportCDI
 
 
         Dim xmlFilePath As String = filePath + ".xml"

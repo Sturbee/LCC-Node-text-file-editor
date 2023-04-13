@@ -1,7 +1,7 @@
 ﻿Public Class ClsTitles
 
     Private Property TitlesFileName As String = "Titles.xml"
-    Public Property MyTitles As New Titles
+    Public Property Titles As New Titles
 
     Public Sub New()
 
@@ -13,7 +13,7 @@
 
         ' import the titles xml file
         Try
-            MyTitles.ReadXml(Me.TitlesFileName)
+            Titles.ReadXml(Me.TitlesFileName)
         Catch ex As Exception
             MsgBox("Failed to import file " + Me.TitlesFileName)
             Exit Sub

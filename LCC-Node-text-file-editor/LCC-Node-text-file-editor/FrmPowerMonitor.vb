@@ -3,8 +3,7 @@
 Public Class FrmPowerMonitor
     Public Property MyFileName As String
     Public Property MyFilePath
-    Private Property MyExportXml As New ExportXml
-
+    Private Property MyExport As New ClsExportXML
 
     Private Sub FrmPowerMonitor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -14,30 +13,29 @@ Public Class FrmPowerMonitor
 
     Private Sub DisplayValues()
 
-        ' read the titles xml file
-        Dim clsT As New ClsTitles
-        Dim dsTitles As Titles = clsT.MyTitles
-
         ' read the file to read and edit
         Me.MyFilePath = Me.Owner.Tag
         Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
-        Dim rowPower As Titles.PowerMonitorTitlesRow = dsTitles.PowerMonitorTitles.Item(0)
+        ' read the titles xml file
+        Dim clsT As New ClsTitles
+        Dim rowPower As Titles.PowerMonitorTitlesRow = clsT.Titles.PowerMonitorTitles.Item(0)
         Me.Text = rowPower.header
         Me.LblOptions.Text = rowPower.options
         Me.LblPowerOK.Text = rowPower.powerOK
         Me.LblPowerNotOK.Text = rowPower.powerNotOK
 
-
         ' read the attribute xml file
         Dim clsR As New ClsReport
-        Dim dsRpt As Rpt = clsR.MyReport
+
+        ' read the export xml file
+        MyExport.ExportXmlRead(MyFilePath)
 
         ' fill combobox
         Try
             Me.CmbOption.BeginUpdate()
-            For I = 0 To dsRpt.MessageOption.Count - 1
-                Dim rowOption As Rpt.MessageOptionRow = dsRpt.MessageOption.Item(I)
+            For I = 0 To clsR.Rpt.MessageOption.Count - 1
+                Dim rowOption As Rpt.MessageOptionRow = clsR.Rpt.MessageOption.Item(I)
                 Me.CmbOption.Items.Add(rowOption.text)
             Next
             Me.CmbOption.EndUpdate()
@@ -46,16 +44,8 @@ Public Class FrmPowerMonitor
             Exit Sub
         End Try
 
-        ' read the file to read and edit
-        Try
-            Me.MyExportXml.ReadXml(Me.MyFilePath)
-        Catch ex As Exception
-            MsgBox("Failed to read file " + Me.MyFileName)
-            Exit Sub
-        End Try
 
-
-        Dim powerMonitorRow = Me.MyExportXml.PowerMonitor.Item(0)
+        Dim powerMonitorRow = MyExport.ExportXML.PowerMonitor.Item(0)
 
         Me.CmbOption.SelectedIndex = powerMonitorRow.powerOptionID
 
@@ -68,16 +58,18 @@ Public Class FrmPowerMonitor
     Private Sub ButSave_Click(sender As Object, e As EventArgs) Handles ButSave.Click
 
         Try
-            Dim pwrRow As ExportXml.PowerMonitorRow = MyExportXml.PowerMonitor.Item(0)
+            Dim pwrRow As ExportXml.PowerMonitorRow = MyExport.ExportXML.PowerMonitor.Item(0)
             pwrRow.powerOptionID = Me.CmbOption.SelectedIndex
             pwrRow.eventPowerOK = Me.TxtPowerOK.Text
             pwrRow.eventPowerNotOK = Me.TxtPowerNotOK.Text
 
-            Me.MyExportXml.WriteXml(Me.MyFilePath)
+            MyExport.ExportXML.WriteXml(MyFilePath)
             MsgBox("Saved changes to power monitor values")
 
             ' need to reload after save
-            MyExportXml = New ExportXml
+            MyExport.ExportXmlRead(MyFilePath)
+            Call Me.DisplayValues()
+
             Call Me.DisplayValues()
 
         Catch ex As Exception

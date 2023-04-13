@@ -4,8 +4,8 @@ Public Class FrmPorts
 
     Public Property MyLines As Integer
     Private Property MyFilePath As String
-    Private Property MyFileName As String
-    Private Property MyExportXml As New ExportXml
+    REM Private Property MyFileName As String
+    Private Property MyExport As New ClsExportXML
 
     Private Sub FrmPorts_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -16,31 +16,22 @@ Public Class FrmPorts
 
     Private Sub DisplayValues()
 
-        ' read the titles xml file
-        Dim clsT As New ClsTitles
-        Dim dsTitles As Titles = clsT.MyTitles
+        ' read the file to read and edit
+        Me.MyFilePath = Me.Owner.Tag
+        REM Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
-        ' set labels
-        Dim rowTitle As Titles.PortTitlesRow = dsTitles.PortTitles.Item(0)
+        ' read the titles xml file set labels
+        Dim MyClsTitles As New ClsTitles
+        Dim rowTitle As Titles.PortTitlesRow = MyClsTitles.Titles.PortTitles.Item(0)
         Me.Text = rowTitle.header
         Me.LblSubHeader.Text = rowTitle.subHeader
         Me.LblHelp.Text = rowTitle.help
 
-        ' read the attribute xml file
-        Dim clsR As New ClsReport
-        Dim dsRpt As Rpt = clsR.MyReport
+        ' read the attributes xml file
+        REM Dim MyClsReport As New ClsReport
 
-        ' read the file to read and edit
-        Me.MyFilePath = Me.Owner.Tag
-        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
-
-        Try
-            Me.MyExportXml.ReadXml(Me.MyFilePath)
-        Catch ex As Exception
-            MsgBox("Failed to read file " + Me.MyFileName)
-            Exit Sub
-        End Try
-
+        ' read the export xml file
+        MyExport.ExportXmlRead(MyFilePath)
 
         ' populate tab control
 
@@ -50,10 +41,10 @@ Public Class FrmPorts
 
             For count = 1 To Me.MyLines
 
-                Dim row As ExportXml.PortRow = Me.MyExportXml.Port.FindByLineID(count)
+                Dim row As ExportXml.PortRow = MyExport.ExportXML.Port.FindByLineID(count)
 
                 Dim MyTabPage As New TabPage With {
-                    .Text = rowTitle.subHeader + Space(1) + count.ToString + " (" + row.Description + ")"
+                    .Text = count.ToString + " - " + row.Description
                 }
 
                 Me.TabControlLines.Controls.Add(MyTabPage)
@@ -71,7 +62,16 @@ Public Class FrmPorts
 
     Private Sub TabControlLines_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlLines.Selected
 
-        ' Stop
+        Dim item1 As Integer
+
+        If e.TabPageIndex = -1 Then
+            item1 = 1
+        Else
+            item1 = e.TabPageIndex + 1
+        End If
+        ' fill in row values
+
+
 
     End Sub
 

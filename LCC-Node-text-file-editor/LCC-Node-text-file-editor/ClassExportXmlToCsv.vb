@@ -13,35 +13,23 @@ Public Class ClassExportXmlToCsv
             Exit Sub
         End If
 
-        Dim dsInput As New ExportXml
-
-        Try
-            dsInput.ReadXml(fileXML)
-        Catch ex As Exception
-            MsgBox("Failed to read input file " + fileXML)
-            Exit Sub
-        End Try
-
-        ' get report xml file
-        Dim clsR As New ClsReport
-        Dim dsReport As Rpt = clsR.MyReport
+        Dim clsE As New ClsExportXML
+        clsE.ExportXmlRead(fileXML)
 
         ' get titles xml file
         Dim clsT As New ClsTitles
-        Dim dsTitles As Titles = clsT.MyTitles
+
+        ' get report xml file
+        Dim clsR As New ClsReport
 
         ' get importCDI xml file
         Dim clsI As New ClsImportCDI
-        Dim dsImport As ImportCDI = clsI.MyImportCDI
 
         Try
 
             Dim clsU As New ClsUserPrefs
-            Dim dsUser As UserPrefs = clsU.MyUserPrefs
-            dsUser.AcceptChanges()
-
-            dsImport.TrackSpeed.Merge(dsUser.TrackSpeed)
-            dsImport.AcceptChanges()
+            clsI.ImportCDI.TrackSpeed.Merge(clsU.UserPrefs.TrackSpeed)
+            clsI.ImportCDI.AcceptChanges()
 
         Catch ex As Exception
             MsgBox("Failed to merge import with user")
@@ -50,18 +38,17 @@ Public Class ClassExportXmlToCsv
 
         Dim writer As StreamWriter = File.CreateText(filePath + ".csv")
 
-
         ' output Node table
-        Call Me.ReportNodeTable(dsInput, writer)
+        Call Me.ReportNodeTable(clsE.ExportXML, writer)
 
         ' output PowerMonitor table
-        Call Me.ReportPowerMonitorTable(dsInput, writer)
+        Call Me.ReportPowerMonitorTable(clsE.ExportXML, writer)
 
         ' output Port I/O table
-        Call Me.ReportPortTable(dsInput, writer)
+        Call Me.ReportPortTable(clsE.ExportXML, writer)
 
         ' output Logic table
-        Call Me.ReportLogicTable(dsInput, dsReport, dsTitles, writer)
+        Call Me.ReportLogicTable(clsE.ExportXML, clsR.Rpt, clsT.Titles, writer)
 
         Try
 

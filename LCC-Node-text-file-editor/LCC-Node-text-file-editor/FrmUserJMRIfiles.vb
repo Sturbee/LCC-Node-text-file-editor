@@ -1,6 +1,6 @@
 ﻿Public Class FrmUserJMRIfiles
 
-    Private Property ClsU As New ClsUserPrefs
+    Private Property MyUser As New ClsUserPrefs
 
     Private Sub FrmUserPrefs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -13,8 +13,8 @@
         Try
 
             Me.CmbPath.BeginUpdate()
-            For count = 0 To Me.ClsU.MyUserPrefs.UserJMRI.Count - 1
-                Dim row As UserPrefs.UserJMRIRow = ClsU.MyUserPrefs.UserJMRI.Item(count)
+            For count = 0 To MyUser.UserPrefs.UserJMRI.Count - 1
+                Dim row As UserPrefs.UserJMRIRow = MyUser.UserPrefs.UserJMRI.Item(count)
                 Me.CmbPath.Items.Add(row.title)
             Next
             Me.CmbPath.EndUpdate()
@@ -26,7 +26,7 @@
 
         End Try
 
-        Dim result As Integer = Me.ClsU.CheckUserFileDirectories
+        Dim result As Integer = MyUser.CheckUserFileDirectories
 
         If result = -1 Then
             Me.CmbPath.SelectedIndex = 0
@@ -39,7 +39,7 @@
 
     Private Sub CmbPath_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbPath.SelectedIndexChanged
 
-        Dim row As UserPrefs.UserJMRIRow = ClsU.MyUserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
+        Dim row As UserPrefs.UserJMRIRow = MyUser.UserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
 
         If row.path = Nothing Then
             Me.TxtPath.Text = FolderBrowserDialog1.SelectedPath
@@ -72,9 +72,9 @@
 
     Private Sub CmdSave_Click(sender As Object, e As EventArgs) Handles CmdSave.Click
 
-        Dim row As UserPrefs.UserJMRIRow = ClsU.MyUserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
+        Dim row As UserPrefs.UserJMRIRow = MyUser.UserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
 
-        If ClsU.JMRIfileRowWrite(Me.CmbPath.SelectedIndex, Me.TxtPath.Text, Me.TxtExtension.Text) = True Then
+        If MyUser.JMRIfileRowWrite(Me.CmbPath.SelectedIndex, Me.TxtPath.Text, Me.TxtExtension.Text) = True Then
             MsgBox("JMRI LCC file directory and extension updated")
         Else
             MsgBox("Faile to update JMRI LCC file directory and extension")
@@ -99,6 +99,5 @@
         End Try
 
     End Sub
-
 
 End Class

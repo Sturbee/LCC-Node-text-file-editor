@@ -4,9 +4,10 @@ Public Class FrmLamps
 
     Public Property MyLamps As Integer
     Private Property MyFilePath As String
-    Private Property MyFileName As String
-    Private Property MyExportXml As New ExportXml
-    Private Property MyReport As New Rpt
+
+    REM Private Property MyFileName As String
+    Private Property MyReport As New ClsReport
+    Private Property MyExport As New ClsExportXML
 
     Private Sub FrmLamps_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -16,12 +17,16 @@ Public Class FrmLamps
 
     Private Sub DisplayValues()
 
+        ' read the file to read and edit
+        Me.Tag = Me.Owner.Tag
+        Me.MyFilePath = Me.Tag
+        REM Me.MyFileName = Path.GetFileName(Me.Tag)
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
-        Dim dsTitles As Titles = clsT.MyTitles
 
         ' set labels
-        Dim rowTitle As Titles.LampsTitlesRow = dsTitles.LampsTitles.Item(0)
+        Dim rowTitle As Titles.LampsTitlesRow = clsT.Titles.LampsTitles.Item(0)
         Me.Text = rowTitle.header
         Me.LblSubHeader.Text = rowTitle.subHeader
         Me.LblHelp.Text = rowTitle.help
@@ -30,34 +35,20 @@ Public Class FrmLamps
         Me.LblBrightness.Text = rowTitle.brightness
 
         ' read the attribute xml file
-        Dim clsR As New ClsReport
-        MyReport = clsR.MyReport
 
         Me.CmbLampFade.BeginUpdate()
-        For I = 0 To MyReport.LampFade.Count - 1
-            Dim row As Rpt.LampFadeRow = MyReport.LampFade.Item(I)
+        For I = 0 To MyReport.Rpt.LampFade.Count - 1
+            Dim row As Rpt.LampFadeRow = MyReport.Rpt.LampFade.Item(I)
             Me.CmbLampFade.Items.Add(row.text)
         Next
         Me.CmbLampFade.EndUpdate()
 
         Me.CmbLampPhase.BeginUpdate()
-        For I = 0 To MyReport.LampPhase.Count - 1
-            Dim row As Rpt.LampPhaseRow = MyReport.LampPhase.Item(I)
+        For I = 0 To MyReport.Rpt.LampPhase.Count - 1
+            Dim row As Rpt.LampPhaseRow = MyReport.Rpt.LampPhase.Item(I)
             Me.CmbLampPhase.Items.Add(row.text)
         Next
         Me.CmbLampPhase.EndUpdate()
-
-        ' read the file to read and edit
-        Me.Tag = Me.Owner.Tag
-        Me.MyFilePath = Me.Tag
-        Me.MyFileName = Path.GetFileName(Me.Tag)
-
-        Try
-            Me.MyExportXml.ReadXml(Me.MyFilePath)
-        Catch ex As Exception
-            MsgBox("Failed to read file " + Me.MyFileName)
-            Exit Sub
-        End Try
 
         ' populate tab control
         Try
@@ -66,7 +57,7 @@ Public Class FrmLamps
 
             For count = 1 To Me.MyLamps
 
-                Dim row As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(count)
+                Dim row As ExportXml.LampRow = MyExport.ExportXML.Lamp.FindByLampID(count)
 
                 Dim MyTabPage As New TabPage With {
                 .Text = count.ToString + " - " + row.description
@@ -94,25 +85,25 @@ Public Class FrmLamps
         End If
         ' fill in row values
 
-        Dim rowName As Rpt.LampSelectionRow = MyReport.LampSelection.FindByvalue(lampID)
+        Dim rowName As Rpt.LampSelectionRow = MyReport.Rpt.LampSelection.FindByvalue(lampID)
         Me.LblLampID.Text = "Lamp " + rowName.text
 
-        Dim row As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(lampID)
+        Dim row As ExportXml.LampRow = MyExport.ExportXML.Lamp.FindByLampID(lampID)
 
         Me.TxtDescription.Text = row.description
-            Me.TxtLampOn.Text = row.eventOn
-            Me.TxtLampOff.Text = row.eventOff
-            Me.TxtBrightness.Text = row.brightness
+        Me.TxtLampOn.Text = row.eventOn
+        Me.TxtLampOff.Text = row.eventOff
+        Me.TxtBrightness.Text = row.brightness
 
-            Me.CmbLampFade.SelectedIndex = row.lampFadeID
-            Me.CmbLampPhase.SelectedIndex = row.lampPhaseID
+        Me.CmbLampFade.SelectedIndex = row.lampFadeID
+        Me.CmbLampPhase.SelectedIndex = row.lampPhaseID
 
     End Sub
 
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
 
         Try
-            Dim row As ExportXml.LampRow = MyExportXml.Lamp.FindByLampID(Me.TabControlLamps.SelectedIndex + 1)
+            Dim row As ExportXml.LampRow = MyExport.ExportXML.Lamp.FindByLampID(Me.TabControlLamps.SelectedIndex + 1)
             row.description = Me.TxtDescription.Text
             row.eventOn = Me.TxtLampOn.Text
             row.eventOff = Me.TxtLampOff.Text
@@ -131,11 +122,12 @@ Public Class FrmLamps
                 Exit Sub
             End Try
 
-            Me.MyExportXml.WriteXml(Me.MyFilePath)
+            MyExport.ExportXML.WriteXml(Me.MyFilePath)
             MsgBox("Saved changes to lamp values")
 
             ' need to reload after save
-            MyExportXml = New ExportXml
+            MyExport.ExportXmlRead(MyFilePath)
+
             Call Me.DisplayValues()
 
         Catch ex As Exception

@@ -4,8 +4,8 @@ Public Class FrmMasts
 
     Public Property MyMasts As Integer
     Private Property MyFilePath As String
-    Private Property MyFileName As String
-    Private Property MyExportXml As New ExportXml
+    REM Private Property MyFileName As String
+    Private Property MyExport As New ClsExportXML
 
     Private Sub FrmMasts_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -15,29 +15,23 @@ Public Class FrmMasts
 
     Private Sub DisplayValues()
 
+        ' read the file to read and edit
+        Me.MyFilePath = Me.Owner.Tag
+        REM Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
-        Dim dsTitles As Titles = clsT.MyTitles
 
         ' set labels
-        Dim rowTitle As Titles.MastTitlesRow = dsTitles.MastTitles.Item(0)
+        Dim rowTitle As Titles.MastTitlesRow = clsT.Titles.MastTitles.Item(0)
         Me.Text = rowTitle.header
         Me.LblSubHeader.Text = rowTitle.subHeader
 
         ' read the attribute xml file
-        Dim clsR As New ClsReport
-        Dim dsRpt As Rpt = clsR.MyReport
+        REM Dim clsR As New ClsReport
 
-        ' read the file to read and edit
-        Me.MyFilePath = Me.Owner.Tag
-        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
-
-        Try
-            Me.MyExportXml.ReadXml(Me.MyFilePath)
-        Catch ex As Exception
-            MsgBox("Failed to read file " + Me.MyFileName)
-            Exit Sub
-        End Try
+        ' read the export xml file
+        MyExport.ExportXmlRead(MyFilePath)
 
         ' populate tab control
 
@@ -47,7 +41,7 @@ Public Class FrmMasts
 
             For count = 1 To Me.MyMasts
 
-                Dim row As ExportXml.MastRow = Me.MyExportXml.Mast.FindByMastID(count)
+                Dim row As ExportXml.MastRow = MyExport.ExportXML.Mast.FindByMastID(count)
 
                 Dim mast As String = String.Empty
                 If row.description.Length = 0 Then

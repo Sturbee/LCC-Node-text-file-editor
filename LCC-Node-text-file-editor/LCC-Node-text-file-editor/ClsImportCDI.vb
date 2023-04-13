@@ -1,7 +1,8 @@
-﻿Public Class ClsImportCDI
+﻿
+Public Class ClsImportCDI
 
     Private Property ImportCDIFileName As String = "ImportCDI.xml"
-    Public Property MyImportCDI As New ImportCDI
+    Public Property ImportCDI As New ImportCDI
 
     Public Sub New()
 
@@ -13,8 +14,8 @@
 
         ' import the importCDI xml file
         Try
-            MyImportCDI.ReadXml(Me.ImportCDIFileName)
-            MyImportCDI.AcceptChanges()
+            ImportCDI.ReadXml(Me.ImportCDIFileName)
+            ImportCDI.AcceptChanges()
         Catch ex As Exception
             MsgBox("Failed to import file " + Me.ImportCDIFileName)
             Exit Sub
@@ -29,9 +30,9 @@
         Dim rowLevel1 As ImportCDI.MatchLevel1Row = Nothing
 
         ' find the match segment record
-        For count = 0 To Me.MyImportCDI.MatchLevel1.Count - 1
+        For count = 0 To Me.ImportCDI.MatchLevel1.Count - 1
 
-            Dim row As ImportCDI.MatchLevel1Row = Me.MyImportCDI.MatchLevel1.Rows.Item(count)
+            Dim row As ImportCDI.MatchLevel1Row = Me.ImportCDI.MatchLevel1.Rows.Item(count)
 
             ' find match text
             Dim myMatch = row.text
@@ -71,9 +72,9 @@
         Dim rowLevel2 As ImportCDI.MatchLevel2Row = Nothing
 
         ' find the match segment record
-        For count = 0 To Me.MyImportCDI.MatchLevel2.Count - 1
+        For count = 0 To Me.ImportCDI.MatchLevel2.Count - 1
 
-            Dim row As ImportCDI.MatchLevel2Row = Me.MyImportCDI.MatchLevel2.Rows.Item(count)
+            Dim row As ImportCDI.MatchLevel2Row = Me.ImportCDI.MatchLevel2.Rows.Item(count)
 
             If row.level1 = level1 Then
 
@@ -125,9 +126,9 @@
         Dim rowLevel3 As ImportCDI.MatchLevel3Row = Nothing
 
         ' find the match segment record
-        For count = 0 To Me.MyImportCDI.MatchLevel3.Count - 1
+        For count = 0 To Me.ImportCDI.MatchLevel3.Count - 1
 
-            Dim row As ImportCDI.MatchLevel3Row = Me.MyImportCDI.MatchLevel3.Rows.Item(count)
+            Dim row As ImportCDI.MatchLevel3Row = Me.ImportCDI.MatchLevel3.Rows.Item(count)
 
             If row.level1 = level1 Then
 
@@ -176,9 +177,9 @@
         Dim rowLevel4 As ImportCDI.MatchLevel4Row = Nothing
 
         ' find the match segment record
-        For count = 0 To Me.MyImportCDI.MatchLevel4.Count - 1
+        For count = 0 To Me.ImportCDI.MatchLevel4.Count - 1
 
-            Dim row As ImportCDI.MatchLevel4Row = Me.MyImportCDI.MatchLevel4.Rows.Item(count)
+            Dim row As ImportCDI.MatchLevel4Row = Me.ImportCDI.MatchLevel4.Rows.Item(count)
 
             If row.level1 = level1 Then
 

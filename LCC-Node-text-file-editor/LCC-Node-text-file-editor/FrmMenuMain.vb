@@ -175,12 +175,12 @@ Public Class FrmMenuMain
                 ' get node type
                 ' disable menu selections by node type
 
-                Dim MyExportXml As New ExportXml
-                MyExportXml.ReadXml(Me.Tag)
-                Dim rowNode As ExportXml.NodeRow = MyExportXml.Node.FindByNodeID(0)
+                Dim clsE As New ClsExportXML
+                clsE.ExportXmlRead(Me.Tag)
+                Dim rowNode As ExportXml.NodeRow = clsE.ExportXML.Node.FindByNodeID(0)
 
                 Dim clsR As New ClsReport
-                Dim row As Rpt.NodeTypeRow = clsR.MyReport.NodeType.FindByvalue(rowNode.NodeType)
+                Dim row As Rpt.NodeTypeRow = clsR.Rpt.NodeType.FindByvalue(rowNode.nodeType)
 
                 If row.node > 0 Then
                     Me.NodeToolStripMenuItem.Visible = True

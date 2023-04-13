@@ -1,6 +1,7 @@
-﻿Public Class ClsExportXML
+﻿
+Public Class ClsExportXML
 
-    Public Property MyExportXML As New ExportXml
+    Public Property ExportXML As New ExportXml
 
     Public Sub New()
 
@@ -10,7 +11,7 @@
 
         ' import the importCDI xml file
         Try
-            MyExportXML.ReadXml(fileName)
+            ExportXML.ReadXml(fileName)
         Catch ex As Exception
             MsgBox("Failed to import file " + fileName)
             Exit Sub

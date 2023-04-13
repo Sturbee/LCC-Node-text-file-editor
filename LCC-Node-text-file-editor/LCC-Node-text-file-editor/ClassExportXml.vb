@@ -1,11 +1,10 @@
 ﻿
 Imports System.IO
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class ClassExportXml
 
-    Private Property MyClsImport As New ClsImportCDI
-    Private Property MyExportXml As New ExportXml
+    Private Property MyImport As New ClsImportCDI
+    Private Property MyExport As New ClsExportXML
     Private Property MyNodeEventBase As String
     Private Property MyNodeType As Integer
 
@@ -26,14 +25,14 @@ Public Class ClassExportXml
             ' export needs all track circuit data
             Try
 
-                For rowCount = 0 To MyClsImport.MyImportCDI.TrackReceiver.Count - 1
-                    Dim rowInRec As ImportCDI.TrackReceiverRow = MyClsImport.MyImportCDI.TrackReceiver.Item(rowCount)
-                    MyExportXml.TrackReceiver.AddTrackReceiverRow(rowInRec.value, rowInRec.text, String.Empty)
+                For rowCount = 0 To MyImport.ImportCDI.TrackReceiver.Count - 1
+                    Dim rowInRec As ImportCDI.TrackReceiverRow = MyImport.ImportCDI.TrackReceiver.Item(rowCount)
+                    MyExport.ExportXML.TrackReceiver.AddTrackReceiverRow(rowInRec.value, rowInRec.text, String.Empty)
                 Next
 
-                For rowCount = 0 To MyClsImport.MyImportCDI.TrackTransmitter.Count - 1
-                    Dim rowInTran As ImportCDI.TrackTransmitterRow = MyClsImport.MyImportCDI.TrackTransmitter.Item(rowCount)
-                    MyExportXml.TrackTransmitter.AddTrackTransmitterRow(rowInTran.value, rowInTran.text, String.Empty)
+                For rowCount = 0 To MyImport.ImportCDI.TrackTransmitter.Count - 1
+                    Dim rowInTran As ImportCDI.TrackTransmitterRow = MyImport.ImportCDI.TrackTransmitter.Item(rowCount)
+                    MyExport.ExportXML.TrackTransmitter.AddTrackTransmitterRow(rowInTran.value, rowInTran.text, String.Empty)
                 Next
 
             Catch ex As Exception
@@ -51,7 +50,7 @@ Public Class ClassExportXml
 
                 myText = sr.ReadLine
 
-                Dim row As ImportCDI.MatchLevel1Row = MyClsImport.MatchLevel1(lineNum, myText)
+                Dim row As ImportCDI.MatchLevel1Row = MyImport.MatchLevel1(lineNum, myText)
 
                 Select Case row.level1
 
@@ -94,7 +93,7 @@ Public Class ClassExportXml
             sr.Close()
 
             ' update values after process is done
-            Dim rowNode As ExportXml.NodeRow = Me.MyExportXml.Node.FindByNodeID(0)
+            Dim rowNode As ExportXml.NodeRow = Me.MyExport.ExportXml.Node.FindByNodeID(0)
             If rowNode Is Nothing Then
                 ' do nothing
             Else
@@ -105,9 +104,9 @@ Public Class ClassExportXml
 
             ' check for Lamp table
             Try
-                For count = 1 To MyExportXml.Lamp.Count
-                    Dim rowI As ImportCDI.LampNameRow = MyClsImport.MyImportCDI.LampName.Item(count)
-                    Dim rowE As ExportXml.LampRow = MyExportXml.Lamp.Item(count - 1)
+                For count = 1 To MyExport.ExportXml.Lamp.Count
+                    Dim rowI As ImportCDI.LampNameRow = MyImport.ImportCDI.LampName.Item(count)
+                    Dim rowE As ExportXml.LampRow = MyExport.ExportXml.Lamp.Item(count - 1)
                     If rowE.description = String.Empty Then
                         REM rowE.description = rowI.text
                     End If
@@ -117,15 +116,15 @@ Public Class ClassExportXml
             End Try
 
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
 
             Try
 
                 Dim clsU As New ClsUserPrefs
-                Dim row As UserPrefs.UserJMRIRow = clsU.MyUserPrefs.UserJMRI.FindByvalue(1)
+                Dim row As UserPrefs.UserJMRIRow = clsU.UserPrefs.UserJMRI.FindByvalue(1)
 
                 Dim filePathXml As String = row.path + "\" + Path.GetFileName(filePath) + ".xml"
-                Me.MyExportXml.WriteXml(filePathXml)
+                Me.MyExport.ExportXml.WriteXml(filePathXml)
                 MsgBox("Xml file has been created for " + filePathXml)
 
             Catch ex As Exception
@@ -146,14 +145,14 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowNode As ExportXml.NodeRow = MyExportXml.Node.FindByNodeID(rowLevel2.item1)
+            Dim rowNode As ExportXml.NodeRow = MyExport.ExportXml.Node.FindByNodeID(rowLevel2.item1)
             Try
                 If rowNode Is Nothing Then
-                    Me.MyExportXml.Node.AddNodeRow(rowLevel2.item1, String.Empty, String.Empty, 0, String.Empty, String.Empty)
-                    Me.MyExportXml.AcceptChanges()
-                    rowNode = Me.MyExportXml.Node.FindByNodeID(rowLevel2.item1)
+                    Me.MyExport.ExportXml.Node.AddNodeRow(rowLevel2.item1, String.Empty, String.Empty, 0, String.Empty, String.Empty)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowNode = Me.MyExport.ExportXml.Node.FindByNodeID(rowLevel2.item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Node row")
@@ -163,7 +162,7 @@ Public Class ClassExportXml
             Console.WriteLine(lineNum.ToString + Space(1) + "Node ID - " + rowLevel2.text + Space(1) + rowLevel2.resultText)
             rowNode.Item(rowLevel2.columnID - 1) = rowLevel2.resultText
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
 
         Catch ex As Exception
 
@@ -177,14 +176,14 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowlevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
+            Dim rowlevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowPowerMonitor As ExportXml.PowerMonitorRow = Me.MyExportXml.PowerMonitor.FindByPowerMonitorID(rowlevel2.item1)
+            Dim rowPowerMonitor As ExportXml.PowerMonitorRow = Me.MyExport.ExportXml.PowerMonitor.FindByPowerMonitorID(rowlevel2.item1)
             Try
                 If rowPowerMonitor Is Nothing Then
-                    Me.MyExportXml.PowerMonitor.AddPowerMonitorRow(rowlevel2.item1, 0, String.Empty, String.Empty)
-                    Me.MyExportXml.AcceptChanges()
-                    rowPowerMonitor = Me.MyExportXml.PowerMonitor.FindByPowerMonitorID(rowlevel2.item1)
+                    Me.MyExport.ExportXml.PowerMonitor.AddPowerMonitorRow(rowlevel2.item1, 0, String.Empty, String.Empty)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowPowerMonitor = Me.MyExport.ExportXml.PowerMonitor.FindByPowerMonitorID(rowlevel2.item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table PowerMonitor row")
@@ -196,7 +195,7 @@ Public Class ClassExportXml
                 Me.MyNodeEventBase = Left(rowlevel2.resultText, 17)
             End If
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
         Catch ex As Exception
 
             MsgBox("Failed to add Power Monitor row")
@@ -209,7 +208,7 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
             Select Case rowLevel2.level2
                 Case 0
@@ -226,7 +225,7 @@ Public Class ClassExportXml
 
             End Select
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
 
         Catch ex As Exception
 
@@ -248,12 +247,12 @@ Public Class ClassExportXml
                     Me.MyNodeType = 2 ' Tower-LCC
             End Select
 
-            Dim rowPort As ExportXml.PortRow = Me.MyExportXml.Port.FindByLineID(item1)
+            Dim rowPort As ExportXml.PortRow = Me.MyExport.ExportXml.Port.FindByLineID(item1)
             Try
                 If rowPort Is Nothing Then
-                    Me.MyExportXml.Port.AddPortRow(item1, String.Empty, 0, 0, 0, 0)
-                    Me.MyExportXml.AcceptChanges()
-                    rowPort = Me.MyExportXml.Port.FindByLineID(item1)
+                    Me.MyExport.ExportXml.Port.AddPortRow(item1, String.Empty, 0, 0, 0, 0)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowPort = Me.MyExport.ExportXml.Port.FindByLineID(item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Port row")
@@ -263,7 +262,7 @@ Public Class ClassExportXml
             Console.WriteLine(lineNum.ToString + " Port I/O - " + "Line(" + item1.ToString + ") - " + inputText + Space(1) + resultText)
             rowPort.Item(columnID - 2) = resultText
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
 
         Catch ex As Exception
 
@@ -277,14 +276,14 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowlevel3 As ImportCDI.MatchLevel3Row = MyClsImport.MatchLevel3(lineNum, level1, inputText)
+            Dim rowlevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowPortDelay As ExportXml.PortDelayRow = Me.MyExportXml.PortDelay.FindByLineIDDelayID(item1, rowlevel3.item2)
+            Dim rowPortDelay As ExportXml.PortDelayRow = Me.MyExport.ExportXml.PortDelay.FindByLineIDDelayID(item1, rowlevel3.item2)
             If rowPortDelay Is Nothing Then
                 Try
-                    Me.MyExportXml.PortDelay.AddPortDelayRow(item1, rowlevel3.item2, 0, 0, 0)
-                    Me.MyExportXml.AcceptChanges()
-                    rowPortDelay = Me.MyExportXml.PortDelay.FindByLineIDDelayID(item1, rowlevel3.item2)
+                    Me.MyExport.ExportXml.PortDelay.AddPortDelayRow(item1, rowlevel3.item2, 0, 0, 0)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowPortDelay = Me.MyExport.ExportXml.PortDelay.FindByLineIDDelayID(item1, rowlevel3.item2)
                 Catch ex As Exception
                     MsgBox("Failed to create table Port Delay row")
                     Exit Sub
@@ -294,7 +293,7 @@ Public Class ClassExportXml
             Console.WriteLine(lineNum.ToString + " Port I/O - " + "Line(" + item1.ToString + ") - Delay(" + rowlevel3.item2.ToString + ") - " + rowlevel3.text + Space(1) + rowlevel3.resultText)
             rowPortDelay.Item(rowlevel3.columnID - 2) = rowlevel3.resultText
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
 
         Catch ex As Exception
 
@@ -308,14 +307,14 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyClsImport.MatchLevel3(lineNum, level1, inputText)
+            Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowPortEvent As ExportXml.PortEventRow = Me.MyExportXml.PortEvent.FindByLineIDEventID(item1, rowLevel3.item2)
+            Dim rowPortEvent As ExportXml.PortEventRow = Me.MyExport.ExportXml.PortEvent.FindByLineIDEventID(item1, rowLevel3.item2)
             If rowPortEvent Is Nothing Then
                 Try
-                    Me.MyExportXml.PortEvent.AddPortEventRow(item1, rowLevel3.item2, String.Empty, 0, 0, String.Empty)
-                    Me.MyExportXml.AcceptChanges()
-                    rowPortEvent = Me.MyExportXml.PortEvent.FindByLineIDEventID(item1, rowLevel3.item2)
+                    Me.MyExport.ExportXml.PortEvent.AddPortEventRow(item1, rowLevel3.item2, String.Empty, 0, 0, String.Empty)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowPortEvent = Me.MyExport.ExportXml.PortEvent.FindByLineIDEventID(item1, rowLevel3.item2)
                 Catch ex As Exception
                     MsgBox("Failed to create table Port Event row")
                     Exit Sub
@@ -325,7 +324,7 @@ Public Class ClassExportXml
             Console.WriteLine(lineNum.ToString + " Port I/O - Line(" + item1.ToString + ") - " + "Event(" + rowLevel3.item2.ToString + ") - " + rowLevel3.resultText)
             rowPortEvent.Item(rowLevel3.columnID - 2) = rowLevel3.resultText
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
 
         Catch ex As Exception
 
@@ -340,7 +339,7 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
             Select Case rowLevel2.level2
                 Case 0 ' Logic section
@@ -360,7 +359,7 @@ Public Class ClassExportXml
 
             End Select
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
 
         Catch ex As Exception
 
@@ -374,12 +373,12 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLogic As ExportXml.LogicRow = Me.MyExportXml.Logic.FindByLogicID(item1)
+            Dim rowLogic As ExportXml.LogicRow = Me.MyExport.ExportXml.Logic.FindByLogicID(item1)
             Try
                 If rowLogic Is Nothing Then
-                    Me.MyExportXml.Logic.AddLogicRow(item1, String.Empty, 0)
-                    Me.MyExportXml.AcceptChanges()
-                    rowLogic = Me.MyExportXml.Logic.FindByLogicID(item1)
+                    Me.MyExport.ExportXml.Logic.AddLogicRow(item1, String.Empty, 0)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowLogic = Me.MyExport.ExportXml.Logic.FindByLogicID(item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Logic row")
@@ -401,12 +400,12 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLogicOP As ExportXml.LogicOperationRow = Me.MyExportXml.LogicOperation.FindByLogicID(item1)
+            Dim rowLogicOP As ExportXml.LogicOperationRow = Me.MyExport.ExportXml.LogicOperation.FindByLogicID(item1)
             Try
                 If rowLogicOP Is Nothing Then
-                    Me.MyExportXml.LogicOperation.AddLogicOperationRow(item1, 0, 0, 0, String.Empty, String.Empty, 0, 0, 0, 0, String.Empty, String.Empty)
-                    Me.MyExportXml.AcceptChanges()
-                    rowLogicOP = Me.MyExportXml.LogicOperation.FindByLogicID(item1)
+                    Me.MyExport.ExportXml.LogicOperation.AddLogicOperationRow(item1, 0, 0, 0, String.Empty, String.Empty, 0, 0, 0, 0, String.Empty, String.Empty)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowLogicOP = Me.MyExport.ExportXml.LogicOperation.FindByLogicID(item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Logic Operation row")
@@ -428,12 +427,12 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLogicAction As ExportXml.LogicActionRow = Me.MyExportXml.LogicAction.FindByLogicID(item1)
+            Dim rowLogicAction As ExportXml.LogicActionRow = Me.MyExport.ExportXml.LogicAction.FindByLogicID(item1)
             Try
                 If rowLogicAction Is Nothing Then
-                    Me.MyExportXml.LogicAction.AddLogicActionRow(item1, 0, 0, 0, 0, 0)
-                    Me.MyExportXml.AcceptChanges()
-                    rowLogicAction = Me.MyExportXml.LogicAction.FindByLogicID(item1)
+                    Me.MyExport.ExportXml.LogicAction.AddLogicActionRow(item1, 0, 0, 0, 0, 0)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowLogicAction = Me.MyExport.ExportXml.LogicAction.FindByLogicID(item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Logic Action row")
@@ -455,14 +454,14 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyClsImport.MatchLevel3(lineNum, level1, inputText)
+            Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowLogicProducer As ExportXml.LogicProducerRow = Me.MyExportXml.LogicProducer.FindByLogicIDActionID(item1, rowLevel3.item2)
+            Dim rowLogicProducer As ExportXml.LogicProducerRow = Me.MyExport.ExportXml.LogicProducer.FindByLogicIDActionID(item1, rowLevel3.item2)
             If rowLogicProducer Is Nothing Then
                 Try
-                    Me.MyExportXml.LogicProducer.AddLogicProducerRow(item1, rowLevel3.item2, 0, 0, 0, String.Empty)
-                    Me.MyExportXml.AcceptChanges()
-                    rowLogicProducer = Me.MyExportXml.LogicProducer.FindByLogicIDActionID(item1, rowLevel3.item2)
+                    Me.MyExport.ExportXml.LogicProducer.AddLogicProducerRow(item1, rowLevel3.item2, 0, 0, 0, String.Empty)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowLogicProducer = Me.MyExport.ExportXml.LogicProducer.FindByLogicIDActionID(item1, rowLevel3.item2)
                 Catch ex As Exception
                     MsgBox("Failed to create table Logic Producer row")
                     Exit Sub
@@ -485,14 +484,14 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowCircuit As ExportXml.TrackReceiverRow = Me.MyExportXml.TrackReceiver.FindByCircuitID(rowLevel2.item1)
+            Dim rowCircuit As ExportXml.TrackReceiverRow = Me.MyExport.ExportXml.TrackReceiver.FindByCircuitID(rowLevel2.item1)
             Try
                 If rowCircuit Is Nothing Then
-                    Me.MyExportXml.TrackReceiver.AddTrackReceiverRow(rowLevel2.item1, String.Empty, String.Empty)
-                    Me.MyExportXml.AcceptChanges()
-                    rowCircuit = Me.MyExportXml.TrackReceiver.FindByCircuitID(rowLevel2.item1)
+                    Me.MyExport.ExportXml.TrackReceiver.AddTrackReceiverRow(rowLevel2.item1, String.Empty, String.Empty)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowCircuit = Me.MyExport.ExportXml.TrackReceiver.FindByCircuitID(rowLevel2.item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Track Circuit Receiver row")
@@ -502,7 +501,7 @@ Public Class ClassExportXml
             Console.WriteLine(lineNum.ToString + " Track Circuit Receiver - Circuit(" + rowLevel2.item1.ToString + ") - " + rowLevel2.text + Space(1) + rowLevel2.resultText)
             rowCircuit.Item(rowLevel2.columnID) = rowLevel2.resultText
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
 
         Catch ex As Exception
 
@@ -516,14 +515,14 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowCircuit As ExportXml.TrackTransmitterRow = Me.MyExportXml.TrackTransmitter.FindByCircuitID(rowLevel2.item1)
+            Dim rowCircuit As ExportXml.TrackTransmitterRow = Me.MyExport.ExportXml.TrackTransmitter.FindByCircuitID(rowLevel2.item1)
             Try
                 If rowCircuit Is Nothing Then
-                    Me.MyExportXml.TrackTransmitter.AddTrackTransmitterRow(rowLevel2.item1, String.Empty, String.Empty)
-                    Me.MyExportXml.AcceptChanges()
-                    rowCircuit = Me.MyExportXml.TrackTransmitter.FindByCircuitID(rowLevel2.item1)
+                    Me.MyExport.ExportXml.TrackTransmitter.AddTrackTransmitterRow(rowLevel2.item1, String.Empty, String.Empty)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowCircuit = Me.MyExport.ExportXml.TrackTransmitter.FindByCircuitID(rowLevel2.item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Track Circuit Transmitter row")
@@ -533,7 +532,7 @@ Public Class ClassExportXml
             Console.WriteLine(lineNum.ToString + " Track Circuit Transmitter - Circuit(" + rowLevel2.item1.ToString + ") - " + rowLevel2.text + Space(1) + rowLevel2.resultText)
             rowCircuit.Item(rowLevel2.columnID) = rowLevel2.resultText
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
 
         Catch ex As Exception
 
@@ -548,7 +547,7 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
             Select Case rowLevel2.level2
                 Case 0
@@ -562,7 +561,7 @@ Public Class ClassExportXml
 
             End Select
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
 
         Catch ex As Exception
 
@@ -576,12 +575,12 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLogic As ExportXml.MastRow = Me.MyExportXml.Mast.FindByMastID(item1)
+            Dim rowLogic As ExportXml.MastRow = Me.MyExport.ExportXml.Mast.FindByMastID(item1)
             Try
                 If rowLogic Is Nothing Then
-                    Me.MyExportXml.Mast.AddMastRow(item1, 0, String.Empty, String.Empty, 0)
-                    Me.MyExportXml.AcceptChanges()
-                    rowLogic = Me.MyExportXml.Mast.FindByMastID(item1)
+                    Me.MyExport.ExportXml.Mast.AddMastRow(item1, 0, String.Empty, String.Empty, 0)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowLogic = Me.MyExport.ExportXml.Mast.FindByMastID(item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Mast row")
@@ -604,17 +603,17 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyClsImport.MatchLevel3(lineNum, level1, inputText)
+            Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
 
             Select Case rowLevel3.level2
                 Case 1
 
-                    Dim rowMastRule As ExportXml.MastRuleRow = Me.MyExportXml.MastRule.FindByMastIDRuleID(item1, rowLevel3.item2)
+                    Dim rowMastRule As ExportXml.MastRuleRow = Me.MyExport.ExportXml.MastRule.FindByMastIDRuleID(item1, rowLevel3.item2)
                     If rowMastRule Is Nothing Then
                         Try
-                            Me.MyExportXml.MastRule.AddMastRuleRow(item1, rowLevel3.item2, 0, 0, String.Empty, String.Empty, String.Empty, 0, 0)
-                            Me.MyExportXml.AcceptChanges()
-                            rowMastRule = Me.MyExportXml.MastRule.FindByMastIDRuleID(item1, rowLevel3.item2)
+                            Me.MyExport.ExportXml.MastRule.AddMastRuleRow(item1, rowLevel3.item2, 0, 0, String.Empty, String.Empty, String.Empty, 0, 0)
+                            Me.MyExport.ExportXml.AcceptChanges()
+                            rowMastRule = Me.MyExport.ExportXml.MastRule.FindByMastIDRuleID(item1, rowLevel3.item2)
                         Catch ex As Exception
                             MsgBox("Failed to create table Mast Rule row")
                             Exit Sub
@@ -648,14 +647,14 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLevel4 As ImportCDI.MatchLevel4Row = MyClsImport.MatchLevel4(lineNum, level1, inputText)
+            Dim rowLevel4 As ImportCDI.MatchLevel4Row = MyImport.MatchLevel4(lineNum, level1, inputText)
 
-            Dim rowMastRuleAppear As ExportXml.MastRuleAppearRow = Me.MyExportXml.MastRuleAppear.FindByMastIDRuleIDAppearanceID(item1, item2, rowLevel4.item3)
+            Dim rowMastRuleAppear As ExportXml.MastRuleAppearRow = Me.MyExport.ExportXml.MastRuleAppear.FindByMastIDRuleIDAppearanceID(item1, item2, rowLevel4.item3)
             If rowMastRuleAppear Is Nothing Then
                 Try
-                    Me.MyExportXml.MastRuleAppear.AddMastRuleAppearRow(item1, item2, rowLevel4.item3, 0, 0)
-                    Me.MyExportXml.AcceptChanges()
-                    rowMastRuleAppear = Me.MyExportXml.MastRuleAppear.FindByMastIDRuleIDAppearanceID(item1, item2, rowLevel4.item3)
+                    Me.MyExport.ExportXml.MastRuleAppear.AddMastRuleAppearRow(item1, item2, rowLevel4.item3, 0, 0)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowMastRuleAppear = Me.MyExport.ExportXml.MastRuleAppear.FindByMastIDRuleIDAppearanceID(item1, item2, rowLevel4.item3)
                 Catch ex As Exception
                     MsgBox("Failed to create table Mast Rule Apperance row")
                     Exit Sub
@@ -678,7 +677,7 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyClsImport.MatchLevel2(lineNum, level1, inputText)
+            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
             Select Case rowLevel2.level2
                 Case 0
@@ -689,7 +688,7 @@ Public Class ClassExportXml
 
             End Select
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
 
         Catch ex As Exception
 
@@ -704,12 +703,12 @@ Public Class ClassExportXml
 
         Try
 
-            Dim rowLamp As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(item1)
+            Dim rowLamp As ExportXml.LampRow = Me.MyExport.ExportXml.Lamp.FindByLampID(item1)
             Try
                 If rowLamp Is Nothing Then
-                    Me.MyExportXml.Lamp.AddLampRow(item1, String.Empty, String.Empty, String.Empty, 0, 0, 0, 0)
-                    Me.MyExportXml.AcceptChanges()
-                    rowLamp = Me.MyExportXml.Lamp.FindByLampID(item1)
+                    Me.MyExport.ExportXml.Lamp.AddLampRow(item1, String.Empty, String.Empty, String.Empty, 0, 0, 0, 0)
+                    Me.MyExport.ExportXml.AcceptChanges()
+                    rowLamp = Me.MyExport.ExportXml.Lamp.FindByLampID(item1)
                 End If
             Catch ex As Exception
                 MsgBox("Failed to create table Lamp row")
@@ -745,7 +744,7 @@ Public Class ClassExportXml
                 resultText = Mid(inputText, resultInt)
             End If
 
-            Dim rowLamp As ExportXml.LampRow = Me.MyExportXml.Lamp.FindByLampID(item1)
+            Dim rowLamp As ExportXml.LampRow = Me.MyExport.ExportXml.Lamp.FindByLampID(item1)
             If rowLamp Is Nothing Then
                 MsgBox("Failed to find Lamp row " + item1.ToString)
             Else
@@ -753,7 +752,7 @@ Public Class ClassExportXml
                 Console.WriteLine(lineNum.ToString + " Lamp(" + item1.ToString + ") - Brightness= " + resultText)
             End If
 
-            Me.MyExportXml.AcceptChanges()
+            Me.MyExport.ExportXml.AcceptChanges()
 
         Catch ex As Exception
 

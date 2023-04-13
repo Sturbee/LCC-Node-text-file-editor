@@ -4,8 +4,9 @@ Public Class FrmLogics
 
     Public Property MyLogicCells As Integer
     Private Property MyFilePath As String
-    Private Property MyFileName As String
-    Private Property MyExportXml As New ExportXml
+
+    REM Private Property MyFileName As String
+    Private Property MyExport As New ClsExportXML
 
     Private Sub FrmLogicCells_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -15,29 +16,23 @@ Public Class FrmLogics
 
     Private Sub DisplayValues()
 
+        ' read the file to read and edit
+        Me.MyFilePath = Me.Owner.Tag
+        REM Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
-        Dim dsTitles As Titles = clsT.MyTitles
 
         ' set labels
-        Dim rowTitle As Titles.LogicTitlesRow = dsTitles.LogicTitles.Item(0)
+        Dim rowTitle As Titles.LogicTitlesRow = clsT.Titles.LogicTitles.Item(0)
         Me.Text = rowTitle.header
         Me.LblSubHeader.Text = rowTitle.subHeader
 
         ' read the attribute xml file
-        Dim clsR As New ClsReport
-        Dim dsRpt As Rpt = clsR.MyReport
+        REM Dim clsR As New ClsReport
 
-        ' read the file to read and edit
-        Me.MyFilePath = Me.Owner.Tag
-        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
-
-        Try
-            Me.MyExportXml.ReadXml(Me.MyFilePath)
-        Catch ex As Exception
-            MsgBox("Failed to read file " + Me.MyFileName)
-            Exit Sub
-        End Try
+        ' read the export xml file
+        MyExport.ExportXmlRead(MyFilePath)
 
         ' populate tab control
 
@@ -47,10 +42,10 @@ Public Class FrmLogics
 
             For count = 1 To Me.MyLogicCells
 
-                Dim row As ExportXml.LogicRow = Me.MyExportXml.Logic.FindByLogicID(count)
+                Dim row As ExportXml.LogicRow = MyExport.ExportXML.Logic.FindByLogicID(count)
 
                 Dim MyTabPage As New TabPage With {
-                .Text = rowTitle.subHeader + " (" + count.ToString + ") " + row.Description
+                .Text = count.ToString + " - " + row.Description
                 }
 
                 Me.TabControlCells.Controls.Add(MyTabPage)

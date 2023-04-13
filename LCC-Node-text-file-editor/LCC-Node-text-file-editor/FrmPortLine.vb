@@ -3,30 +3,29 @@
 Public Class FrmPortLine
 
     Private Property MyFilePath As String
-    Private Property MyFileName As String
-    Private Property MyImport As New ExportXml
+
+    REM Private Property MyFileName As String
+    Private Property MyExport As New ClsExportXML
 
     Private Sub FrmLine_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        ' read the titles xml file
-        Dim clsT As New ClsTitles
-        Dim dsTitles As Titles = clsT.MyTitles
-
         ' read the file to read and edit
         Me.MyFilePath = Me.Owner.Tag
-        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
+        REM Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
-        ' set labels
-        Dim rowTitle As Titles.PortTitlesRow = dsTitles.PortTitles.Item(0)
+        ' read the titles xml file set labels
+        Dim clsT As New ClsTitles
+
+        Dim rowTitle As Titles.PortTitlesRow = clsT.Titles.PortTitles.Item(0)
         Me.Text = rowTitle.header
         Me.LblLine.Text = rowTitle.subHeader
         Me.LblDescription.Text = rowTitle.description
 
-        Dim rowTitleDelay As Titles.PortDelayTitlesRow = dsTitles.PortDelayTitles.Item(0)
+        Dim rowTitleDelay As Titles.PortDelayTitlesRow = clsT.Titles.PortDelayTitles.Item(0)
         Me.LblInterval1.Text = rowTitleDelay.interval1
         Me.LblInterval2.Text = rowTitleDelay.interval2
 
-        Dim rowTitleEvent As Titles.PortEventTitlesRow = dsTitles.PortEventTitles.Item(0)
+        Dim rowTitleEvent As Titles.PortEventTitlesRow = clsT.Titles.PortEventTitles.Item(0)
         Me.GroupBoxConsumer.Text = rowTitleEvent.consumer
         Me.LblOutFunc.Text = rowTitleEvent.outputFunction
         Me.LblOutCommd.Text = rowTitleEvent.outputCommand
@@ -36,15 +35,17 @@ Public Class FrmPortLine
 
         ' read the attribute xml file
         Dim clsR As New ClsReport
-        Dim dsRpt As Rpt = clsR.MyReport
+
+        ' read the export xml file
+        MyExport.ExportXmlRead(MyFilePath)
 
         ' fill combo box items
         Try
 
             Me.CmbUnits1.BeginUpdate()
             Me.CmbUnits2.BeginUpdate()
-            For I = 0 To dsRpt.DelayUnit.Count - 1
-                Dim row As Rpt.DelayUnitRow = dsRpt.DelayUnit.Item(I)
+            For I = 0 To clsR.Rpt.DelayUnit.Count - 1
+                Dim row As Rpt.DelayUnitRow = clsR.Rpt.DelayUnit.Item(I)
                 Me.CmbUnits1.Items.Add(row.text)
                 Me.CmbUnits2.Items.Add(row.text)
             Next
@@ -53,8 +54,8 @@ Public Class FrmPortLine
 
             Me.CmbRetrigger1.BeginUpdate()
             Me.CmbRetrigger2.BeginUpdate()
-            For I = 0 To dsRpt.DelayRetrigger.Count - 1
-                Dim row As Rpt.DelayRetriggerRow = dsRpt.DelayRetrigger.Item(I)
+            For I = 0 To clsR.Rpt.DelayRetrigger.Count - 1
+                Dim row As Rpt.DelayRetriggerRow = clsR.Rpt.DelayRetrigger.Item(I)
                 Me.CmbRetrigger1.Items.Add(row.text)
                 Me.CmbRetrigger2.Items.Add(row.text)
             Next
@@ -62,43 +63,43 @@ Public Class FrmPortLine
             Me.CmbRetrigger2.EndUpdate()
 
             Me.CmbOutFunc.BeginUpdate()
-            For I = 0 To dsRpt.PortOutFunc.Count - 1
-                Dim row As Rpt.PortOutFuncRow = dsRpt.PortOutFunc.Item(I)
+            For I = 0 To clsR.Rpt.PortOutFunc.Count - 1
+                Dim row As Rpt.PortOutFuncRow = clsR.Rpt.PortOutFunc.Item(I)
                 Me.CmbOutFunc.Items.Add(row.text)
             Next
             Me.CmbOutFunc.EndUpdate()
 
             Me.CmbOutCommd.BeginUpdate()
-            For I = 0 To dsRpt.PortOutCommd.Count - 1
-                Dim row As Rpt.PortOutCommdRow = dsRpt.PortOutCommd.Item(I)
+            For I = 0 To clsR.Rpt.PortOutCommd.Count - 1
+                Dim row As Rpt.PortOutCommdRow = clsR.Rpt.PortOutCommd.Item(I)
                 Me.CmbOutCommd.Items.Add(row.text)
             Next
             Me.CmbOutCommd.EndUpdate()
 
             Me.CmbEventOutCommd1.BeginUpdate()
-            For I = 0 To dsRpt.PortEventCons.Count - 1
-                Dim row As Rpt.PortEventConsRow = dsRpt.PortEventCons.Item(I)
+            For I = 0 To clsR.Rpt.PortEventCons.Count - 1
+                Dim row As Rpt.PortEventConsRow = clsR.Rpt.PortEventCons.Item(I)
                 Me.CmbEventOutCommd1.Items.Add(row.text)
             Next
             Me.CmbEventOutCommd1.EndUpdate()
 
             Me.CmbInFunc.BeginUpdate()
-            For I = 0 To dsRpt.PortInFunc.Count - 1
-                Dim row As Rpt.PortInFuncRow = dsRpt.PortInFunc.Item(I)
+            For I = 0 To clsR.Rpt.PortInFunc.Count - 1
+                Dim row As Rpt.PortInFuncRow = clsR.Rpt.PortInFunc.Item(I)
                 Me.CmbInFunc.Items.Add(row.text)
             Next
             Me.CmbInFunc.EndUpdate()
 
             Me.CmbInCommd.BeginUpdate()
-            For I = 0 To dsRpt.PortInCommd.Count - 1
-                Dim row As Rpt.PortInCommdRow = dsRpt.PortInCommd.Item(I)
+            For I = 0 To clsR.Rpt.PortInCommd.Count - 1
+                Dim row As Rpt.PortInCommdRow = clsR.Rpt.PortInCommd.Item(I)
                 Me.CmbInCommd.Items.Add(row.text)
             Next
             Me.CmbInCommd.EndUpdate()
 
             Me.CmbEventInCommd1.BeginUpdate()
-            For I = 0 To dsRpt.PortEventProd.Count - 1
-                Dim row As Rpt.PortEventProdRow = dsRpt.PortEventProd.Item(I)
+            For I = 0 To clsR.Rpt.PortEventProd.Count - 1
+                Dim row As Rpt.PortEventProdRow = clsR.Rpt.PortEventProd.Item(I)
                 Me.CmbEventInCommd1.Items.Add(row.text)
             Next
             Me.CmbEventInCommd1.EndUpdate()
@@ -108,18 +109,9 @@ Public Class FrmPortLine
             Exit Sub
         End Try
 
-
-        ' reads the export xml file
-        Try
-            Me.MyImport.ReadXml(Me.MyFilePath)
-        Catch ex As Exception
-            MsgBox("Failed to read file " + Me.MyFileName)
-            Exit Sub
-        End Try
-
         ' line numbers are 1 to 16
         Dim lineID As Integer = 1
-        Dim rowPort As ExportXml.PortRow = Me.MyImport.Port.FindByLineID(lineID)
+        Dim rowPort As ExportXml.PortRow = MyExport.ExportXML.Port.FindByLineID(lineID)
         If rowPort Is Nothing Then
             MsgBox("Failed to import port row " + lineID.ToString)
             Exit Sub
@@ -136,7 +128,7 @@ Public Class FrmPortLine
 
 
         For count = 1 To 2
-            Dim row As ExportXml.PortDelayRow = Me.MyImport.PortDelay.FindByLineIDDelayID(lineID, count)
+            Dim row As ExportXml.PortDelayRow = MyExport.ExportXML.PortDelay.FindByLineIDDelayID(lineID, count)
 
             Select Case count
                 Case 1
@@ -152,7 +144,7 @@ Public Class FrmPortLine
         Next
 
         For count = 1 To 6
-            Dim row As ExportXml.PortEventRow = Me.MyImport.PortEvent.FindByLineIDEventID(lineID, count)
+            Dim row As ExportXml.PortEventRow = MyExport.ExportXML.PortEvent.FindByLineIDEventID(lineID, count)
             Select Case count
                 Case 1
                     Me.TxtEventOut1.Text = row.eventConsumer

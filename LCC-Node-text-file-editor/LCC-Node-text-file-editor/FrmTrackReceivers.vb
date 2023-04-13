@@ -4,8 +4,8 @@ Public Class FrmTrackReceivers
 
     Public Property MyTrackCircuits As Integer
     Private Property MyFilePath As String
-    Private Property MyFileName As String
-    Private Property MyExportXml As New ExportXml
+    REM Private Property MyFileName As String
+    Private Property MyExport As New ClsExportXML
 
     Private Sub FrmTrackReceivers_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -15,31 +15,25 @@ Public Class FrmTrackReceivers
 
     Private Sub DisplayValues()
 
+        ' read the file to read and edit
+        Me.MyFilePath = Me.Owner.Tag
+        REM Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
-        Dim dsTitles As Titles = clsT.MyTitles
 
         ' set labels
-        Dim rowTitle As Titles.TrackRecTitlesRow = dsTitles.TrackRecTitles.Item(0)
+        Dim rowTitle As Titles.TrackRecTitlesRow = clsT.Titles.TrackRecTitles.Item(0)
         Me.Text = rowTitle.header
         Me.LblSubHeader.Text = rowTitle.subHeader
         Me.LblHelp1.Text = rowTitle.help1
         Me.LblHelp2.Text = rowTitle.help2
 
         ' read the attribute xml file
-        Dim clsR As New ClsReport
-        Dim dsRpt As Rpt = clsR.MyReport
+        REM Dim clsR As New ClsReport
 
-        ' read the file to read and edit
-        Me.MyFilePath = Me.Owner.Tag
-        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
-
-        Try
-            Me.MyExportXml.ReadXml(Me.MyFilePath)
-        Catch ex As Exception
-            MsgBox("Failed to read file " + Me.MyFileName)
-            Exit Sub
-        End Try
+        ' read the export xml file
+        MyExport.ExportXmlRead(MyFilePath)
 
         ' populate tab control
         Try
@@ -48,7 +42,7 @@ Public Class FrmTrackReceivers
 
             For count = 1 To Me.MyTrackCircuits
 
-                Dim row As ExportXml.TrackReceiverRow = Me.MyExportXml.TrackReceiver.FindByCircuitID(count)
+                Dim row As ExportXml.TrackReceiverRow = MyExport.ExportXML.TrackReceiver.FindByCircuitID(count)
 
                 Dim circuit As String = String.Empty
                 If row.description.Length = 0 Then
@@ -82,7 +76,7 @@ Public Class FrmTrackReceivers
             circuitID = e.TabPageIndex + 1
         End If
         ' fill in row values
-        Dim row As ExportXml.TrackReceiverRow = Me.MyExportXml.TrackReceiver.FindByCircuitID(circuitID)
+        Dim row As ExportXml.TrackReceiverRow = MyExport.ExportXML.TrackReceiver.FindByCircuitID(circuitID)
         Me.TxtDescription.Text = row.description
         Me.TxtLinkEvent.Text = row.eventAddress
 
@@ -91,15 +85,16 @@ Public Class FrmTrackReceivers
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
 
         Try
-            Dim row As ExportXml.TrackReceiverRow = MyExportXml.TrackReceiver.FindByCircuitID(Me.TabControlReceivers.SelectedIndex + 1)
+            Dim row As ExportXml.TrackReceiverRow = MyExport.ExportXML.TrackReceiver.FindByCircuitID(Me.TabControlReceivers.SelectedIndex + 1)
             row.description = Me.TxtDescription.Text
             row.eventAddress = Me.TxtLinkEvent.Text
 
-            Me.MyExportXml.WriteXml(Me.MyFilePath)
+            MyExport.ExportXML.WriteXml(MyFilePath)
             MsgBox("Saved changes to track receiver values")
 
             ' need to reload after save
-            MyExportXml = New ExportXml
+            MyExport.ExportXmlRead(MyFilePath)
+
             Call Me.DisplayValues()
 
         Catch ex As Exception

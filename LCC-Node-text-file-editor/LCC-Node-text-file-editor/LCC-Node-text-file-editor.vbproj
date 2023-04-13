@@ -242,6 +242,9 @@
     <EmbeddedResource Include="FrmLamps.resx">
       <DependentUpon>FrmLamps.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogicCell.resx">
+      <DependentUpon>FrmLogicCell.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogics.resx">
       <DependentUpon>FrmLogics.vb</DependentUpon>
     </EmbeddedResource>
