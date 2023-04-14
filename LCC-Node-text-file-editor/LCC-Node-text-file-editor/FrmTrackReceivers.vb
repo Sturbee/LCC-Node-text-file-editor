@@ -19,6 +19,9 @@ Public Class FrmTrackReceivers
         Me.MyFilePath = Me.Owner.Tag
         REM Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
+        ' read the export xml file
+        MyExport.DbExportReadFile(MyFilePath)
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
 
@@ -32,9 +35,6 @@ Public Class FrmTrackReceivers
         ' read the attribute xml file
         REM Dim clsR As New ClsReport
 
-        ' read the export xml file
-        MyExport.ExportXmlRead(MyFilePath)
-
         ' populate tab control
         Try
 
@@ -42,7 +42,7 @@ Public Class FrmTrackReceivers
 
             For count = 1 To Me.MyTrackCircuits
 
-                Dim row As ExportXml.TrackReceiverRow = MyExport.ExportXML.TrackReceiver.FindByCircuitID(count)
+                Dim row As ExportXml.TrackReceiverRow = MyExport.DbExport.TrackReceiver.FindByCircuitID(count)
 
                 Dim circuit As String = String.Empty
                 If row.description.Length = 0 Then
@@ -76,7 +76,7 @@ Public Class FrmTrackReceivers
             circuitID = e.TabPageIndex + 1
         End If
         ' fill in row values
-        Dim row As ExportXml.TrackReceiverRow = MyExport.ExportXML.TrackReceiver.FindByCircuitID(circuitID)
+        Dim row As ExportXml.TrackReceiverRow = MyExport.DbExport.TrackReceiver.FindByCircuitID(circuitID)
         Me.TxtDescription.Text = row.description
         Me.TxtLinkEvent.Text = row.eventAddress
 
@@ -85,15 +85,15 @@ Public Class FrmTrackReceivers
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
 
         Try
-            Dim row As ExportXml.TrackReceiverRow = MyExport.ExportXML.TrackReceiver.FindByCircuitID(Me.TabControlReceivers.SelectedIndex + 1)
+            Dim row As ExportXml.TrackReceiverRow = MyExport.DbExport.TrackReceiver.FindByCircuitID(Me.TabControlReceivers.SelectedIndex + 1)
             row.description = Me.TxtDescription.Text
             row.eventAddress = Me.TxtLinkEvent.Text
 
-            MyExport.ExportXML.WriteXml(MyFilePath)
+            MyExport.DbExport.WriteXml(MyFilePath)
             MsgBox("Saved changes to track receiver values")
 
             ' need to reload after save
-            MyExport.ExportXmlRead(MyFilePath)
+            MyExport.DbExportReadFile(MyFilePath)
 
             Call Me.DisplayValues()
 

@@ -3,12 +3,12 @@
     Private Sub FrmExportXml_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' Set the default directory to the user JMRI backup directory
-        Dim cls As New ClsUserPrefs
+        Dim clsU As New ClsUserPrefs
 
         Dim filePath As String = String.Empty
         Dim fileExtension As String = String.Empty
 
-        If cls.JMRIfileRowRead(0, filePath, fileExtension) Then
+        If clsU.JMRIfileRowRead(ClsUserPrefs.JMRIfileDirectory.BackupText, filePath, fileExtension) Then
 
             FolderBrowserDialog1.SelectedPath = filePath
 

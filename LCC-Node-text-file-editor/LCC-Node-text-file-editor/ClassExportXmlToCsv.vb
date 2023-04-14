@@ -14,7 +14,7 @@ Public Class ClassExportXmlToCsv
         End If
 
         Dim clsE As New ClsExportXML
-        clsE.ExportXmlRead(fileXML)
+        clsE.DbExportReadFile(fileXML)
 
         ' get titles xml file
         Dim clsT As New ClsTitles
@@ -39,16 +39,16 @@ Public Class ClassExportXmlToCsv
         Dim writer As StreamWriter = File.CreateText(filePath + ".csv")
 
         ' output Node table
-        Call Me.ReportNodeTable(clsE.ExportXML, writer)
+        Call Me.ReportNodeTable(clsE.DbExport, writer)
 
         ' output PowerMonitor table
-        Call Me.ReportPowerMonitorTable(clsE.ExportXML, writer)
+        Call Me.ReportPowerMonitorTable(clsE.DbExport, writer)
 
         ' output Port I/O table
-        Call Me.ReportPortTable(clsE.ExportXML, writer)
+        Call Me.ReportPortTable(clsE.DbExport, writer)
 
         ' output Logic table
-        Call Me.ReportLogicTable(clsE.ExportXML, clsR.Rpt, clsT.Titles, writer)
+        Call Me.ReportLogicTable(clsE.DbExport, clsR.Rpt, clsT.Titles, writer)
 
         Try
 

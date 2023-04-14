@@ -2,7 +2,7 @@
 Public Class ClsImportCDI
 
     Private Property ImportCDIFileName As String = "ImportCDI.xml"
-    Public Property ImportCDI As New ImportCDI
+    Public Property ImportCDI As ImportCDI
 
     Public Sub New()
 
@@ -14,8 +14,8 @@ Public Class ClsImportCDI
 
         ' import the importCDI xml file
         Try
+            ImportCDI = New ImportCDI
             ImportCDI.ReadXml(Me.ImportCDIFileName)
-            ImportCDI.AcceptChanges()
         Catch ex As Exception
             MsgBox("Failed to import file " + Me.ImportCDIFileName)
             Exit Sub

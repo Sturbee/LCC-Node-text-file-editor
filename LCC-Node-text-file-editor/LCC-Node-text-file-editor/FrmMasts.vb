@@ -19,6 +19,9 @@ Public Class FrmMasts
         Me.MyFilePath = Me.Owner.Tag
         REM Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
+        ' read the export xml file
+        MyExport.DbExportReadFile(MyFilePath)
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
 
@@ -30,9 +33,6 @@ Public Class FrmMasts
         ' read the attribute xml file
         REM Dim clsR As New ClsReport
 
-        ' read the export xml file
-        MyExport.ExportXmlRead(MyFilePath)
-
         ' populate tab control
 
         Try
@@ -41,17 +41,10 @@ Public Class FrmMasts
 
             For count = 1 To Me.MyMasts
 
-                Dim row As ExportXml.MastRow = MyExport.ExportXML.Mast.FindByMastID(count)
-
-                Dim mast As String = String.Empty
-                If row.description.Length = 0 Then
-                    mast = rowTitle.subHeader + Space(1) + count.ToString
-                Else
-                    mast = row.description
-                End If
+                Dim row As ExportXml.MastRow = MyExport.DbExport.Mast.FindByMastID(count)
 
                 Dim MyTabPage As New TabPage With {
-                .Text = mast
+                .Text = count.ToString + " - " + row.description
                 }
 
                 Me.TabControlMasts.Controls.Add(MyTabPage)

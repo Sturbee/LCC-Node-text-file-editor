@@ -12,10 +12,10 @@ Public Class ClassExportXmlToText
             Exit Sub
         End If
 
-        MyExport.ExportXmlRead(filePath)
+        MyExport.DbExportReadFile(filePath)
 
         Try
-            Dim nodeRow As ExportXml.NodeRow = MyExport.ExportXML.Node.Item(0)
+            Dim nodeRow As ExportXml.NodeRow = MyExport.DbExport.Node.Item(0)
             Dim sourcePath As String = nodeRow.sourceFile
             If File.Exists(sourcePath) = False Then
                 File.Delete(sourcePath)
@@ -117,7 +117,7 @@ Public Class ClassExportXmlToText
 
             Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowNode As ExportXml.NodeRow = MyExport.ExportXML.Node.FindByNodeID(rowLevel2.level2)
+            Dim rowNode As ExportXml.NodeRow = MyExport.DbExport.Node.FindByNodeID(rowLevel2.level2)
             Dim newResultText = rowNode.Item(rowLevel2.columnID - 1).ToString
 
             Dim cut As Integer = InStr(myText, rowLevel2.resultText) - 1
@@ -139,7 +139,7 @@ Public Class ClassExportXmlToText
 
             Dim rowlevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowPowerMonitor As ExportXml.PowerMonitorRow = Me.MyExport.ExportXML.PowerMonitor.FindByPowerMonitorID(rowlevel2.level2)
+            Dim rowPowerMonitor As ExportXml.PowerMonitorRow = Me.MyExport.DbExport.PowerMonitor.FindByPowerMonitorID(rowlevel2.level2)
             Dim newResultText = rowPowerMonitor.Item(rowlevel2.columnID - 1).ToString
 
             Dim cut As Integer = InStr(myText, rowlevel2.resultText) - 1
@@ -189,7 +189,7 @@ Public Class ClassExportXmlToText
 
         Try
 
-            Dim rowPort As ExportXml.PortRow = Me.MyExport.ExportXML.Port.FindByLineID(item1)
+            Dim rowPort As ExportXml.PortRow = Me.MyExport.DbExport.Port.FindByLineID(item1)
             Dim newResultText = rowPort.Item(columnID - 2).ToString
 
             Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
@@ -211,7 +211,7 @@ Public Class ClassExportXmlToText
 
             Dim rowlevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowPortDelay As ExportXml.PortDelayRow = Me.MyExport.ExportXML.PortDelay.FindByLineIDDelayID(item1, rowlevel3.item2)
+            Dim rowPortDelay As ExportXml.PortDelayRow = Me.MyExport.DbExport.PortDelay.FindByLineIDDelayID(item1, rowlevel3.item2)
 
             Dim newResultText = rowPortDelay.Item(rowlevel3.columnID - 2).ToString
 
@@ -234,7 +234,7 @@ Public Class ClassExportXmlToText
 
             Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowPortEvent As ExportXml.PortEventRow = Me.MyExport.ExportXML.PortEvent.FindByLineIDEventID(item1, rowLevel3.item2)
+            Dim rowPortEvent As ExportXml.PortEventRow = Me.MyExport.DbExport.PortEvent.FindByLineIDEventID(item1, rowLevel3.item2)
 
             Dim newResultText = rowPortEvent.Item(rowLevel3.columnID - 2).ToString
 
@@ -275,7 +275,7 @@ Public Class ClassExportXmlToText
 
             End Select
 
-            Me.MyExport.ExportXML.AcceptChanges()
+            Me.MyExport.DbExport.AcceptChanges()
 
         Catch ex As Exception
 
@@ -289,7 +289,7 @@ Public Class ClassExportXmlToText
 
         Try
 
-            Dim rowLogic As ExportXml.LogicRow = Me.MyExport.ExportXML.Logic.FindByLogicID(item1)
+            Dim rowLogic As ExportXml.LogicRow = Me.MyExport.DbExport.Logic.FindByLogicID(item1)
             Dim newResultText = rowLogic.Item(columnID - 2).ToString
 
             Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
@@ -309,7 +309,7 @@ Public Class ClassExportXmlToText
 
         Try
 
-            Dim rowLogicOP As ExportXml.LogicOperationRow = Me.MyExport.ExportXML.LogicOperation.FindByLogicID(item1)
+            Dim rowLogicOP As ExportXml.LogicOperationRow = Me.MyExport.DbExport.LogicOperation.FindByLogicID(item1)
             Dim newResultText = rowLogicOP.Item(columnID - 2).ToString
 
             Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
@@ -329,7 +329,7 @@ Public Class ClassExportXmlToText
 
         Try
 
-            Dim rowLogicAction As ExportXml.LogicActionRow = Me.MyExport.ExportXML.LogicAction.FindByLogicID(item1)
+            Dim rowLogicAction As ExportXml.LogicActionRow = Me.MyExport.DbExport.LogicAction.FindByLogicID(item1)
             Dim newResultText = rowLogicAction.Item(columnID - 2).ToString
 
             Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
@@ -351,7 +351,7 @@ Public Class ClassExportXmlToText
 
             Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowLogicProducer As ExportXml.LogicProducerRow = Me.MyExport.ExportXML.LogicProducer.FindByLogicIDActionID(item1, rowLevel3.item2)
+            Dim rowLogicProducer As ExportXml.LogicProducerRow = Me.MyExport.DbExport.LogicProducer.FindByLogicIDActionID(item1, rowLevel3.item2)
             Dim newResultText = rowLogicProducer.Item(rowLevel3.columnID - 2).ToString
 
             Dim cut As Integer = InStr(myText, rowLevel3.text) + Len(rowLevel3.text) - 1
@@ -398,7 +398,7 @@ Public Class ClassExportXmlToText
 
         Try
 
-            Dim rowMast As ExportXml.MastRow = Me.MyExport.ExportXML.Mast.FindByMastID(item1)
+            Dim rowMast As ExportXml.MastRow = Me.MyExport.DbExport.Mast.FindByMastID(item1)
             Dim newResultText = rowMast.Item(columnID - 2).ToString
 
             Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
@@ -424,7 +424,7 @@ Public Class ClassExportXmlToText
             Select Case rowLevel3.level2
                 Case 1
 
-                    Dim rowMastRule As ExportXml.MastRuleRow = Me.MyExport.ExportXML.MastRule.FindByMastIDRuleID(item1, rowLevel3.item2)
+                    Dim rowMastRule As ExportXml.MastRuleRow = Me.MyExport.DbExport.MastRule.FindByMastIDRuleID(item1, rowLevel3.item2)
                     Dim newResultText = rowMastRule.Item(rowLevel3.columnID - 2).ToString
 
                     Dim cut As Integer = InStr(myText, rowLevel3.text) + Len(rowLevel3.text) - 1
@@ -458,7 +458,7 @@ Public Class ClassExportXmlToText
 
             Dim rowLevel4 As ImportCDI.MatchLevel4Row = MyImport.MatchLevel4(lineNum, level1, inputText)
 
-            Dim rowMastRuleAppear As ExportXml.MastRuleAppearRow = Me.MyExport.ExportXML.MastRuleAppear.FindByMastIDRuleIDAppearanceID(item1, item2, rowLevel4.item3)
+            Dim rowMastRuleAppear As ExportXml.MastRuleAppearRow = Me.MyExport.DbExport.MastRuleAppear.FindByMastIDRuleIDAppearanceID(item1, item2, rowLevel4.item3)
             Dim newResultText = rowMastRuleAppear.Item(rowLevel4.columnID - 2).ToString
 
             Dim cut As Integer = InStr(myText, rowLevel4.text) + Len(rowLevel4.text) - 1
@@ -502,7 +502,7 @@ Public Class ClassExportXmlToText
 
         Try
 
-            Dim rowLamp As ExportXml.LampRow = Me.MyExport.ExportXML.Lamp.FindByLampID(item1)
+            Dim rowLamp As ExportXml.LampRow = Me.MyExport.DbExport.Lamp.FindByLampID(item1)
             Dim newResultText = rowLamp.Item(columnID - 2).ToString
 
             Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
@@ -525,7 +525,7 @@ Public Class ClassExportXmlToText
 
             Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowCircuit As ExportXml.TrackReceiverRow = Me.MyExport.ExportXML.TrackReceiver.FindByCircuitID(rowLevel2.item1)
+            Dim rowCircuit As ExportXml.TrackReceiverRow = Me.MyExport.DbExport.TrackReceiver.FindByCircuitID(rowLevel2.item1)
             Dim newResultText = rowCircuit.Item(rowLevel2.columnID).ToString
 
             Dim cut As Integer = InStr(myText, rowLevel2.text) + Len(rowLevel2.text) - 1
@@ -547,7 +547,7 @@ Public Class ClassExportXmlToText
 
             Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowCircuit As ExportXml.TrackTransmitterRow = Me.MyExport.ExportXML.TrackTransmitter.FindByCircuitID(rowLevel2.item1)
+            Dim rowCircuit As ExportXml.TrackTransmitterRow = Me.MyExport.DbExport.TrackTransmitter.FindByCircuitID(rowLevel2.item1)
             Dim newResultText = rowCircuit.Item(rowLevel2.columnID).ToString
 
             Dim cut As Integer = InStr(myText, rowLevel2.text) + Len(rowLevel2.text) - 1
@@ -570,7 +570,7 @@ Public Class ClassExportXmlToText
         Try
 
             Dim LampID As Integer = Val(inputText)
-            Dim rowLamp As ExportXml.LampRow = Me.MyExport.ExportXML.Lamp.FindByLampID(LampID)
+            Dim rowLamp As ExportXml.LampRow = Me.MyExport.DbExport.Lamp.FindByLampID(LampID)
 
             If rowLamp Is Nothing Then
                 MsgBox("Failed to find Lamp row " + LampID.ToString)

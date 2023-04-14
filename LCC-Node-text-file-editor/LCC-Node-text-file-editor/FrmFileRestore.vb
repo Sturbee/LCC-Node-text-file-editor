@@ -8,7 +8,7 @@
         Dim filePath As String = String.Empty
         Dim fileExtension As String = String.Empty
 
-        If cls.JMRIfileRowRead(2, filePath, fileExtension) Then
+        If cls.JMRIfileRowRead(ClsUserPrefs.JMRIfileDirectory.RestoreText, filePath, fileExtension) Then
 
             FolderBrowserDialog1.SelectedPath = filePath
 

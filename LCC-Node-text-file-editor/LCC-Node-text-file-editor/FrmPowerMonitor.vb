@@ -17,6 +17,9 @@ Public Class FrmPowerMonitor
         Me.MyFilePath = Me.Owner.Tag
         Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
+        ' read the export xml file
+        MyExport.DbExportReadFile(MyFilePath)
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
         Dim rowPower As Titles.PowerMonitorTitlesRow = clsT.Titles.PowerMonitorTitles.Item(0)
@@ -27,9 +30,6 @@ Public Class FrmPowerMonitor
 
         ' read the attribute xml file
         Dim clsR As New ClsReport
-
-        ' read the export xml file
-        MyExport.ExportXmlRead(MyFilePath)
 
         ' fill combobox
         Try
@@ -45,7 +45,7 @@ Public Class FrmPowerMonitor
         End Try
 
 
-        Dim powerMonitorRow = MyExport.ExportXML.PowerMonitor.Item(0)
+        Dim powerMonitorRow = MyExport.DbExport.PowerMonitor.Item(0)
 
         Me.CmbOption.SelectedIndex = powerMonitorRow.powerOptionID
 
@@ -58,16 +58,16 @@ Public Class FrmPowerMonitor
     Private Sub ButSave_Click(sender As Object, e As EventArgs) Handles ButSave.Click
 
         Try
-            Dim pwrRow As ExportXml.PowerMonitorRow = MyExport.ExportXML.PowerMonitor.Item(0)
+            Dim pwrRow As ExportXml.PowerMonitorRow = MyExport.DbExport.PowerMonitor.Item(0)
             pwrRow.powerOptionID = Me.CmbOption.SelectedIndex
             pwrRow.eventPowerOK = Me.TxtPowerOK.Text
             pwrRow.eventPowerNotOK = Me.TxtPowerNotOK.Text
 
-            MyExport.ExportXML.WriteXml(MyFilePath)
+            MyExport.DbExport.WriteXml(MyFilePath)
             MsgBox("Saved changes to power monitor values")
 
             ' need to reload after save
-            MyExport.ExportXmlRead(MyFilePath)
+            MyExport.DbExportReadFile(MyFilePath)
             Call Me.DisplayValues()
 
             Call Me.DisplayValues()

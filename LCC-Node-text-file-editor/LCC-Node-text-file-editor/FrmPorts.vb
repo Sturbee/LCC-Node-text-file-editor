@@ -20,6 +20,9 @@ Public Class FrmPorts
         Me.MyFilePath = Me.Owner.Tag
         REM Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
+        ' read the export xml file
+        MyExport.DbExportReadFile(MyFilePath)
+
         ' read the titles xml file set labels
         Dim MyClsTitles As New ClsTitles
         Dim rowTitle As Titles.PortTitlesRow = MyClsTitles.Titles.PortTitles.Item(0)
@@ -30,9 +33,6 @@ Public Class FrmPorts
         ' read the attributes xml file
         REM Dim MyClsReport As New ClsReport
 
-        ' read the export xml file
-        MyExport.ExportXmlRead(MyFilePath)
-
         ' populate tab control
 
         Try
@@ -41,7 +41,7 @@ Public Class FrmPorts
 
             For count = 1 To Me.MyLines
 
-                Dim row As ExportXml.PortRow = MyExport.ExportXML.Port.FindByLineID(count)
+                Dim row As ExportXml.PortRow = MyExport.DbExport.Port.FindByLineID(count)
 
                 Dim MyTabPage As New TabPage With {
                     .Text = count.ToString + " - " + row.Description

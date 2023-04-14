@@ -1,17 +1,18 @@
 ﻿
 Public Class ClsExportXML
 
-    Public Property ExportXML As New ExportXml
+    Public Property DbExport As ExportXml
 
     Public Sub New()
 
     End Sub
 
-    Public Sub ExportXmlRead(fileName As String)
+    Public Sub DbExportReadFile(fileName As String)
 
         ' import the importCDI xml file
         Try
-            ExportXML.ReadXml(fileName)
+            DbExport = New ExportXml
+            Me.DbExport.ReadXml(fileName)
         Catch ex As Exception
             MsgBox("Failed to import file " + fileName)
             Exit Sub

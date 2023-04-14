@@ -3,7 +3,14 @@ Public Class ClsUserPrefs
 
     Private Property MyUserPrefsFileName As String = "UserPrefs.xml"
     Private Property MyUserPrefsOrgFileName As String = "UserPrefs.org.xml"
-    Public Property UserPrefs As New UserPrefs
+
+    Public Enum JMRIfileDirectory As Integer
+        BackupText = 0
+        ExportXml = 1
+        RestoreText = 2
+    End Enum
+
+    Public Property UserPrefs As UserPrefs
 
     Public Sub New()
 
@@ -15,12 +22,12 @@ Public Class ClsUserPrefs
 
         ' import userprefs xml file
         Try
+            UserPrefs = New UserPrefs
             UserPrefs.ReadXml(MyUserPrefsFileName)
         Catch ex As Exception
             ' file is not auto copied
             ' try to create a new userprefs xml file
             Try
-                Stop
                 UserPrefs.ReadXml(MyUserPrefsOrgFileName)
                 UserPrefs.WriteXml(MyUserPrefsFileName)
             Catch ex1 As Exception
@@ -34,7 +41,6 @@ Public Class ClsUserPrefs
     Public Sub UserPrefsXmlWrite()
 
         Try
-            Stop
             UserPrefs.WriteXml(MyUserPrefsFileName)
         Catch ex As Exception
             MsgBox("Failed to write " + MyUserPrefsFileName)
@@ -85,21 +91,17 @@ Public Class ClsUserPrefs
             Return False
         End If
 
-        Dim row As UserPrefs.UserJMRIRow = UserPrefs.UserJMRI.FindByvalue(userJMRIvalue)
-
-        row.path = filePath
-        row.extension = fileExtension
-
-        UserPrefs.AcceptChanges()
-
-        ' write to userprefs xml file
         Try
-            UserPrefs.WriteXml(MyUserPrefsFileName)
-            Return True
+            Dim row As UserPrefs.UserJMRIRow = UserPrefs.UserJMRI.FindByvalue(userJMRIvalue)
+            row.path = filePath
+            row.extension = fileExtension
         Catch ex As Exception
-            MsgBox("Failed to write values to " + MyUserPrefsFileName)
             Return False
         End Try
+
+        Call Me.UserPrefsXmlWrite()
+
+        Return True
 
     End Function
 

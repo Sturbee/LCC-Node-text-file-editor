@@ -176,8 +176,8 @@ Public Class FrmMenuMain
                 ' disable menu selections by node type
 
                 Dim clsE As New ClsExportXML
-                clsE.ExportXmlRead(Me.Tag)
-                Dim rowNode As ExportXml.NodeRow = clsE.ExportXML.Node.FindByNodeID(0)
+                clsE.DbExportReadFile(Me.Tag)
+                Dim rowNode As ExportXml.NodeRow = clsE.DbExport.Node.FindByNodeID(0)
 
                 Dim clsR As New ClsReport
                 Dim row As Rpt.NodeTypeRow = clsR.Rpt.NodeType.FindByvalue(rowNode.nodeType)

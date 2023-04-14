@@ -13,6 +13,9 @@ Public Class FrmPortLine
         Me.MyFilePath = Me.Owner.Tag
         REM Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
+        ' read the export xml file
+        MyExport.DbExportReadFile(MyFilePath)
+
         ' read the titles xml file set labels
         Dim clsT As New ClsTitles
 
@@ -35,9 +38,6 @@ Public Class FrmPortLine
 
         ' read the attribute xml file
         Dim clsR As New ClsReport
-
-        ' read the export xml file
-        MyExport.ExportXmlRead(MyFilePath)
 
         ' fill combo box items
         Try
@@ -111,7 +111,7 @@ Public Class FrmPortLine
 
         ' line numbers are 1 to 16
         Dim lineID As Integer = 1
-        Dim rowPort As ExportXml.PortRow = MyExport.ExportXML.Port.FindByLineID(lineID)
+        Dim rowPort As ExportXml.PortRow = MyExport.DbExport.Port.FindByLineID(lineID)
         If rowPort Is Nothing Then
             MsgBox("Failed to import port row " + lineID.ToString)
             Exit Sub
@@ -128,7 +128,7 @@ Public Class FrmPortLine
 
 
         For count = 1 To 2
-            Dim row As ExportXml.PortDelayRow = MyExport.ExportXML.PortDelay.FindByLineIDDelayID(lineID, count)
+            Dim row As ExportXml.PortDelayRow = MyExport.DbExport.PortDelay.FindByLineIDDelayID(lineID, count)
 
             Select Case count
                 Case 1
@@ -144,7 +144,7 @@ Public Class FrmPortLine
         Next
 
         For count = 1 To 6
-            Dim row As ExportXml.PortEventRow = MyExport.ExportXML.PortEvent.FindByLineIDEventID(lineID, count)
+            Dim row As ExportXml.PortEventRow = MyExport.DbExport.PortEvent.FindByLineIDEventID(lineID, count)
             Select Case count
                 Case 1
                     Me.TxtEventOut1.Text = row.eventConsumer

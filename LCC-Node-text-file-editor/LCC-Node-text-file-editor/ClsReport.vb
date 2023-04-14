@@ -2,7 +2,7 @@
 Public Class ClsReport
 
     Private Property ReportFileName As String = "Report.xml"
-    Public Property Rpt As New Rpt
+    Public Property Rpt As Rpt
     Public Sub New()
 
         Call Me.ReportXmlRead()
@@ -13,6 +13,7 @@ Public Class ClsReport
 
         ' import report xml file
         Try
+            Rpt = New Rpt
             Rpt.ReadXml(Me.ReportFileName)
         Catch ex As Exception
             MsgBox("Failed to import file " + Me.ReportFileName)

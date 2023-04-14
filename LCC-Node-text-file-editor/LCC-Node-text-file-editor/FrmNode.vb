@@ -18,6 +18,9 @@ Public Class FrmNode
         Me.MyFilePath = Me.Owner.Tag
         Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
+        ' read the export xml file
+        MyExport.DbExportReadFile(MyFilePath)
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
 
@@ -29,15 +32,12 @@ Public Class FrmNode
         Me.LblNodeType.Text = rowTitle.nodeType
         Me.LblEventBase.Text = rowTitle.eventBase
 
-        Dim nodeRow As ExportXml.NodeRow = MyExport.ExportXML.Node.Item(0)
-
         Me.LblFileName.Text = Me.MyFileName
 
         ' read the attribute xml file
         Dim clsR As New ClsReport
 
-        ' read the export xml file
-        MyExport.ExportXmlRead(MyFilePath)
+        Dim nodeRow As ExportXml.NodeRow = MyExport.DbExport.Node.Item(0)
 
         Dim row As Rpt.NodeTypeRow = clsR.Rpt.NodeType.FindByvalue(nodeRow.nodeType)
         If row Is Nothing Then
@@ -55,15 +55,15 @@ Public Class FrmNode
     Private Sub ButSaveChanges_Click(sender As Object, e As EventArgs) Handles ButSaveChanges.Click
 
         Try
-            Dim nodeRow As ExportXml.NodeRow = MyExport.ExportXML.Node.Item(0)
+            Dim nodeRow As ExportXml.NodeRow = MyExport.DbExport.Node.Item(0)
             nodeRow.Name = Me.TxtNodeName.Text
             nodeRow.Description = Me.TxtNodeDescription.Text
 
-            MyExport.ExportXML.WriteXml(Me.MyFilePath)
+            MyExport.DbExport.WriteXml(Me.MyFilePath)
             MsgBox("Saved changes to node values")
 
             ' need to reload after save
-            MyExport.ExportXmlRead(Me.MyFilePath)
+            MyExport.DbExportReadFile(Me.MyFilePath)
 
             Call Me.DisplayValues()
 

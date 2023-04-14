@@ -16,7 +16,7 @@ Public Class FrmFileXml
         Dim filePath As String = String.Empty
         Dim fileExtension As String = String.Empty
 
-        If cls.JMRIfileRowRead(1, filePath, fileExtension) Then
+        If cls.JMRIfileRowRead(ClsUserPrefs.JMRIfileDirectory.ExportXml, filePath, fileExtension) Then
 
             FolderBrowserDialog1.SelectedPath = filePath
 

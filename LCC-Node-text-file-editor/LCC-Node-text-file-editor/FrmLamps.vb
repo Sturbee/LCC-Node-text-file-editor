@@ -22,6 +22,8 @@ Public Class FrmLamps
         Me.MyFilePath = Me.Tag
         REM Me.MyFileName = Path.GetFileName(Me.Tag)
 
+        MyExport.DbExportReadFile(MyFilePath)
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
 
@@ -57,7 +59,7 @@ Public Class FrmLamps
 
             For count = 1 To Me.MyLamps
 
-                Dim row As ExportXml.LampRow = MyExport.ExportXML.Lamp.FindByLampID(count)
+                Dim row As ExportXml.LampRow = MyExport.DbExport.Lamp.FindByLampID(count)
 
                 Dim MyTabPage As New TabPage With {
                 .Text = count.ToString + " - " + row.description
@@ -88,7 +90,7 @@ Public Class FrmLamps
         Dim rowName As Rpt.LampSelectionRow = MyReport.Rpt.LampSelection.FindByvalue(lampID)
         Me.LblLampID.Text = "Lamp " + rowName.text
 
-        Dim row As ExportXml.LampRow = MyExport.ExportXML.Lamp.FindByLampID(lampID)
+        Dim row As ExportXml.LampRow = MyExport.DbExport.Lamp.FindByLampID(lampID)
 
         Me.TxtDescription.Text = row.description
         Me.TxtLampOn.Text = row.eventOn
@@ -103,7 +105,7 @@ Public Class FrmLamps
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
 
         Try
-            Dim row As ExportXml.LampRow = MyExport.ExportXML.Lamp.FindByLampID(Me.TabControlLamps.SelectedIndex + 1)
+            Dim row As ExportXml.LampRow = MyExport.DbExport.Lamp.FindByLampID(Me.TabControlLamps.SelectedIndex + 1)
             row.description = Me.TxtDescription.Text
             row.eventOn = Me.TxtLampOn.Text
             row.eventOff = Me.TxtLampOff.Text
@@ -122,11 +124,11 @@ Public Class FrmLamps
                 Exit Sub
             End Try
 
-            MyExport.ExportXML.WriteXml(Me.MyFilePath)
+            MyExport.DbExport.WriteXml(Me.MyFilePath)
             MsgBox("Saved changes to lamp values")
 
             ' need to reload after save
-            MyExport.ExportXmlRead(MyFilePath)
+            MyExport.DbExportReadFile(MyFilePath)
 
             Call Me.DisplayValues()
 

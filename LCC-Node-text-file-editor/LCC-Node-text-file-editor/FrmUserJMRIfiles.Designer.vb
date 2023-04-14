@@ -97,6 +97,9 @@ Partial Class FrmUserJMRIfiles
         Me.MyToolTip.SetToolTip(Me.CmdSave, "Will save changes and reload values")
         Me.CmdSave.UseVisualStyleBackColor = True
         '
+        'FolderBrowserDialog1
+        '
+        '
         'FilesListBox
         '
         Me.FilesListBox.FormattingEnabled = True

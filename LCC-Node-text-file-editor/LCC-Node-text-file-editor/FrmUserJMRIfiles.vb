@@ -11,19 +11,16 @@
     Private Sub DisplayUserPathSelection()
 
         Try
-
+            Me.CmbPath.Items.Clear()
             Me.CmbPath.BeginUpdate()
             For count = 0 To MyUser.UserPrefs.UserJMRI.Count - 1
                 Dim row As UserPrefs.UserJMRIRow = MyUser.UserPrefs.UserJMRI.Item(count)
                 Me.CmbPath.Items.Add(row.title)
             Next
             Me.CmbPath.EndUpdate()
-
         Catch ex As Exception
-
             MsgBox("Failed to populate combo box")
             Exit Sub
-
         End Try
 
         Dim result As Integer = MyUser.CheckUserFileDirectories
@@ -34,22 +31,22 @@
             Me.CmbPath.SelectedIndex = result
         End If
 
-
     End Sub
 
     Private Sub CmbPath_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CmbPath.SelectedIndexChanged
 
-        Dim row As UserPrefs.UserJMRIRow = MyUser.UserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
-
-        If row.path = Nothing Then
-            Me.TxtPath.Text = FolderBrowserDialog1.SelectedPath
-        Else
-            Me.TxtPath.Text = row.path
-        End If
-
-        Me.TxtExtension.Text = row.extension
-
-        Call Me.ListFiles(row.path)
+        Try
+            Dim row As UserPrefs.UserJMRIRow = MyUser.UserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
+            If row.path = String.Empty Then
+                Me.TxtPath.Text = My.Computer.FileSystem.CurrentDirectory
+            Else
+                Me.TxtPath.Text = row.path
+            End If
+            Me.TxtExtension.Text = row.extension
+            Call Me.ListFiles(Me.TxtPath.Text)
+        Catch ex As Exception
+            MsgBox("Failed path selected index change")
+        End Try
 
     End Sub
 
@@ -64,12 +61,6 @@
 
     End Sub
 
-    Private Sub TxtExtension_TextChanged(sender As Object, e As EventArgs) Handles TxtExtension.TextChanged
-
-        Call Me.ListFiles(FolderBrowserDialog1.SelectedPath)
-
-    End Sub
-
     Private Sub CmdSave_Click(sender As Object, e As EventArgs) Handles CmdSave.Click
 
         Dim row As UserPrefs.UserJMRIRow = MyUser.UserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
@@ -80,13 +71,18 @@
             MsgBox("Faile to update JMRI LCC file directory and extension")
         End If
 
+        MyUser.UserPrefsXmlRead()
+
+        Call Me.ListFiles(Me.TxtPath.Text)
+
     End Sub
 
     Private Sub ListFiles(ByVal folderPath As String)
 
-        FilesListBox.Items.Clear()
-
         Try
+
+            FilesListBox.Items.Clear()
+
             Dim fileNames = My.Computer.FileSystem.GetFiles(folderPath, FileIO.SearchOption.SearchTopLevelOnly, Me.TxtExtension.Text)
 
             For Each fileName As String In fileNames
@@ -94,7 +90,8 @@
             Next
 
         Catch ex As Exception
-            ' ignore
+
+            Stop
 
         End Try
 

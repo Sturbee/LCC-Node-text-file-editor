@@ -20,6 +20,9 @@ Public Class FrmLogics
         Me.MyFilePath = Me.Owner.Tag
         REM Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
+        ' read the export xml file
+        MyExport.DbExportReadFile(MyFilePath)
+
         ' read the titles xml file
         Dim clsT As New ClsTitles
 
@@ -31,9 +34,6 @@ Public Class FrmLogics
         ' read the attribute xml file
         REM Dim clsR As New ClsReport
 
-        ' read the export xml file
-        MyExport.ExportXmlRead(MyFilePath)
-
         ' populate tab control
 
         Try
@@ -42,7 +42,7 @@ Public Class FrmLogics
 
             For count = 1 To Me.MyLogicCells
 
-                Dim row As ExportXml.LogicRow = MyExport.ExportXML.Logic.FindByLogicID(count)
+                Dim row As ExportXml.LogicRow = MyExport.DbExport.Logic.FindByLogicID(count)
 
                 Dim MyTabPage As New TabPage With {
                 .Text = count.ToString + " - " + row.Description
