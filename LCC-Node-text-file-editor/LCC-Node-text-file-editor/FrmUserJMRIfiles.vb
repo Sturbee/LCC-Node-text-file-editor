@@ -37,13 +37,9 @@
 
         Try
             Dim row As UserPrefs.UserJMRIRow = MyUser.UserPrefs.UserJMRI.FindByvalue(Me.CmbPath.SelectedIndex)
-            If row.path = String.Empty Then
-                Me.TxtPath.Text = My.Computer.FileSystem.CurrentDirectory
-            Else
-                Me.TxtPath.Text = row.path
-            End If
+            Me.TxtPath.Text = row.path
             Me.TxtExtension.Text = row.extension
-            Call Me.ListFiles(Me.TxtPath.Text)
+            Call Me.ListFiles(Me.TxtPath.Text, Me.TxtExtension.Text)
         Catch ex As Exception
             MsgBox("Failed path selected index change")
         End Try
@@ -52,12 +48,7 @@
 
     Private Sub CmdBrowse_Click(sender As Object, e As EventArgs) Handles CmdBrowse.Click
 
-        If FolderBrowserDialog1.ShowDialog() = DialogResult.OK Then
-            ' List files in the folder.
-            ListFiles(FolderBrowserDialog1.SelectedPath)
-        End If
-
-        Me.TxtPath.Text = FolderBrowserDialog1.SelectedPath
+        Call Me.BrowseDirectories()
 
     End Sub
 
@@ -73,17 +64,39 @@
 
         MyUser.UserPrefsXmlRead()
 
-        Call Me.ListFiles(Me.TxtPath.Text)
+        Call Me.ListFiles(Me.TxtPath.Text, Me.TxtExtension.Text)
 
     End Sub
 
-    Private Sub ListFiles(ByVal folderPath As String)
+    Private Sub TxtPath_TextChanged(sender As Object, e As EventArgs) Handles TxtPath.TextChanged
+
+        REM Call Me.ListFiles(Me.TxtPath.Text, Me.TxtExtension.Text)
+
+    End Sub
+
+    Private Sub TxtExtension_TextChanged(sender As Object, e As EventArgs) Handles TxtExtension.TextChanged
+
+        REM Call Me.ListFiles(Me.TxtPath.Text, Me.TxtExtension.Text)
+
+    End Sub
+
+    Private Sub BrowseDirectories()
+
+        If FolderBrowserDialog1.ShowDialog() = DialogResult.OK Then
+            ' List files in the folder.
+            Me.TxtPath.Text = FolderBrowserDialog1.SelectedPath
+            ListFiles(Me.TxtPath.Text, Me.TxtExtension.Text)
+        End If
+
+    End Sub
+
+    Private Sub ListFiles(ByVal path As String, ext As String)
 
         Try
 
             FilesListBox.Items.Clear()
 
-            Dim fileNames = My.Computer.FileSystem.GetFiles(folderPath, FileIO.SearchOption.SearchTopLevelOnly, Me.TxtExtension.Text)
+            Dim fileNames = My.Computer.FileSystem.GetFiles(path, FileIO.SearchOption.SearchTopLevelOnly, ext)
 
             For Each fileName As String In fileNames
                 FilesListBox.Items.Add(fileName)
@@ -91,10 +104,12 @@
 
         Catch ex As Exception
 
-            Stop
+            Call Me.BrowseDirectories()
 
         End Try
 
     End Sub
+
+
 
 End Class

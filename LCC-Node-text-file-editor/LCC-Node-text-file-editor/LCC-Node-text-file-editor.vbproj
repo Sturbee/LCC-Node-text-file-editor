@@ -159,12 +159,6 @@
     <Compile Include="FrmUserTrackSpeed.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPortLine.Designer.vb">
-      <DependentUpon>FrmPortLine.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FrmPortLine.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FrmNode.Designer.vb">
       <DependentUpon>FrmNode.vb</DependentUpon>
     </Compile>
@@ -262,9 +256,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUserTrackSpeed.resx">
       <DependentUpon>FrmUserTrackSpeed.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmPortLine.resx">
-      <DependentUpon>FrmPortLine.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNode.resx">
       <DependentUpon>FrmNode.vb</DependentUpon>
