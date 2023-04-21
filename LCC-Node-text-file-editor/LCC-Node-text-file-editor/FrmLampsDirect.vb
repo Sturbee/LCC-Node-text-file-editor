@@ -1,4 +1,6 @@
-﻿Public Class FrmLamps
+﻿Imports System.IO
+
+Public Class FrmLampsDirect
 
     Public Property MyLamps As Integer
     Private Property MyFilePath As String
@@ -7,7 +9,7 @@
     Private Property MyReport As New ClsReport
     Private Property MyExport As New ClsExportXML
 
-    Private Sub FrmLamps_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmLampsDirect_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Call Me.DisplayValues()
 
@@ -30,9 +32,25 @@
         Me.Text = rowTitle.header
         Me.LblSubHeader.Text = rowTitle.subHeader
         Me.LblHelp.Text = rowTitle.help
-        Me.LblBrightness.Text = rowTitle.brightness
+        Me.LblLampOn.Text = rowTitle.lampOn
+        Me.LblLampOff.Text = rowTitle.lampOff
+
 
         ' read the attribute xml file
+
+        Me.CmbLampFade.BeginUpdate()
+        For I = 0 To MyReport.Rpt.LampFade.Count - 1
+            Dim row As Rpt.LampFadeRow = MyReport.Rpt.LampFade.Item(I)
+            Me.CmbLampFade.Items.Add(row.text)
+        Next
+        Me.CmbLampFade.EndUpdate()
+
+        Me.CmbLampPhase.BeginUpdate()
+        For I = 0 To MyReport.Rpt.LampPhase.Count - 1
+            Dim row As Rpt.LampPhaseRow = MyReport.Rpt.LampPhase.Item(I)
+            Me.CmbLampPhase.Items.Add(row.text)
+        Next
+        Me.CmbLampPhase.EndUpdate()
 
         ' populate tab control
         Try
@@ -60,46 +78,38 @@
 
     Private Sub TabControlLamps_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlLamps.Selected
 
-        Dim lampID As Integer
+        Dim lampDirectID As Integer
 
         If e.TabPageIndex = -1 Then
-            lampID = 1
+            lampDirectID = 1
         Else
-            lampID = e.TabPageIndex + 1
+            lampDirectID = e.TabPageIndex + 1
         End If
         ' fill in row values
 
-        Dim rowName As Rpt.LampSelectionRow = MyReport.Rpt.LampSelection.FindByvalue(lampID)
+        Dim rowName As Rpt.LampSelectionRow = MyReport.Rpt.LampSelection.FindByvalue(lampDirectID)
         Me.LblLampID.Text = "Lamp " + rowName.text
 
-        Dim rowLampDirect As ExportXml.LampDirectRow = MyExport.DbExport.LampDirect.FindByLampDirectID(lampID)
-        Me.TxtDescription.Text = rowLampDirect.description
+        Dim row As ExportXml.LampDirectRow = MyExport.DbExport.LampDirect.FindByLampDirectID(lampDirectID)
 
-        Dim rowLamp As ExportXml.LampRow = MyExport.DbExport.Lamp.FindByLampID(lampID)
-        Me.TxtBrightness.Text = rowLamp.brightness
+        Me.TxtDescription.Text = row.description
+        Me.TxtLampOn.Text = row.eventOn
+        Me.TxtLampOff.Text = row.eventOff
+
+        Me.CmbLampFade.SelectedIndex = row.lampFadeID
+        Me.CmbLampPhase.SelectedIndex = row.lampPhaseID
 
     End Sub
 
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
 
         Try
-
-            Dim rowLampDirect As ExportXml.LampDirectRow = MyExport.DbExport.LampDirect.FindByLampDirectID(Me.TabControlLamps.SelectedIndex + 1)
-            rowLampDirect.description = Me.TxtDescription.Text
-
-            Dim rowLamp As ExportXml.LampRow = MyExport.DbExport.Lamp.FindByLampID(Me.TabControlLamps.SelectedIndex + 1)
-
-            ' check for integer value
-            Try
-                rowLamp.brightness = Me.TxtBrightness.Text
-                If (rowLamp.brightness > 255) Or (rowLamp.brightness < 0) Then
-                    MsgBox("Brightness value out of range")
-                    Exit Sub
-                End If
-            Catch ex As Exception
-                MsgBox("Brighness value is not a integer")
-                Exit Sub
-            End Try
+            Dim row As ExportXml.LampDirectRow = MyExport.DbExport.LampDirect.FindByLampDirectID(Me.TabControlLamps.SelectedIndex + 1)
+            row.description = Me.TxtDescription.Text
+            row.eventOn = Me.TxtLampOn.Text
+            row.eventOff = Me.TxtLampOff.Text
+            row.lampFadeID = Me.CmbLampFade.SelectedIndex
+            row.lampPhaseID = Me.CmbLampPhase.SelectedIndex
 
             MyExport.DbExport.WriteXml(Me.MyFilePath)
             MsgBox("Saved changes to lamp values")

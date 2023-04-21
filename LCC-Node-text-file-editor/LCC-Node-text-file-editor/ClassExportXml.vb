@@ -90,7 +90,7 @@ Public Class ClassExportXml
                         Call Me.AddRowLampDirectControl(lineNum, row.level1, row.resultText)
 
                     Case 8 ' 
-                        Call Me.UpDateRowLampDirectControl(lineNum, row.resultText)
+                        Call Me.AddRowLamp(lineNum, row.resultText)
 
                     Case 9 ' Rules, ignore
 
@@ -112,20 +112,6 @@ Public Class ClassExportXml
                 rowNode.nodeType = Me.MyNodeType
                 rowNode.sourceFile = filePath
             End If
-
-            ' check for Lamp table
-            Try
-                For count = 1 To MyExport.DbExport.Lamp.Count
-                    Dim rowI As ImportCDI.LampNameRow = MyImport.ImportCDI.LampName.Item(count)
-                    Dim rowE As ExportXml.LampRow = MyExport.DbExport.Lamp.Item(count - 1)
-                    If rowE.description = String.Empty Then
-                        REM rowE.description = rowI.text
-                    End If
-                Next
-            Catch ex As Exception
-                ' do nothing as table does not exsit
-            End Try
-
 
             Me.MyExport.DbExport.AcceptChanges()
 
@@ -684,7 +670,7 @@ Public Class ClassExportXml
 
             Select Case rowLevel2.level2
                 Case 0
-                    Call Me.TableLamp(lineNum, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, rowLevel2.resultText)
+                    Call Me.TableLampDirect(lineNum, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, rowLevel2.resultText)
 
                 Case Else
                     Stop
@@ -702,35 +688,34 @@ Public Class ClassExportXml
     End Sub
 
 
-    Private Sub TableLamp(lineNum As Integer, item1 As Integer, columnID As Integer, inputText As String, resultText As String)
+    Private Sub TableLampDirect(lineNum As Integer, item1 As Integer, columnID As Integer, inputText As String, resultText As String)
 
         Try
 
-            Dim rowLamp As ExportXml.LampRow = Me.MyExport.DbExport.Lamp.FindByLampID(item1)
+            Dim rowLampDirect As ExportXml.LampDirectRow = Me.MyExport.DbExport.LampDirect.FindByLampDirectID(item1)
             Try
-                If rowLamp Is Nothing Then
-                    Me.MyExport.DbExport.Lamp.AddLampRow(item1, String.Empty, String.Empty, String.Empty, 0, 0, 0, 0)
+                If rowLampDirect Is Nothing Then
+                    Me.MyExport.DbExport.LampDirect.AddLampDirectRow(item1, String.Empty, String.Empty, String.Empty, 0, 0, 0)
                     Me.MyExport.DbExport.AcceptChanges()
-                    rowLamp = Me.MyExport.DbExport.Lamp.FindByLampID(item1)
+                    rowLampDirect = Me.MyExport.DbExport.LampDirect.FindByLampDirectID(item1)
                 End If
             Catch ex As Exception
-                MsgBox("Failed to create table Lamp row")
+                MsgBox("Failed to create table Lamp Direct row")
                 Exit Sub
             End Try
 
-            Console.WriteLine(lineNum.ToString + " Lamp(" + item1.ToString + ") - " + inputText + Space(1) + resultText)
-            rowLamp.Item(columnID - 2) = resultText
+            Console.WriteLine(lineNum.ToString + " LampDirect(" + item1.ToString + ") - " + inputText + Space(1) + resultText)
+            rowLampDirect.Item(columnID - 2) = resultText
 
         Catch ex As Exception
 
-            MsgBox("Failed to add table Lamp row")
+            MsgBox("Failed to add table Lamp Direct row")
 
         End Try
 
     End Sub
 
-
-    Private Sub UpDateRowLampDirectControl(lineNum As Integer, inputText As String)
+    Private Sub AddRowLamp(lineNum As Integer, inputText As String)
 
         Try
 
@@ -748,18 +733,25 @@ Public Class ClassExportXml
             End If
 
             Dim rowLamp As ExportXml.LampRow = Me.MyExport.DbExport.Lamp.FindByLampID(item1)
-            If rowLamp Is Nothing Then
-                MsgBox("Failed to find Lamp row " + item1.ToString)
-            Else
-                rowLamp.brightness = resultText
-                Console.WriteLine(lineNum.ToString + " Lamp(" + item1.ToString + ") - Brightness= " + resultText)
-            End If
+            Try
+                If rowLamp Is Nothing Then
+                    Me.MyExport.DbExport.Lamp.AddLampRow(item1, 0)
+                    Me.MyExport.DbExport.AcceptChanges()
+                    rowLamp = Me.MyExport.DbExport.Lamp.FindByLampID(item1)
+                End If
+            Catch ex As Exception
+                MsgBox("Failed to create table Lamp row")
+                Exit Sub
+            End Try
 
-            Me.MyExport.DbExport.AcceptChanges()
+            rowLamp.brightness = resultText
+            Console.WriteLine(lineNum.ToString + " Lamp(" + item1.ToString + ") - Brightness= " + resultText)
+
+            MyExport.DbExport.AcceptChanges()
 
         Catch ex As Exception
 
-            MsgBox("Failed UpDate Row Lamp Direct Control")
+            MsgBox("Failed to add table Lamp row")
 
         End Try
 

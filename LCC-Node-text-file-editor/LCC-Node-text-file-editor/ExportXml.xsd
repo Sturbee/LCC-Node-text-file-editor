@@ -20,7 +20,7 @@
               <xs:element name="description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_UserColumnName="description" msprop:Generator_ColumnVarNameInTable="columnDescription" type="xs:string" minOccurs="0" />
               <xs:element name="nodeType" msprop:Generator_ColumnPropNameInTable="NodeTypeColumn" msprop:Generator_ColumnPropNameInRow="NodeType" msprop:Generator_UserColumnName="nodeType" msprop:Generator_ColumnVarNameInTable="columnNodeType" type="xs:int" minOccurs="0" />
               <xs:element name="eventBase" msprop:Generator_ColumnPropNameInTable="eventBaseColumn" msprop:Generator_ColumnPropNameInRow="eventBase" msprop:Generator_UserColumnName="eventBase" msprop:Generator_ColumnVarNameInTable="columneventBase" type="xs:string" minOccurs="0" />
-              <xs:element name="sourceFile" msprop:Generator_ColumnPropNameInRow="sourceFile" msprop:Generator_ColumnPropNameInTable="sourceFileColumn" msprop:Generator_ColumnVarNameInTable="columnsourceFile" msprop:Generator_UserColumnName="sourceFile" type="xs:string" minOccurs="0" />
+              <xs:element name="sourceFile" msprop:Generator_ColumnPropNameInTable="sourceFileColumn" msprop:Generator_ColumnPropNameInRow="sourceFile" msprop:Generator_UserColumnName="sourceFile" msprop:Generator_ColumnVarNameInTable="columnsourceFile" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -175,17 +175,24 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Lamp" msprop:Generator_RowEvHandlerName="LampRowChangeEventHandler" msprop:Generator_RowDeletedName="LampRowDeleted" msprop:Generator_RowDeletingName="LampRowDeleting" msprop:Generator_RowEvArgName="LampRowChangeEvent" msprop:Generator_TablePropName="Lamp" msprop:Generator_RowChangedName="LampRowChanged" msprop:Generator_UserTableName="Lamp" msprop:Generator_RowChangingName="LampRowChanging" msprop:Generator_RowClassName="LampRow" msprop:Generator_TableClassName="LampDataTable" msprop:Generator_TableVarName="tableLamp">
+        <xs:element name="LampDirect" msprop:Generator_RowEvHandlerName="LampDirectRowChangeEventHandler" msprop:Generator_RowDeletedName="LampDirectRowDeleted" msprop:Generator_RowDeletingName="LampDirectRowDeleting" msprop:Generator_RowEvArgName="LampDirectRowChangeEvent" msprop:Generator_TablePropName="LampDirect" msprop:Generator_RowChangedName="LampDirectRowChanged" msprop:Generator_UserTableName="LampDirect" msprop:Generator_RowChangingName="LampDirectRowChanging" msprop:Generator_RowClassName="LampDirectRow" msprop:Generator_TableClassName="LampDirectDataTable" msprop:Generator_TableVarName="tableLampDirect">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="LampID" msprop:Generator_ColumnPropNameInTable="LampIDColumn" msprop:Generator_ColumnPropNameInRow="LampID" msprop:Generator_UserColumnName="LampID" msprop:Generator_ColumnVarNameInTable="columnLampID" type="xs:int" />
+              <xs:element name="LampDirectID" msprop:Generator_ColumnPropNameInTable="LampDirectIDColumn" msprop:Generator_ColumnPropNameInRow="LampDirectID" msprop:Generator_UserColumnName="LampDirectID" msprop:Generator_ColumnVarNameInTable="columnLampDirectID" type="xs:int" />
               <xs:element name="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_UserColumnName="description" msprop:Generator_ColumnVarNameInTable="columndescription" type="xs:string" minOccurs="0" />
               <xs:element name="eventOn" msprop:Generator_ColumnPropNameInTable="eventOnColumn" msprop:Generator_ColumnPropNameInRow="eventOn" msprop:Generator_UserColumnName="eventOn" msprop:Generator_ColumnVarNameInTable="columneventOn" type="xs:string" minOccurs="0" />
               <xs:element name="eventOff" msprop:Generator_ColumnPropNameInTable="eventOffColumn" msprop:Generator_ColumnPropNameInRow="eventOff" msprop:Generator_UserColumnName="eventOff" msprop:Generator_ColumnVarNameInTable="columneventOff" type="xs:string" minOccurs="0" />
               <xs:element name="lampFadeID" msprop:Generator_ColumnPropNameInTable="lampFadeIDColumn" msprop:Generator_ColumnPropNameInRow="lampFadeID" msprop:Generator_UserColumnName="lampFadeID" msprop:Generator_ColumnVarNameInTable="columnlampFadeID" type="xs:int" minOccurs="0" />
               <xs:element name="lampSelectionID" msprop:Generator_ColumnPropNameInTable="lampSelectionIDColumn" msprop:Generator_ColumnPropNameInRow="lampSelectionID" msprop:Generator_UserColumnName="lampSelectionID" msprop:Generator_ColumnVarNameInTable="columnlampSelectionID" type="xs:int" minOccurs="0" />
               <xs:element name="lampPhaseID" msprop:Generator_ColumnPropNameInTable="lampPhaseIDColumn" msprop:Generator_ColumnPropNameInRow="lampPhaseID" msprop:Generator_UserColumnName="lampPhaseID" msprop:Generator_ColumnVarNameInTable="columnlampPhaseID" type="xs:int" minOccurs="0" />
-              <xs:element name="brightness" msprop:Generator_ColumnPropNameInTable="brightnessColumn" msprop:Generator_ColumnPropNameInRow="brightness" msprop:Generator_UserColumnName="brightness" msprop:Generator_ColumnVarNameInTable="columnbrightness" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Lamp" msprop:Generator_RowClassName="LampRow" msprop:Generator_RowEvHandlerName="LampRowChangeEventHandler" msprop:Generator_RowDeletedName="LampRowDeleted" msprop:Generator_RowDeletingName="LampRowDeleting" msprop:Generator_RowEvArgName="LampRowChangeEvent" msprop:Generator_TablePropName="Lamp" msprop:Generator_RowChangedName="LampRowChanged" msprop:Generator_UserTableName="Lamp" msprop:Generator_RowChangingName="LampRowChanging" msprop:Generator_TableClassName="LampDataTable" msprop:Generator_TableVarName="tableLamp">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LampID" msprop:Generator_UserColumnName="LampID" msprop:Generator_ColumnPropNameInTable="LampIDColumn" msprop:Generator_ColumnPropNameInRow="LampID" msprop:Generator_ColumnVarNameInTable="columnLampID" type="xs:int" />
+              <xs:element name="brightness" msprop:Generator_UserColumnName="brightness" msprop:Generator_ColumnPropNameInTable="brightnessColumn" msprop:Generator_ColumnPropNameInRow="brightness" msprop:Generator_ColumnVarNameInTable="columnbrightness" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -252,6 +259,10 @@
       <xs:field xpath="mstns:MastID" />
       <xs:field xpath="mstns:RuleID" />
       <xs:field xpath="mstns:AppearanceID" />
+    </xs:unique>
+    <xs:unique name="LampDirect_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:LampDirect" />
+      <xs:field xpath="mstns:LampDirectID" />
     </xs:unique>
     <xs:unique name="Lamp_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Lamp" />

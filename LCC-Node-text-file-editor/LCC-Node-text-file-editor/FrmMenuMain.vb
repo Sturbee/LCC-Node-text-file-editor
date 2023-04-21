@@ -127,10 +127,19 @@ Public Class FrmMenuMain
 
     End Sub
 
-    Private Sub LampToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LampToolStripMenuItem.Click
+    Private Sub PhysicalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PhysicalToolStripMenuItem.Click
 
         Dim frm As New FrmLamps With {
             .MyLamps = Me.MyLamps
+        }
+        Call Me.CheckFormAndOpen(frm)
+
+    End Sub
+
+    Private Sub DirectControlToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DirectControlToolStripMenuItem.Click
+
+        Dim frm As New FrmLampsDirect With {
+          .MyLamps = Me.MyLamps
         }
         Call Me.CheckFormAndOpen(frm)
 

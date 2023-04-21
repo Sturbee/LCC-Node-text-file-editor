@@ -79,7 +79,7 @@ Public Class ClassExportXmlToText
                         Call Me.RowLampDirectControl(lineNum, myText, row.level1, row.resultText, writeText)
 
                     Case 8 ' 
-                        Call Me.UpDateRowLampDirectControl(lineNum, myText, row.resultText, writeText)
+                        Call Me.RowLamp(lineNum, myText, row.resultText, writeText)
 
                     Case 9 ' Rules, ignore
                         writeText = myText
@@ -93,7 +93,7 @@ Public Class ClassExportXmlToText
                     ' do nothing
                 Else
                     ' output text lines that are different from input to output
-                    ' Stop
+                    Stop
                 End If
 
                 srOut.WriteLine(writeText)
@@ -482,7 +482,7 @@ Public Class ClassExportXmlToText
 
             Select Case rowLevel2.level2
                 Case 0
-                    Call Me.TableLamp(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
+                    Call Me.TableLampDirect(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
 
                 Case Else
                     Stop
@@ -498,21 +498,21 @@ Public Class ClassExportXmlToText
     End Sub
 
 
-    Private Sub TableLamp(lineNum As Integer, myText As String, item1 As Integer, columnID As Integer, inputText As String, ByRef writeText As String)
+    Private Sub TableLampDirect(lineNum As Integer, myText As String, item1 As Integer, columnID As Integer, inputText As String, ByRef writeText As String)
 
         Try
 
-            Dim rowLamp As ExportXml.LampRow = Me.MyExport.DbExport.Lamp.FindByLampID(item1)
-            Dim newResultText = rowLamp.Item(columnID - 2).ToString
+            Dim rowLampDirect As ExportXml.LampDirectRow = Me.MyExport.DbExport.LampDirect.FindByLampDirectID(item1)
+            Dim newResultText = rowLampDirect.Item(columnID - 2).ToString
 
             Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
             writeText = Mid(myText, 1, cut) + newResultText
 
-            Console.WriteLine(lineNum.ToString + " Lamp(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
+            Console.WriteLine(lineNum.ToString + " LampDirect(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
 
         Catch ex As Exception
 
-            MsgBox("Failed to process table Lamp row")
+            MsgBox("Failed to process table Lamp Direct row")
 
         End Try
 
@@ -564,8 +564,7 @@ Public Class ClassExportXmlToText
     End Sub
 
 
-
-    Private Sub UpDateRowLampDirectControl(lineNum As Integer, myText As String, inputText As String, ByRef writeText As String)
+    Private Sub RowLamp(lineNum As Integer, myText As String, inputText As String, ByRef writeText As String)
 
         Try
 
@@ -585,7 +584,7 @@ Public Class ClassExportXmlToText
 
         Catch ex As Exception
 
-            MsgBox("Failed to process UpDate Row Lamp Direct Control")
+            MsgBox("Failed to process UpDate Row Lamp")
 
         End Try
 

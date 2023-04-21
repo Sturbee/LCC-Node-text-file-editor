@@ -53,6 +53,8 @@ Partial Public Class ExportXml
     
     Private tableMastRuleAppear As MastRuleAppearDataTable
     
+    Private tableLampDirect As LampDirectDataTable
+    
     Private tableLamp As LampDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
@@ -125,6 +127,9 @@ Partial Public Class ExportXml
             End If
             If (Not (ds.Tables("MastRuleAppear")) Is Nothing) Then
                 MyBase.Tables.Add(New MastRuleAppearDataTable(ds.Tables("MastRuleAppear")))
+            End If
+            If (Not (ds.Tables("LampDirect")) Is Nothing) Then
+                MyBase.Tables.Add(New LampDirectDataTable(ds.Tables("LampDirect")))
             End If
             If (Not (ds.Tables("Lamp")) Is Nothing) Then
                 MyBase.Tables.Add(New LampDataTable(ds.Tables("Lamp")))
@@ -290,6 +295,16 @@ Partial Public Class ExportXml
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property LampDirect() As LampDirectDataTable
+        Get
+            Return Me.tableLampDirect
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
     Public ReadOnly Property Lamp() As LampDataTable
         Get
             Return Me.tableLamp
@@ -404,6 +419,9 @@ Partial Public Class ExportXml
             End If
             If (Not (ds.Tables("MastRuleAppear")) Is Nothing) Then
                 MyBase.Tables.Add(New MastRuleAppearDataTable(ds.Tables("MastRuleAppear")))
+            End If
+            If (Not (ds.Tables("LampDirect")) Is Nothing) Then
+                MyBase.Tables.Add(New LampDirectDataTable(ds.Tables("LampDirect")))
             End If
             If (Not (ds.Tables("Lamp")) Is Nothing) Then
                 MyBase.Tables.Add(New LampDataTable(ds.Tables("Lamp")))
@@ -524,6 +542,12 @@ Partial Public Class ExportXml
                 Me.tableMastRuleAppear.InitVars
             End If
         End If
+        Me.tableLampDirect = CType(MyBase.Tables("LampDirect"),LampDirectDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableLampDirect) Is Nothing) Then
+                Me.tableLampDirect.InitVars
+            End If
+        End If
         Me.tableLamp = CType(MyBase.Tables("Lamp"),LampDataTable)
         If (initTable = true) Then
             If (Not (Me.tableLamp) Is Nothing) Then
@@ -568,6 +592,8 @@ Partial Public Class ExportXml
         MyBase.Tables.Add(Me.tableMastRule)
         Me.tableMastRuleAppear = New MastRuleAppearDataTable()
         MyBase.Tables.Add(Me.tableMastRuleAppear)
+        Me.tableLampDirect = New LampDirectDataTable()
+        MyBase.Tables.Add(Me.tableLampDirect)
         Me.tableLamp = New LampDataTable()
         MyBase.Tables.Add(Me.tableLamp)
     End Sub
@@ -653,6 +679,12 @@ Partial Public Class ExportXml
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Private Function ShouldSerializeMastRuleAppear() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+    Private Function ShouldSerializeLampDirect() As Boolean
         Return false
     End Function
     
@@ -761,6 +793,9 @@ Partial Public Class ExportXml
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Public Delegate Sub MastRuleAppearRowChangeEventHandler(ByVal sender As Object, ByVal e As MastRuleAppearRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+    Public Delegate Sub LampDirectRowChangeEventHandler(ByVal sender As Object, ByVal e As LampDirectRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Public Delegate Sub LampRowChangeEventHandler(ByVal sender As Object, ByVal e As LampRowChangeEvent)
@@ -5311,10 +5346,10 @@ Partial Public Class ExportXml
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class LampDataTable
-        Inherits Global.System.Data.TypedTableBase(Of LampRow)
+    Partial Public Class LampDirectDataTable
+        Inherits Global.System.Data.TypedTableBase(Of LampDirectRow)
         
-        Private columnLampID As Global.System.Data.DataColumn
+        Private columnLampDirectID As Global.System.Data.DataColumn
         
         Private columndescription As Global.System.Data.DataColumn
         
@@ -5328,13 +5363,11 @@ Partial Public Class ExportXml
         
         Private columnlampPhaseID As Global.System.Data.DataColumn
         
-        Private columnbrightness As Global.System.Data.DataColumn
-        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "Lamp"
+            Me.TableName = "LampDirect"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -5367,9 +5400,9 @@ Partial Public Class ExportXml
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property LampIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property LampDirectIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnLampID
+                Return Me.columnLampDirectID
             End Get
         End Property
         
@@ -5422,6 +5455,287 @@ Partial Public Class ExportXml
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As LampDirectRow
+            Get
+                Return CType(Me.Rows(index),LampDirectRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Event LampDirectRowChanging As LampDirectRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Event LampDirectRowChanged As LampDirectRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Event LampDirectRowDeleting As LampDirectRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Event LampDirectRowDeleted As LampDirectRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Overloads Sub AddLampDirectRow(ByVal row As LampDirectRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Overloads Function AddLampDirectRow(ByVal LampDirectID As Integer, ByVal description As String, ByVal eventOn As String, ByVal eventOff As String, ByVal lampFadeID As Integer, ByVal lampSelectionID As Integer, ByVal lampPhaseID As Integer) As LampDirectRow
+            Dim rowLampDirectRow As LampDirectRow = CType(Me.NewRow,LampDirectRow)
+            Dim columnValuesArray() As Object = New Object() {LampDirectID, description, eventOn, eventOff, lampFadeID, lampSelectionID, lampPhaseID}
+            rowLampDirectRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowLampDirectRow)
+            Return rowLampDirectRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function FindByLampDirectID(ByVal LampDirectID As Integer) As LampDirectRow
+            Return CType(Me.Rows.Find(New Object() {LampDirectID}),LampDirectRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As LampDirectDataTable = CType(MyBase.Clone,LampDirectDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New LampDirectDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnLampDirectID = MyBase.Columns("LampDirectID")
+            Me.columndescription = MyBase.Columns("description")
+            Me.columneventOn = MyBase.Columns("eventOn")
+            Me.columneventOff = MyBase.Columns("eventOff")
+            Me.columnlampFadeID = MyBase.Columns("lampFadeID")
+            Me.columnlampSelectionID = MyBase.Columns("lampSelectionID")
+            Me.columnlampPhaseID = MyBase.Columns("lampPhaseID")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnLampDirectID = New Global.System.Data.DataColumn("LampDirectID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLampDirectID)
+            Me.columndescription = New Global.System.Data.DataColumn("description", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndescription)
+            Me.columneventOn = New Global.System.Data.DataColumn("eventOn", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columneventOn)
+            Me.columneventOff = New Global.System.Data.DataColumn("eventOff", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columneventOff)
+            Me.columnlampFadeID = New Global.System.Data.DataColumn("lampFadeID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlampFadeID)
+            Me.columnlampSelectionID = New Global.System.Data.DataColumn("lampSelectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlampSelectionID)
+            Me.columnlampPhaseID = New Global.System.Data.DataColumn("lampPhaseID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlampPhaseID)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnLampDirectID}, true))
+            Me.columnLampDirectID.AllowDBNull = false
+            Me.columnLampDirectID.Unique = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function NewLampDirectRow() As LampDirectRow
+            Return CType(Me.NewRow,LampDirectRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New LampDirectRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(LampDirectRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.LampDirectRowChangedEvent) Is Nothing) Then
+                RaiseEvent LampDirectRowChanged(Me, New LampDirectRowChangeEvent(CType(e.Row,LampDirectRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.LampDirectRowChangingEvent) Is Nothing) Then
+                RaiseEvent LampDirectRowChanging(Me, New LampDirectRowChangeEvent(CType(e.Row,LampDirectRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.LampDirectRowDeletedEvent) Is Nothing) Then
+                RaiseEvent LampDirectRowDeleted(Me, New LampDirectRowChangeEvent(CType(e.Row,LampDirectRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.LampDirectRowDeletingEvent) Is Nothing) Then
+                RaiseEvent LampDirectRowDeleting(Me, New LampDirectRowChangeEvent(CType(e.Row,LampDirectRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub RemoveLampDirectRow(ByVal row As LampDirectRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As ExportXml = New ExportXml()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "LampDirectDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class LampDataTable
+        Inherits Global.System.Data.TypedTableBase(Of LampRow)
+        
+        Private columnLampID As Global.System.Data.DataColumn
+        
+        Private columnbrightness As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "Lamp"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property LampIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLampID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property brightnessColumn() As Global.System.Data.DataColumn
             Get
@@ -5466,9 +5780,9 @@ Partial Public Class ExportXml
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddLampRow(ByVal LampID As Integer, ByVal description As String, ByVal eventOn As String, ByVal eventOff As String, ByVal lampFadeID As Integer, ByVal lampSelectionID As Integer, ByVal lampPhaseID As Integer, ByVal brightness As Integer) As LampRow
+        Public Overloads Function AddLampRow(ByVal LampID As Integer, ByVal brightness As String) As LampRow
             Dim rowLampRow As LampRow = CType(Me.NewRow,LampRow)
-            Dim columnValuesArray() As Object = New Object() {LampID, description, eventOn, eventOff, lampFadeID, lampSelectionID, lampPhaseID, brightness}
+            Dim columnValuesArray() As Object = New Object() {LampID, brightness}
             rowLampRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowLampRow)
             Return rowLampRow
@@ -5498,12 +5812,6 @@ Partial Public Class ExportXml
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnLampID = MyBase.Columns("LampID")
-            Me.columndescription = MyBase.Columns("description")
-            Me.columneventOn = MyBase.Columns("eventOn")
-            Me.columneventOff = MyBase.Columns("eventOff")
-            Me.columnlampFadeID = MyBase.Columns("lampFadeID")
-            Me.columnlampSelectionID = MyBase.Columns("lampSelectionID")
-            Me.columnlampPhaseID = MyBase.Columns("lampPhaseID")
             Me.columnbrightness = MyBase.Columns("brightness")
         End Sub
         
@@ -5512,19 +5820,7 @@ Partial Public Class ExportXml
         Private Sub InitClass()
             Me.columnLampID = New Global.System.Data.DataColumn("LampID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnLampID)
-            Me.columndescription = New Global.System.Data.DataColumn("description", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columndescription)
-            Me.columneventOn = New Global.System.Data.DataColumn("eventOn", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columneventOn)
-            Me.columneventOff = New Global.System.Data.DataColumn("eventOff", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columneventOff)
-            Me.columnlampFadeID = New Global.System.Data.DataColumn("lampFadeID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnlampFadeID)
-            Me.columnlampSelectionID = New Global.System.Data.DataColumn("lampSelectionID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnlampSelectionID)
-            Me.columnlampPhaseID = New Global.System.Data.DataColumn("lampPhaseID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnlampPhaseID)
-            Me.columnbrightness = New Global.System.Data.DataColumn("brightness", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnbrightness = New Global.System.Data.DataColumn("brightness", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnbrightness)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnLampID}, true))
             Me.columnLampID.AllowDBNull = false
@@ -5710,21 +6006,21 @@ Partial Public Class ExportXml
             End Set
         End Property
         
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
-        Public Property nodeType() As Integer
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property NodeType() As Integer
             Get
-                Try
-                    Return CType(Me(Me.tableNode.NodeTypeColumn), Integer)
+                Try 
+                    Return CType(Me(Me.tableNode.NodeTypeColumn),Integer)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'nodeType' in table 'Node' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableNode.NodeTypeColumn) = Value
+                Me(Me.tableNode.NodeTypeColumn) = value
             End Set
         End Property
-
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property eventBase() As String
@@ -7682,6 +7978,195 @@ Partial Public Class ExportXml
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
+    Partial Public Class LampDirectRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableLampDirect As LampDirectDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableLampDirect = CType(Me.Table,LampDirectDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property LampDirectID() As Integer
+            Get
+                Return CType(Me(Me.tableLampDirect.LampDirectIDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableLampDirect.LampDirectIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property description() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLampDirect.descriptionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'description' in table 'LampDirect' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLampDirect.descriptionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property eventOn() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLampDirect.eventOnColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'eventOn' in table 'LampDirect' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLampDirect.eventOnColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property eventOff() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableLampDirect.eventOffColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'eventOff' in table 'LampDirect' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLampDirect.eventOffColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property lampFadeID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableLampDirect.lampFadeIDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'lampFadeID' in table 'LampDirect' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLampDirect.lampFadeIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property lampSelectionID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableLampDirect.lampSelectionIDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'lampSelectionID' in table 'LampDirect' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLampDirect.lampSelectionIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property lampPhaseID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableLampDirect.lampPhaseIDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'lampPhaseID' in table 'LampDirect' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableLampDirect.lampPhaseIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsdescriptionNull() As Boolean
+            Return Me.IsNull(Me.tableLampDirect.descriptionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetdescriptionNull()
+            Me(Me.tableLampDirect.descriptionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IseventOnNull() As Boolean
+            Return Me.IsNull(Me.tableLampDirect.eventOnColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SeteventOnNull()
+            Me(Me.tableLampDirect.eventOnColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IseventOffNull() As Boolean
+            Return Me.IsNull(Me.tableLampDirect.eventOffColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SeteventOffNull()
+            Me(Me.tableLampDirect.eventOffColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IslampFadeIDNull() As Boolean
+            Return Me.IsNull(Me.tableLampDirect.lampFadeIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetlampFadeIDNull()
+            Me(Me.tableLampDirect.lampFadeIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IslampSelectionIDNull() As Boolean
+            Return Me.IsNull(Me.tableLampDirect.lampSelectionIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetlampSelectionIDNull()
+            Me(Me.tableLampDirect.lampSelectionIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IslampPhaseIDNull() As Boolean
+            Return Me.IsNull(Me.tableLampDirect.lampPhaseIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetlampPhaseIDNull()
+            Me(Me.tableLampDirect.lampPhaseIDColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
     Partial Public Class LampRow
         Inherits Global.System.Data.DataRow
         
@@ -7707,100 +8192,10 @@ Partial Public Class ExportXml
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property description() As String
+        Public Property brightness() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableLamp.descriptionColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'description' in table 'Lamp' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLamp.descriptionColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property eventOn() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLamp.eventOnColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'eventOn' in table 'Lamp' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLamp.eventOnColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property eventOff() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableLamp.eventOffColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'eventOff' in table 'Lamp' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLamp.eventOffColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property lampFadeID() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableLamp.lampFadeIDColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'lampFadeID' in table 'Lamp' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLamp.lampFadeIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property lampSelectionID() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableLamp.lampSelectionIDColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'lampSelectionID' in table 'Lamp' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLamp.lampSelectionIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property lampPhaseID() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableLamp.lampPhaseIDColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'lampPhaseID' in table 'Lamp' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableLamp.lampPhaseIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property brightness() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableLamp.brightnessColumn),Integer)
+                    Return CType(Me(Me.tableLamp.brightnessColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'brightness' in table 'Lamp' is DBNull.", e)
                 End Try
@@ -7809,78 +8204,6 @@ Partial Public Class ExportXml
                 Me(Me.tableLamp.brightnessColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsdescriptionNull() As Boolean
-            Return Me.IsNull(Me.tableLamp.descriptionColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetdescriptionNull()
-            Me(Me.tableLamp.descriptionColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IseventOnNull() As Boolean
-            Return Me.IsNull(Me.tableLamp.eventOnColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SeteventOnNull()
-            Me(Me.tableLamp.eventOnColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IseventOffNull() As Boolean
-            Return Me.IsNull(Me.tableLamp.eventOffColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SeteventOffNull()
-            Me(Me.tableLamp.eventOffColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IslampFadeIDNull() As Boolean
-            Return Me.IsNull(Me.tableLamp.lampFadeIDColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetlampFadeIDNull()
-            Me(Me.tableLamp.lampFadeIDColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IslampSelectionIDNull() As Boolean
-            Return Me.IsNull(Me.tableLamp.lampSelectionIDColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetlampSelectionIDNull()
-            Me(Me.tableLamp.lampSelectionIDColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IslampPhaseIDNull() As Boolean
-            Return Me.IsNull(Me.tableLamp.lampPhaseIDColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetlampPhaseIDNull()
-            Me(Me.tableLamp.lampPhaseIDColumn) = Global.System.Convert.DBNull
-        End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -8385,6 +8708,42 @@ Partial Public Class ExportXml
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property Row() As MastRuleAppearRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+    Public Class LampDirectRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As LampDirectRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub New(ByVal row As LampDirectRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property Row() As LampDirectRow
             Get
                 Return Me.eventRow
             End Get

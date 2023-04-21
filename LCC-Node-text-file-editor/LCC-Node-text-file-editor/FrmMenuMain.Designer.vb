@@ -35,6 +35,8 @@ Partial Class FrmMenuMain
         Me.TrackReceiversToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TrackTransmittersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LampToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PhysicalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DirectControlToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserTrackSpeedsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -120,9 +122,22 @@ Partial Class FrmMenuMain
         '
         'LampToolStripMenuItem
         '
+        Me.LampToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PhysicalToolStripMenuItem, Me.DirectControlToolStripMenuItem})
         Me.LampToolStripMenuItem.Name = "LampToolStripMenuItem"
         Me.LampToolStripMenuItem.Size = New System.Drawing.Size(66, 24)
         Me.LampToolStripMenuItem.Text = "Lamps"
+        '
+        'PhysicalToolStripMenuItem
+        '
+        Me.PhysicalToolStripMenuItem.Name = "PhysicalToolStripMenuItem"
+        Me.PhysicalToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.PhysicalToolStripMenuItem.Text = "Physical"
+        '
+        'DirectControlToolStripMenuItem
+        '
+        Me.DirectControlToolStripMenuItem.Name = "DirectControlToolStripMenuItem"
+        Me.DirectControlToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.DirectControlToolStripMenuItem.Text = "Direct Control"
         '
         'UserToolStripMenuItem
         '
@@ -134,13 +149,13 @@ Partial Class FrmMenuMain
         'UserFilesToolStripMenuItem
         '
         Me.UserFilesToolStripMenuItem.Name = "UserFilesToolStripMenuItem"
-        Me.UserFilesToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.UserFilesToolStripMenuItem.Size = New System.Drawing.Size(217, 26)
         Me.UserFilesToolStripMenuItem.Text = "JMRI File Locations"
         '
         'UserTrackSpeedsToolStripMenuItem
         '
         Me.UserTrackSpeedsToolStripMenuItem.Name = "UserTrackSpeedsToolStripMenuItem"
-        Me.UserTrackSpeedsToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.UserTrackSpeedsToolStripMenuItem.Size = New System.Drawing.Size(217, 26)
         Me.UserTrackSpeedsToolStripMenuItem.Text = "Track Speeds"
         '
         'FrmMenuMain
@@ -176,4 +191,6 @@ Partial Class FrmMenuMain
     Friend WithEvents MastToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TrackReceiversToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TrackTransmittersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PhysicalToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DirectControlToolStripMenuItem As ToolStripMenuItem
 End Class
