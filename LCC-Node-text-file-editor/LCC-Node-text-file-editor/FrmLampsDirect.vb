@@ -28,7 +28,7 @@ Public Class FrmLampsDirect
         Dim clsT As New ClsTitles
 
         ' set labels
-        Dim rowTitle As Titles.LampsTitlesRow = clsT.Titles.LampsTitles.Item(0)
+        Dim rowTitle As Titles.LampsDirectTitlesRow = clsT.Titles.LampsDirectTitles.Item(0)
         Me.Text = rowTitle.header
         Me.LblSubHeader.Text = rowTitle.subHeader
         Me.LblHelp.Text = rowTitle.help
@@ -44,6 +44,14 @@ Public Class FrmLampsDirect
             Me.CmbLampFade.Items.Add(row.text)
         Next
         Me.CmbLampFade.EndUpdate()
+
+        Me.CmbLampSelection.BeginUpdate()
+        For I = 0 To MyReport.Rpt.LampSelection.Count - 1
+            Dim row As Rpt.LampSelectionRow = MyReport.Rpt.LampSelection.Item(I)
+            Me.CmbLampSelection.Items.Add(row.text)
+        Next
+
+        Me.CmbLampSelection.EndUpdate()
 
         Me.CmbLampPhase.BeginUpdate()
         For I = 0 To MyReport.Rpt.LampPhase.Count - 1
@@ -87,8 +95,7 @@ Public Class FrmLampsDirect
         End If
         ' fill in row values
 
-        Dim rowName As Rpt.LampSelectionRow = MyReport.Rpt.LampSelection.FindByvalue(lampDirectID)
-        Me.LblLampID.Text = "Lamp " + rowName.text
+        Me.LblLampID.Text = "Bulb " + lampDirectID.ToString
 
         Dim row As ExportXml.LampDirectRow = MyExport.DbExport.LampDirect.FindByLampDirectID(lampDirectID)
 
@@ -97,6 +104,7 @@ Public Class FrmLampsDirect
         Me.TxtLampOff.Text = row.eventOff
 
         Me.CmbLampFade.SelectedIndex = row.lampFadeID
+        Me.CmbLampSelection.SelectedIndex = row.lampSelectionID
         Me.CmbLampPhase.SelectedIndex = row.lampPhaseID
 
     End Sub
@@ -109,6 +117,7 @@ Public Class FrmLampsDirect
             row.eventOn = Me.TxtLampOn.Text
             row.eventOff = Me.TxtLampOff.Text
             row.lampFadeID = Me.CmbLampFade.SelectedIndex
+            row.lampSelectionID = Me.CmbLampSelection.SelectedIndex
             row.lampPhaseID = Me.CmbLampPhase.SelectedIndex
 
             MyExport.DbExport.WriteXml(Me.MyFilePath)

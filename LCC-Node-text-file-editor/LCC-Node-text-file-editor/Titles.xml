@@ -70,16 +70,23 @@
 		<help1>Each track circuit may send speed information to one remote mast</help1>
 		<help2>(P) Track Circuit Link Address. Copy and Paste into linked Track Circuit (Write Limited)</help2>
 	</TrackTranTitles>
-
+	
 	<!-- Lamps Titles level 1 -->
 	<LampsTitles>
-		<header>Segment: Direct Lamp Control</header>
+		<header>Segment: Lamp</header>
 		<subHeader>Lamp</subHeader>
+		<help>Add description of phyical connection</help>
+		<brightness>Set individual lamp intensity (0 = min; 255 = max)</brightness>
+	</LampsTitles>
+
+	<!-- Lamps Direct Titles level 1 -->
+	<LampsDirectTitles>
+		<header>Segment: Direct Lamp Control</header>
+		<subHeader>Bulb</subHeader>
 		<help>Direct control of lamps that are not used by any mast</help>
 		<lampOn>(C) Event to set lamp on</lampOn>
 		<lampOff>(C) Event to set lamp off</lampOff>
-		<brightness>Set individual lamp intensity (0 = min; 255 = max)</brightness>
-	</LampsTitles>
+	</LampsDirectTitles>
 	
 
 	<Title>

@@ -103,15 +103,14 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LampsTitles" msprop:Generator_RowEvHandlerName="LampsTitlesRowChangeEventHandler" msprop:Generator_RowDeletedName="LampsTitlesRowDeleted" msprop:Generator_RowDeletingName="LampsTitlesRowDeleting" msprop:Generator_RowEvArgName="LampsTitlesRowChangeEvent" msprop:Generator_TablePropName="LampsTitles" msprop:Generator_RowChangedName="LampsTitlesRowChanged" msprop:Generator_UserTableName="LampsTitles" msprop:Generator_RowChangingName="LampsTitlesRowChanging" msprop:Generator_RowClassName="LampsTitlesRow" msprop:Generator_TableClassName="LampsTitlesDataTable" msprop:Generator_TableVarName="tableLampsTitles">
+        <xs:element name="LampsDirectTitles" msprop:Generator_RowEvHandlerName="LampsDirectTitlesRowChangeEventHandler" msprop:Generator_RowDeletedName="LampsDirectTitlesRowDeleted" msprop:Generator_RowDeletingName="LampsDirectTitlesRowDeleting" msprop:Generator_RowEvArgName="LampsDirectTitlesRowChangeEvent" msprop:Generator_TablePropName="LampsDirectTitles" msprop:Generator_RowChangedName="LampsDirectTitlesRowChanged" msprop:Generator_UserTableName="LampsDirectTitles" msprop:Generator_RowChangingName="LampsDirectTitlesRowChanging" msprop:Generator_RowClassName="LampsDirectTitlesRow" msprop:Generator_TableClassName="LampsDirectTitlesDataTable" msprop:Generator_TableVarName="tableLampsDirectTitles">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="header" msprop:Generator_ColumnPropNameInTable="headerColumn" msprop:Generator_ColumnPropNameInRow="header" msprop:Generator_UserColumnName="header" msprop:Generator_ColumnVarNameInTable="columnheader" type="xs:string" minOccurs="0" />
               <xs:element name="subHeader" msprop:Generator_ColumnPropNameInTable="subHeaderColumn" msprop:Generator_ColumnPropNameInRow="subHeader" msprop:Generator_UserColumnName="subHeader" msprop:Generator_ColumnVarNameInTable="columnsubHeader" type="xs:string" minOccurs="0" />
               <xs:element name="help" msprop:Generator_ColumnPropNameInTable="helpColumn" msprop:Generator_ColumnPropNameInRow="help" msprop:Generator_UserColumnName="help" msprop:Generator_ColumnVarNameInTable="columnhelp" type="xs:string" minOccurs="0" />
-              <xs:element name="lampOn" msprop:Generator_ColumnPropNameInRow="lampOn" msprop:Generator_ColumnPropNameInTable="lampOnColumn" msprop:Generator_ColumnVarNameInTable="columnlampOn" msprop:Generator_UserColumnName="lampOn" type="xs:string" minOccurs="0" />
-              <xs:element name="lampOff" msprop:Generator_ColumnPropNameInRow="lampOff" msprop:Generator_ColumnPropNameInTable="lampOffColumn" msprop:Generator_ColumnVarNameInTable="columnlampOff" msprop:Generator_UserColumnName="lampOff" type="xs:string" minOccurs="0" />
-              <xs:element name="brightness" msprop:Generator_ColumnPropNameInRow="brightness" msprop:Generator_ColumnPropNameInTable="brightnessColumn" msprop:Generator_ColumnVarNameInTable="columnbrightness" msprop:Generator_UserColumnName="brightness" type="xs:string" minOccurs="0" />
+              <xs:element name="lampOn" msprop:Generator_UserColumnName="lampOn" msprop:Generator_ColumnPropNameInTable="lampOnColumn" msprop:Generator_ColumnPropNameInRow="lampOn" msprop:Generator_ColumnVarNameInTable="columnlampOn" type="xs:string" minOccurs="0" />
+              <xs:element name="lampOff" msprop:Generator_UserColumnName="lampOff" msprop:Generator_ColumnPropNameInTable="lampOffColumn" msprop:Generator_ColumnPropNameInRow="lampOff" msprop:Generator_ColumnVarNameInTable="columnlampOff" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -147,7 +146,17 @@
               <xs:element name="header" msprop:Generator_ColumnPropNameInTable="headerColumn" msprop:Generator_ColumnPropNameInRow="header" msprop:Generator_UserColumnName="header" msprop:Generator_ColumnVarNameInTable="columnheader" type="xs:string" minOccurs="0" />
               <xs:element name="subHeader" msprop:Generator_ColumnPropNameInTable="subHeaderColumn" msprop:Generator_ColumnPropNameInRow="subHeader" msprop:Generator_UserColumnName="subHeader" msprop:Generator_ColumnVarNameInTable="columnsubHeader" type="xs:string" minOccurs="0" />
               <xs:element name="help1" msprop:Generator_ColumnPropNameInTable="help1Column" msprop:Generator_ColumnPropNameInRow="help1" msprop:Generator_UserColumnName="help1" msprop:Generator_ColumnVarNameInTable="columnhelp1" type="xs:string" minOccurs="0" />
-              <xs:element name="help2" msprop:Generator_UserColumnName="help2" msprop:Generator_ColumnPropNameInTable="help2Column" msprop:Generator_ColumnPropNameInRow="help2" msprop:Generator_ColumnVarNameInTable="columnhelp2" type="xs:string" minOccurs="0" />
+              <xs:element name="help2" msprop:Generator_ColumnPropNameInTable="help2Column" msprop:Generator_ColumnPropNameInRow="help2" msprop:Generator_UserColumnName="help2" msprop:Generator_ColumnVarNameInTable="columnhelp2" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LampsTitles" msprop:Generator_RowEvHandlerName="LampsTitlesRowChangeEventHandler" msprop:Generator_RowDeletedName="LampsTitlesRowDeleted" msprop:Generator_RowDeletingName="LampsTitlesRowDeleting" msprop:Generator_RowEvArgName="LampsTitlesRowChangeEvent" msprop:Generator_TablePropName="LampsTitles" msprop:Generator_RowChangedName="LampsTitlesRowChanged" msprop:Generator_RowChangingName="LampsTitlesRowChanging" msprop:Generator_TableClassName="LampsTitlesDataTable" msprop:Generator_RowClassName="LampsTitlesRow" msprop:Generator_TableVarName="tableLampsTitles" msprop:Generator_UserTableName="LampsTitles">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="header" msprop:Generator_ColumnPropNameInRow="header" msprop:Generator_ColumnPropNameInTable="headerColumn" msprop:Generator_ColumnVarNameInTable="columnheader" msprop:Generator_UserColumnName="header" type="xs:string" minOccurs="0" />
+              <xs:element name="subHeader" msprop:Generator_ColumnPropNameInRow="subHeader" msprop:Generator_ColumnPropNameInTable="subHeaderColumn" msprop:Generator_ColumnVarNameInTable="columnsubHeader" msprop:Generator_UserColumnName="subHeader" type="xs:string" minOccurs="0" />
+              <xs:element name="help" msprop:Generator_ColumnPropNameInRow="help" msprop:Generator_ColumnPropNameInTable="helpColumn" msprop:Generator_ColumnVarNameInTable="columnhelp" msprop:Generator_UserColumnName="help" type="xs:string" minOccurs="0" />
+              <xs:element name="brightness" msprop:Generator_ColumnPropNameInRow="brightness" msprop:Generator_ColumnPropNameInTable="brightnessColumn" msprop:Generator_ColumnVarNameInTable="columnbrightness" msprop:Generator_UserColumnName="brightness" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

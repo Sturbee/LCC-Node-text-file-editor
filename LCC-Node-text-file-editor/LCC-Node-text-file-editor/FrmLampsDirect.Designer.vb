@@ -45,12 +45,15 @@ Partial Class FrmLampsDirect
         Me.Label4 = New System.Windows.Forms.Label()
         Me.BtnSave = New System.Windows.Forms.Button()
         Me.MyToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.CmbLampSelection = New System.Windows.Forms.ComboBox()
         Me.TabControlLamps.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControlLamps
@@ -116,7 +119,7 @@ Partial Class FrmLampsDirect
         'GroupBox6
         '
         Me.GroupBox6.Controls.Add(Me.CmbLampPhase)
-        Me.GroupBox6.Location = New System.Drawing.Point(18, 491)
+        Me.GroupBox6.Location = New System.Drawing.Point(18, 561)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(519, 59)
         Me.GroupBox6.TabIndex = 15
@@ -254,12 +257,32 @@ Partial Class FrmLampsDirect
         Me.MyToolTip.SetToolTip(Me.BtnSave, "Will save changes and reload values")
         Me.BtnSave.UseVisualStyleBackColor = True
         '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.CmbLampSelection)
+        Me.GroupBox5.Location = New System.Drawing.Point(18, 491)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(519, 64)
+        Me.GroupBox5.TabIndex = 21
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Lamp Selection"
+        '
+        'CmbLampSelection
+        '
+        Me.CmbLampSelection.FormattingEnabled = True
+        Me.CmbLampSelection.Location = New System.Drawing.Point(41, 21)
+        Me.CmbLampSelection.Name = "CmbLampSelection"
+        Me.CmbLampSelection.Size = New System.Drawing.Size(190, 24)
+        Me.CmbLampSelection.TabIndex = 1
+        Me.MyToolTip.SetToolTip(Me.CmbLampSelection, "Physical LED output line")
+        '
         'FrmLampsDirect
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1134, 578)
+        Me.ClientSize = New System.Drawing.Size(1134, 646)
+        Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.BtnSave)
         Me.Controls.Add(Me.LblLampID)
@@ -282,6 +305,7 @@ Partial Class FrmLampsDirect
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -309,4 +333,6 @@ Partial Class FrmLampsDirect
     Friend WithEvents Label4 As Label
     Friend WithEvents BtnSave As Button
     Friend WithEvents MyToolTip As ToolTip
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents CmbLampSelection As ComboBox
 End Class
