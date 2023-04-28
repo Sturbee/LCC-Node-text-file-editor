@@ -85,7 +85,7 @@ Public Class ClassExportXmlToText
                         writeText = myText
 
                     Case Else
-                        Stop
+                        Throw New MyException("MyExportXmlToTextFile Level1 value = " + row.level1.ToString + ", Line " + lineNum.ToString + Space(1) + myText)
 
                 End Select
 
@@ -105,488 +105,324 @@ Public Class ClassExportXmlToText
 
             MsgBox("Finished creating restore file " + outputPath)
 
+        Catch ex As MyException
+
+            MsgBox(ex.Message)
+
         Catch ex As Exception
-            MsgBox("Failed to create new text file")
+
+            MsgBox(ex.StackTrace)
+
         End Try
 
     End Sub
 
     Private Sub RowNode(lineNum As Integer, myText As String, level1 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
+        Dim rowNode As ExportXml.NodeRow = MyExport.DbExport.Node.FindByNodeID(rowLevel2.level2)
+        Dim newResultText = rowNode.Item(rowLevel2.columnID - 1).ToString
 
-            Dim rowNode As ExportXml.NodeRow = MyExport.DbExport.Node.FindByNodeID(rowLevel2.level2)
-            Dim newResultText = rowNode.Item(rowLevel2.columnID - 1).ToString
+        Dim cut As Integer = InStr(myText, rowLevel2.resultText) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, rowLevel2.resultText) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + Space(1) + "Node ID - " + rowLevel2.text + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed process table Node row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + Space(1) + "Node ID - " + rowLevel2.text + Space(1) + newResultText)
 
     End Sub
 
     Private Sub RowPowerMonitor(lineNum As Integer, myText As String, level1 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowlevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowlevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
+        Dim rowPowerMonitor As ExportXml.PowerMonitorRow = Me.MyExport.DbExport.PowerMonitor.FindByPowerMonitorID(rowlevel2.level2)
+        Dim newResultText = rowPowerMonitor.Item(rowlevel2.columnID - 1).ToString
 
-            Dim rowPowerMonitor As ExportXml.PowerMonitorRow = Me.MyExport.DbExport.PowerMonitor.FindByPowerMonitorID(rowlevel2.level2)
-            Dim newResultText = rowPowerMonitor.Item(rowlevel2.columnID - 1).ToString
+        Dim cut As Integer = InStr(myText, rowlevel2.resultText) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, rowlevel2.resultText) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + Space(1) + "Node Power Monitor - " + rowlevel2.text + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Power Monitor row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + Space(1) + "Node Power Monitor - " + rowlevel2.text + Space(1) + newResultText)
 
     End Sub
 
     Private Sub RowPort(lineNum As Integer, myText As String, level1 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
+        Select Case rowLevel2.level2
+            Case 0
+                Call Me.TablePort(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
 
-            Select Case rowLevel2.level2
-                Case 0
-                    Call Me.TablePort(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
+            Case 1
+                Call Me.TablePortDelay(lineNum, myText, rowLevel2.level1, rowLevel2.item1, rowLevel2.resultText, writeText)
 
-                Case 1
-                    Call Me.TablePortDelay(lineNum, myText, rowLevel2.level1, rowLevel2.item1, rowLevel2.resultText, writeText)
+            Case 2
+                Call Me.TablePortEvent(lineNum, myText, rowLevel2.level1, rowLevel2.item1, rowLevel2.resultText, writeText)
 
-                Case 2
-                    Call Me.TablePortEvent(lineNum, myText, rowLevel2.level1, rowLevel2.item1, rowLevel2.resultText, writeText)
+            Case Else
+                Throw New MyException("RowPort Level2 value = " + rowLevel2.level2.ToString + ", Line " + lineNum.ToString + Space(1) + myText)
 
-                Case Else
-                    MsgBox("Level2 value unknown")
-
-            End Select
-
-        Catch ex As Exception
-
-            MsgBox("Failed to read process port")
-
-        End Try
+        End Select
 
     End Sub
 
 
     Private Sub TablePort(lineNum As Integer, myText As String, item1 As Integer, columnID As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowPort As ExportXml.PortRow = Me.MyExport.DbExport.Port.FindByLineID(item1)
+        Dim newResultText = rowPort.Item(columnID - 2).ToString
 
-            Dim rowPort As ExportXml.PortRow = Me.MyExport.DbExport.Port.FindByLineID(item1)
-            Dim newResultText = rowPort.Item(columnID - 2).ToString
+        Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + " Port I/O - " + "Line(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Port row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " Port I/O - " + "Line(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
 
     End Sub
 
     Private Sub TablePortDelay(lineNum As Integer, myText As String, level1 As Integer, item1 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowlevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowlevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
+        Dim rowPortDelay As ExportXml.PortDelayRow = Me.MyExport.DbExport.PortDelay.FindByLineIDDelayID(item1, rowlevel3.item2)
 
-            Dim rowPortDelay As ExportXml.PortDelayRow = Me.MyExport.DbExport.PortDelay.FindByLineIDDelayID(item1, rowlevel3.item2)
+        Dim newResultText = rowPortDelay.Item(rowlevel3.columnID - 2).ToString
 
-            Dim newResultText = rowPortDelay.Item(rowlevel3.columnID - 2).ToString
+        Dim cut As Integer = InStr(myText, rowlevel3.text) + Len(rowlevel3.text) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, rowlevel3.text) + Len(rowlevel3.text) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + " Port I/O - " + "Line(" + item1.ToString + ") - Delay(" + rowlevel3.item2.ToString + ") - " + rowlevel3.text + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Port Delay row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " Port I/O - " + "Line(" + item1.ToString + ") - Delay(" + rowlevel3.item2.ToString + ") - " + rowlevel3.text + Space(1) + newResultText)
 
     End Sub
 
     Private Sub TablePortEvent(lineNum As Integer, myText As String, level1 As Integer, item1 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
+        Dim rowPortEvent As ExportXml.PortEventRow = Me.MyExport.DbExport.PortEvent.FindByLineIDEventID(item1, rowLevel3.item2)
 
-            Dim rowPortEvent As ExportXml.PortEventRow = Me.MyExport.DbExport.PortEvent.FindByLineIDEventID(item1, rowLevel3.item2)
+        Dim newResultText = rowPortEvent.Item(rowLevel3.columnID - 2).ToString
 
-            Dim newResultText = rowPortEvent.Item(rowLevel3.columnID - 2).ToString
+        Dim cut As Integer = InStr(myText, rowLevel3.text) + Len(rowLevel3.text) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, rowLevel3.text) + Len(rowLevel3.text) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + " Port I/O - Line(" + item1.ToString + ") - " + "Event(" + rowLevel3.item2.ToString + ") - " + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Port Event")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " Port I/O - Line(" + item1.ToString + ") - " + "Event(" + rowLevel3.item2.ToString + ") - " + newResultText)
 
     End Sub
 
     Private Sub RowLogic(lineNum As Integer, myText As String, level1 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
+        Select Case rowLevel2.level2
+            Case 0 ' Logic section
+                Call Me.TableLogic(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
 
-            Select Case rowLevel2.level2
-                Case 0 ' Logic section
-                    Call Me.TableLogic(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
+            Case 1 ' Logic Operation section
+                Call Me.TableLogicOperation(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
 
-                Case 1 ' Logic Operation section
-                    Call Me.TableLogicOperation(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
+            Case 2 ' Logic Action
+                Call Me.TableLogicAction(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
 
-                Case 2 ' Logic Action
-                    Call Me.TableLogicAction(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
+            Case 3
+                Call Me.TableLogicProducer(lineNum, myText, rowLevel2.level1, rowLevel2.item1, rowLevel2.resultText, writeText)
 
-                Case 3
-                    Call Me.TableLogicProducer(lineNum, myText, rowLevel2.level1, rowLevel2.item1, rowLevel2.resultText, writeText)
+            Case Else
+                Throw New MyException("RowLogic Level2 value = " + rowLevel2.level2.ToString + ", Line " + lineNum.ToString + Space(1) + myText)
 
-                Case Else
-                    MsgBox("Logic Section unknown - " + rowLevel2.level2)
-
-            End Select
-
-            Me.MyExport.DbExport.AcceptChanges()
-
-        Catch ex As Exception
-
-            MsgBox("Failed Add Row Logic")
-
-        End Try
+        End Select
 
     End Sub
 
     Private Sub TableLogic(lineNum As Integer, myText As String, item1 As Integer, columnID As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLogic As ExportXml.LogicRow = Me.MyExport.DbExport.Logic.FindByLogicID(item1)
+        Dim newResultText = rowLogic.Item(columnID - 2).ToString
 
-            Dim rowLogic As ExportXml.LogicRow = Me.MyExport.DbExport.Logic.FindByLogicID(item1)
-            Dim newResultText = rowLogic.Item(columnID - 2).ToString
+        Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + " Conditional - " + "Logic(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process Logic row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " Conditional - " + "Logic(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
 
     End Sub
 
     Private Sub TableLogicOperation(lineNum As Integer, myText As String, item1 As Integer, columnID As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLogicOP As ExportXml.LogicOperationRow = Me.MyExport.DbExport.LogicOperation.FindByLogicID(item1)
+        Dim newResultText = rowLogicOP.Item(columnID - 2).ToString
 
-            Dim rowLogicOP As ExportXml.LogicOperationRow = Me.MyExport.DbExport.LogicOperation.FindByLogicID(item1)
-            Dim newResultText = rowLogicOP.Item(columnID - 2).ToString
+        Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + " Conditional - " + "Logic(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Logic Operation row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " Conditional - " + "Logic(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
 
     End Sub
 
     Private Sub TableLogicAction(lineNum As Integer, myText As String, item1 As Integer, columnID As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLogicAction As ExportXml.LogicActionRow = Me.MyExport.DbExport.LogicAction.FindByLogicID(item1)
+        Dim newResultText = rowLogicAction.Item(columnID - 2).ToString
 
-            Dim rowLogicAction As ExportXml.LogicActionRow = Me.MyExport.DbExport.LogicAction.FindByLogicID(item1)
-            Dim newResultText = rowLogicAction.Item(columnID - 2).ToString
+        Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + " Conditional - " + "Logic(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Logic Action row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " Conditional - " + "Logic(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
 
     End Sub
 
     Private Sub TableLogicProducer(lineNum As Integer, myText As String, level1 As Integer, item1 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
+        Dim rowLogicProducer As ExportXml.LogicProducerRow = Me.MyExport.DbExport.LogicProducer.FindByLogicIDActionID(item1, rowLevel3.item2)
+        Dim newResultText = rowLogicProducer.Item(rowLevel3.columnID - 2).ToString
 
-            Dim rowLogicProducer As ExportXml.LogicProducerRow = Me.MyExport.DbExport.LogicProducer.FindByLogicIDActionID(item1, rowLevel3.item2)
-            Dim newResultText = rowLogicProducer.Item(rowLevel3.columnID - 2).ToString
+        Dim cut As Integer = InStr(myText, rowLevel3.text) + Len(rowLevel3.text) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, rowLevel3.text) + Len(rowLevel3.text) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + " Conditional - Logic(" + item1.ToString + ") - Action(" + rowLevel3.item2.ToString + ") - " + rowLevel3.text + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Logic Producer row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " Conditional - Logic(" + item1.ToString + ") - Action(" + rowLevel3.item2.ToString + ") - " + rowLevel3.text + Space(1) + newResultText)
 
     End Sub
 
     Private Sub RowRuleToAspect(lineNum As Integer, myText As String, level1 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
+        Select Case rowLevel2.level2
+            Case 0
+                Call Me.TableMast(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
 
-            Select Case rowLevel2.level2
-                Case 0
-                    Call Me.TableMast(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
+            Case 1
+                Call Me.TableMastRule(lineNum, myText, rowLevel2.level1, rowLevel2.item1, rowLevel2.resultText, writeText)
 
-                Case 1
-                    Call Me.TableMastRule(lineNum, myText, rowLevel2.level1, rowLevel2.item1, rowLevel2.resultText, writeText)
+            Case Else
+                Throw New MyException("RowRuleToAspect Level2 value = " + rowLevel2.level2.ToString + ", Line " + lineNum.ToString + Space(1) + myText)
 
-                Case Else
-
-                    Stop
-
-            End Select
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process Row Rule To Aspect")
-
-        End Try
+        End Select
 
     End Sub
 
     Private Sub TableMast(lineNum As Integer, myText As String, item1 As Integer, columnID As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowMast As ExportXml.MastRow = Me.MyExport.DbExport.Mast.FindByMastID(item1)
+        Dim newResultText = rowMast.Item(columnID - 2).ToString
 
-            Dim rowMast As ExportXml.MastRow = Me.MyExport.DbExport.Mast.FindByMastID(item1)
-            Dim newResultText = rowMast.Item(columnID - 2).ToString
+        Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + " Mast(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Mast row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " Mast(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
 
     End Sub
 
 
     Private Sub TableMastRule(lineNum As Integer, myText As String, level1 As Integer, item1 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
 
-            Dim rowLevel3 As ImportCDI.MatchLevel3Row = MyImport.MatchLevel3(lineNum, level1, inputText)
+        Select Case rowLevel3.level2
+            Case 1
 
-            Select Case rowLevel3.level2
-                Case 1
+                Dim rowMastRule As ExportXml.MastRuleRow = Me.MyExport.DbExport.MastRule.FindByMastIDRuleID(item1, rowLevel3.item2)
+                Dim newResultText = rowMastRule.Item(rowLevel3.columnID - 2).ToString
 
-                    Dim rowMastRule As ExportXml.MastRuleRow = Me.MyExport.DbExport.MastRule.FindByMastIDRuleID(item1, rowLevel3.item2)
-                    Dim newResultText = rowMastRule.Item(rowLevel3.columnID - 2).ToString
+                Dim cut As Integer = InStr(myText, rowLevel3.text) + Len(rowLevel3.text) - 1
+                writeText = Mid(myText, 1, cut) + newResultText
 
-                    Dim cut As Integer = InStr(myText, rowLevel3.text) + Len(rowLevel3.text) - 1
-                    writeText = Mid(myText, 1, cut) + newResultText
+                Console.WriteLine(lineNum.ToString + " Mast - Mast(" + item1.ToString + ") " + " - Rule(" + rowLevel3.item2.ToString + ") - " + rowLevel3.text + Space(1) + newResultText)
 
-                    Console.WriteLine(lineNum.ToString + " Mast - Mast(" + item1.ToString + ") " + " - Rule(" + rowLevel3.item2.ToString + ") - " + rowLevel3.text + Space(1) + newResultText)
+            Case 2
 
-                Case 2
+                Call Me.TableMastAppearance(lineNum, myText, level1, item1, rowLevel3.item2, rowLevel3.resultText, writeText)
 
-                    Call Me.TableMastAppearance(lineNum, myText, level1, item1, rowLevel3.item2, rowLevel3.resultText, writeText)
+            Case Else
+                Throw New MyException("TableMastRule Level2 value = " + rowLevel3.level2.ToString + ", Line " + lineNum.ToString + Space(1) + myText)
 
-                Case Else
-
-                    Stop
-
-            End Select
-
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Mast Rule row")
-
-        End Try
+        End Select
 
     End Sub
 
 
     Private Sub TableMastAppearance(lineNum As Integer, myText As String, level1 As Integer, item1 As Integer, item2 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLevel4 As ImportCDI.MatchLevel4Row = MyImport.MatchLevel4(lineNum, level1, inputText)
 
-            Dim rowLevel4 As ImportCDI.MatchLevel4Row = MyImport.MatchLevel4(lineNum, level1, inputText)
+        Dim rowMastRuleAppear As ExportXml.MastRuleAppearRow = Me.MyExport.DbExport.MastRuleAppear.FindByMastIDRuleIDAppearanceID(item1, item2, rowLevel4.item3)
+        Dim newResultText = rowMastRuleAppear.Item(rowLevel4.columnID - 2).ToString
 
-            Dim rowMastRuleAppear As ExportXml.MastRuleAppearRow = Me.MyExport.DbExport.MastRuleAppear.FindByMastIDRuleIDAppearanceID(item1, item2, rowLevel4.item3)
-            Dim newResultText = rowMastRuleAppear.Item(rowLevel4.columnID - 2).ToString
+        Dim cut As Integer = InStr(myText, rowLevel4.text) + Len(rowLevel4.text) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, rowLevel4.text) + Len(rowLevel4.text) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + " Mast - " + "Mast(" + item1.ToString + ") - Rule(" + item2.ToString + ") - Appearance(" + rowLevel4.item3.ToString + ") - " + rowLevel4.text + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Mast Rule Appearance row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " Mast - " + "Mast(" + item1.ToString + ") - Rule(" + item2.ToString + ") - Appearance(" + rowLevel4.item3.ToString + ") - " + rowLevel4.text + Space(1) + newResultText)
 
     End Sub
 
     Private Sub RowLampDirectControl(lineNum As Integer, myText As String, level1 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
+        Select Case rowLevel2.level2
+            Case 0
+                Call Me.TableLampDirect(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
 
-            Select Case rowLevel2.level2
-                Case 0
-                    Call Me.TableLampDirect(lineNum, myText, rowLevel2.item1, rowLevel2.columnID, rowLevel2.text, writeText)
+            Case Else
+                Throw New MyException("RowLampDirectControl Level2 value = " + rowLevel2.level2.ToString + ", Line " + lineNum.ToString + Space(1) + myText)
 
-                Case Else
-                    Stop
-
-            End Select
-
-        Catch ex As Exception
-
-            MsgBox("Failed process Row Lamp Direct Control")
-
-        End Try
+        End Select
 
     End Sub
 
 
     Private Sub TableLampDirect(lineNum As Integer, myText As String, item1 As Integer, columnID As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLampDirect As ExportXml.LampDirectRow = Me.MyExport.DbExport.LampDirect.FindByLampDirectID(item1)
+        Dim newResultText = rowLampDirect.Item(columnID - 2).ToString
 
-            Dim rowLampDirect As ExportXml.LampDirectRow = Me.MyExport.DbExport.LampDirect.FindByLampDirectID(item1)
-            Dim newResultText = rowLampDirect.Item(columnID - 2).ToString
+        Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, inputText) + Len(inputText) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + " LampDirect(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Lamp Direct row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " LampDirect(" + item1.ToString + ") - " + inputText + Space(1) + newResultText)
 
     End Sub
 
 
     Private Sub RowTrackReceiver(lineNum As Integer, myText As String, level1 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
+        Dim rowCircuit As ExportXml.TrackReceiverRow = Me.MyExport.DbExport.TrackReceiver.FindByCircuitID(rowLevel2.item1)
+        Dim newResultText = rowCircuit.Item(rowLevel2.columnID).ToString
 
-            Dim rowCircuit As ExportXml.TrackReceiverRow = Me.MyExport.DbExport.TrackReceiver.FindByCircuitID(rowLevel2.item1)
-            Dim newResultText = rowCircuit.Item(rowLevel2.columnID).ToString
+        Dim cut As Integer = InStr(myText, rowLevel2.text) + Len(rowLevel2.text) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, rowLevel2.text) + Len(rowLevel2.text) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + " Track Circuit Receiver - Circuit(" + rowLevel2.item1.ToString + ") - " + rowLevel2.text + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Track Receiver row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " Track Circuit Receiver - Circuit(" + rowLevel2.item1.ToString + ") - " + rowLevel2.text + Space(1) + newResultText)
 
     End Sub
 
     Private Sub RowTrackTransmitter(lineNum As Integer, myText As String, level1 As Integer, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
 
-            Dim rowLevel2 As ImportCDI.MatchLevel2Row = MyImport.MatchLevel2(lineNum, level1, inputText)
+        Dim rowCircuit As ExportXml.TrackTransmitterRow = Me.MyExport.DbExport.TrackTransmitter.FindByCircuitID(rowLevel2.item1)
+        Dim newResultText = rowCircuit.Item(rowLevel2.columnID).ToString
 
-            Dim rowCircuit As ExportXml.TrackTransmitterRow = Me.MyExport.DbExport.TrackTransmitter.FindByCircuitID(rowLevel2.item1)
-            Dim newResultText = rowCircuit.Item(rowLevel2.columnID).ToString
+        Dim cut As Integer = InStr(myText, rowLevel2.text) + Len(rowLevel2.text) - 1
+        writeText = Mid(myText, 1, cut) + newResultText
 
-            Dim cut As Integer = InStr(myText, rowLevel2.text) + Len(rowLevel2.text) - 1
-            writeText = Mid(myText, 1, cut) + newResultText
-
-            Console.WriteLine(lineNum.ToString + " Track Circuit Receiver - Circuit(" + rowLevel2.item1.ToString + ") - " + rowLevel2.text + Space(1) + newResultText)
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process table Track Transmitter row")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " Track Circuit Receiver - Circuit(" + rowLevel2.item1.ToString + ") - " + rowLevel2.text + Space(1) + newResultText)
 
     End Sub
 
 
     Private Sub RowLamp(lineNum As Integer, myText As String, inputText As String, ByRef writeText As String)
 
-        Try
+        Dim LampID As Integer = Val(inputText)
 
-            Dim LampID As Integer = Val(inputText)
-            Dim rowLamp As ExportXml.LampRow = Me.MyExport.DbExport.Lamp.FindByLampID(LampID)
+        Dim rowLamp As ExportXml.LampRow = Me.MyExport.DbExport.Lamp.FindByLampID(LampID)
 
-            If rowLamp Is Nothing Then
-                MsgBox("Failed to find Lamp row " + LampID.ToString)
-            Else
+        Dim cut As Integer = InStr(myText, "=")
+        writeText = Mid(myText, 1, cut) + rowLamp.brightness.ToString
 
-                Dim cut As Integer = InStr(myText, "=")
-                writeText = Mid(myText, 1, cut) + rowLamp.brightness.ToString
-
-                Console.WriteLine(lineNum.ToString + " Lamp(" + LampID.ToString + ") - Brightness= " + rowLamp.brightness.ToString)
-
-            End If
-
-        Catch ex As Exception
-
-            MsgBox("Failed to process UpDate Row Lamp")
-
-        End Try
+        Console.WriteLine(lineNum.ToString + " Lamp(" + LampID.ToString + ") - Brightness= " + rowLamp.brightness.ToString)
 
     End Sub
 

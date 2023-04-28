@@ -81,6 +81,7 @@
     <Compile Include="ClassExportXml.vb" />
     <Compile Include="ClassExportXmlToCsv.vb" />
     <Compile Include="ClassExportXsd.vb" />
+    <Compile Include="ClsCommon.vb" />
     <Compile Include="ClsExportXML.vb" />
     <Compile Include="ClsImportCDI.vb" />
     <Compile Include="ClsReport.vb" />
