@@ -57,7 +57,7 @@ Public Class ClsImportCDI
 
         If IsNothing(rowLevel1) Then
             Console.WriteLine(lineNum.ToString + " Level1 not found - " + inputText)
-            Throw New System.Exception(lineNum.ToString + " Level1 not found - " + inputText)
+            Throw New MyException(lineNum.ToString + " Level1 not found - " + inputText)
         End If
 
         Return rowLevel1
@@ -111,7 +111,7 @@ Public Class ClsImportCDI
 
         If IsNothing(rowLevel2) Then
             Console.WriteLine(lineNum.ToString + " Section not found - " + inputText)
-            Throw New System.Exception(lineNum.ToString + " Level2 not found - " + inputText)
+            Throw New MyException(lineNum.ToString + " Level2 not found - " + inputText)
         End If
 
         Return rowLevel2
@@ -161,7 +161,7 @@ Public Class ClsImportCDI
 
         If IsNothing(rowLevel3) Then
             Console.WriteLine(lineNum.ToString + " Level3 not found - " + inputText)
-            Throw New System.Exception(lineNum.ToString + " Level3 not found - " + inputText)
+            Throw New MyException(lineNum.ToString + " Level3 not found - " + inputText)
         End If
 
         Return rowLevel3
@@ -212,7 +212,7 @@ Public Class ClsImportCDI
 
         If IsNothing(rowLevel4) Then
             Console.WriteLine(lineNum.ToString + " Level4 not found - " + inputText)
-            Throw New System.Exception(lineNum.ToString + " Level4 not found - " + inputText)
+            Throw New MyException(lineNum.ToString + " Level4 not found - " + inputText)
         End If
 
         Return rowLevel4
@@ -236,7 +236,7 @@ Public Class ClsImportCDI
 
         Catch ex As Exception
 
-            Throw New System.Exception("GetItemValue failure for text " + resultText)
+            Throw New MyException("GetItemValue failure for text " + resultText)
 
         End Try
 
