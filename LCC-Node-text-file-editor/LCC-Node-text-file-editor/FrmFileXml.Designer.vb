@@ -31,6 +31,7 @@ Partial Class FrmFileXml
         Me.CmdBrowse = New System.Windows.Forms.Button()
         Me.CmdRestore = New System.Windows.Forms.Button()
         Me.MyToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.CmdCsv = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'FilesListBox
@@ -87,12 +88,23 @@ Partial Class FrmFileXml
         Me.MyToolTip.SetToolTip(Me.CmdRestore, "Creates a text file with edited values for restoring a node")
         Me.CmdRestore.UseVisualStyleBackColor = True
         '
+        'CmdCsv
+        '
+        Me.CmdCsv.Location = New System.Drawing.Point(851, 201)
+        Me.CmdCsv.Name = "CmdCsv"
+        Me.CmdCsv.Size = New System.Drawing.Size(75, 23)
+        Me.CmdCsv.TabIndex = 12
+        Me.CmdCsv.Text = "CSV"
+        Me.MyToolTip.SetToolTip(Me.CmdCsv, "Creates a csv file to import to a spreadsheet")
+        Me.CmdCsv.UseVisualStyleBackColor = True
+        '
         'FrmFileXml
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(960, 450)
+        Me.Controls.Add(Me.CmdCsv)
         Me.Controls.Add(Me.CmdRestore)
         Me.Controls.Add(Me.CmdEdit)
         Me.Controls.Add(Me.CmdBrowse)
@@ -114,4 +126,5 @@ Partial Class FrmFileXml
     Friend WithEvents CmdBrowse As Button
     Friend WithEvents MyToolTip As ToolTip
     Friend WithEvents CmdRestore As Button
+    Friend WithEvents CmdCsv As Button
 End Class

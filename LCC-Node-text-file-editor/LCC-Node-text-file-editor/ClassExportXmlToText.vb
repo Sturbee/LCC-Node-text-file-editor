@@ -6,15 +6,17 @@ Public Class ClassExportXmlToText
 
     Public Sub MyExportXmlToTextFile(filePath As String)
 
-        If File.Exists(filePath) = False Then
-            File.Delete(filePath)
-            MsgBox(filePath + " does not exit")
-            Exit Sub
-        End If
-
-        MyExport.DbExportReadFile(filePath)
-
         Try
+
+            If File.Exists(filePath) = False Then
+                File.Delete(filePath)
+                MsgBox(filePath + " does not exit")
+                Exit Sub
+            End If
+
+            MyExport.DbExportReadFile(filePath)
+
+
             Dim nodeRow As ExportXml.NodeRow = MyExport.DbExport.Node.Item(0)
             Dim sourcePath As String = nodeRow.sourceFile
             If File.Exists(sourcePath) = False Then

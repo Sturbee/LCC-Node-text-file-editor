@@ -1984,6 +1984,8 @@ Partial Public Class Titles
         
         Private columneventBase As Global.System.Data.DataColumn
         
+        Private columnsourceFile As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -2060,6 +2062,14 @@ Partial Public Class Titles
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property sourceFileColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsourceFile
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2096,9 +2106,9 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddNodeTitlesRow(ByVal header As String, ByVal name As String, ByVal description As String, ByVal nodeType As String, ByVal eventBase As String) As NodeTitlesRow
+        Public Overloads Function AddNodeTitlesRow(ByVal header As String, ByVal name As String, ByVal description As String, ByVal nodeType As String, ByVal eventBase As String, ByVal sourceFile As String) As NodeTitlesRow
             Dim rowNodeTitlesRow As NodeTitlesRow = CType(Me.NewRow,NodeTitlesRow)
-            Dim columnValuesArray() As Object = New Object() {header, name, description, nodeType, eventBase}
+            Dim columnValuesArray() As Object = New Object() {header, name, description, nodeType, eventBase, sourceFile}
             rowNodeTitlesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowNodeTitlesRow)
             Return rowNodeTitlesRow
@@ -2126,6 +2136,7 @@ Partial Public Class Titles
             Me.columndescription = MyBase.Columns("description")
             Me.columnnodeType = MyBase.Columns("nodeType")
             Me.columneventBase = MyBase.Columns("eventBase")
+            Me.columnsourceFile = MyBase.Columns("sourceFile")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2141,6 +2152,8 @@ Partial Public Class Titles
             MyBase.Columns.Add(Me.columnnodeType)
             Me.columneventBase = New Global.System.Data.DataColumn("eventBase", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columneventBase)
+            Me.columnsourceFile = New Global.System.Data.DataColumn("sourceFile", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsourceFile)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5633,6 +5646,21 @@ Partial Public Class Titles
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property sourceFile() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableNodeTitles.sourceFileColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'sourceFile' in table 'NodeTitles' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNodeTitles.sourceFileColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsheaderNull() As Boolean
             Return Me.IsNull(Me.tableNodeTitles.headerColumn)
         End Function
@@ -5689,6 +5717,18 @@ Partial Public Class Titles
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SeteventBaseNull()
             Me(Me.tableNodeTitles.eventBaseColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IssourceFileNull() As Boolean
+            Return Me.IsNull(Me.tableNodeTitles.sourceFileColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetsourceFileNull()
+            Me(Me.tableNodeTitles.sourceFileColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

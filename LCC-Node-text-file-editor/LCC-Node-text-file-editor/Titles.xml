@@ -8,6 +8,7 @@
 		<description>Node Description</description>
 		<nodeType>Node Type</nodeType>
 		<eventBase>Base Address</eventBase>
+		<sourceFile>File Name</sourceFile>
 	</NodeTitles>
 
 	<!-- Titles for Power Monitor level 1 -->

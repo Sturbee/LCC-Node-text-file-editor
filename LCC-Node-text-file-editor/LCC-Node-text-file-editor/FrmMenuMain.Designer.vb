@@ -63,19 +63,19 @@ Partial Class FrmMenuMain
         'FileProcessToolStripMenuItem
         '
         Me.FileProcessToolStripMenuItem.Name = "FileProcessToolStripMenuItem"
-        Me.FileProcessToolStripMenuItem.Size = New System.Drawing.Size(142, 26)
+        Me.FileProcessToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.FileProcessToolStripMenuItem.Text = "Process"
         '
         'FileEditToolStripMenuItem
         '
         Me.FileEditToolStripMenuItem.Name = "FileEditToolStripMenuItem"
-        Me.FileEditToolStripMenuItem.Size = New System.Drawing.Size(142, 26)
+        Me.FileEditToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.FileEditToolStripMenuItem.Text = "Edit"
         '
         'FileRestoreToolStripMenuItem
         '
         Me.FileRestoreToolStripMenuItem.Name = "FileRestoreToolStripMenuItem"
-        Me.FileRestoreToolStripMenuItem.Size = New System.Drawing.Size(142, 26)
+        Me.FileRestoreToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.FileRestoreToolStripMenuItem.Text = "Restore"
         '
         'NodeToolStripMenuItem
@@ -130,13 +130,13 @@ Partial Class FrmMenuMain
         'PhysicalToolStripMenuItem
         '
         Me.PhysicalToolStripMenuItem.Name = "PhysicalToolStripMenuItem"
-        Me.PhysicalToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.PhysicalToolStripMenuItem.Size = New System.Drawing.Size(185, 26)
         Me.PhysicalToolStripMenuItem.Text = "Physical"
         '
         'DirectControlToolStripMenuItem
         '
         Me.DirectControlToolStripMenuItem.Name = "DirectControlToolStripMenuItem"
-        Me.DirectControlToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.DirectControlToolStripMenuItem.Size = New System.Drawing.Size(185, 26)
         Me.DirectControlToolStripMenuItem.Text = "Direct Control"
         '
         'UserToolStripMenuItem
