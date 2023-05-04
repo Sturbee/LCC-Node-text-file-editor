@@ -11,7 +11,6 @@ Public Class ClassExportXmlToCsv
         BlankColumn = 1 ' add blank column
         TitleOnly = 2 ' report title only
         TitleAndColumn = 3 ' report title and column value
-        TitleAndAttribute = 4 ' report title and attribute text
     End Enum
 
     Public Sub MyExportToCvsFile(filePath As String)
@@ -50,7 +49,7 @@ Public Class ClassExportXmlToCsv
             Call Me.ReportNodeTable(writer)
 
             ' output PowerMonitor table
-            REM Call Me.ReportPowerMonitorTable(writer)
+            Call Me.ReportPowerMonitorTable(writer)
 
             ' output Port I/O table
             REM Call Me.ReportPortTable(writer)
@@ -82,44 +81,49 @@ Public Class ClassExportXmlToCsv
         ' read Node table rows and export to cvs file
         For countTable = 0 To MyExport.DbExport.Node.Count - 1
 
-            Dim rowReport As Titles.NodeTitlesRow = MyTitles.Titles.NodeTitles.Item(countTable)
-            Dim lineReport As String = String.Empty
+            Dim rowTitle As Titles.NodeTitlesRow = MyTitles.Titles.NodeTitles.Item(0)
+            Dim lineTitle As String = String.Empty
 
-            Dim rowTable As ExportXml.NodeRow = MyExport.DbExport.Node.Item(countTable)
-            Dim lineRow As String = String.Empty
+            Dim rowExport As ExportXml.NodeRow = MyExport.DbExport.Node.Item(countTable)
+            Dim lineExport As String = String.Empty
 
-            For countRow = 0 To rowTable.ItemArray.Count - 1
+            For countRow = 0 To rowExport.ItemArray.Count - 1
 
                 Dim formatType As Integer
-                Dim columnName As String = MyExport.DbExport.Node.Columns(countRow).ColumnName
-                Dim columnValue As String = rowTable.Item(countRow).ToString
                 Dim reportTitle As String
-                Dim attributeText As String = String.Empty
+                Dim columnName As String = MyExport.DbExport.Node.Columns(countRow).ColumnName
+                Dim columnValue As String = rowExport.Item(countRow)
 
                 Try
-
-                    reportTitle = rowReport.Item(countRow).ToString
-                    Select Case countRow
-                        Case 0
-                            formatType = RowFormatType.TitleOnly
-                        Case Else
-                            formatType = RowFormatType.TitleAndColumn
-                    End Select
+                    reportTitle = rowTitle.Item(countRow).ToString
                 Catch ex As Exception
-                    formatType = RowFormatType.TitleAndAttribute
                     reportTitle = columnName
-                    attributeText = "<" + columnValue.ToString + ">"
                 End Try
 
-                Call Me.FormatMyLine(formatType, columnName, columnValue, reportTitle, attributeText, lineReport, lineRow)
+                Select Case countRow
+                    Case 0 ' Node ID
+                        formatType = RowFormatType.TitleOnly
+                    Case 3 ' Node Type
+                        formatType = RowFormatType.TitleAndColumn
+                        Dim row As Rpt.NodeTypeRow = MyReport.Rpt.NodeType.FindByvalue(columnValue)
+                        If row Is Nothing Then
+                            columnValue = "<" + columnValue.ToString + ">"
+                        Else
+                            columnValue = row.name
+                        End If
+                    Case Else
+                        formatType = RowFormatType.TitleAndColumn
+                End Select
+
+                Call Me.FormatMyLine(formatType, reportTitle, columnValue, lineTitle, lineExport)
 
             Next
 
-            Console.WriteLine(lineReport)
-            Console.WriteLine(lineRow)
+            Console.WriteLine(lineTitle)
+            Console.WriteLine(lineExport)
 
-            writer.WriteLine(lineReport)
-            writer.WriteLine(lineRow)
+            writer.WriteLine(lineTitle)
+            writer.WriteLine(lineExport)
             writer.WriteLine(comma)
 
         Next ' node row
@@ -131,64 +135,55 @@ Public Class ClassExportXmlToCsv
 
         Dim comma As String = ","
 
-        Try
+        ' read Power Monitor table rows and export to cvs file
+        For countTable = 0 To MyExport.DbExport.PowerMonitor.Count - 1
 
-            ' read Power Monitor table rows and export to cvs file
+            Dim rowTitle As Titles.PowerMonitorTitlesRow = MyTitles.Titles.PowerMonitorTitles.Item(0)
+            Dim lineTitle As String = String.Empty
 
-            For countTable = 0 To MyExport.DbExport.PowerMonitor.Count - 1
+            Dim rowExport As ExportXml.PowerMonitorRow = MyExport.DbExport.PowerMonitor.Item(countTable)
+            Dim lineExport As String = String.Empty
 
-                Dim rowTable As ExportXml.PowerMonitorRow = MyExport.DbExport.PowerMonitor.Item(countTable)
-                Dim lineReport As String = String.Empty
-                Dim lineRow As String = String.Empty
+            For countRow = 0 To rowExport.ItemArray.Count - 1
 
-                For countRow = 0 To rowTable.ItemArray.Count - 1
+                Dim formatType As Integer
+                Dim reportTitle As String
+                Dim columnName As String = MyExport.DbExport.PowerMonitor.Columns(countRow).ColumnName
+                Dim columnValue As String = rowExport.Item(countRow).ToString
 
-                    Dim formatType As Integer
-                    Dim columnName As String = MyExport.DbExport.PowerMonitor.Columns(countRow).ColumnName
-                    Dim columnValue As String = rowTable.Item(countRow).ToString
-                    Dim reportTitle As String = String.Empty
-                    Dim attributeText As String = String.Empty
+                Try
+                    reportTitle = rowTitle.Item(countRow).ToString
+                Catch ex As Exception
+                    reportTitle = columnName
+                End Try
 
-                    Stop
-                    Dim rowReport As String = String.Empty
-                    If rowReport Is Nothing Then
-                        formatType = 2
-                        reportTitle = columnName
-                    Else
-                        REM formatType = rowReport.formatType
-                        REM reportTitle = rowReport.title
-                    End If
-
-                    If IsNumeric(columnValue) Then
-                        ' get the attribute values for each value in rowNode
-                        Stop
-                        Dim rowAttribute As String = String.Empty
-                        If rowAttribute Is Nothing Then
-                            attributeText = "<" + columnValue.ToString + ">"
-                            If countRow > 1 Then Stop
+                Select Case countRow
+                    Case 0 ' Power Monitor ID
+                        formatType = RowFormatType.TitleOnly
+                    Case 1 ' Power Option
+                        formatType = RowFormatType.TitleAndColumn
+                        Dim row As Rpt.MessageOptionRow = MyReport.Rpt.MessageOption.FindByvalue(columnValue)
+                        If row Is Nothing Then
+                            columnValue = "<" + columnValue.ToString + ">"
                         Else
-                            REM attributeText = rowAttribute.text
+                            columnValue = row.text
                         End If
-                    End If
+                    Case Else
+                        formatType = RowFormatType.TitleAndColumn
+                End Select
 
-                    Call Me.FormatMyLine(formatType, columnName, columnValue, reportTitle, attributeText, lineReport, lineRow)
+                Call Me.FormatMyLine(formatType, reportTitle, columnValue, lineTitle, lineExport)
 
-                Next
+            Next
 
-                Console.WriteLine(lineReport)
-                Console.WriteLine(lineRow)
+            Console.WriteLine(lineTitle)
+            Console.WriteLine(lineExport)
 
-                writer.WriteLine(lineReport)
-                writer.WriteLine(lineRow)
-                writer.WriteLine(comma)
+            writer.WriteLine(lineTitle)
+            writer.WriteLine(lineExport)
+            writer.WriteLine(comma)
 
-            Next ' power monitor row
-
-        Catch ex As Exception
-
-            MsgBox("Failed to write csv text line")
-
-        End Try
+        Next ' power monitor row
 
     End Sub
 
@@ -235,7 +230,7 @@ Public Class ClassExportXmlToCsv
                         End If
                     End If
 
-                    Call Me.FormatMyLine(formatType, columnName, columnValue, reportTitle, attributeText, lineReport, lineRow)
+                    Call Me.FormatMyLine(formatType, reportTitle, columnValue, lineReport, lineRow)
 
                 Next
 
@@ -310,7 +305,7 @@ Public Class ClassExportXmlToCsv
                             End If
                         End If
 
-                        Call Me.FormatMyLine(formatType, columnName, columnValue, reportTitle, attributeText, lineReport, lineRow)
+                        Call Me.FormatMyLine(formatType, reportTitle, columnValue, lineReport, lineRow)
 
                     Next
 
@@ -382,7 +377,7 @@ Public Class ClassExportXmlToCsv
                             End If
                         End If
 
-                        Call Me.FormatMyLine(formatType, columnName, columnValue, reportTitle, attributeText, lineReport, lineRow)
+                        Call Me.FormatMyLine(formatType, reportTitle, columnValue, lineReport, lineRow)
 
                     Next
 
@@ -451,7 +446,7 @@ Public Class ClassExportXmlToCsv
                         End If
                     End If
 
-                    Call Me.FormatMyLine(formatType, columnName, columnValue, reportTitle, attributeText, lineReport, lineRow)
+                    Call Me.FormatMyLine(formatType, reportTitle, columnValue, lineReport, lineRow)
 
                 Next
 
@@ -585,7 +580,7 @@ Public Class ClassExportXmlToCsv
 
                         End Select
 
-                        Call Me.FormatMyLine(formatType, columnName, columnValue, reportTitle, attributeText, lineReport, lineRow)
+                        Call Me.FormatMyLine(formatType, reportTitle, columnValue, lineReport, lineRow)
 
                     Next
 
@@ -668,7 +663,7 @@ Public Class ClassExportXmlToCsv
                             End If
                         End If
 
-                        Call Me.FormatMyLine(formatType, columnName, columnValue, reportTitle, attributeText, lineReport, lineRow)
+                        Call Me.FormatMyLine(formatType, reportTitle, columnValue, lineReport, lineRow)
 
                     Next
 
@@ -783,7 +778,7 @@ Public Class ClassExportXmlToCsv
 
                         End Select
 
-                        Call Me.FormatMyLine(formatType, columnName, columnValue, reportTitle, attributeText, lineReport, lineRow)
+                        Call Me.FormatMyLine(formatType, reportTitle, columnValue, lineReport, lineRow)
 
                     Next
 
@@ -809,31 +804,27 @@ Public Class ClassExportXmlToCsv
 
     End Sub
 
-    Private Sub FormatMyLine(formatType As Integer, columnName As String, columnValue As String, reportTitle As String, attributeText As String, ByRef lineReport As String, ByRef lineRow As String)
+    Private Sub FormatMyLine(formatType As Integer, reportTitle As String, columnValue As String, ByRef lineTitle As String, ByRef lineExport As String)
 
         Dim comma As String = ","
 
         Select Case formatType
             Case RowFormatType.BlankColumn ' add blank column
-                lineReport += comma
-                lineRow += comma
+                lineTitle += comma
+                lineExport += comma
 
             Case RowFormatType.TitleOnly ' report title only
-                lineReport = lineReport + reportTitle + comma
-                lineRow += comma
+                lineTitle = lineTitle + reportTitle + comma
+                lineExport += comma
 
             Case RowFormatType.TitleAndColumn ' report title and column value
-                lineReport = lineReport + reportTitle + comma
-                lineRow = lineRow + columnValue + comma
-
-            Case RowFormatType.TitleAndAttribute ' report title and attribute text
-                lineReport = lineReport + reportTitle + comma
-                lineRow = lineRow + attributeText + comma
+                lineTitle = lineTitle + reportTitle + comma
+                lineExport = lineExport + columnValue + comma
 
             Case Else ' column info and attribute info
                 Stop
-                lineReport = lineReport + "<>" + columnName + comma + reportTitle + comma
-                lineRow = lineRow + "<>" + columnValue + comma + attributeText + comma
+                lineTitle = lineTitle + "<>" + reportTitle + comma
+                lineExport = lineExport + "<>" + columnValue + comma
 
         End Select
 

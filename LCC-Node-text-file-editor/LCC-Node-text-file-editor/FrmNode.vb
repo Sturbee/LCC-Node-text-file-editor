@@ -31,8 +31,9 @@ Public Class FrmNode
         Me.LblDecription.Text = rowTitle.description
         Me.LblNodeType.Text = rowTitle.nodeType
         Me.LblEventBase.Text = rowTitle.eventBase
+        Me.lblFileName.Text = rowTitle.sourceFile
 
-        Me.LblFileName.Text = Me.MyFileName
+        Me.LblFile.Text = Me.MyFileName
 
         ' read the attribute xml file
         Dim clsR As New ClsReport

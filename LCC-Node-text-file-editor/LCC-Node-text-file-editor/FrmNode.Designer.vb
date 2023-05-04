@@ -27,10 +27,10 @@ Partial Class FrmNode
         Me.LblDecription = New System.Windows.Forms.Label()
         Me.LblNodeType = New System.Windows.Forms.Label()
         Me.LblEventBase = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblFileName = New System.Windows.Forms.Label()
         Me.TxtNodeName = New System.Windows.Forms.TextBox()
         Me.TxtNodeDescription = New System.Windows.Forms.TextBox()
-        Me.LblFileName = New System.Windows.Forms.Label()
+        Me.LblFile = New System.Windows.Forms.Label()
         Me.LblType = New System.Windows.Forms.Label()
         Me.LblBaseAddress = New System.Windows.Forms.Label()
         Me.ButSaveChanges = New System.Windows.Forms.Button()
@@ -74,14 +74,14 @@ Partial Class FrmNode
         Me.LblEventBase.TabIndex = 3
         Me.LblEventBase.Text = "LblEventBase"
         '
-        'Label5
+        'lblFileName
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(117, 29)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(69, 16)
-        Me.Label5.TabIndex = 4
-        Me.Label5.Text = "File Name"
+        Me.lblFileName.AutoSize = True
+        Me.lblFileName.Location = New System.Drawing.Point(117, 29)
+        Me.lblFileName.Name = "lblFileName"
+        Me.lblFileName.Size = New System.Drawing.Size(80, 16)
+        Me.lblFileName.TabIndex = 4
+        Me.lblFileName.Text = "lblFileName"
         '
         'TxtNodeName
         '
@@ -99,14 +99,14 @@ Partial Class FrmNode
         Me.TxtNodeDescription.TabIndex = 6
         Me.MyToolTip.SetToolTip(Me.TxtNodeDescription, "Describe what this node does")
         '
-        'LblFileName
+        'LblFile
         '
-        Me.LblFileName.AutoSize = True
-        Me.LblFileName.Location = New System.Drawing.Point(206, 29)
-        Me.LblFileName.Name = "LblFileName"
-        Me.LblFileName.Size = New System.Drawing.Size(84, 16)
-        Me.LblFileName.TabIndex = 7
-        Me.LblFileName.Text = "LblFileName"
+        Me.LblFile.AutoSize = True
+        Me.LblFile.Location = New System.Drawing.Point(206, 29)
+        Me.LblFile.Name = "LblFile"
+        Me.LblFile.Size = New System.Drawing.Size(47, 16)
+        Me.LblFile.TabIndex = 7
+        Me.LblFile.Text = "LblFile"
         '
         'LblType
         '
@@ -154,10 +154,10 @@ Partial Class FrmNode
         Me.Controls.Add(Me.ButSaveChanges)
         Me.Controls.Add(Me.LblBaseAddress)
         Me.Controls.Add(Me.LblType)
-        Me.Controls.Add(Me.LblFileName)
+        Me.Controls.Add(Me.LblFile)
         Me.Controls.Add(Me.TxtNodeDescription)
         Me.Controls.Add(Me.TxtNodeName)
-        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.lblFileName)
         Me.Controls.Add(Me.LblEventBase)
         Me.Controls.Add(Me.LblNodeType)
         Me.Controls.Add(Me.LblDecription)
@@ -173,10 +173,10 @@ Partial Class FrmNode
     Friend WithEvents LblDecription As Label
     Friend WithEvents LblNodeType As Label
     Friend WithEvents LblEventBase As Label
-    Friend WithEvents Label5 As Label
+    Friend WithEvents lblFileName As Label
     Friend WithEvents TxtNodeName As TextBox
     Friend WithEvents TxtNodeDescription As TextBox
-    Friend WithEvents LblFileName As Label
+    Friend WithEvents LblFile As Label
     Friend WithEvents LblType As Label
     Friend WithEvents LblBaseAddress As Label
     Friend WithEvents ButSaveChanges As Button
