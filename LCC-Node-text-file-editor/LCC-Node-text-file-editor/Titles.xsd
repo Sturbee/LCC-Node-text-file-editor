@@ -44,14 +44,6 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="FormatType" msprop:Generator_RowEvHandlerName="FormatTypeRowChangeEventHandler" msprop:Generator_RowDeletedName="FormatTypeRowDeleted" msprop:Generator_RowDeletingName="FormatTypeRowDeleting" msprop:Generator_RowEvArgName="FormatTypeRowChangeEvent" msprop:Generator_TablePropName="FormatType" msprop:Generator_RowChangedName="FormatTypeRowChanged" msprop:Generator_UserTableName="FormatType" msprop:Generator_RowChangingName="FormatTypeRowChanging" msprop:Generator_RowClassName="FormatTypeRow" msprop:Generator_TableClassName="FormatTypeDataTable" msprop:Generator_TableVarName="tableFormatType">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="value" msprop:Generator_ColumnPropNameInTable="valueColumn" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" type="xs:int" />
-              <xs:element name="text" msprop:Generator_ColumnPropNameInTable="textColumn" msprop:Generator_ColumnPropNameInRow="text" msprop:Generator_UserColumnName="text" msprop:Generator_ColumnVarNameInTable="columntext" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="NodeTitles" msprop:Generator_RowEvHandlerName="NodeTitlesRowChangeEventHandler" msprop:Generator_RowDeletedName="NodeTitlesRowDeleted" msprop:Generator_RowDeletingName="NodeTitlesRowDeleting" msprop:Generator_RowEvArgName="NodeTitlesRowChangeEvent" msprop:Generator_TablePropName="NodeTitles" msprop:Generator_RowChangedName="NodeTitlesRowChanged" msprop:Generator_UserTableName="NodeTitles" msprop:Generator_RowChangingName="NodeTitlesRowChanging" msprop:Generator_RowClassName="NodeTitlesRow" msprop:Generator_TableClassName="NodeTitlesDataTable" msprop:Generator_TableVarName="tableNodeTitles">
           <xs:complexType>
             <xs:sequence>
@@ -60,7 +52,7 @@
               <xs:element name="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_UserColumnName="description" msprop:Generator_ColumnVarNameInTable="columndescription" type="xs:string" minOccurs="0" />
               <xs:element name="nodeType" msprop:Generator_ColumnPropNameInTable="nodeTypeColumn" msprop:Generator_ColumnPropNameInRow="nodeType" msprop:Generator_UserColumnName="nodeType" msprop:Generator_ColumnVarNameInTable="columnnodeType" type="xs:string" minOccurs="0" />
               <xs:element name="eventBase" msprop:Generator_ColumnPropNameInTable="eventBaseColumn" msprop:Generator_ColumnPropNameInRow="eventBase" msprop:Generator_UserColumnName="eventBase" msprop:Generator_ColumnVarNameInTable="columneventBase" type="xs:string" minOccurs="0" />
-              <xs:element name="sourceFile" msprop:Generator_ColumnPropNameInRow="sourceFile" msprop:Generator_ColumnPropNameInTable="sourceFileColumn" msprop:Generator_ColumnVarNameInTable="columnsourceFile" msprop:Generator_UserColumnName="sourceFile" type="xs:string" minOccurs="0" />
+              <xs:element name="sourceFile" msprop:Generator_UserColumnName="sourceFile" msprop:Generator_ColumnPropNameInTable="sourceFileColumn" msprop:Generator_ColumnPropNameInRow="sourceFile" msprop:Generator_ColumnVarNameInTable="columnsourceFile" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -151,13 +143,13 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LampsTitles" msprop:Generator_RowClassName="LampsTitlesRow" msprop:Generator_RowEvHandlerName="LampsTitlesRowChangeEventHandler" msprop:Generator_RowDeletedName="LampsTitlesRowDeleted" msprop:Generator_RowDeletingName="LampsTitlesRowDeleting" msprop:Generator_RowEvArgName="LampsTitlesRowChangeEvent" msprop:Generator_TablePropName="LampsTitles" msprop:Generator_RowChangedName="LampsTitlesRowChanged" msprop:Generator_UserTableName="LampsTitles" msprop:Generator_RowChangingName="LampsTitlesRowChanging" msprop:Generator_TableClassName="LampsTitlesDataTable" msprop:Generator_TableVarName="tableLampsTitles">
+        <xs:element name="LampsTitles" msprop:Generator_RowEvHandlerName="LampsTitlesRowChangeEventHandler" msprop:Generator_RowDeletedName="LampsTitlesRowDeleted" msprop:Generator_RowDeletingName="LampsTitlesRowDeleting" msprop:Generator_RowEvArgName="LampsTitlesRowChangeEvent" msprop:Generator_TablePropName="LampsTitles" msprop:Generator_RowChangedName="LampsTitlesRowChanged" msprop:Generator_UserTableName="LampsTitles" msprop:Generator_RowChangingName="LampsTitlesRowChanging" msprop:Generator_RowClassName="LampsTitlesRow" msprop:Generator_TableClassName="LampsTitlesDataTable" msprop:Generator_TableVarName="tableLampsTitles">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="header" msprop:Generator_UserColumnName="header" msprop:Generator_ColumnPropNameInTable="headerColumn" msprop:Generator_ColumnPropNameInRow="header" msprop:Generator_ColumnVarNameInTable="columnheader" type="xs:string" minOccurs="0" />
-              <xs:element name="subHeader" msprop:Generator_UserColumnName="subHeader" msprop:Generator_ColumnPropNameInTable="subHeaderColumn" msprop:Generator_ColumnPropNameInRow="subHeader" msprop:Generator_ColumnVarNameInTable="columnsubHeader" type="xs:string" minOccurs="0" />
-              <xs:element name="help" msprop:Generator_UserColumnName="help" msprop:Generator_ColumnPropNameInTable="helpColumn" msprop:Generator_ColumnPropNameInRow="help" msprop:Generator_ColumnVarNameInTable="columnhelp" type="xs:string" minOccurs="0" />
-              <xs:element name="brightness" msprop:Generator_UserColumnName="brightness" msprop:Generator_ColumnPropNameInTable="brightnessColumn" msprop:Generator_ColumnPropNameInRow="brightness" msprop:Generator_ColumnVarNameInTable="columnbrightness" type="xs:string" minOccurs="0" />
+              <xs:element name="header" msprop:Generator_ColumnPropNameInTable="headerColumn" msprop:Generator_ColumnPropNameInRow="header" msprop:Generator_UserColumnName="header" msprop:Generator_ColumnVarNameInTable="columnheader" type="xs:string" minOccurs="0" />
+              <xs:element name="subHeader" msprop:Generator_ColumnPropNameInTable="subHeaderColumn" msprop:Generator_ColumnPropNameInRow="subHeader" msprop:Generator_UserColumnName="subHeader" msprop:Generator_ColumnVarNameInTable="columnsubHeader" type="xs:string" minOccurs="0" />
+              <xs:element name="help" msprop:Generator_ColumnPropNameInTable="helpColumn" msprop:Generator_ColumnPropNameInRow="help" msprop:Generator_UserColumnName="help" msprop:Generator_ColumnVarNameInTable="columnhelp" type="xs:string" minOccurs="0" />
+              <xs:element name="brightness" msprop:Generator_ColumnPropNameInTable="brightnessColumn" msprop:Generator_ColumnPropNameInRow="brightness" msprop:Generator_UserColumnName="brightness" msprop:Generator_ColumnVarNameInTable="columnbrightness" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -176,10 +168,6 @@
       <xs:field xpath="mstns:segID" />
       <xs:field xpath="mstns:sectionID" />
       <xs:field xpath="mstns:columnID" />
-    </xs:unique>
-    <xs:unique name="FormatType_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:FormatType" />
-      <xs:field xpath="mstns:value" />
     </xs:unique>
   </xs:element>
 </xs:schema>

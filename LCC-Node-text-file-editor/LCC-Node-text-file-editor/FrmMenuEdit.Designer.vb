@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class FrmMenuMain
+Partial Class FrmMenuEdit
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,10 +23,6 @@ Partial Class FrmMenuMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FileProcessToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FileEditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FileRestoreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NodeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PwrMonitorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PortToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -38,7 +34,6 @@ Partial Class FrmMenuMain
         Me.PhysicalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DirectControlToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UserFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserTrackSpeedsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -46,37 +41,12 @@ Partial Class FrmMenuMain
         'MenuStrip1
         '
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.NodeToolStripMenuItem, Me.PwrMonitorToolStripMenuItem, Me.PortToolStripMenuItem, Me.LogicToolStripMenuItem, Me.MastToolStripMenuItem, Me.TrackReceiversToolStripMenuItem, Me.TrackTransmittersToolStripMenuItem, Me.LampToolStripMenuItem, Me.UserToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NodeToolStripMenuItem, Me.PwrMonitorToolStripMenuItem, Me.PortToolStripMenuItem, Me.LogicToolStripMenuItem, Me.MastToolStripMenuItem, Me.TrackReceiversToolStripMenuItem, Me.TrackTransmittersToolStripMenuItem, Me.LampToolStripMenuItem, Me.UserToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1124, 28)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'FileToolStripMenuItem
-        '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileProcessToolStripMenuItem, Me.FileEditToolStripMenuItem, Me.FileRestoreToolStripMenuItem})
-        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(52, 24)
-        Me.FileToolStripMenuItem.Text = "Files"
-        '
-        'FileProcessToolStripMenuItem
-        '
-        Me.FileProcessToolStripMenuItem.Name = "FileProcessToolStripMenuItem"
-        Me.FileProcessToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
-        Me.FileProcessToolStripMenuItem.Text = "Process"
-        '
-        'FileEditToolStripMenuItem
-        '
-        Me.FileEditToolStripMenuItem.Name = "FileEditToolStripMenuItem"
-        Me.FileEditToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
-        Me.FileEditToolStripMenuItem.Text = "Edit"
-        '
-        'FileRestoreToolStripMenuItem
-        '
-        Me.FileRestoreToolStripMenuItem.Name = "FileRestoreToolStripMenuItem"
-        Me.FileRestoreToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
-        Me.FileRestoreToolStripMenuItem.Text = "Restore"
         '
         'NodeToolStripMenuItem
         '
@@ -141,24 +111,18 @@ Partial Class FrmMenuMain
         '
         'UserToolStripMenuItem
         '
-        Me.UserToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UserFilesToolStripMenuItem, Me.UserTrackSpeedsToolStripMenuItem})
+        Me.UserToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UserTrackSpeedsToolStripMenuItem})
         Me.UserToolStripMenuItem.Name = "UserToolStripMenuItem"
         Me.UserToolStripMenuItem.Size = New System.Drawing.Size(132, 24)
         Me.UserToolStripMenuItem.Text = "User Preferences"
         '
-        'UserFilesToolStripMenuItem
-        '
-        Me.UserFilesToolStripMenuItem.Name = "UserFilesToolStripMenuItem"
-        Me.UserFilesToolStripMenuItem.Size = New System.Drawing.Size(217, 26)
-        Me.UserFilesToolStripMenuItem.Text = "JMRI File Locations"
-        '
         'UserTrackSpeedsToolStripMenuItem
         '
         Me.UserTrackSpeedsToolStripMenuItem.Name = "UserTrackSpeedsToolStripMenuItem"
-        Me.UserTrackSpeedsToolStripMenuItem.Size = New System.Drawing.Size(217, 26)
+        Me.UserTrackSpeedsToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.UserTrackSpeedsToolStripMenuItem.Text = "Track Speeds"
         '
-        'FrmMenuMain
+        'FrmMenuEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -166,7 +130,7 @@ Partial Class FrmMenuMain
         Me.Controls.Add(Me.MenuStrip1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Name = "FrmMenuMain"
+        Me.Name = "FrmMenuEdit"
         Me.Text = "Main Menu > Files"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
@@ -177,13 +141,8 @@ Partial Class FrmMenuMain
 
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents UserToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents UserFilesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UserTrackSpeedsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LampToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FileProcessToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FileEditToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FileRestoreToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NodeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PwrMonitorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PortToolStripMenuItem As ToolStripMenuItem

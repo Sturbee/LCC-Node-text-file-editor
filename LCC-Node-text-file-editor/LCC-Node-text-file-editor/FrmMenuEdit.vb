@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 
-Public Class FrmMenuMain
+Public Class FrmMenuEdit
 
     Private Property MyPortLines As Integer
     Private Property MyLogicCells As Integer
@@ -9,23 +9,9 @@ Public Class FrmMenuMain
     Private Property MyTrackTransmitters
     Private Property MyLamps As Integer
 
-    Private Sub FrmMenuMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmMenuEdit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Call Me.CheckUserPreferences()
-
-    End Sub
-
-    Private Sub CheckUserPreferences()
-
-        Dim clsU As New ClsUserPrefs
-
-        If clsU.CheckUserFileDirectories > -1 Then
-
-            Dim frm As New FrmUserJMRIfiles
-
-            Call Me.CheckFormAndOpen(frm)
-
-        End If
+        Me.Tag = Me.Owner.Tag
 
     End Sub
 
@@ -44,27 +30,6 @@ Public Class FrmMenuMain
 
         Me.AddOwnedForm(frm)
         frm.Show()
-
-    End Sub
-
-    Private Sub FileProcessToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileProcessToolStripMenuItem.Click
-
-        Dim frm As New FrmFileBackup
-        Call Me.CheckFormAndOpen(frm)
-
-    End Sub
-
-    Private Sub FileEditToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileEditToolStripMenuItem.Click
-
-        Dim frm As New FrmFileXml
-        Call Me.CheckFormAndOpen(frm)
-
-    End Sub
-
-    Private Sub FileRestoreToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileRestoreToolStripMenuItem.Click
-
-        Dim frm As New FrmFileRestore
-        Call Me.CheckFormAndOpen(frm)
 
     End Sub
 
@@ -145,13 +110,6 @@ Public Class FrmMenuMain
 
     End Sub
 
-    Private Sub UserFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserFilesToolStripMenuItem.Click
-
-        Dim frm As New FrmUserJMRIfiles
-        Call Me.CheckFormAndOpen(frm)
-
-    End Sub
-
     Private Sub UserTrackSpeedsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UserTrackSpeedsToolStripMenuItem.Click
 
         Dim frm As New FrmUserTrackSpeed
@@ -162,8 +120,7 @@ Public Class FrmMenuMain
     Private Sub FrmMenuMain_Activated(sender As Object, e As EventArgs) Handles Me.Activated
 
         If Me.Tag = Nothing Then
-            ' no file selected
-            Me.FileToolStripMenuItem.Visible = True
+            ' no file selected          
             Me.NodeToolStripMenuItem.Visible = False
             Me.PwrMonitorToolStripMenuItem.Visible = False
             Me.PortToolStripMenuItem.Visible = False
@@ -176,7 +133,7 @@ Public Class FrmMenuMain
 
         Else
             ' read the file to read and edit
-            Dim newText As String = "Main Menu > Selected file " + Path.GetFileName(Me.Tag)
+            Dim newText As String = "Edit Menu > Selected file " + Path.GetFileName(Me.Tag)
             If Me.Text = newText Then
                 ' do nothing
             Else
@@ -189,7 +146,7 @@ Public Class FrmMenuMain
                 Dim rowNode As ExportXml.NodeRow = clsE.DbExport.Node.FindByNodeID(0)
 
                 Dim clsR As New ClsReport
-                Dim row As Rpt.NodeTypeRow = clsR.Rpt.NodeType.FindByvalue(rowNode.nodeType)
+                Dim row As Rpt.NodeTypeRow = clsR.Rpt.NodeType.FindByvalue(rowNode.NodeType)
 
                 If row.node > 0 Then
                     Me.NodeToolStripMenuItem.Visible = True
