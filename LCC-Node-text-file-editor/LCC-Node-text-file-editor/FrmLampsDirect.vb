@@ -1,11 +1,8 @@
-﻿Imports System.IO
-
+﻿
 Public Class FrmLampsDirect
 
     Public Property MyLamps As Integer
     Private Property MyFilePath As String
-
-    REM Private Property MyFileName As String
     Private Property MyReport As New ClsReport
     Private Property MyExport As New ClsExportXML
 
@@ -18,9 +15,7 @@ Public Class FrmLampsDirect
     Private Sub DisplayValues()
 
         ' read the file to read and edit
-        Me.Tag = Me.Owner.Tag
-        Me.MyFilePath = Me.Tag
-        REM Me.MyFileName = Path.GetFileName(Me.Tag)
+        Me.MyFilePath = Me.Owner.Tag
 
         MyExport.DbExportReadFile(MyFilePath)
 

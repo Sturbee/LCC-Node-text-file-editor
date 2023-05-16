@@ -11,7 +11,98 @@ Public Class FrmMenuEdit
 
     Private Sub FrmMenuEdit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Me.Tag = Me.Owner.Tag
+        Call Me.DisplayMenuEdit()
+
+    End Sub
+
+    Private Sub DisplayMenuEdit()
+
+        If Me.Tag = Nothing Then
+            ' no file selected          
+            Me.NodeToolStripMenuItem.Visible = False
+            Me.PwrMonitorToolStripMenuItem.Visible = False
+            Me.PortToolStripMenuItem.Visible = False
+            Me.LogicToolStripMenuItem.Visible = False
+            Me.MastToolStripMenuItem.Visible = False
+            Me.TrackReceiversToolStripMenuItem.Visible = False
+            Me.TrackTransmittersToolStripMenuItem.Visible = False
+            Me.LampToolStripMenuItem.Visible = False
+            Me.UserToolStripMenuItem.Visible = True
+
+        Else
+            ' read the file to read and edit
+            Dim newText As String = "Edit Menu > Selected file " + Path.GetFileName(Me.Tag)
+            If Me.Text = newText Then
+                ' do nothing
+            Else
+                Me.Text = newText
+                ' get node type
+                ' disable menu selections by node type
+
+                Dim clsE As New ClsExportXML
+                clsE.DbExportReadFile(Me.Tag)
+                Dim rowNode As ExportXml.NodeRow = clsE.DbExport.Node.FindByNodeID(0)
+
+                Dim clsR As New ClsReport
+                Dim row As Rpt.NodeTypeRow = clsR.Rpt.NodeType.FindByvalue(rowNode.NodeType)
+
+                If row.node > 0 Then
+                    Me.NodeToolStripMenuItem.Visible = True
+                Else
+                    Me.NodeToolStripMenuItem.Visible = False
+                End If
+
+                If row.pwrMonitor > 0 Then
+                    Me.PwrMonitorToolStripMenuItem.Visible = True
+                Else
+                    Me.PwrMonitorToolStripMenuItem.Visible = False
+                End If
+
+                If row.port > 0 Then
+                    Me.PortToolStripMenuItem.Visible = True
+                Else
+                    Me.PortToolStripMenuItem.Visible = False
+                End If
+                Me.MyPortLines = row.port
+
+                If row.logic > 0 Then
+                    Me.LogicToolStripMenuItem.Visible = True
+                Else
+                    Me.LogicToolStripMenuItem.Visible = False
+                End If
+                Me.MyLogicCells = row.logic
+
+                If row.mast > 0 Then
+                    Me.MastToolStripMenuItem.Visible = True
+                Else
+                    Me.MastToolStripMenuItem.Visible = False
+                End If
+                Me.MyMasts = row.mast
+
+                If row.trackCircuitRec > 0 Then
+                    Me.TrackReceiversToolStripMenuItem.Visible = True
+                Else
+                    Me.TrackReceiversToolStripMenuItem.Visible = False
+                End If
+                Me.MyTrackReceivers = row.trackCircuitRec
+
+                If row.trackCircuitTran > 0 Then
+                    Me.TrackTransmittersToolStripMenuItem.Visible = True
+                Else
+                    Me.TrackTransmittersToolStripMenuItem.Visible = False
+                End If
+                Me.MyTrackTransmitters = row.trackCircuitTran
+
+                If row.lamp > 0 Then
+                    Me.LampToolStripMenuItem.Visible = True
+                Else
+                    Me.LampToolStripMenuItem.Visible = False
+                End If
+                Me.MyLamps = row.lamp
+
+            End If
+
+        End If
 
     End Sub
 
@@ -114,97 +205,6 @@ Public Class FrmMenuEdit
 
         Dim frm As New FrmUserTrackSpeed
         Call Me.CheckFormAndOpen(frm)
-
-    End Sub
-
-    Private Sub FrmMenuMain_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-
-        If Me.Tag = Nothing Then
-            ' no file selected          
-            Me.NodeToolStripMenuItem.Visible = False
-            Me.PwrMonitorToolStripMenuItem.Visible = False
-            Me.PortToolStripMenuItem.Visible = False
-            Me.LogicToolStripMenuItem.Visible = False
-            Me.MastToolStripMenuItem.Visible = False
-            Me.TrackReceiversToolStripMenuItem.Visible = False
-            Me.TrackTransmittersToolStripMenuItem.Visible = False
-            Me.LampToolStripMenuItem.Visible = False
-            Me.UserToolStripMenuItem.Visible = True
-
-        Else
-            ' read the file to read and edit
-            Dim newText As String = "Edit Menu > Selected file " + Path.GetFileName(Me.Tag)
-            If Me.Text = newText Then
-                ' do nothing
-            Else
-                Me.Text = newText
-                ' get node type
-                ' disable menu selections by node type
-
-                Dim clsE As New ClsExportXML
-                clsE.DbExportReadFile(Me.Tag)
-                Dim rowNode As ExportXml.NodeRow = clsE.DbExport.Node.FindByNodeID(0)
-
-                Dim clsR As New ClsReport
-                Dim row As Rpt.NodeTypeRow = clsR.Rpt.NodeType.FindByvalue(rowNode.NodeType)
-
-                If row.node > 0 Then
-                    Me.NodeToolStripMenuItem.Visible = True
-                Else
-                    Me.NodeToolStripMenuItem.Visible = False
-                End If
-
-                If row.pwrMonitor > 0 Then
-                    Me.PwrMonitorToolStripMenuItem.Visible = True
-                Else
-                    Me.PwrMonitorToolStripMenuItem.Visible = False
-                End If
-
-                If row.port > 0 Then
-                    Me.PortToolStripMenuItem.Visible = True
-                Else
-                    Me.PortToolStripMenuItem.Visible = False
-                End If
-                Me.MyPortLines = row.port
-
-                If row.logic > 0 Then
-                    Me.LogicToolStripMenuItem.Visible = True
-                Else
-                    Me.LogicToolStripMenuItem.Visible = False
-                End If
-                Me.MyLogicCells = row.logic
-
-                If row.mast > 0 Then
-                    Me.MastToolStripMenuItem.Visible = True
-                Else
-                    Me.MastToolStripMenuItem.Visible = False
-                End If
-                Me.MyMasts = row.mast
-
-                If row.trackCircuitRec > 0 Then
-                    Me.TrackReceiversToolStripMenuItem.Visible = True
-                Else
-                    Me.TrackReceiversToolStripMenuItem.Visible = False
-                End If
-                Me.MyTrackReceivers = row.trackCircuitRec
-
-                If row.trackCircuitTran > 0 Then
-                    Me.TrackTransmittersToolStripMenuItem.Visible = True
-                Else
-                    Me.TrackTransmittersToolStripMenuItem.Visible = False
-                End If
-                Me.MyTrackTransmitters = row.trackCircuitTran
-
-                If row.lamp > 0 Then
-                    Me.LampToolStripMenuItem.Visible = True
-                Else
-                    Me.LampToolStripMenuItem.Visible = False
-                End If
-                Me.MyLamps = row.lamp
-
-            End If
-
-        End If
 
     End Sub
 

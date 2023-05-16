@@ -3,7 +3,6 @@
 Public Class FrmNode
 
     Private Property MyFilePath As String
-    Private Property MyFileName As String
     Private Property MyExport As New ClsExportXML
 
     Private Sub FrmNode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -16,7 +15,6 @@ Public Class FrmNode
 
         ' read the file to read and edit
         Me.MyFilePath = Me.Owner.Tag
-        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
         ' read the export xml file
         MyExport.DbExportReadFile(MyFilePath)
@@ -33,7 +31,7 @@ Public Class FrmNode
         Me.LblEventBase.Text = rowTitle.eventBase
         Me.lblFileName.Text = rowTitle.sourceFile
 
-        Me.LblFile.Text = Me.MyFileName
+        Me.LblFile.Text = Path.GetFileName(MyFilePath)
 
         ' read the attribute xml file
         Dim clsR As New ClsReport

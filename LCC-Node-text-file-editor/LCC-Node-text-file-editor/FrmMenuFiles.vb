@@ -1,5 +1,4 @@
-﻿Imports System.IO
-
+﻿
 Public Class FrmMenuFiles
     Private Sub FrmMenuFiles_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -64,22 +63,6 @@ Public Class FrmMenuFiles
 
         Dim frm As New FrmUserJMRIfiles
         Call Me.CheckFormAndOpen(frm)
-
-    End Sub
-
-    Private Sub FrmMenuFiles_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-
-        If Me.Tag = Nothing Then
-            ' no file selected
-
-        Else
-            ' file selected to be edited
-            Dim frm As New FrmMenuEdit
-            Call Me.CheckFormAndOpen(frm)
-
-            Me.Tag = Nothing
-
-        End If
 
     End Sub
 

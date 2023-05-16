@@ -1,5 +1,4 @@
-﻿Imports System.IO
-
+﻿
 Public Class FrmFileXml
     Private Sub FrmEditXml_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -78,9 +77,27 @@ Public Class FrmFileXml
 
     Private Sub CmdEdit_Click(sender As Object, e As EventArgs) Handles CmdEdit.Click
 
-        Me.Owner.Tag = Me.FilesListBox.SelectedItem.ToString
+        Dim myTag As String = Me.FilesListBox.SelectedItem.ToString
 
-        Me.Close()
+        Dim frm As New FrmMenuEdit With {
+            .Tag = myTag
+        }
+
+        If Me.OwnedForms.Length = 0 Then
+            ' do nothing
+        Else
+            For count = 0 To Me.OwnedForms.Length - 1
+                If Me.OwnedForms(count).Name = frm.Name Then
+                    If Me.OwnedForms(count).Tag = myTag Then
+                        Beep()
+                        Exit Sub
+                    End If
+                End If
+            Next
+        End If
+
+        Me.AddOwnedForm(frm)
+        frm.Show()
 
     End Sub
 

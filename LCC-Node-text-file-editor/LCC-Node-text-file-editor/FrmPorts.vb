@@ -1,10 +1,8 @@
-﻿Imports System.IO
-
+﻿
 Public Class FrmPorts
 
     Public Property MyLines As Integer
     Private Property MyFilePath As String
-
     Private Property MyExport As New ClsExportXML
 
     Private Sub FrmPorts_Load(sender As Object, e As EventArgs) Handles MyBase.Load

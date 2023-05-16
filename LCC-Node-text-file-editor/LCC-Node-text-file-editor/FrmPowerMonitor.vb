@@ -1,7 +1,6 @@
-﻿Imports System.IO
-
+﻿
 Public Class FrmPowerMonitor
-    Public Property MyFileName As String
+
     Public Property MyFilePath
     Private Property MyExport As New ClsExportXML
 
@@ -15,7 +14,6 @@ Public Class FrmPowerMonitor
 
         ' read the file to read and edit
         Me.MyFilePath = Me.Owner.Tag
-        Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
         ' read the export xml file
         MyExport.DbExportReadFile(MyFilePath)

@@ -119,7 +119,7 @@ Partial Class FrmMenuEdit
         'UserTrackSpeedsToolStripMenuItem
         '
         Me.UserTrackSpeedsToolStripMenuItem.Name = "UserTrackSpeedsToolStripMenuItem"
-        Me.UserTrackSpeedsToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.UserTrackSpeedsToolStripMenuItem.Size = New System.Drawing.Size(178, 26)
         Me.UserTrackSpeedsToolStripMenuItem.Text = "Track Speeds"
         '
         'FrmMenuEdit
@@ -131,7 +131,7 @@ Partial Class FrmMenuEdit
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "FrmMenuEdit"
-        Me.Text = "Main Menu > Files"
+        Me.Text = "Menu Edit"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)

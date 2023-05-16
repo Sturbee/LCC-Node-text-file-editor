@@ -1,10 +1,8 @@
-﻿Imports System.IO
-
+﻿
 Public Class FrmTrackReceivers
 
     Public Property MyTrackCircuits As Integer
     Private Property MyFilePath As String
-    REM Private Property MyFileName As String
     Private Property MyExport As New ClsExportXML
 
     Private Sub FrmTrackReceivers_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -17,7 +15,6 @@ Public Class FrmTrackReceivers
 
         ' read the file to read and edit
         Me.MyFilePath = Me.Owner.Tag
-        REM Me.MyFileName = Path.GetFileName(Me.Owner.Tag)
 
         ' read the export xml file
         MyExport.DbExportReadFile(MyFilePath)
