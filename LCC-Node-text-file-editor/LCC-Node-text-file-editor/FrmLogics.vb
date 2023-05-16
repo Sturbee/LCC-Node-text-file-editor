@@ -1,5 +1,4 @@
-﻿
-Public Class FrmLogics
+﻿Public Class FrmLogics
 
     Public Property MyLogicCells As Integer
     Private Property MyFilePath As String

@@ -1,5 +1,4 @@
-﻿
-Public Class FrmMasts
+﻿Public Class FrmMasts
 
     Public Property MyMasts As Integer
     Private Property MyFilePath As String

@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-
 Public Class FrmMenuEdit
 
     Private Property MyPortLines As Integer

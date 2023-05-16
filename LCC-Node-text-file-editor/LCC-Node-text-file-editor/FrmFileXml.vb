@@ -1,5 +1,4 @@
-﻿
-Public Class FrmFileXml
+﻿Public Class FrmFileXml
     Private Sub FrmEditXml_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Call Me.MyDisplayFiles()

@@ -1,5 +1,4 @@
-﻿
-Public Class FrmUserTrackSpeed
+﻿Public Class FrmUserTrackSpeed
 
 #Disable Warning IDE0044 ' Add readonly modifier
     Dim LblValues(7) As Label

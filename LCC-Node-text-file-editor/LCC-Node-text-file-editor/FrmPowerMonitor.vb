@@ -1,5 +1,4 @@
-﻿
-Public Class FrmPowerMonitor
+﻿Public Class FrmPowerMonitor
 
     Public Property MyFilePath
     Private Property MyExport As New ClsExportXML

@@ -1,5 +1,4 @@
-﻿
-Public Class FrmMenuFiles
+﻿Public Class FrmMenuFiles
     Private Sub FrmMenuFiles_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Call Me.CheckUserPreferences()

@@ -1,5 +1,4 @@
-﻿
-Public Class FrmTrackReceivers
+﻿Public Class FrmTrackReceivers
 
     Public Property MyTrackCircuits As Integer
     Private Property MyFilePath As String

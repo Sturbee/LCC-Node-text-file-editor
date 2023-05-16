@@ -1,5 +1,4 @@
-﻿
-Public Class FrmPorts
+﻿Public Class FrmPorts
 
     Public Property MyLines As Integer
     Private Property MyFilePath As String

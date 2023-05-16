@@ -1,5 +1,4 @@
-﻿
-Public Class FrmLampsDirect
+﻿Public Class FrmLampsDirect
 
     Public Property MyLamps As Integer
     Private Property MyFilePath As String
