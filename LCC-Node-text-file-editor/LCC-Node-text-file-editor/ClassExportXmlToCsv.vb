@@ -81,43 +81,29 @@ Public Class ClassExportXmlToCsv
         ' read Node table rows and export to cvs file
         For countTable = 0 To MyExport.DbExport.Node.Count - 1
 
-            Dim rowTitle As Rpt.NodeRow = MyReport.Rpt.Node.Item(0)
-            Dim lineTitle As String = String.Empty
-
             Dim rowExport As ExportXml.NodeRow = MyExport.DbExport.Node.Item(countTable)
+
+            Dim lineTitle As String = String.Empty
             Dim lineValue As String = String.Empty
 
-            For countRow = 0 To rowExport.ItemArray.Count - 1
+            Call Me.FormatMyLine(RowFormatType.TitleOnly, "Node ID:", String.Empty, lineTitle, lineValue)
 
-                Dim formatType As Integer
-                Dim reportTitle As String
-                Dim columnName As String = MyExport.DbExport.Node.Columns(countRow).ColumnName
-                Dim columnValue As String = rowExport.Item(countRow)
+            Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Name", rowExport.Name, lineTitle, lineValue)
 
-                Try
-                    reportTitle = rowTitle.Item(countRow).ToString
-                Catch ex As Exception
-                    reportTitle = columnName
-                End Try
+            Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Description", rowExport.Description, lineTitle, lineValue)
 
-                Select Case countRow
-                    Case 0 ' Node ID
-                        formatType = RowFormatType.TitleOnly
-                    Case 3 ' Node Type
-                        formatType = RowFormatType.TitleAndColumn
-                        Dim row As Rpt.NodeTypeRow = MyReport.Rpt.NodeType.FindByvalue(columnValue)
-                        If row Is Nothing Then
-                            columnValue = "<" + columnValue.ToString + ">"
-                        Else
-                            columnValue = row.name
-                        End If
-                    Case Else
-                        formatType = RowFormatType.TitleAndColumn
-                End Select
+            Dim row As Rpt.NodeTypeRow = MyReport.Rpt.NodeType.FindByvalue(rowExport.NodeType)
+            Dim columnValue As String
+            If row Is Nothing Then
+                columnValue = "<" + rowExport.NodeType.ToString + ">"
+            Else
+                columnValue = row.name
+            End If
+            Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Type", columnValue, lineTitle, lineValue)
 
-                Call Me.FormatMyLine(formatType, reportTitle, columnValue, lineTitle, lineValue)
+            Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Base Address", rowExport.eventBase, lineTitle, lineValue)
 
-            Next
+            Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "File Name", rowExport.sourceFile, lineTitle, lineValue)
 
             Console.WriteLine(lineTitle)
             Console.WriteLine(lineValue)
@@ -138,43 +124,25 @@ Public Class ClassExportXmlToCsv
         ' read Power Monitor table rows and export to cvs file
         For countTable = 0 To MyExport.DbExport.PowerMonitor.Count - 1
 
-            Dim rowTitle As Rpt.PowerMonitorRow = MyReport.Rpt.PowerMonitor.Item(0)
-            Dim lineTitle As String = String.Empty
-
             Dim rowExport As ExportXml.PowerMonitorRow = MyExport.DbExport.PowerMonitor.Item(countTable)
+
+            Dim lineTitle As String = String.Empty
             Dim lineValue As String = String.Empty
 
-            For countRow = 0 To rowExport.ItemArray.Count - 1
+            Call Me.FormatMyLine(RowFormatType.TitleOnly, "Power Monitor:", String.Empty, lineTitle, lineValue)
 
-                Dim formatType As Integer
-                Dim reportTitle As String
-                Dim columnName As String = MyExport.DbExport.PowerMonitor.Columns(countRow).ColumnName
-                Dim columnValue As String = rowExport.Item(countRow).ToString
+            Dim row As Rpt.MessageOptionRow = MyReport.Rpt.MessageOption.FindByvalue(rowExport.powerOptionID)
+            Dim columnValue As String
+            If row Is Nothing Then
+                columnValue = "<" + rowExport.powerOptionID.ToString + ">"
+            Else
+                columnValue = row.text
+            End If
+            Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Message Options", columnValue, lineTitle, lineValue)
 
-                Try
-                    reportTitle = rowTitle.Item(countRow).ToString
-                Catch ex As Exception
-                    reportTitle = columnName
-                End Try
+            Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Power OK Event", rowExport.eventPowerOK, lineTitle, lineValue)
 
-                Select Case countRow
-                    Case 0 ' Power Monitor ID
-                        formatType = RowFormatType.TitleOnly
-                    Case 1 ' Power Option
-                        formatType = RowFormatType.TitleAndColumn
-                        Dim row As Rpt.MessageOptionRow = MyReport.Rpt.MessageOption.FindByvalue(columnValue)
-                        If row Is Nothing Then
-                            columnValue = "<" + columnValue.ToString + ">"
-                        Else
-                            columnValue = row.text
-                        End If
-                    Case Else
-                        formatType = RowFormatType.TitleAndColumn
-                End Select
-
-                Call Me.FormatMyLine(formatType, reportTitle, columnValue, lineTitle, lineValue)
-
-            Next
+            Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Power Not OK Event", rowExport.eventPowerNotOK, lineTitle, lineValue)
 
             Console.WriteLine(lineTitle)
             Console.WriteLine(lineValue)
@@ -196,19 +164,18 @@ Public Class ClassExportXmlToCsv
             ' read Port table rows and export to cvs file
             For countTable = 0 To MyExport.DbExport.Port.Count - 1
 
-                Dim rowTitle As Rpt.PortRow = MyReport.Rpt.Port.Item(0)
-                Dim lineTitle As String = String.Empty
-
                 Dim rowExport As ExportXml.PortRow = MyExport.DbExport.Port.Item(countTable)
+
+                Dim lineTitle As String = String.Empty
                 Dim lineValue As String = String.Empty
 
-                Call Me.FormatMyLine(RowFormatType.TitleOnly, rowTitle.header, String.Empty, lineTitle, lineValue)
+                Call Me.FormatMyLine(RowFormatType.TitleOnly, "Port I/O:", String.Empty, lineTitle, lineValue)
 
-                Call Me.FormatMyLine(RowFormatType.TitleOnly, rowTitle.subHeader, String.Empty, lineTitle, lineValue)
+                Call Me.FormatMyLine(RowFormatType.TitleOnly, "Line", String.Empty, lineTitle, lineValue)
 
-                Call Me.FormatMyLine(RowFormatType.TitleAndColumn, rowTitle.line, rowExport.LineID.ToString, lineTitle, lineValue)
+                Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Line#", rowExport.LineID.ToString, lineTitle, lineValue)
 
-                Call Me.FormatMyLine(RowFormatType.TitleAndColumn, rowTitle.description, rowExport.Description, lineTitle, lineValue)
+                Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Description", rowExport.Description, lineTitle, lineValue)
 
                 Console.WriteLine(lineTitle)
                 Console.WriteLine(lineValue)
@@ -222,6 +189,9 @@ Public Class ClassExportXmlToCsv
                 writer.WriteLine(comma)
 
                 Call Me.ReportPortEventConsumerTable(rowExport.LineID, writer)
+                writer.WriteLine(comma)
+
+                Call Me.ReportPortEventProducerTable(rowExport.LineID, writer)
                 writer.WriteLine(comma)
 
             Next ' port row
@@ -241,8 +211,6 @@ Public Class ClassExportXmlToCsv
 
         Try
 
-            Dim rowTitle As Rpt.PortDelayRow = MyReport.Rpt.PortDelay.Item(0)
-
             ' read PortDelay table rows and export to cvs file
             For countTable = 0 To MyExport.DbExport.PortDelay.Count - 1
 
@@ -253,31 +221,31 @@ Public Class ClassExportXmlToCsv
                     Dim lineTitle As String = String.Empty
                     Dim lineValue As String = String.Empty
 
-                    Call Me.FormatMyLine(RowFormatType.TitleOnly, rowTitle.header, String.Empty, lineTitle, lineValue)
+                    Call Me.FormatMyLine(RowFormatType.TitleOnly, "Port I/O:", String.Empty, lineTitle, lineValue)
 
-                    Call Me.FormatMyLine(RowFormatType.TitleOnly, rowTitle.subHeader, String.Empty, lineTitle, lineValue)
+                    Call Me.FormatMyLine(RowFormatType.TitleOnly, "Delay", String.Empty, lineTitle, lineValue)
 
-                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, rowTitle.line, rowExport.LineID.ToString, lineTitle, lineValue)
+                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Line#", rowExport.LineID.ToString, lineTitle, lineValue)
 
                     Dim myDelayInterval As Rpt.PortDelayIntervalRow = MyReport.Rpt.PortDelayInterval.FindByvalue(rowExport.DelayID)
                     If myDelayInterval Is Nothing Then
                         Stop
                     End If
-                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, rowTitle.delay, myDelayInterval.text, lineTitle, lineValue)
+                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Interval", myDelayInterval.text, lineTitle, lineValue)
 
-                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, rowTitle.time, rowExport.time.ToString, lineTitle, lineValue)
+                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Time", rowExport.time.ToString, lineTitle, lineValue)
 
                     Dim myDelayUnit As Rpt.DelayUnitRow = MyReport.Rpt.DelayUnit.FindByvalue(rowExport.timeUnitID)
                     If myDelayUnit Is Nothing Then
                         Stop
                     End If
-                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, rowTitle.timeUnit, myDelayUnit.text, lineTitle, lineValue)
+                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Unit", myDelayUnit.text, lineTitle, lineValue)
 
                     Dim myDelayRetrigger As Rpt.DelayRetriggerRow = MyReport.Rpt.DelayRetrigger(rowExport.retriggerID)
                     If myDelayRetrigger Is Nothing Then
                         Stop
                     End If
-                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, rowTitle.retriggerable, myDelayRetrigger.text, lineTitle, lineValue)
+                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Retrigger", myDelayRetrigger.text, lineTitle, lineValue)
 
                     Console.WriteLine(lineTitle)
                     Console.WriteLine(lineValue)
@@ -390,6 +358,96 @@ Public Class ClassExportXmlToCsv
         End Try
 
     End Sub
+
+    Private Sub ReportPortEventProducerTable(lineID As Integer, writer As StreamWriter)
+
+        Dim comma As String = ","
+
+        Try
+
+            Dim rowExportPort As ExportXml.PortRow = MyExport.DbExport.Port.FindByLineID(lineID)
+
+            Dim lineTitle As String = String.Empty
+            Dim lineValue As String = String.Empty
+
+            Call Me.FormatMyLine(RowFormatType.TitleOnly, "Port I/O:", String.Empty, lineTitle, lineValue)
+
+            Call Me.FormatMyLine(RowFormatType.TitleOnly, "Producer", String.Empty, lineTitle, lineValue)
+
+            Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Line#", rowExportPort.LineID.ToString, lineTitle, lineValue)
+
+            Call Me.FormatMyLine(RowFormatType.BlankColumn, String.Empty, String.Empty, lineTitle, lineValue)
+
+            Dim myFunction As Rpt.PortInFuncRow = MyReport.Rpt.PortInFunc.FindByvalue(rowExportPort.inputFunctionID)
+            If myFunction Is Nothing Then
+                Stop
+            End If
+            Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Function", myFunction.text, lineTitle, lineValue)
+
+            Dim myInput As Rpt.PortInCommdRow = MyReport.Rpt.PortInCommd.FindByvalue(rowExportPort.InputCommand)
+            If myInput Is Nothing Then
+                Stop
+            End If
+            Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Input", myInput.text, lineTitle, lineValue)
+
+            Console.WriteLine(lineTitle)
+            Console.WriteLine(lineValue)
+
+            writer.WriteLine(lineTitle)
+            writer.WriteLine(lineValue)
+
+            writer.WriteLine(comma)
+
+            Dim header As Boolean = True
+
+            ' read PortEvent table rows and export to cvs file
+            For countTable = 0 To MyExport.DbExport.PortEvent.Count - 1
+
+                Dim rowExport As ExportXml.PortEventRow = MyExport.DbExport.PortEvent.Item(countTable)
+
+                If rowExport.LineID = lineID Then ' process
+
+                    lineTitle = String.Empty
+                    lineValue = String.Empty
+
+                    Call Me.FormatMyLine(RowFormatType.TitleOnly, "Port I/O:", String.Empty, lineTitle, lineValue)
+
+                    Call Me.FormatMyLine(RowFormatType.TitleOnly, "Producer", String.Empty, lineTitle, lineValue)
+
+                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Line#", rowExport.LineID.ToString, lineTitle, lineValue)
+
+                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Event#", rowExport.EventID.ToString, lineTitle, lineValue)
+
+                    Dim myProducerAction As Rpt.PortEventProdRow = MyReport.Rpt.PortEventProd.FindByvalue(rowExport.producerActionID)
+                    If myProducerAction Is Nothing Then
+                        Stop
+                    End If
+                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Command", myProducerAction.text, lineTitle, lineValue)
+
+                    Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Action", rowExport.eventProducer.ToString, lineTitle, lineValue)
+
+                    Console.WriteLine(lineTitle)
+                    Console.WriteLine(lineValue)
+
+                    If header Then
+                        writer.WriteLine(lineTitle)
+                        header = False
+                    End If
+
+                    writer.WriteLine(lineValue)
+
+                End If
+
+            Next ' port event producer row
+
+        Catch ex As Exception
+
+            MsgBox("Failed to write Port Event Producer line")
+
+        End Try
+
+    End Sub
+
 
 
     Private Sub ReportLogicTable(writer As StreamWriter)
