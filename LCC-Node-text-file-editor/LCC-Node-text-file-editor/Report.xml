@@ -76,7 +76,7 @@
 	<Port>
 		<header>Port I/O:</header>
 		<subHeader>Line</subHeader>
-		<portID>Line #</portID>
+		<line>Line#</line>
 		<description>Description</description>
 		<outputFunction>Output Function</outputFunction>
 		<outputCommand>Output</outputCommand>
@@ -139,6 +139,27 @@
 		<value>1</value>
 		<text>Active High (5V)</text>
 	</PortInCommd>
+	
+	<!-- Port Delay -->
+	<PortDelay>
+		<header>Port I/O:</header>
+		<subHeader>Delay</subHeader>
+		<line>Line#</line>
+		<delay>Interval</delay>
+		<time>Time</time>
+		<timeUnit>Unit</timeUnit>
+		<retriggerable>Retrigger</retriggerable>
+	</PortDelay>
+	
+	<!-- Port Delay Interval -->
+	<PortDelayInterval>
+		<value>1</value>
+		<text>Active ON</text>
+	</PortDelayInterval>
+	<PortDelayInterval>
+		<value>2</value>
+		<text>Active OFF</text>
+	</PortDelayInterval>
 
 	<!-- Delay Unit -->
 	<DelayUnit>
@@ -164,7 +185,7 @@
 		<text>Yes</text>
 	</DelayRetrigger>
 	
-	<!-- Port Event Consumer -->
+	<!-- Port Event Cons-->
 	<PortEventCons>
 		<value>0</value>
 		<text>None</text>
