@@ -172,55 +172,6 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Node" msprop:Generator_RowEvHandlerName="NodeRowChangeEventHandler" msprop:Generator_RowDeletedName="NodeRowDeleted" msprop:Generator_RowDeletingName="NodeRowDeleting" msprop:Generator_RowEvArgName="NodeRowChangeEvent" msprop:Generator_TablePropName="Node" msprop:Generator_RowChangedName="NodeRowChanged" msprop:Generator_UserTableName="Node" msprop:Generator_RowChangingName="NodeRowChanging" msprop:Generator_RowClassName="NodeRow" msprop:Generator_TableClassName="NodeDataTable" msprop:Generator_TableVarName="tableNode">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="header" msprop:Generator_ColumnPropNameInTable="headerColumn" msprop:Generator_ColumnPropNameInRow="header" msprop:Generator_UserColumnName="header" msprop:Generator_ColumnVarNameInTable="columnheader" type="xs:string" minOccurs="0" />
-              <xs:element name="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_UserColumnName="name" msprop:Generator_ColumnVarNameInTable="columnname" type="xs:string" minOccurs="0" />
-              <xs:element name="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_UserColumnName="description" msprop:Generator_ColumnVarNameInTable="columndescription" type="xs:string" minOccurs="0" />
-              <xs:element name="nodeType" msprop:Generator_ColumnPropNameInTable="nodeTypeColumn" msprop:Generator_ColumnPropNameInRow="nodeType" msprop:Generator_UserColumnName="nodeType" msprop:Generator_ColumnVarNameInTable="columnnodeType" type="xs:string" minOccurs="0" />
-              <xs:element name="eventBase" msprop:Generator_ColumnPropNameInTable="eventBaseColumn" msprop:Generator_ColumnPropNameInRow="eventBase" msprop:Generator_UserColumnName="eventBase" msprop:Generator_ColumnVarNameInTable="columneventBase" type="xs:string" minOccurs="0" />
-              <xs:element name="sourceFile" msprop:Generator_ColumnPropNameInTable="sourceFileColumn" msprop:Generator_ColumnPropNameInRow="sourceFile" msprop:Generator_UserColumnName="sourceFile" msprop:Generator_ColumnVarNameInTable="columnsourceFile" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="PowerMonitor" msprop:Generator_RowEvHandlerName="PowerMonitorRowChangeEventHandler" msprop:Generator_RowDeletedName="PowerMonitorRowDeleted" msprop:Generator_RowDeletingName="PowerMonitorRowDeleting" msprop:Generator_RowEvArgName="PowerMonitorRowChangeEvent" msprop:Generator_TablePropName="PowerMonitor" msprop:Generator_RowChangedName="PowerMonitorRowChanged" msprop:Generator_UserTableName="PowerMonitor" msprop:Generator_RowChangingName="PowerMonitorRowChanging" msprop:Generator_RowClassName="PowerMonitorRow" msprop:Generator_TableClassName="PowerMonitorDataTable" msprop:Generator_TableVarName="tablePowerMonitor">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="header" msprop:Generator_ColumnPropNameInTable="headerColumn" msprop:Generator_ColumnPropNameInRow="header" msprop:Generator_UserColumnName="header" msprop:Generator_ColumnVarNameInTable="columnheader" type="xs:string" minOccurs="0" />
-              <xs:element name="options" msprop:Generator_ColumnPropNameInTable="optionsColumn" msprop:Generator_ColumnPropNameInRow="options" msprop:Generator_UserColumnName="options" msprop:Generator_ColumnVarNameInTable="columnoptions" type="xs:string" minOccurs="0" />
-              <xs:element name="powerOK" msprop:Generator_ColumnPropNameInTable="powerOKColumn" msprop:Generator_ColumnPropNameInRow="powerOK" msprop:Generator_UserColumnName="powerOK" msprop:Generator_ColumnVarNameInTable="columnpowerOK" type="xs:string" minOccurs="0" />
-              <xs:element name="powerNotOK" msprop:Generator_ColumnPropNameInTable="powerNotOKColumn" msprop:Generator_ColumnPropNameInRow="powerNotOK" msprop:Generator_UserColumnName="powerNotOK" msprop:Generator_ColumnVarNameInTable="columnpowerNotOK" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Port" msprop:Generator_RowEvHandlerName="PortRowChangeEventHandler" msprop:Generator_RowDeletedName="PortRowDeleted" msprop:Generator_RowDeletingName="PortRowDeleting" msprop:Generator_RowEvArgName="PortRowChangeEvent" msprop:Generator_TablePropName="Port" msprop:Generator_RowChangedName="PortRowChanged" msprop:Generator_UserTableName="Port" msprop:Generator_RowChangingName="PortRowChanging" msprop:Generator_RowClassName="PortRow" msprop:Generator_TableClassName="PortDataTable" msprop:Generator_TableVarName="tablePort">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="header" msprop:Generator_ColumnPropNameInTable="headerColumn" msprop:Generator_ColumnPropNameInRow="header" msprop:Generator_UserColumnName="header" msprop:Generator_ColumnVarNameInTable="columnheader" type="xs:string" minOccurs="0" />
-              <xs:element name="subHeader" msprop:Generator_ColumnPropNameInTable="subHeaderColumn" msprop:Generator_ColumnPropNameInRow="subHeader" msprop:Generator_UserColumnName="subHeader" msprop:Generator_ColumnVarNameInTable="columnsubHeader" type="xs:string" minOccurs="0" />
-              <xs:element name="line" msprop:Generator_ColumnPropNameInTable="lineColumn" msprop:Generator_ColumnPropNameInRow="line" msprop:Generator_UserColumnName="line" msprop:Generator_ColumnVarNameInTable="columnline" type="xs:string" minOccurs="0" />
-              <xs:element name="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_UserColumnName="description" msprop:Generator_ColumnVarNameInTable="columndescription" type="xs:string" minOccurs="0" />
-              <xs:element name="outputFunction" msprop:Generator_ColumnPropNameInTable="outputFunctionColumn" msprop:Generator_ColumnPropNameInRow="outputFunction" msprop:Generator_UserColumnName="outputFunction" msprop:Generator_ColumnVarNameInTable="columnoutputFunction" type="xs:string" minOccurs="0" />
-              <xs:element name="outputCommand" msprop:Generator_ColumnPropNameInTable="outputCommandColumn" msprop:Generator_ColumnPropNameInRow="outputCommand" msprop:Generator_UserColumnName="outputCommand" msprop:Generator_ColumnVarNameInTable="columnoutputCommand" type="xs:string" minOccurs="0" />
-              <xs:element name="inputFunction" msprop:Generator_ColumnPropNameInTable="inputFunctionColumn" msprop:Generator_ColumnPropNameInRow="inputFunction" msprop:Generator_UserColumnName="inputFunction" msprop:Generator_ColumnVarNameInTable="columninputFunction" type="xs:string" minOccurs="0" />
-              <xs:element name="inputCommand" msprop:Generator_ColumnPropNameInTable="inputCommandColumn" msprop:Generator_ColumnPropNameInRow="inputCommand" msprop:Generator_UserColumnName="inputCommand" msprop:Generator_ColumnVarNameInTable="columninputCommand" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="PortDelay" msprop:Generator_RowEvHandlerName="PortDelayRowChangeEventHandler" msprop:Generator_RowDeletedName="PortDelayRowDeleted" msprop:Generator_RowDeletingName="PortDelayRowDeleting" msprop:Generator_RowEvArgName="PortDelayRowChangeEvent" msprop:Generator_TablePropName="PortDelay" msprop:Generator_RowChangedName="PortDelayRowChanged" msprop:Generator_UserTableName="PortDelay" msprop:Generator_RowChangingName="PortDelayRowChanging" msprop:Generator_RowClassName="PortDelayRow" msprop:Generator_TableClassName="PortDelayDataTable" msprop:Generator_TableVarName="tablePortDelay">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="header" msprop:Generator_ColumnPropNameInTable="headerColumn" msprop:Generator_ColumnPropNameInRow="header" msprop:Generator_UserColumnName="header" msprop:Generator_ColumnVarNameInTable="columnheader" type="xs:string" minOccurs="0" />
-              <xs:element name="subHeader" msprop:Generator_ColumnPropNameInTable="subHeaderColumn" msprop:Generator_ColumnPropNameInRow="subHeader" msprop:Generator_UserColumnName="subHeader" msprop:Generator_ColumnVarNameInTable="columnsubHeader" type="xs:string" minOccurs="0" />
-              <xs:element name="line" msprop:Generator_ColumnPropNameInTable="lineColumn" msprop:Generator_ColumnPropNameInRow="line" msprop:Generator_UserColumnName="line" msprop:Generator_ColumnVarNameInTable="columnline" type="xs:string" minOccurs="0" />
-              <xs:element name="delay" msprop:Generator_ColumnPropNameInTable="delayColumn" msprop:Generator_ColumnPropNameInRow="delay" msprop:Generator_UserColumnName="delay" msprop:Generator_ColumnVarNameInTable="columndelay" type="xs:string" minOccurs="0" />
-              <xs:element name="time" msprop:Generator_ColumnPropNameInTable="timeColumn" msprop:Generator_ColumnPropNameInRow="time" msprop:Generator_UserColumnName="time" msprop:Generator_ColumnVarNameInTable="columntime" type="xs:string" minOccurs="0" />
-              <xs:element name="timeUnit" msprop:Generator_ColumnPropNameInTable="timeUnitColumn" msprop:Generator_ColumnPropNameInRow="timeUnit" msprop:Generator_UserColumnName="timeUnit" msprop:Generator_ColumnVarNameInTable="columntimeUnit" type="xs:string" minOccurs="0" />
-              <xs:element name="retriggerable" msprop:Generator_ColumnPropNameInTable="retriggerableColumn" msprop:Generator_ColumnPropNameInRow="retriggerable" msprop:Generator_UserColumnName="retriggerable" msprop:Generator_ColumnVarNameInTable="columnretriggerable" type="xs:string" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="PortDelayInterval" msprop:Generator_RowEvHandlerName="PortDelayIntervalRowChangeEventHandler" msprop:Generator_RowDeletedName="PortDelayIntervalRowDeleted" msprop:Generator_RowDeletingName="PortDelayIntervalRowDeleting" msprop:Generator_RowEvArgName="PortDelayIntervalRowChangeEvent" msprop:Generator_TablePropName="PortDelayInterval" msprop:Generator_RowChangedName="PortDelayIntervalRowChanged" msprop:Generator_UserTableName="PortDelayInterval" msprop:Generator_RowChangingName="PortDelayIntervalRowChanging" msprop:Generator_RowClassName="PortDelayIntervalRow" msprop:Generator_TableClassName="PortDelayIntervalDataTable" msprop:Generator_TableVarName="tablePortDelayInterval">
           <xs:complexType>
             <xs:sequence>

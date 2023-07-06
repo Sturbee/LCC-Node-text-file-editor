@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Rpt xmlns="http://tempuri.org/Report.xsd">
 
-	<!-- Node -->
-	<Node>
-		<header>Node ID:</header>
-		<name>Name</name>
-		<description>Description</description>
-		<nodeType>Type</nodeType>
-		<eventBase>Base Address</eventBase>
-		<sourceFile>File Name</sourceFile>
-	</Node>
-	
 	<!-- Node Type -->
 	<NodeType>
 		<value>0</value>
@@ -49,14 +39,6 @@
 		<lamp>0</lamp>
 	</NodeType>
 
-	<!-- Power Monitor -->
-	<PowerMonitor>
-		<header>Power Monitor:</header>
-		<options>Message Options</options>
-		<powerOK>Power OK Event</powerOK>
-		<powerNotOK>Power Not OK Event</powerNotOK>
-	</PowerMonitor>
-
 	<!-- Power Monitor Message Option -->
 	<MessageOption>
 		<value>0</value>
@@ -70,19 +52,6 @@
 		<value>2</value>
 		<text>Send both Power OK and Power Not OK</text>
 	</MessageOption>
-	
-	
-	<!-- Port -->
-	<Port>
-		<header>Port I/O:</header>
-		<subHeader>Line</subHeader>
-		<line>Line#</line>
-		<description>Description</description>
-		<outputFunction>Output Function</outputFunction>
-		<outputCommand>Output</outputCommand>
-		<inputFunction>Input Function</inputFunction>
-		<inputCommand>Input</inputCommand>
-	</Port>
 	
 	<!-- Port Output Function -->
 	<PortOutFunc>
@@ -139,17 +108,6 @@
 		<value>1</value>
 		<text>Active High (5V)</text>
 	</PortInCommd>
-	
-	<!-- Port Delay -->
-	<PortDelay>
-		<header>Port I/O:</header>
-		<subHeader>Delay</subHeader>
-		<line>Line#</line>
-		<delay>Interval</delay>
-		<time>Time</time>
-		<timeUnit>Unit</timeUnit>
-		<retriggerable>Retrigger</retriggerable>
-	</PortDelay>
 	
 	<!-- Port Delay Interval -->
 	<PortDelayInterval>
