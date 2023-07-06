@@ -55,7 +55,7 @@ Public Class ClassExportXmlToCsv
             Call Me.ReportPortTable(writer)
 
             ' output Logic table
-            REM Call Me.ReportLogicTable(writer)
+            Call Me.ReportLogicTable(writer)
 
             writer.Close()
 
@@ -402,58 +402,42 @@ Public Class ClassExportXmlToCsv
 
             For countTable = 0 To MyExport.DbExport.Logic.Count - 1
 
-                Dim rowTable As ExportXml.LogicRow = MyExport.DbExport.Logic.Item(countTable)
-                Dim lineReport As String = String.Empty
-                Dim lineRow As String = String.Empty
+                Dim rowTitle As Rpt.LogicRow = MyReport.Rpt.Logic.Item(0)
+                Dim lineTitle As String = String.Empty
 
-                For countRow = 0 To rowTable.ItemArray.Count - 1
+                Dim rowExport As ExportXml.LogicRow = MyExport.DbExport.Logic.Item(countTable)
+                Dim lineValue As String = String.Empty
 
-                    Dim formatType As Integer
-                    Dim columnName As String = MyExport.DbExport.Logic.Columns(countRow).ColumnName
-                    Dim columnValue As String = rowTable.Item(countRow).ToString
-                    Dim reportTitle As String = String.Empty
-                    Dim attributeText As String = String.Empty
+                Call Me.FormatMyLine(RowFormatType.TitleOnly, rowTitle.header, String.Empty, lineTitle, lineValue)
 
-                    Dim rowReport As Titles.LogicTitleRow = Nothing ' MyTitles.Titles.LogicTitle(countRow)
-                    If rowReport Is Nothing Then
-                        formatType = 2
-                        reportTitle = columnName
-                    Else
-                        formatType = rowReport.formatType
-                        reportTitle = rowReport.title
-                    End If
+                Call Me.FormatMyLine(RowFormatType.TitleOnly, rowTitle.subheader, String.Empty, lineTitle, lineValue)
 
-                    If IsNumeric(columnValue) Then
-                        ' get the attribute values for each value in rowNode
-                        Dim rowAttribute As Rpt.LogicFunctionRow = MyReport.Rpt.LogicFunction.FindByvalue(columnValue)
-                        If rowAttribute Is Nothing Then
-                            attributeText = "<" + columnValue.ToString + ">"
-                            If countRow > 2 Then Stop
-                        Else
-                            attributeText = rowAttribute.text
-                        End If
-                    End If
+                Call Me.FormatMyLine(RowFormatType.TitleAndColumn, rowTitle.line, rowExport.LogicID.ToString, lineTitle, lineValue)
 
-                    Call Me.FormatMyLine(formatType, reportTitle, columnValue, lineReport, lineRow)
+                Call Me.FormatMyLine(RowFormatType.TitleAndColumn, rowTitle.description, rowExport.Description, lineTitle, lineValue)
 
-                Next
+                Dim myLogicFunction As Rpt.LogicFunctionRow = MyReport.Rpt.LogicFunction.FindByvalue(rowExport.logicFunctionID)
+                If myLogicFunction Is Nothing Then
+                    Stop
+                End If
+                Call Me.FormatMyLine(RowFormatType.TitleAndColumn, "Function", myLogicFunction.text, lineTitle, lineValue)
 
-                Console.WriteLine(lineReport)
-                Console.WriteLine(lineRow)
+                Console.WriteLine(lineTitle)
+                Console.WriteLine(lineValue)
 
-                writer.WriteLine(lineReport)
-                writer.WriteLine(lineRow)
+                writer.WriteLine(lineTitle)
+                writer.WriteLine(lineValue)
                 writer.WriteLine(comma)
 
                 ' write logic operation info
-                Call Me.ReportLogicOperationTable(rowTable.LogicID, writer)
-                writer.WriteLine(comma)
+                REM Call Me.ReportLogicOperationTable(rowTable.LogicID, writer)
+                REM writer.WriteLine(comma)
 
-                Call Me.ReportLogicActionTable(rowTable.LogicID, writer)
-                writer.WriteLine(comma)
+                REM Call Me.ReportLogicActionTable(rowTable.LogicID, writer)
+                REM writer.WriteLine(comma)
 
-                Call Me.ReportLogicProducerTable(rowTable.LogicID, writer)
-                writer.WriteLine(comma)
+                REM Call Me.ReportLogicProducerTable(rowTable.LogicID, writer)
+                REM writer.WriteLine(comma)
 
             Next ' logic row
 

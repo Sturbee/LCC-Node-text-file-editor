@@ -261,7 +261,14 @@
 		<text>Gated OFF (Non Veto Input)</text>
 	</PortEventProd>
 
-	
+	<!-- Logic -->
+	<Logic>
+		<header>Logic:</header>
+		<subheader>Logic</subheader>
+		<line>Logic#</line>
+		<description>Description</description>
+	</Logic>
+		
 	<!-- Logic Function -->
 	<LogicFunction>
 		<value>0</value>

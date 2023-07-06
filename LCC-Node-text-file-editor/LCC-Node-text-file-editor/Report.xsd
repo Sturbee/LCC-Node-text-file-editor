@@ -229,6 +229,16 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Logic" msprop:Generator_RowEvHandlerName="LogicRowChangeEventHandler" msprop:Generator_RowDeletedName="LogicRowDeleted" msprop:Generator_RowDeletingName="LogicRowDeleting" msprop:Generator_RowEvArgName="LogicRowChangeEvent" msprop:Generator_TablePropName="Logic" msprop:Generator_RowChangedName="LogicRowChanged" msprop:Generator_RowChangingName="LogicRowChanging" msprop:Generator_TableClassName="LogicDataTable" msprop:Generator_RowClassName="LogicRow" msprop:Generator_TableVarName="tableLogic" msprop:Generator_UserTableName="Logic">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="header" msprop:Generator_ColumnPropNameInRow="header" msprop:Generator_ColumnPropNameInTable="headerColumn" msprop:Generator_ColumnVarNameInTable="columnheader" msprop:Generator_UserColumnName="header" type="xs:string" minOccurs="0" />
+              <xs:element name="subheader" msprop:Generator_ColumnPropNameInRow="subheader" msprop:Generator_ColumnPropNameInTable="subheaderColumn" msprop:Generator_ColumnVarNameInTable="columnsubheader" msprop:Generator_UserColumnName="subheader" type="xs:string" minOccurs="0" />
+              <xs:element name="line" msprop:Generator_ColumnPropNameInRow="line" msprop:Generator_ColumnPropNameInTable="lineColumn" msprop:Generator_ColumnVarNameInTable="columnline" msprop:Generator_UserColumnName="line" type="xs:string" minOccurs="0" />
+              <xs:element name="description" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_UserColumnName="description" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
